@@ -34,10 +34,11 @@ class AdDemoLoader(models.TransientModel):
             cat = self.env['approval.category'].sudo().search([('ad_model', '=', model_name)], limit=1)
             if not cat or cat.approver_ids:
                 continue
-            vals = []
+            vals, seen = [], set()
             for seq, slot in enumerate(plan['keys'], start=1):
                 user = users.get(by_key.get(SLOT_USER.get(slot, '')))
-                if user:
+                if user and user.id not in seen:        # a user may appear only once per approval type
+                    seen.add(user.id)
                     vals.append((0, 0, {'user_id': user.id, 'required': True}))
             if vals:
                 write = {'approver_ids': vals, 'approval_minimum': len(vals)}   # all approvers are required
