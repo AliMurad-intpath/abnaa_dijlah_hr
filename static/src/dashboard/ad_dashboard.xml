@@ -46,7 +46,7 @@
                     </div>
                 </header>
 
-                <div t-if="this.state.error" class="ad-alert" role="alert">تعذر تحميل البيانات. اعد المحاولة.</div>
+                <div t-if="this.state.error" class="ad-alert" role="alert">تعذر تحميل البيانات: <span dir="ltr" t-out="this.state.errorMessage"/></div>
                 <div t-if="this.state.loading and !this.state.data" class="ad-empty">جاري التحميل...</div>
 
                 <t t-if="this.state.data">

@@ -1,5 +1,5 @@
 /** @odoo-module **/
-import { Component, onWillStart, onWillUnmount, proxy } from "@odoo/owl";
+import { Component, onMounted, onWillUnmount, proxy } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 
@@ -52,9 +52,9 @@ export class AdDashboard extends Component {
         } catch {}
         let auto = false;
         try { auto = localStorage.getItem("ad_dashboard.auto") === "1"; } catch {}
-        this.state = proxy({ loading: true, error: false, data: null, dark, office: false, auto, edit: false });
+        this.state = proxy({ loading: true, error: false, errorMessage: "", data: null, dark, office: false, auto, edit: false });
         this.timer = null;
-        onWillStart(async () => {
+        onMounted(async () => {
             await this.load();
             this.schedule();
         });
@@ -67,8 +67,9 @@ export class AdDashboard extends Component {
         try {
             this.state.data = await this.orm.call("ad.dashboard", "get_data", [], { edit: this.state.edit });
         } catch (e) {
+            console.error("[abnaa_dijlah_hr] dashboard failed to load", e);
             this.state.error = true;
-            throw e;
+            this.state.errorMessage = (e && (e.data && e.data.message || e.message)) || String(e);
         } finally {
             this.state.loading = false;
         }
@@ -173,3 +174,4 @@ export class AdDashboard extends Component {
 }
 
 registry.category("actions").add("ad_hr_dashboard", AdDashboard);
+console.info("[abnaa_dijlah_hr] dashboard action registered");
