@@ -155,7 +155,21 @@ export class AdDashboard extends Component {
     isWidth(key, v) { return String(((this.state.data && this.state.data.wset) || {})[key] || 0) === String(v); }
     async setWidth(ev, key, w) {
         ev.stopPropagation();
+        w = Number(w) || 0;
         try { await this.orm.call("ad.dashboard.block", "set_width", [key, w]); }
+        catch (e) { console.error(e); }
+        await this.load();
+    }
+    orderOf(key) { const o = ((this.state.data && this.state.data.orders) || {})[key]; return o === undefined ? 99 : o; }
+    visibleKeys() {
+        const d = this.state.data, keys = d.kpis.map((k) => "kpi_" + k.key);
+        if (d.show.panel_create && this.createGroups.length) { keys.push("panel_create"); }
+        for (const k of ["panel_alerts", "panel_recent", "chart_trend", "chart_types", "chart_sites"]) { if (d.show[k]) { keys.push(k); } }
+        return keys;
+    }
+    async moveBlock(ev, key, delta) {
+        ev.stopPropagation();
+        try { await this.orm.call("ad.dashboard.block", "move_block", [key, delta, this.visibleKeys()]); }
         catch (e) { console.error(e); }
         await this.load();
     }

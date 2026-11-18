@@ -46,6 +46,10 @@ SPAN = {'1': 3, '2': 6, '4': 12}
 DEFAULT_SPAN = {'panel_create': 12, 'panel_alerts': 6, 'panel_recent': 6,
                 'chart_trend': 4, 'chart_types': 4, 'chart_sites': 4}
 
+# blocks that can be resized / moved on the dashboard, in their default order
+LAYOUT = ['kpi_emp', 'kpi_open', 'kpi_present', 'kpi_out', 'kpi_leave_pending', 'kpi_slips',
+          'panel_create', 'panel_alerts', 'panel_recent', 'chart_trend', 'chart_types', 'chart_sites']
+
 
 class AdDashboardBlock(models.Model):
     """Who may see / use each block of the dashboard and each form.
@@ -112,6 +116,39 @@ class AdDashboardBlock(models.Model):
                 chosen[b.key] = b.width
             spans[b.key] = SPAN[b.width] if b.width else (2 if b.key.startswith('kpi_') else DEFAULT_SPAN.get(b.key, 4))
         return spans, chosen
+
+    @api.model
+    def _layout_order(self):
+        seq = {b.key: b.sequence for b in self.sudo().search([('key', 'in', LAYOUT)])}
+        return sorted(LAYOUT, key=lambda k: (seq.get(k, 10), LAYOUT.index(k)))
+
+    @api.model
+    def _orders(self):
+        return {k: i for i, k in enumerate(self._layout_order())}
+
+    @api.model
+    def move_block(self, key, delta, visible):
+        """Move a block one place earlier (-1) or later (+1) among the visible ones."""
+        user = self.env.user
+        if not (user.has_group('hr.group_hr_manager') or user.has_group('base.group_system')):
+            raise AccessError(_('ليس لديك صلاحية تعديل ترتيب العناصر.'))
+        order = self._layout_order()
+        vis = [k for k in order if k in set(visible or [])]
+        if key not in vis:
+            return False
+        i = vis.index(key)
+        j = i + (1 if delta > 0 else -1)
+        if not 0 <= j < len(vis):
+            return False
+        ia, ib = order.index(vis[i]), order.index(vis[j])
+        order[ia], order[ib] = order[ib], order[ia]
+        recs = {b.key: b for b in self.sudo().search([('key', 'in', LAYOUT)])}
+        for n, k in enumerate(order):
+            if k in recs:
+                recs[k].sequence = 10 * (n + 1)
+            else:
+                self.sudo().create({'key': k, 'name': dict(BLOCKS).get(k, k), 'sequence': 10 * (n + 1)})
+        return True
 
     @api.model
     def set_width(self, key, width):
