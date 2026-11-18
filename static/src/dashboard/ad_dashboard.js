@@ -1,7 +1,8 @@
 /** @odoo-module **/
-import { Component, onMounted, onWillUnmount, proxy } from "@odoo/owl";
+import { Component, onMounted, onWillUnmount, proxy, useProps } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
+import { standardActionServiceProps } from "@web/webclient/actions/action_plugin";
 
 const circle = (cx, cy, r) =>
     `M${cx - r} ${cy}a${r} ${r} 0 1 0 ${r * 2} 0a${r} ${r} 0 1 0 ${-r * 2} 0`;
@@ -41,6 +42,8 @@ const PALETTE = ["#6366f1", "#0ea5e9", "#14b8a6", "#f97316", "#d946ef", "#8b5cf6
 
 export class AdDashboard extends Component {
     static template = "abnaa_dijlah_hr.AdDashboard";
+
+    props = useProps(standardActionServiceProps);
 
     setup() {
         this.orm = useService("orm");
