@@ -51,7 +51,7 @@
 
                 <t t-if="this.state.data">
                     <!-- KPI cards -->
-                    <section class="dj-grid dj-main" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
+                    <section class="dj-grid dj-board" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
                         <article t-foreach="this.state.data.kpis" t-as="k" t-key="k.key"
                                  t-att-class="'dj-panel dj-block dj-kpi dj-kind-' + k.kind + (k.model ? ' dj-click' : '') + ' dj-span-' + this.widthOf('kpi_' + k.key)"
                                  t-on-click="() => this.openKpi(k)">
