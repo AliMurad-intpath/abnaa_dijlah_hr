@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_interview_view_list" model="ir.ui.view">
+        <field name="name">ad.interview.list</field>
+        <field name="model">ad.interview</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'cancel'" decoration-success="recommendation == 'hire'" decoration-danger="recommendation == 'reject'">
+                <field name="name"/><field name="date"/><field name="candidate_name"/><field name="job_title"/>
+                <field name="overall_score"/><field name="recommendation"/><field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_interview_view_form" model="ir.ui.view">
+        <field name="name">ad.interview.form</field>
+        <field name="model">ad.interview</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_hr" type="object" string="اكتملت مقابلة الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_ops" type="object" string="اكتمل التدريب / العمليات" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="action_done" type="object" string="اعتماد التوصية" class="btn-primary" invisible="state != 'ops'"/>
+                    <button name="action_create_employee" type="object" string="انشاء موظف" invisible="state != 'done' or recommendation != 'hire' or employee_id"/>
+                    <button name="%(action_report_ad_interview)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
+                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,hr,ops,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><label for="name"/><h1><field name="name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="date"/><field name="applicant_id"/><field name="candidate_name"/>
+                            <field name="birth_date"/><field name="phone"/><field name="employee_id"/>
+                        </group>
+                        <group>
+                            <field name="governorate"/><field name="area"/><field name="district"/>
+                            <field name="interview_date"/><field name="job_title"/><field name="referral"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="الدرجات" name="scores">
+                            <field name="score_ids">
+                                <list editable="bottom" create="0" delete="0">
+                                    <field name="sequence" column_invisible="1"/>
+                                    <field name="criterion" readonly="1"/><field name="score"/><field name="comments"/>
+                                </list>
+                            </field>
+                            <group>
+                                <group string="العربية"><field name="ar_read"/><field name="ar_write"/><field name="ar_speak"/></group>
+                                <group string="الانكليزية"><field name="en_read"/><field name="en_write"/><field name="en_speak"/></group>
+                            </group>
+                            <group><field name="overall_score"/></group>
+                        </page>
+                        <page string="الصحة" name="health">
+                            <group>
+                                <group>
+                                    <field name="health_general"/><field name="weight"/><field name="height"/>
+                                    <field name="q_medication"/><field name="q_tattoo"/><field name="q_planned_surgery"/><field name="q_care_program"/>
+                                </group>
+                                <group><field name="chronic_diseases"/></group>
+                            </group>
+                            <field name="surgery_ids"><list editable="bottom"><field name="name"/><field name="date"/></list></field>
+                        </page>
+                        <page string="الامن" name="security">
+                            <group>
+                                <field name="q_party"/><field name="q_convicted"/><field name="q_pending_case"/>
+                            </group>
+                            <field name="reference_ids"><list editable="bottom"><field name="name"/><field name="relation"/><field name="phone"/></list></field>
+                        </page>
+                        <page string="التدريب" name="training">
+                            <group>
+                                <field name="t_weapon"/><field name="t_force_law"/><field name="t_armed_conflict"/><field name="t_search"/>
+                            </group>
+                        </page>
+                        <page string="التوصية" name="recommendation">
+                            <group>
+                                <group string="القرار">
+                                    <field name="recommendation"/><field name="ack_date"/>
+                                </group>
+                                <group string="اسباب الانسحاب" invisible="recommendation != 'withdraw'">
+                                    <field name="w_salary"/><field name="w_duties"/><field name="w_hours"/>
+                                    <field name="w_other_job"/><field name="w_mind"/><field name="w_other"/>
+                                </group>
+                                <group string="اسباب عدم التعيين" invisible="recommendation != 'reject'">
+                                    <field name="r_qualif"/><field name="r_health"/><field name="r_security"/>
+                                    <field name="r_training"/><field name="r_other"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="الموافقات" name="approvals">
+                            <field name="signature_ids" readonly="1">
+                                <list><field name="step"/><field name="user_id"/><field name="date"/></list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="ad_interview_action" model="ir.actions.act_window">
+        <field name="name">استمارات تقييم المقابلة (AD-WI-FM-06-01)</field>
+        <field name="res_model">ad.interview</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_view_form_ad" model="ir.ui.view">
+        <field name="name">hr.employee.form.ad.staff</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="منتسبو الحماية - AD" name="ad_staff" groups="hr.group_hr_user">
+                    <group>
+                        <group string="الهوية (استمارة وزارة الداخلية)">
+                            <field name="ad_employee_no"/>
+                            <field name="ad_first_name"/>
+                            <field name="ad_mid_name"/>
+                            <field name="ad_last_name"/>
+                            <field name="ad_surname"/>
+                            <field name="ad_mother_name"/>
+                            <field name="ad_previous_job"/>
+                        </group>
+                        <group string="العمل">
+                            <field name="ad_work_site_id"/>
+                            <field name="ad_work_governorate"/>
+                            <field name="ad_work_area"/>
+                        </group>
+                    </group>
+                    <group string="عنوان السكن">
+                        <group>
+                            <field name="ad_res_governorate"/>
+                            <field name="ad_res_district"/>
+                            <field name="ad_neighborhood"/>
+                            <field name="ad_mahalla"/>
+                        </group>
+                        <group>
+                            <field name="ad_alley"/>
+                            <field name="ad_house"/>
+                            <field name="ad_landmark"/>
+                            <field name="ad_address"/>
+                        </group>
+                    </group>
+                    <group string="المستمسكات الثبوتية">
+                        <group>
+                            <field name="ad_resid_issuer"/>
+                            <field name="ad_resid_no"/>
+                            <field name="ad_resid_date"/>
+                            <field name="ad_ration_center"/>
+                            <field name="ad_ration_no"/>
+                            <field name="ad_ration_date"/>
+                            <field name="ad_civil_issuer"/>
+                            <field name="ad_civil_record_no"/>
+                            <field name="ad_civil_page_no"/>
+                        </group>
+                        <group>
+                            <field name="ad_nat_issuer"/>
+                            <field name="ad_nat_wallet_no"/>
+                            <field name="ad_nat_date"/>
+                            <field name="ad_passport_issuer"/>
+                            <field name="ad_passport_no"/>
+                            <field name="ad_passport_date"/>
+                        </group>
+                    </group>
+                    <group string="تملأ من قبل وزارة الداخلية">
+                        <group>
+                            <field name="ad_moi_code"/>
+                            <field name="ad_moi_emp_no"/>
+                            <field name="ad_moi_company_code"/>
+                        </group>
+                        <group>
+                            <field name="ad_moi_jk_no"/>
+                            <field name="ad_moi_file_no"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

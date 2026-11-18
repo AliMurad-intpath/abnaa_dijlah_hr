@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="action_report_ad_appointment" model="ir.actions.report">
+        <field name="name">أمر تعيين (AD-WI-FM-06-02)</field>
+        <field name="model">ad.appointment.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">abnaa_dijlah_hr.report_ad_appointment</field>
+        <field name="print_report_name">'Appointment order - %s' % (object.name or '')</field>
+        <field name="paperformat_id" ref="abnaa_dijlah_hr.paperformat_ad_a4" />
+        <field name="binding_model_id" ref="model_ad_appointment_order" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_ad_appointment">
+        <t t-call="abnaa_dijlah_hr.ad_form_wrapper">
+            <t t-set="h" t-value="docs.env['ad.report.helper']" />
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="tpl" t-value="doc.ad_tpl()" />
+                <t t-set="pg" t-value="1" /><t t-set="pgs" t-value="1" />
+                <div class="ad-page">
+                    <t t-call="abnaa_dijlah_hr.ad_form_head" />
+                    <t t-set="seq" t-value="doc.name if doc.name != '/' else ''" />
+                    <t t-set="dt" t-value="doc.date" />
+                    <t t-set="rounded" t-value="False" />
+                    <t t-call="abnaa_dijlah_hr.ad_form_seqrow" />
+                    <div class="ad-c ad-b ad-u" style="font-size:11pt; margin-top:7mm;"><t t-out="h.t('appointment', 1, 'أمر تعيين')" /></div>
+                    <div style="font-size:11.5pt; line-height:2.15; margin-top:4mm;">
+                        <t t-out="h.t('appointment', 2, 'استناداً للصلاحيات المخولة لنا تقرر:')" /><br />
+                        <t t-out="h.t('appointment', 3, 'تعيين السيد (')" /> <span class="ad-fill" t-out="doc.employee_id.name" /> )<br />
+                        <t t-out="h.t('appointment', 4, 'بعنوان (')" /> <span class="ad-fill" t-out="doc.job_title" /> <t t-out="h.t('appointment', 5, ') في موقع (')" /> <span class="ad-fill" t-out="doc.site_id.name" /> )<br />
+                        <t t-out="h.t('appointment', 6, 'وبراتب اسمي شهريا مقداره (')" /> <span class="ad-fill" t-out="h.money(doc.nominal_salary)" /> <t t-out="h.t('appointment', 7, 'دينار) دينار عراقي لا غير, وتضاف مخصصات (')" /> <span class="ad-fill" t-out="h.money(doc.allowance)" /> <t t-out="h.t('appointment', 8, ') دينار موقع عمل .')" /><br />
+                        <t t-out="h.t('appointment', 9, 'يخضع الموظف الى فترة التجربة خلال')" />
+                        <span t-out="{1: 'شهر واحد', 2: 'شهرين', 3: 'ثلاثة اشهر', 4: 'اربعة اشهر', 6: 'ستة اشهر'}.get(doc.probation_months) or ('%s اشهر' % doc.probation_months)" /><t t-out="h.t('appointment', 10, ', ينفذ امرنا اعتباراً من تاريخ المباشرة في (')" /> <span t-out="h.d3(doc.start_date)" /> ) .
+                    </div>
+                    <table class="ad-nb" style="margin-top:46mm;">
+                        <tr>
+                            <td style="width:52%;" />
+                            <td class="ad-c ad-b" style="font-size:11pt; line-height:2.2;">
+                                <div t-out="doc.company_id.ad_md_title" />
+                                <div t-out="doc.company_id.ad_md_name" />
+                                <div t-out="h.month_year_ar(doc.date)" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ad-copy" style="margin-top:22mm; line-height:1.5;">
+                        <u><t t-out="h.t('appointment', 11, 'نسخة منه الى:')" /></u><br />
+                        <t t-out="h.t('appointment', 12, '- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير')" /><br />
+                        <t t-out="h.t('appointment', 13, '- قسم الموارد البشرية/ للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير')" /><br />
+                        <t t-out="h.t('appointment', 14, '- القسم المعني / لاتخاذ ما يلزم ... مع التقدير')" />
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

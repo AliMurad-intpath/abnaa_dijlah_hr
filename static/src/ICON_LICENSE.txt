@@ -1,0 +1,12 @@
+Icons used by the IP Dashboard are drawn in the Lucide style (https://lucide.dev).
+
+Lucide - ISC License
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT).
+All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee
+is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE.
+
+Feather-derived icons (target, moon, table-2) - MIT License, Copyright (c) 2013-present Cole Bemis.
+The area, doughnut and pie glyphs are simplified variants written in the same 24px / 2px-stroke style.

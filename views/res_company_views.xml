@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_company_view_form_ad" model="ir.ui.view">
+        <field name="name">res.company.form.ad.hr</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="استمارات الموارد البشرية" name="ad_hr_forms">
+                    <group>
+                        <field name="ad_md_name"/>
+                        <field name="ad_md_title"/>
+                        <field name="ad_license_code"/>
+                        <field name="ad_logo" widget="image" options="{'size': [0, 90]}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

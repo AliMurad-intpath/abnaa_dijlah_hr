@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ad_dash_block_kpi_approvals" model="ad.dashboard.block">
+        <field name="key">kpi_approvals</field>
+        <field name="name">بطاقة: موافقات بانتظاري</field>
+        <field name="sequence">65</field>
+    </record>
+</odoo>

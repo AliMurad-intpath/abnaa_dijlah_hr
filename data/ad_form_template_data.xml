@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="form_tpl_interview" model="ad.form.template">
+        <field name="name">Interview Rating Form</field>
+        <field name="code">AD-WI-FM-06-01</field>
+        <field name="issue">02</field>
+        <field name="issue_date">02-01-2024</field>
+        <field name="rev_date">01-06-2026</field>
+        <field name="title_ar">استمارة تقييم المقابلة</field>
+        <field name="title_en">INTERVIEW RATING FORM</field>
+        <field name="title_layout">stack</field>
+    </record>
+    <record id="form_tpl_appointment" model="ad.form.template">
+        <field name="name">Appointment Order Form</field>
+        <field name="code">AD-WI-FM-06-02</field>
+        <field name="issue">02</field>
+        <field name="issue_date">02-01-2024</field>
+        <field name="rev_date">23-04-2026</field>
+        <field name="title_ar">استمارة امر التعيين</field>
+        <field name="title_en">Appointment Order Form</field>
+        <field name="title_layout">stack</field>
+    </record>
+    <record id="form_tpl_onboarding" model="ad.form.template">
+        <field name="name">Effective Date Notice</field>
+        <field name="code">AD-WI-FM-06-03</field>
+        <field name="issue">02</field>
+        <field name="issue_date">02-01-2024</field>
+        <field name="rev_date">23-04-2026</field>
+        <field name="title_ar">استمارة تاريخ مباشرة العمل</field>
+        <field name="title_en">Effective Date Notice</field>
+        <field name="title_layout">inline</field>
+    </record>
+    <record id="form_tpl_termination" model="ad.form.template">
+        <field name="name">Order termination services</field>
+        <field name="code">AD-WI-FM-06-10</field>
+        <field name="issue">02</field>
+        <field name="issue_date">02-01-2024</field>
+        <field name="rev_date">23-04-2026</field>
+        <field name="title_ar">استمارة امر انهاء خدمات</field>
+        <field name="title_en">Order termination services</field>
+        <field name="title_layout">stack</field>
+    </record>
+    <record id="form_tpl_clearance" model="ad.form.template">
+        <field name="name">Deletion Form (Clearance)</field>
+        <field name="code">AD-WI-FM-06-11</field>
+        <field name="issue">02</field>
+        <field name="issue_date">02-01-2024</field>
+        <field name="rev_date">23-04-2026</field>
+        <field name="title_ar">استمارة براءة الذمة</field>
+        <field name="title_en">Deletion Form</field>
+        <field name="title_layout">inline</field>
+    </record>
+    <record id="form_tpl_transfer" model="ad.form.template">
+        <field name="name">Guard transfer to work sites</field>
+        <field name="code">AD-HR-FM-09</field>
+        <field name="issue">01</field>
+        <field name="issue_date">16-07-2024</field>
+        <field name="rev_date">00-00-00</field>
+        <field name="title_ar">استمارة تنقلات الحراس لمواقع العمل</field>
+        <field name="title_layout">ar_only</field>
+    </record>
+    <record id="form_tpl_penalty" model="ad.form.template">
+        <field name="name">Penalties</field>
+        <field name="code">AD-HR-FM-10</field>
+        <field name="issue">01</field>
+        <field name="issue_date">16-07-2024</field>
+        <field name="rev_date">00-00-00</field>
+        <field name="title_ar">استمارة العقوبات</field>
+        <field name="title_layout">ar_only</field>
+    </record>
+    <record id="form_tpl_pledge" model="ad.form.template">
+        <field name="name">Written pledges for protection staff</field>
+        <field name="code">AD-HR-FM-17</field>
+        <field name="issue">01</field>
+        <field name="issue_date">14-01-2026</field>
+        <field name="rev_date">00-00-00</field>
+        <field name="title_ar">استمارة التعهدات الخطية لعناصر الحماية</field>
+        <field name="title_layout">ar_only</field>
+    </record>
+    <record id="form_tpl_annex" model="ad.form.template">
+        <field name="name">Employment Guarantee / Written pledge (Annex)</field>
+        <field name="code">AD-HR-FM-Annex</field>
+        <field name="issue">01</field>
+        <field name="title_ar">كفالة</field>
+        <field name="title_en">Employment Guarantee</field>
+        <field name="title_layout">stack</field>
+    </record>
+</odoo>

@@ -1,0 +1,2409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ad_pt_appointment_1" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">1</field>
+        <field name="text">أمر تعيين</field>
+        <field name="original">أمر تعيين</field>
+    </record>
+    <record id="ad_pt_appointment_2" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">2</field>
+        <field name="text">استناداً للصلاحيات المخولة لنا تقرر:</field>
+        <field name="original">استناداً للصلاحيات المخولة لنا تقرر:</field>
+    </record>
+    <record id="ad_pt_appointment_3" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">3</field>
+        <field name="text">تعيين السيد (</field>
+        <field name="original">تعيين السيد (</field>
+    </record>
+    <record id="ad_pt_appointment_4" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">4</field>
+        <field name="text">بعنوان (</field>
+        <field name="original">بعنوان (</field>
+    </record>
+    <record id="ad_pt_appointment_5" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">5</field>
+        <field name="text">) في موقع (</field>
+        <field name="original">) في موقع (</field>
+    </record>
+    <record id="ad_pt_appointment_6" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">6</field>
+        <field name="text">وبراتب اسمي شهريا مقداره (</field>
+        <field name="original">وبراتب اسمي شهريا مقداره (</field>
+    </record>
+    <record id="ad_pt_appointment_7" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">7</field>
+        <field name="text">دينار) دينار عراقي لا غير, وتضاف مخصصات (</field>
+        <field name="original">دينار) دينار عراقي لا غير, وتضاف مخصصات (</field>
+    </record>
+    <record id="ad_pt_appointment_8" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">8</field>
+        <field name="text">) دينار موقع عمل .</field>
+        <field name="original">) دينار موقع عمل .</field>
+    </record>
+    <record id="ad_pt_appointment_9" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">9</field>
+        <field name="text">يخضع الموظف الى فترة التجربة خلال</field>
+        <field name="original">يخضع الموظف الى فترة التجربة خلال</field>
+    </record>
+    <record id="ad_pt_appointment_10" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">10</field>
+        <field name="text">, ينفذ امرنا اعتباراً من تاريخ المباشرة في (</field>
+        <field name="original">, ينفذ امرنا اعتباراً من تاريخ المباشرة في (</field>
+    </record>
+    <record id="ad_pt_appointment_11" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">11</field>
+        <field name="text">نسخة منه الى:</field>
+        <field name="original">نسخة منه الى:</field>
+    </record>
+    <record id="ad_pt_appointment_12" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">12</field>
+        <field name="text">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_appointment_13" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">13</field>
+        <field name="text">- قسم الموارد البشرية/ للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- قسم الموارد البشرية/ للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_appointment_14" model="ad.print.text">
+        <field name="report_key">appointment</field>
+        <field name="seq">14</field>
+        <field name="text">- القسم المعني / لاتخاذ ما يلزم ... مع التقدير</field>
+        <field name="original">- القسم المعني / لاتخاذ ما يلزم ... مع التقدير</field>
+    </record>
+    <record id="ad_pt_clearance_1" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">1</field>
+        <field name="text">اسم الموظف :</field>
+        <field name="original">اسم الموظف :</field>
+    </record>
+    <record id="ad_pt_clearance_2" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">2</field>
+        <field name="text">عنوان السكن:</field>
+        <field name="original">عنوان السكن:</field>
+    </record>
+    <record id="ad_pt_clearance_3" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">3</field>
+        <field name="text">عنوان وظيفته:</field>
+        <field name="original">عنوان وظيفته:</field>
+    </record>
+    <record id="ad_pt_clearance_4" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">4</field>
+        <field name="text">تاريخ التعيين:</field>
+        <field name="original">تاريخ التعيين:</field>
+    </record>
+    <record id="ad_pt_clearance_5" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">5</field>
+        <field name="text">محل العمل:</field>
+        <field name="original">محل العمل:</field>
+    </record>
+    <record id="ad_pt_clearance_6" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">6</field>
+        <field name="text">تاريخ التوقف عن العمل:</field>
+        <field name="original">تاريخ التوقف عن العمل:</field>
+    </record>
+    <record id="ad_pt_clearance_7" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">7</field>
+        <field name="text">قطعت علاقته بالوظيفة / لاستشهاده / لوفاته</field>
+        <field name="original">قطعت علاقته بالوظيفة / لاستشهاده / لوفاته</field>
+    </record>
+    <record id="ad_pt_clearance_8" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">8</field>
+        <field name="text">بموجب الامر المرقم بالعدد (</field>
+        <field name="original">بموجب الامر المرقم بالعدد (</field>
+    </record>
+    <record id="ad_pt_clearance_9" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">9</field>
+        <field name="text">) والمؤرخ في (</field>
+        <field name="original">) والمؤرخ في (</field>
+    </record>
+    <record id="ad_pt_clearance_10" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">10</field>
+        <field name="text">القسم</field>
+        <field name="original">القسم</field>
+    </record>
+    <record id="ad_pt_clearance_11" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">11</field>
+        <field name="text">اسم مدير القسم</field>
+        <field name="original">اسم مدير القسم</field>
+    </record>
+    <record id="ad_pt_clearance_12" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">12</field>
+        <field name="text">التوقيع</field>
+        <field name="original">التوقيع</field>
+    </record>
+    <record id="ad_pt_clearance_13" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">13</field>
+        <field name="text">الملاحظات في حالة وجود ذمة مالية او وظيفية تكتب بالتفصيل ويعكس يكتب ذمة غير مشغولة</field>
+        <field name="original">الملاحظات في حالة وجود ذمة مالية او وظيفية تكتب بالتفصيل ويعكس يكتب ذمة غير مشغولة</field>
+    </record>
+    <record id="ad_pt_clearance_14" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">14</field>
+        <field name="text">يوجد لديه مستحقات</field>
+        <field name="original">يوجد لديه مستحقات</field>
+    </record>
+    <record id="ad_pt_clearance_15" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">15</field>
+        <field name="text">مخالصة وإبراء ذمة Emp. – AD . Clearance</field>
+        <field name="original">مخالصة وإبراء ذمة Emp. – AD . Clearance</field>
+    </record>
+    <record id="ad_pt_clearance_16" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">16</field>
+        <field name="text">أنا الموقع في أدناه اقر باستلام كافة حقوقي ومستحقاتي (</field>
+        <field name="original">أنا الموقع في أدناه اقر باستلام كافة حقوقي ومستحقاتي (</field>
+    </record>
+    <record id="ad_pt_clearance_17" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">17</field>
+        <field name="text">) عن فترة عملي في شركة ابناء دجلة لخدمات الامن والحماية المحدودة لغاية تاريخ توقفي عن العمل ولم يتبق لي في ذمتهم اية حقوق عملية المتطلبات من رواتب او مكافآت نهاية الخدمة او بدل عمل اضافي بدل دوام لايام العطل الاسبوعية و الدينية و الرسمية وغيرها.</field>
+        <field name="original">) عن فترة عملي في شركة ابناء دجلة لخدمات الامن والحماية المحدودة لغاية تاريخ توقفي عن العمل ولم يتبق لي في ذمتهم اية حقوق عملية المتطلبات من رواتب او مكافآت نهاية الخدمة او بدل عمل اضافي بدل دوام لايام العطل الاسبوعية و الدينية و الرسمية وغيرها.</field>
+    </record>
+    <record id="ad_pt_clearance_18" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">18</field>
+        <field name="text">وإني بذلك لا أبرئ الشركة حاضــرا او مستقبلا من اية مطالبات تتعلق بالحقوق المذكورة في عقد العمل والمستحقة حسب قانون العمل العراقي وعليه وقعت.</field>
+        <field name="original">وإني بذلك لا أبرئ الشركة حاضــرا او مستقبلا من اية مطالبات تتعلق بالحقوق المذكورة في عقد العمل والمستحقة حسب قانون العمل العراقي وعليه وقعت.</field>
+    </record>
+    <record id="ad_pt_clearance_19" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">19</field>
+        <field name="text">واقر باستلامي مبلغا وقدره (</field>
+        <field name="original">واقر باستلامي مبلغا وقدره (</field>
+    </record>
+    <record id="ad_pt_clearance_20" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">20</field>
+        <field name="text">) دينار . $</field>
+        <field name="original">) دينار . $</field>
+    </record>
+    <record id="ad_pt_clearance_21" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">21</field>
+        <field name="text">الاســــم الثلاثي:</field>
+        <field name="original">الاســــم الثلاثي:</field>
+    </record>
+    <record id="ad_pt_clearance_22" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">22</field>
+        <field name="text">رقم هوية الاحوال المدنية / البطاقة الوطنية:</field>
+        <field name="original">رقم هوية الاحوال المدنية / البطاقة الوطنية:</field>
+    </record>
+    <record id="ad_pt_clearance_23" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">23</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_clearance_24" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">24</field>
+        <field name="text">التوقيع:</field>
+        <field name="original">التوقيع:</field>
+    </record>
+    <record id="ad_pt_clearance_25" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">25</field>
+        <field name="text">بصمة الابهام الايسر</field>
+        <field name="original">بصمة الابهام الايسر</field>
+    </record>
+    <record id="ad_pt_clearance_26" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">26</field>
+        <field name="text">الشاهد الثاني</field>
+        <field name="original">الشاهد الثاني</field>
+    </record>
+    <record id="ad_pt_clearance_27" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">27</field>
+        <field name="text">الشاهد الاول</field>
+        <field name="original">الشاهد الاول</field>
+    </record>
+    <record id="ad_pt_clearance_28" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">28</field>
+        <field name="text">مستحقات السيد (</field>
+        <field name="original">مستحقات السيد (</field>
+    </record>
+    <record id="ad_pt_clearance_29" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">29</field>
+        <field name="text">السيد المدير المفوض المحترم:</field>
+        <field name="original">السيد المدير المفوض المحترم:</field>
+    </record>
+    <record id="ad_pt_clearance_30" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">30</field>
+        <field name="text">نود اعلامكم بان الموظف قد سلم جميع ما بعهدته ولا شي بذمته لشركتنا وتم تسليمه جميع مستحقاته .</field>
+        <field name="original">نود اعلامكم بان الموظف قد سلم جميع ما بعهدته ولا شي بذمته لشركتنا وتم تسليمه جميع مستحقاته .</field>
+    </record>
+    <record id="ad_pt_clearance_31" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">31</field>
+        <field name="text">الموظف المختص</field>
+        <field name="original">الموظف المختص</field>
+    </record>
+    <record id="ad_pt_clearance_32" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">32</field>
+        <field name="text">مدير قسم الموارد البشرية</field>
+        <field name="original">مدير قسم الموارد البشرية</field>
+    </record>
+    <record id="ad_pt_clearance_33" model="ad.print.text">
+        <field name="report_key">clearance</field>
+        <field name="seq">33</field>
+        <field name="text">مصادقة المدير المفوض</field>
+        <field name="original">مصادقة المدير المفوض</field>
+    </record>
+    <record id="ad_pt_discipline_1" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">1</field>
+        <field name="text">اسم الموظـــــــف :</field>
+        <field name="original">اسم الموظـــــــف :</field>
+    </record>
+    <record id="ad_pt_discipline_2" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">2</field>
+        <field name="text">التاريـــــــخ :</field>
+        <field name="original">التاريـــــــخ :</field>
+    </record>
+    <record id="ad_pt_discipline_3" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">3</field>
+        <field name="text">العنوان الوظيفي :</field>
+        <field name="original">العنوان الوظيفي :</field>
+    </record>
+    <record id="ad_pt_discipline_4" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">4</field>
+        <field name="text">الرقم الوظيفي :</field>
+        <field name="original">الرقم الوظيفي :</field>
+    </record>
+    <record id="ad_pt_discipline_5" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">5</field>
+        <field name="text">ان هذا التقرير سيعرض على اقسام الشركة وسيصبح جزء من سجلكم الشخصي وننبهكم وننذركم من ان الاستمرار في انتهاك قوانين العمل سيؤدي الى عدم التشجيع على ترقيتك او الاستغناء عن خدماتكم.</field>
+        <field name="original">ان هذا التقرير سيعرض على اقسام الشركة وسيصبح جزء من سجلكم الشخصي وننبهكم وننذركم من ان الاستمرار في انتهاك قوانين العمل سيؤدي الى عدم التشجيع على ترقيتك او الاستغناء عن خدماتكم.</field>
+    </record>
+    <record id="ad_pt_discipline_6" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">6</field>
+        <field name="text">تكرار المخالفة :    الأولى</field>
+        <field name="original">تكرار المخالفة :    الأولى</field>
+    </record>
+    <record id="ad_pt_discipline_7" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">7</field>
+        <field name="text">الثانية</field>
+        <field name="original">الثانية</field>
+    </record>
+    <record id="ad_pt_discipline_8" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">8</field>
+        <field name="text">الثالثة</field>
+        <field name="original">الثالثة</field>
+    </record>
+    <record id="ad_pt_discipline_9" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">9</field>
+        <field name="text">القرار:</field>
+        <field name="original">القرار:</field>
+    </record>
+    <record id="ad_pt_discipline_10" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">10</field>
+        <field name="text">إيقاف عن العمل:</field>
+        <field name="original">إيقاف عن العمل:</field>
+    </record>
+    <record id="ad_pt_discipline_11" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">11</field>
+        <field name="text">عقوبة خصم الراتب:</field>
+        <field name="original">عقوبة خصم الراتب:</field>
+    </record>
+    <record id="ad_pt_discipline_12" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">12</field>
+        <field name="text">عقوبة انهاء الخدمات:</field>
+        <field name="original">عقوبة انهاء الخدمات:</field>
+    </record>
+    <record id="ad_pt_discipline_13" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">13</field>
+        <field name="text">من تاريخ:</field>
+        <field name="original">من تاريخ:</field>
+    </record>
+    <record id="ad_pt_discipline_14" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">14</field>
+        <field name="text">الى تاريخ :</field>
+        <field name="original">الى تاريخ :</field>
+    </record>
+    <record id="ad_pt_discipline_15" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">15</field>
+        <field name="text">مجموع الأيام</field>
+        <field name="original">مجموع الأيام</field>
+    </record>
+    <record id="ad_pt_discipline_16" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">16</field>
+        <field name="text">نوع الخصم :</field>
+        <field name="original">نوع الخصم :</field>
+    </record>
+    <record id="ad_pt_discipline_17" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">17</field>
+        <field name="text">مبلغ الخصم</field>
+        <field name="original">مبلغ الخصم</field>
+    </record>
+    <record id="ad_pt_discipline_18" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">18</field>
+        <field name="text">من تأريخ :</field>
+        <field name="original">من تأريخ :</field>
+    </record>
+    <record id="ad_pt_discipline_19" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">19</field>
+        <field name="text">توقيع مقدم العقوبة :...............................</field>
+        <field name="original">توقيع مقدم العقوبة :...............................</field>
+    </record>
+    <record id="ad_pt_discipline_20" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">20</field>
+        <field name="text">توقيع قسم الموارد البشرية :........................</field>
+        <field name="original">توقيع قسم الموارد البشرية :........................</field>
+    </record>
+    <record id="ad_pt_discipline_21" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">21</field>
+        <field name="text">توقيع مدير قسم العمليات :.........................</field>
+        <field name="original">توقيع مدير قسم العمليات :.........................</field>
+    </record>
+    <record id="ad_pt_discipline_22" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">22</field>
+        <field name="text">المدير المفوض :...................................</field>
+        <field name="original">المدير المفوض :...................................</field>
+    </record>
+    <record id="ad_pt_discipline_23" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">23</field>
+        <field name="text">إقرار بالاستلام</field>
+        <field name="original">إقرار بالاستلام</field>
+    </record>
+    <record id="ad_pt_discipline_24" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">24</field>
+        <field name="text">اسم الموظف :</field>
+        <field name="original">اسم الموظف :</field>
+    </record>
+    <record id="ad_pt_discipline_25" model="ad.print.text">
+        <field name="report_key">discipline</field>
+        <field name="seq">25</field>
+        <field name="text">التوقيع :</field>
+        <field name="original">التوقيع :</field>
+    </record>
+    <record id="ad_pt_guarantee_1" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">1</field>
+        <field name="text">Emp. Name</field>
+        <field name="original">Emp. Name</field>
+    </record>
+    <record id="ad_pt_guarantee_2" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">2</field>
+        <field name="text">الاسم الكامل</field>
+        <field name="original">الاسم الكامل</field>
+    </record>
+    <record id="ad_pt_guarantee_3" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">3</field>
+        <field name="text">Emp. No.</field>
+        <field name="original">Emp. No.</field>
+    </record>
+    <record id="ad_pt_guarantee_4" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">4</field>
+        <field name="text">رقم الموظف</field>
+        <field name="original">رقم الموظف</field>
+    </record>
+    <record id="ad_pt_guarantee_5" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">5</field>
+        <field name="text">Page</field>
+        <field name="original">Page</field>
+    </record>
+    <record id="ad_pt_guarantee_6" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">6</field>
+        <field name="text">of</field>
+        <field name="original">of</field>
+    </record>
+    <record id="ad_pt_guarantee_7" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">7</field>
+        <field name="text">Position</field>
+        <field name="original">Position</field>
+    </record>
+    <record id="ad_pt_guarantee_8" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">8</field>
+        <field name="text">المنصب</field>
+        <field name="original">المنصب</field>
+    </record>
+    <record id="ad_pt_guarantee_9" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">9</field>
+        <field name="text">Location</field>
+        <field name="original">Location</field>
+    </record>
+    <record id="ad_pt_guarantee_10" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">10</field>
+        <field name="text">الموقع</field>
+        <field name="original">الموقع</field>
+    </record>
+    <record id="ad_pt_guarantee_11" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">11</field>
+        <field name="text">Mobile No.</field>
+        <field name="original">Mobile No.</field>
+    </record>
+    <record id="ad_pt_guarantee_12" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">12</field>
+        <field name="text">رقم الهاتف</field>
+        <field name="original">رقم الهاتف</field>
+    </record>
+    <record id="ad_pt_guarantee_13" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">13</field>
+        <field name="text">Employment Guarantee</field>
+        <field name="original">Employment Guarantee</field>
+    </record>
+    <record id="ad_pt_guarantee_14" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">14</field>
+        <field name="text">كـــــــــفـــــــــالـــــــــة</field>
+        <field name="original">كـــــــــفـــــــــالـــــــــة</field>
+    </record>
+    <record id="ad_pt_guarantee_15" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">15</field>
+        <field name="text">اني الموقع ادناه</field>
+        <field name="original">اني الموقع ادناه</field>
+    </record>
+    <record id="ad_pt_guarantee_16" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">16</field>
+        <field name="text">اعلن نفسي كفيلاً ( ضامناً ) شخصياً للسيد</field>
+        <field name="original">اعلن نفسي كفيلاً ( ضامناً ) شخصياً للسيد</field>
+    </record>
+    <record id="ad_pt_guarantee_17" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">17</field>
+        <field name="text">وذلك لغرض تعيينه لدى شركة أبناء دجلة بصفة (</field>
+        <field name="original">وذلك لغرض تعيينه لدى شركة أبناء دجلة بصفة (</field>
+    </record>
+    <record id="ad_pt_guarantee_18" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">18</field>
+        <field name="text">) واتعهد بأحضاره امام أي سلطة مدنية او حكومية تطلبه مني وامام إدارة الشركة في حالة طلبها ذلك واكفله مالياً في حالة عدم تسديده مستحقات مالية ومتضامن معه في التسديد وبعكسه اتحمل كافة التبعات القانونية وكافة الاضرار والتعويضات المترتبة من جراء أي اخلال يقوم به تجاه الشركة باعتباري كفيلاً ضامناً شخصياً ومالياً بالنيابة عنه في حالة عدم حضوره ولأجله وقعت.</field>
+        <field name="original">) واتعهد بأحضاره امام أي سلطة مدنية او حكومية تطلبه مني وامام إدارة الشركة في حالة طلبها ذلك واكفله مالياً في حالة عدم تسديده مستحقات مالية ومتضامن معه في التسديد وبعكسه اتحمل كافة التبعات القانونية وكافة الاضرار والتعويضات المترتبة من جراء أي اخلال يقوم به تجاه الشركة باعتباري كفيلاً ضامناً شخصياً ومالياً بالنيابة عنه في حالة عدم حضوره ولأجله وقعت.</field>
+    </record>
+    <record id="ad_pt_guarantee_19" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">19</field>
+        <field name="text">الكفيل :</field>
+        <field name="original">الكفيل :</field>
+    </record>
+    <record id="ad_pt_guarantee_20" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">20</field>
+        <field name="text">المكفول :</field>
+        <field name="original">المكفول :</field>
+    </record>
+    <record id="ad_pt_guarantee_21" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">21</field>
+        <field name="text">البصمة / توقيع :</field>
+        <field name="original">البصمة / توقيع :</field>
+    </record>
+    <record id="ad_pt_guarantee_22" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">22</field>
+        <field name="text">البصمة / توقيع :</field>
+        <field name="original">البصمة / توقيع :</field>
+    </record>
+    <record id="ad_pt_guarantee_23" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">23</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_guarantee_24" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">24</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_guarantee_25" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">25</field>
+        <field name="text">الشاهد الاول :</field>
+        <field name="original">الشاهد الاول :</field>
+    </record>
+    <record id="ad_pt_guarantee_26" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">26</field>
+        <field name="text">الشاهد الثاني :</field>
+        <field name="original">الشاهد الثاني :</field>
+    </record>
+    <record id="ad_pt_guarantee_27" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">27</field>
+        <field name="text">اصادق على صحة توقيع الكفيل (</field>
+        <field name="original">اصادق على صحة توقيع الكفيل (</field>
+    </record>
+    <record id="ad_pt_guarantee_28" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">28</field>
+        <field name="text">) المشاور القانوني</field>
+        <field name="original">) المشاور القانوني</field>
+    </record>
+    <record id="ad_pt_guarantee_29" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">29</field>
+        <field name="text">تعهد خطي</field>
+        <field name="original">تعهد خطي</field>
+    </record>
+    <record id="ad_pt_guarantee_30" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">30</field>
+        <field name="text">اني الموقع ادناه (</field>
+        <field name="original">اني الموقع ادناه (</field>
+    </record>
+    <record id="ad_pt_guarantee_31" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">31</field>
+        <field name="text">) اتعهد بعدم انتمائي الى أي (حزب او مليشيا او جماعة مسلحة) تمارس أي نشاط مخالف قوانين الدولة العراقية وبخلافه اتحمل المسؤولية الكاملة امام السلطات وعليه وقعت .</field>
+        <field name="original">) اتعهد بعدم انتمائي الى أي (حزب او مليشيا او جماعة مسلحة) تمارس أي نشاط مخالف قوانين الدولة العراقية وبخلافه اتحمل المسؤولية الكاملة امام السلطات وعليه وقعت .</field>
+    </record>
+    <record id="ad_pt_guarantee_32" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">32</field>
+        <field name="text">التوقيـــــــــــــع :</field>
+        <field name="original">التوقيـــــــــــــع :</field>
+    </record>
+    <record id="ad_pt_guarantee_33" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">33</field>
+        <field name="text">اسم الشركــــــة :</field>
+        <field name="original">اسم الشركــــــة :</field>
+    </record>
+    <record id="ad_pt_guarantee_34" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">34</field>
+        <field name="text">الاســـــــــــــــم :</field>
+        <field name="original">الاســـــــــــــــم :</field>
+    </record>
+    <record id="ad_pt_guarantee_35" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">35</field>
+        <field name="text">التــــــــــــاريخ :</field>
+        <field name="original">التــــــــــــاريخ :</field>
+    </record>
+    <record id="ad_pt_guarantee_36" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">36</field>
+        <field name="text">ملاحظة:</field>
+        <field name="original">ملاحظة:</field>
+    </record>
+    <record id="ad_pt_guarantee_37" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">37</field>
+        <field name="text">1- تختم التعهدات بختم الشركة الصرح علماً ان أي تعهد او كتاب غير مختوم لا يعتمد من قبل مديريتنا.</field>
+        <field name="original">1- تختم التعهدات بختم الشركة الصرح علماً ان أي تعهد او كتاب غير مختوم لا يعتمد من قبل مديريتنا.</field>
+    </record>
+    <record id="ad_pt_guarantee_38" model="ad.print.text">
+        <field name="report_key">guarantee</field>
+        <field name="seq">38</field>
+        <field name="text">2- يرفق نسخة التعهد أعلاه مع استمارة المعلومات الخاصة بموظفي الشركات الأمنية الخاصة.</field>
+        <field name="original">2- يرفق نسخة التعهد أعلاه مع استمارة المعلومات الخاصة بموظفي الشركات الأمنية الخاصة.</field>
+    </record>
+    <record id="ad_pt_interview_1" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">1</field>
+        <field name="text">الرقم:</field>
+        <field name="original">الرقم:</field>
+    </record>
+    <record id="ad_pt_interview_2" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">2</field>
+        <field name="text">تاريخ:</field>
+        <field name="original">تاريخ:</field>
+    </record>
+    <record id="ad_pt_interview_3" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">3</field>
+        <field name="text">اسم المرشح</field>
+        <field name="original">اسم المرشح</field>
+    </record>
+    <record id="ad_pt_interview_4" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">4</field>
+        <field name="text">تاريخ الميلاد</field>
+        <field name="original">تاريخ الميلاد</field>
+    </record>
+    <record id="ad_pt_interview_5" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">5</field>
+        <field name="text">رقم الهاتف</field>
+        <field name="original">رقم الهاتف</field>
+    </record>
+    <record id="ad_pt_interview_6" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">6</field>
+        <field name="text">عنوان السكن</field>
+        <field name="original">عنوان السكن</field>
+    </record>
+    <record id="ad_pt_interview_7" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">7</field>
+        <field name="text">المحافظة:</field>
+        <field name="original">المحافظة:</field>
+    </record>
+    <record id="ad_pt_interview_8" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">8</field>
+        <field name="text">الناحية:</field>
+        <field name="original">الناحية:</field>
+    </record>
+    <record id="ad_pt_interview_9" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">9</field>
+        <field name="text">الحي:</field>
+        <field name="original">الحي:</field>
+    </record>
+    <record id="ad_pt_interview_10" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">10</field>
+        <field name="text">تاريخ المقابلة</field>
+        <field name="original">تاريخ المقابلة</field>
+    </record>
+    <record id="ad_pt_interview_11" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">11</field>
+        <field name="text">المسمى الوظيفي</field>
+        <field name="original">المسمى الوظيفي</field>
+    </record>
+    <record id="ad_pt_interview_12" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">12</field>
+        <field name="text">اسم جهة الترشيح</field>
+        <field name="original">اسم جهة الترشيح</field>
+    </record>
+    <record id="ad_pt_interview_13" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">13</field>
+        <field name="text">غير مستوفي</field>
+        <field name="original">غير مستوفي</field>
+    </record>
+    <record id="ad_pt_interview_14" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">14</field>
+        <field name="text">دون المتطلبات</field>
+        <field name="original">دون المتطلبات</field>
+    </record>
+    <record id="ad_pt_interview_15" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">15</field>
+        <field name="text">يلبي المتطلبات</field>
+        <field name="original">يلبي المتطلبات</field>
+    </record>
+    <record id="ad_pt_interview_16" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">16</field>
+        <field name="text">يتجاوز المتطلبات</field>
+        <field name="original">يتجاوز المتطلبات</field>
+    </record>
+    <record id="ad_pt_interview_17" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">17</field>
+        <field name="text">ممتاز</field>
+        <field name="original">ممتاز</field>
+    </record>
+    <record id="ad_pt_interview_18" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">18</field>
+        <field name="text">التقييم</field>
+        <field name="original">التقييم</field>
+    </record>
+    <record id="ad_pt_interview_19" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">19</field>
+        <field name="text">التعليقات:</field>
+        <field name="original">التعليقات:</field>
+    </record>
+    <record id="ad_pt_interview_20" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">20</field>
+        <field name="text">درجة التقييم العام</field>
+        <field name="original">درجة التقييم العام</field>
+    </record>
+    <record id="ad_pt_interview_21" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">21</field>
+        <field name="text">الوضع الصحي العام</field>
+        <field name="original">الوضع الصحي العام</field>
+    </record>
+    <record id="ad_pt_interview_22" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">22</field>
+        <field name="text">الوزن:</field>
+        <field name="original">الوزن:</field>
+    </record>
+    <record id="ad_pt_interview_23" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">23</field>
+        <field name="text">الطول:</field>
+        <field name="original">الطول:</field>
+    </record>
+    <record id="ad_pt_interview_24" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">24</field>
+        <field name="text">اذكر الامراض المزمنة والمعدية التي تعاني منها:</field>
+        <field name="original">اذكر الامراض المزمنة والمعدية التي تعاني منها:</field>
+    </record>
+    <record id="ad_pt_interview_25" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">25</field>
+        <field name="text">العمليات جراحية قمت بها</field>
+        <field name="original">العمليات جراحية قمت بها</field>
+    </record>
+    <record id="ad_pt_interview_26" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">26</field>
+        <field name="text">نوع العملية:</field>
+        <field name="original">نوع العملية:</field>
+    </record>
+    <record id="ad_pt_interview_27" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">27</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_interview_28" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">28</field>
+        <field name="text">نعم</field>
+        <field name="original">نعم</field>
+    </record>
+    <record id="ad_pt_interview_29" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">29</field>
+        <field name="text">كلا</field>
+        <field name="original">كلا</field>
+    </record>
+    <record id="ad_pt_interview_30" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">30</field>
+        <field name="text">نعم</field>
+        <field name="original">نعم</field>
+    </record>
+    <record id="ad_pt_interview_31" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">31</field>
+        <field name="text">كلا</field>
+        <field name="original">كلا</field>
+    </record>
+    <record id="ad_pt_interview_32" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">32</field>
+        <field name="text">يرجى ذكر ثلاثة اشخاص معرفين يمكن للشركة التواصل معهم</field>
+        <field name="original">يرجى ذكر ثلاثة اشخاص معرفين يمكن للشركة التواصل معهم</field>
+    </record>
+    <record id="ad_pt_interview_33" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">33</field>
+        <field name="text">اسم المعرف</field>
+        <field name="original">اسم المعرف</field>
+    </record>
+    <record id="ad_pt_interview_34" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">34</field>
+        <field name="text">العلاقة</field>
+        <field name="original">العلاقة</field>
+    </record>
+    <record id="ad_pt_interview_35" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">35</field>
+        <field name="text">رقم الهاتف</field>
+        <field name="original">رقم الهاتف</field>
+    </record>
+    <record id="ad_pt_interview_36" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">36</field>
+        <field name="text">الاسم</field>
+        <field name="original">الاسم</field>
+    </record>
+    <record id="ad_pt_interview_37" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">37</field>
+        <field name="text">المنصب الوظيفي</field>
+        <field name="original">المنصب الوظيفي</field>
+    </record>
+    <record id="ad_pt_interview_38" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">38</field>
+        <field name="text">التوقيع</field>
+        <field name="original">التوقيع</field>
+    </record>
+    <record id="ad_pt_interview_39" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">39</field>
+        <field name="text">التاريخ</field>
+        <field name="original">التاريخ</field>
+    </record>
+    <record id="ad_pt_interview_40" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">40</field>
+        <field name="text">مسؤول التوظيف</field>
+        <field name="original">مسؤول التوظيف</field>
+    </record>
+    <record id="ad_pt_interview_41" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">41</field>
+        <field name="text">م. مدير قسم العمليات</field>
+        <field name="original">م. مدير قسم العمليات</field>
+    </record>
+    <record id="ad_pt_interview_42" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">42</field>
+        <field name="text">التقييم</field>
+        <field name="original">التقييم</field>
+    </record>
+    <record id="ad_pt_interview_43" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">43</field>
+        <field name="text">اجتياز</field>
+        <field name="original">اجتياز</field>
+    </record>
+    <record id="ad_pt_interview_44" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">44</field>
+        <field name="text">اخفاق</field>
+        <field name="original">اخفاق</field>
+    </record>
+    <record id="ad_pt_interview_45" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">45</field>
+        <field name="text">إذا اخترت انسحاب المرشح / عدم تعيين المرشح، فحدد سبب التوصية أدناه:</field>
+        <field name="original">إذا اخترت انسحاب المرشح / عدم تعيين المرشح، فحدد سبب التوصية أدناه:</field>
+    </record>
+    <record id="ad_pt_interview_46" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">46</field>
+        <field name="text">انسحاب المرشح</field>
+        <field name="original">انسحاب المرشح</field>
+    </record>
+    <record id="ad_pt_interview_47" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">47</field>
+        <field name="text">عدم تعيين المرشح</field>
+        <field name="original">عدم تعيين المرشح</field>
+    </record>
+    <record id="ad_pt_interview_48" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">48</field>
+        <field name="text">الراتب منخفض جدا</field>
+        <field name="original">الراتب منخفض جدا</field>
+    </record>
+    <record id="ad_pt_interview_49" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">49</field>
+        <field name="text">الواجبات الوظيفية</field>
+        <field name="original">الواجبات الوظيفية</field>
+    </record>
+    <record id="ad_pt_interview_50" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">50</field>
+        <field name="text">ساعات العمل / جدول العمل</field>
+        <field name="original">ساعات العمل / جدول العمل</field>
+    </record>
+    <record id="ad_pt_interview_51" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">51</field>
+        <field name="text">وظيفة أخرى</field>
+        <field name="original">وظيفة أخرى</field>
+    </record>
+    <record id="ad_pt_interview_52" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">52</field>
+        <field name="text">تغير الرأي</field>
+        <field name="original">تغير الرأي</field>
+    </record>
+    <record id="ad_pt_interview_53" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">53</field>
+        <field name="text">سبب آخر:</field>
+        <field name="original">سبب آخر:</field>
+    </record>
+    <record id="ad_pt_interview_54" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">54</field>
+        <field name="text">تقييم المؤهلات والجدارات دون المتطلبات او غير مستوفي</field>
+        <field name="original">تقييم المؤهلات والجدارات دون المتطلبات او غير مستوفي</field>
+    </record>
+    <record id="ad_pt_interview_55" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">55</field>
+        <field name="text">اخفاق في التقييم الصحي</field>
+        <field name="original">اخفاق في التقييم الصحي</field>
+    </record>
+    <record id="ad_pt_interview_56" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">56</field>
+        <field name="text">اخفاق في التقييم الامني</field>
+        <field name="original">اخفاق في التقييم الامني</field>
+    </record>
+    <record id="ad_pt_interview_57" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">57</field>
+        <field name="text">عدم اجتياز التدريب الأمني بنجاح</field>
+        <field name="original">عدم اجتياز التدريب الأمني بنجاح</field>
+    </record>
+    <record id="ad_pt_interview_58" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">58</field>
+        <field name="text">سبب آخر:</field>
+        <field name="original">سبب آخر:</field>
+    </record>
+    <record id="ad_pt_interview_59" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">59</field>
+        <field name="text">انسحاب المرشح</field>
+        <field name="original">انسحاب المرشح</field>
+    </record>
+    <record id="ad_pt_interview_60" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">60</field>
+        <field name="text">عدم تعيين المرشح</field>
+        <field name="original">عدم تعيين المرشح</field>
+    </record>
+    <record id="ad_pt_interview_61" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">61</field>
+        <field name="text">تعيين المرشح</field>
+        <field name="original">تعيين المرشح</field>
+    </record>
+    <record id="ad_pt_interview_62" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">62</field>
+        <field name="text">Statement of Ethics</field>
+        <field name="original">Statement of Ethics</field>
+    </record>
+    <record id="ad_pt_interview_63" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">63</field>
+        <field name="text">بيان الاخلاقيات والاقرار بالعلم لمدونة السلوك المهني</field>
+        <field name="original">بيان الاخلاقيات والاقرار بالعلم لمدونة السلوك المهني</field>
+    </record>
+    <record id="ad_pt_interview_64" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">64</field>
+        <field name="text">تلتزم شركة ابناء دجلة بإطار التوظيف والاختيار والتعيين الذي يتيح تحديد وجذب واختيار الشخص الأكثر ملاءمة للمنصب. يتيح هذا الاجراء تعيين الموظفين الذين يمثلون اهداف الشركة بالإضافة إلى المهارات والقدرات لتحقيق الأهداف الاستراتيجية لشركة، ومن الضروري ان نضع انفسنا في اعلى مستوى، من الاخلاقيات وتنفيذ الإجراءات.</field>
+        <field name="original">تلتزم شركة ابناء دجلة بإطار التوظيف والاختيار والتعيين الذي يتيح تحديد وجذب واختيار الشخص الأكثر ملاءمة للمنصب. يتيح هذا الاجراء تعيين الموظفين الذين يمثلون اهداف الشركة بالإضافة إلى المهارات والقدرات لتحقيق الأهداف الاستراتيجية لشركة، ومن الضروري ان نضع انفسنا في اعلى مستوى، من الاخلاقيات وتنفيذ الإجراءات.</field>
+    </record>
+    <record id="ad_pt_interview_65" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">65</field>
+        <field name="text">ومن اجل المحافظة على سمعة الشركة من الواجب ان يلتزم موظفيها بالنواحي الأخلاقية والنزاهة، ويخضع كل موظفي الشركة الى المراجعة الدائمة لغرض عدم الانحراف عن قواعد السلوك العامة ويتعين على جميع افراد الشركة الالتزام والتقيد بها:</field>
+        <field name="original">ومن اجل المحافظة على سمعة الشركة من الواجب ان يلتزم موظفيها بالنواحي الأخلاقية والنزاهة، ويخضع كل موظفي الشركة الى المراجعة الدائمة لغرض عدم الانحراف عن قواعد السلوك العامة ويتعين على جميع افراد الشركة الالتزام والتقيد بها:</field>
+    </record>
+    <record id="ad_pt_interview_66" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">66</field>
+        <field name="text">المدونـــــــــــة:</field>
+        <field name="original">المدونـــــــــــة:</field>
+    </record>
+    <record id="ad_pt_interview_67" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">67</field>
+        <field name="text">لا يجوز استخدام اسم او هوية الشركة في قضايا خارجة عن أنشطة الشركة ودون علمها، ولن يتم التغاضي عن دفع المال الغير الأخلاقي او توزيع الاعمال بشكل غير نزيه او المشاركة في اعمال غير مشروعة مثل الرشوة او غسيل الأموال.</field>
+        <field name="original">لا يجوز استخدام اسم او هوية الشركة في قضايا خارجة عن أنشطة الشركة ودون علمها، ولن يتم التغاضي عن دفع المال الغير الأخلاقي او توزيع الاعمال بشكل غير نزيه او المشاركة في اعمال غير مشروعة مثل الرشوة او غسيل الأموال.</field>
+    </record>
+    <record id="ad_pt_interview_68" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">68</field>
+        <field name="text">يجب تأدية الواجبات بضمير حي وبشكل يحقق اقصى فائدة للشركة وعملائها.</field>
+        <field name="original">يجب تأدية الواجبات بضمير حي وبشكل يحقق اقصى فائدة للشركة وعملائها.</field>
+    </record>
+    <record id="ad_pt_interview_69" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">69</field>
+        <field name="text">لا يحق لأي شخص الحصول على امتياز شخصي بحكم موقعه في الشركة، ولا تقبل أي هدايا او مجاملات او خدمات دون مقابل من أي جهة كانت لأغراض تتعلق بعمل الشركة سواء تم تقديمها بحسن نية ام لا.</field>
+        <field name="original">لا يحق لأي شخص الحصول على امتياز شخصي بحكم موقعه في الشركة، ولا تقبل أي هدايا او مجاملات او خدمات دون مقابل من أي جهة كانت لأغراض تتعلق بعمل الشركة سواء تم تقديمها بحسن نية ام لا.</field>
+    </record>
+    <record id="ad_pt_interview_70" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">70</field>
+        <field name="text">لا يحق لك تهديد او الاعتراض او النشر او المطالبة بتطبيق العادات العشائرية في حالة حصول النزاع بينك وبين الشركة او النشر في الاعلام او الامتناع عن تطبيق اعمال الشركة وتنفيذ العمل وفق القانون وعدم تهديد زملائك ومسؤولي العمل في حالة معاقبتك عن عملاً قمت به وكنت السبب في ذلك.</field>
+        <field name="original">لا يحق لك تهديد او الاعتراض او النشر او المطالبة بتطبيق العادات العشائرية في حالة حصول النزاع بينك وبين الشركة او النشر في الاعلام او الامتناع عن تطبيق اعمال الشركة وتنفيذ العمل وفق القانون وعدم تهديد زملائك ومسؤولي العمل في حالة معاقبتك عن عملاً قمت به وكنت السبب في ذلك.</field>
+    </record>
+    <record id="ad_pt_interview_71" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">71</field>
+        <field name="text">تستخدم أموال الشركة واملاكها لأغراض اعمال الشركة المشروعة، وسوف يتم تطبيق ضوابط داخلية صارمة وإجراءات لمنع الاحتيال ولحماية أملاك الشركة.</field>
+        <field name="original">تستخدم أموال الشركة واملاكها لأغراض اعمال الشركة المشروعة، وسوف يتم تطبيق ضوابط داخلية صارمة وإجراءات لمنع الاحتيال ولحماية أملاك الشركة.</field>
+    </record>
+    <record id="ad_pt_interview_72" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">72</field>
+        <field name="text">المعلومات التي يتم الحصول عليها اثناء المعاملات التجارية للشركة يجب حمايتها واحترام خصوصيتها.</field>
+        <field name="original">المعلومات التي يتم الحصول عليها اثناء المعاملات التجارية للشركة يجب حمايتها واحترام خصوصيتها.</field>
+    </record>
+    <record id="ad_pt_interview_73" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">73</field>
+        <field name="text">أي خرق لهذه المدونة سوف يتم التعامل معه كسوء سلوك وسوف يلحق ذلك انهاء الخدمات الفوري مع احتفاظ الشركة بحقها في المقاضاة بموجب القانون ذي الصلة.</field>
+        <field name="original">أي خرق لهذه المدونة سوف يتم التعامل معه كسوء سلوك وسوف يلحق ذلك انهاء الخدمات الفوري مع احتفاظ الشركة بحقها في المقاضاة بموجب القانون ذي الصلة.</field>
+    </record>
+    <record id="ad_pt_interview_74" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">74</field>
+        <field name="text">اقرارك لهذه المدونة يعني تحمل المسؤولية الكاملة عن بنودها المذكورة انفاً وسوف يتم الاحتفاظ بها في ملفك الوظيفي.</field>
+        <field name="original">اقرارك لهذه المدونة يعني تحمل المسؤولية الكاملة عن بنودها المذكورة انفاً وسوف يتم الاحتفاظ بها في ملفك الوظيفي.</field>
+    </record>
+    <record id="ad_pt_interview_75" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">75</field>
+        <field name="text">Use of Force statement</field>
+        <field name="original">Use of Force statement</field>
+    </record>
+    <record id="ad_pt_interview_76" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">76</field>
+        <field name="text">القواعد العامة لاستعمال القوة</field>
+        <field name="original">القواعد العامة لاستعمال القوة</field>
+    </record>
+    <record id="ad_pt_interview_77" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">77</field>
+        <field name="text">تعتبر شركتنا شركة امنية خاصة تخضع لكافة القوانين والتعليمات الصادرة من قبل وزارة الداخلية / مديرية شؤون الشركات الامنية الخاصة حيث ان شركتنا لا تعتبر قوة قتالية ولا يجوز لنا الدخول في عمليات هجومية ولكن يعتبر حق الدفاع عن النفس ضد الاعمال العدائية من الحقوق المكفولة لنا حسب القوانين العراقية النافذة.</field>
+        <field name="original">تعتبر شركتنا شركة امنية خاصة تخضع لكافة القوانين والتعليمات الصادرة من قبل وزارة الداخلية / مديرية شؤون الشركات الامنية الخاصة حيث ان شركتنا لا تعتبر قوة قتالية ولا يجوز لنا الدخول في عمليات هجومية ولكن يعتبر حق الدفاع عن النفس ضد الاعمال العدائية من الحقوق المكفولة لنا حسب القوانين العراقية النافذة.</field>
+    </record>
+    <record id="ad_pt_interview_78" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">78</field>
+        <field name="text">يجب عليك التعاون المطلق مع قوات الامن العراقية في حالة حدوث اي تهديد سياسي او امني ولا تتجاهل قوات الامن العراقية او تهمل وجودها في الميدان , ولا تهمل نقاط السيطرة للشرطة العراقية ولا توجه سلاحك عليهم.</field>
+        <field name="original">يجب عليك التعاون المطلق مع قوات الامن العراقية في حالة حدوث اي تهديد سياسي او امني ولا تتجاهل قوات الامن العراقية او تهمل وجودها في الميدان , ولا تهمل نقاط السيطرة للشرطة العراقية ولا توجه سلاحك عليهم.</field>
+    </record>
+    <record id="ad_pt_interview_79" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">79</field>
+        <field name="text">استعمال القوة: تستطيع استخدام القوة الضرورية في الحالات التالية:</field>
+        <field name="original">استعمال القوة: تستطيع استخدام القوة الضرورية في الحالات التالية:</field>
+    </record>
+    <record id="ad_pt_interview_80" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">80</field>
+        <field name="text">- حالة الدفاع عن النفس.</field>
+        <field name="original">- حالة الدفاع عن النفس.</field>
+    </record>
+    <record id="ad_pt_interview_81" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">81</field>
+        <field name="text">- للدفاع عن المؤسسات المسؤول عن حمايتها حسب عقدك الوظيفي</field>
+        <field name="original">- للدفاع عن المؤسسات المسؤول عن حمايتها حسب عقدك الوظيفي</field>
+    </record>
+    <record id="ad_pt_interview_82" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">82</field>
+        <field name="text">- لمنع تهديد حياة الموظفين المدنيين الذي يعملون تحت نطاق العمل</field>
+        <field name="original">- لمنع تهديد حياة الموظفين المدنيين الذي يعملون تحت نطاق العمل</field>
+    </record>
+    <record id="ad_pt_interview_83" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">83</field>
+        <field name="text">يكون استعمال القوة في حالة الضرورة القصوى عند التهديد من قبل شخص او اشخاص يحملون سلاح ناري والتهديد باستخدامه والحاق الاذى لك اوللمؤسسة والموظفين المدنيين فيها والتي هي ضمن مسؤولية عملك حيث يكون استعمال القوة حسب ما مذكور ادناه لضمان تقليل الاضرار:</field>
+        <field name="original">يكون استعمال القوة في حالة الضرورة القصوى عند التهديد من قبل شخص او اشخاص يحملون سلاح ناري والتهديد باستخدامه والحاق الاذى لك اوللمؤسسة والموظفين المدنيين فيها والتي هي ضمن مسؤولية عملك حيث يكون استعمال القوة حسب ما مذكور ادناه لضمان تقليل الاضرار:</field>
+    </record>
+    <record id="ad_pt_interview_84" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">84</field>
+        <field name="text">أ. يكون اول الامر تحذير صوتي بالتوقف وبصوت عالي لضمان ايصال التحذير وابلاغه بانك مخول بالدفاع عن النفس واستخدام السلاح ضده ويجب عليه ان يتوقف.</field>
+        <field name="original">أ. يكون اول الامر تحذير صوتي بالتوقف وبصوت عالي لضمان ايصال التحذير وابلاغه بانك مخول بالدفاع عن النفس واستخدام السلاح ضده ويجب عليه ان يتوقف.</field>
+    </record>
+    <record id="ad_pt_interview_85" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">85</field>
+        <field name="text">ب. في حال عدم استجابة التهديد للتحذير الصوتي يتوجب عليك اظهار السلاح الذي تحمله والتظاهر بالتهديد باستعماله.</field>
+        <field name="original">ب. في حال عدم استجابة التهديد للتحذير الصوتي يتوجب عليك اظهار السلاح الذي تحمله والتظاهر بالتهديد باستعماله.</field>
+    </record>
+    <record id="ad_pt_interview_86" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">86</field>
+        <field name="text">جـ. في حال عدم استجابة التهديد للفقرات اعلاه يكون اطلاق بعض الاعيرة النارية في الهواء بعيداً عن التهديد لغرض اخافته.</field>
+        <field name="original">جـ. في حال عدم استجابة التهديد للفقرات اعلاه يكون اطلاق بعض الاعيرة النارية في الهواء بعيداً عن التهديد لغرض اخافته.</field>
+    </record>
+    <record id="ad_pt_interview_87" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">87</field>
+        <field name="text">في حال عدم جدوى الفقرة رقم (4) وان التهديد قد اشهر سلاح ناري واعلن جاهزيته لاطلاق النار والحاق الضرر يكون لك الحق في الدفاع عن نفسك واطلاق النار على الشخص المهدد فقط ويكون اطلاق النار اسفل منطقة البطن في الساق والارجل. مع مراعات الاشخاص (المدنيين) الموجودين في مكان اطلاق النار وطلب المساعدة فوراً والاتصال بمقر القيادة لاعلامهم بوقوع الحادث.</field>
+        <field name="original">في حال عدم جدوى الفقرة رقم (4) وان التهديد قد اشهر سلاح ناري واعلن جاهزيته لاطلاق النار والحاق الضرر يكون لك الحق في الدفاع عن نفسك واطلاق النار على الشخص المهدد فقط ويكون اطلاق النار اسفل منطقة البطن في الساق والارجل. مع مراعات الاشخاص (المدنيين) الموجودين في مكان اطلاق النار وطلب المساعدة فوراً والاتصال بمقر القيادة لاعلامهم بوقوع الحادث.</field>
+    </record>
+    <record id="ad_pt_interview_88" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">88</field>
+        <field name="text">يجب عليك معاملة المدنيين بكل احترام وانسانية خلال فترات الواجبات المكلف بها من قبل شركتنا.</field>
+        <field name="original">يجب عليك معاملة المدنيين بكل احترام وانسانية خلال فترات الواجبات المكلف بها من قبل شركتنا.</field>
+    </record>
+    <record id="ad_pt_interview_89" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">89</field>
+        <field name="text">اتخذ كل الاحتياطات اللازمة لتجنب الخسائر في صفوف المدنيين.</field>
+        <field name="original">اتخذ كل الاحتياطات اللازمة لتجنب الخسائر في صفوف المدنيين.</field>
+    </record>
+    <record id="ad_pt_interview_90" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">90</field>
+        <field name="text">تستطيع في حالة الضرورة القصوى اخذ الجاهزية وتقييم الوضع وتفتيش المدنيين المحتمل بامتلاكهم سلاح واحتمالية عمل تخريبي وارهابي.</field>
+        <field name="original">تستطيع في حالة الضرورة القصوى اخذ الجاهزية وتقييم الوضع وتفتيش المدنيين المحتمل بامتلاكهم سلاح واحتمالية عمل تخريبي وارهابي.</field>
+    </record>
+    <record id="ad_pt_interview_91" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">91</field>
+        <field name="text">يسلم المدنيين المشتبه بهم الى القوات الشرطة العراقية وباسرع وقت ممكن.</field>
+        <field name="original">يسلم المدنيين المشتبه بهم الى القوات الشرطة العراقية وباسرع وقت ممكن.</field>
+    </record>
+    <record id="ad_pt_interview_92" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">92</field>
+        <field name="text">لا يسمح لك بحمل السلاح واستخدامه الا في الحالات التي تدربت عليها والمشار اليها اعلاه وضمن الصلاحيات.</field>
+        <field name="original">لا يسمح لك بحمل السلاح واستخدامه الا في الحالات التي تدربت عليها والمشار اليها اعلاه وضمن الصلاحيات.</field>
+    </record>
+    <record id="ad_pt_interview_93" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">93</field>
+        <field name="text">أنى الموقع ادناه اقر بأنني قرأت وفهمت الاجراءات والمحتوى الكامل للوثيقة ( صفحة 1- صفحة 5 ) وكذلك بيان الاخلاقيات والاقرار بالعلم لمدونة السلوك المهني ولقواعد استخدام القوة والفرق بين قواعد استخدام القوة وقواعد الاشتباك المسلح وان استخدام السلاح الناري يخلق احتمالية اجرامية بحق المدنيين وتحت القوانين العراقية وسوف التزم بما جاء فيها في جميع الأوقات، واني على علم تام بان أي اخلال بالوثيقة ومتطلباتها يخول الشركة باتخاذ الإجراءات الإدارية والقانونية بحقي ولأجله وقعت بتاريخ (</field>
+        <field name="original">أنى الموقع ادناه اقر بأنني قرأت وفهمت الاجراءات والمحتوى الكامل للوثيقة ( صفحة 1- صفحة 5 ) وكذلك بيان الاخلاقيات والاقرار بالعلم لمدونة السلوك المهني ولقواعد استخدام القوة والفرق بين قواعد استخدام القوة وقواعد الاشتباك المسلح وان استخدام السلاح الناري يخلق احتمالية اجرامية بحق المدنيين وتحت القوانين العراقية وسوف التزم بما جاء فيها في جميع الأوقات، واني على علم تام بان أي اخلال بالوثيقة ومتطلباتها يخول الشركة باتخاذ الإجراءات الإدارية والقانونية بحقي ولأجله وقعت بتاريخ (</field>
+    </record>
+    <record id="ad_pt_interview_94" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">94</field>
+        <field name="text">الاسم :</field>
+        <field name="original">الاسم :</field>
+    </record>
+    <record id="ad_pt_interview_95" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">95</field>
+        <field name="text">التوقيع : ......................................................</field>
+        <field name="original">التوقيع : ......................................................</field>
+    </record>
+    <record id="ad_pt_interview_96" model="ad.print.text">
+        <field name="report_key">interview</field>
+        <field name="seq">96</field>
+        <field name="text">م. مدير قسم العمليات</field>
+        <field name="original">م. مدير قسم العمليات</field>
+    </record>
+    <record id="ad_pt_moi_1" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">1</field>
+        <field name="text">جمهورية العراق</field>
+        <field name="original">جمهورية العراق</field>
+    </record>
+    <record id="ad_pt_moi_2" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">2</field>
+        <field name="text">وزارة الداخلية</field>
+        <field name="original">وزارة الداخلية</field>
+    </record>
+    <record id="ad_pt_moi_3" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">3</field>
+        <field name="text">مديرية الشركات الأمنية الخاصة</field>
+        <field name="original">مديرية الشركات الأمنية الخاصة</field>
+    </record>
+    <record id="ad_pt_moi_4" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">4</field>
+        <field name="text">استمارة معلومات موظفي الشركات الأمنية الخاصة</field>
+        <field name="original">استمارة معلومات موظفي الشركات الأمنية الخاصة</field>
+    </record>
+    <record id="ad_pt_moi_5" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">5</field>
+        <field name="text">الاسم الرباعي واللقب</field>
+        <field name="original">الاسم الرباعي واللقب</field>
+    </record>
+    <record id="ad_pt_moi_6" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">6</field>
+        <field name="text">Surname</field>
+        <field name="original">Surname</field>
+    </record>
+    <record id="ad_pt_moi_7" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">7</field>
+        <field name="text">Last Name</field>
+        <field name="original">Last Name</field>
+    </record>
+    <record id="ad_pt_moi_8" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">8</field>
+        <field name="text">Mid Name</field>
+        <field name="original">Mid Name</field>
+    </record>
+    <record id="ad_pt_moi_9" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">9</field>
+        <field name="text">First</field>
+        <field name="original">First</field>
+    </record>
+    <record id="ad_pt_moi_10" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">10</field>
+        <field name="text">Name</field>
+        <field name="original">Name</field>
+    </record>
+    <record id="ad_pt_moi_11" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">11</field>
+        <field name="text">الجنس</field>
+        <field name="original">الجنس</field>
+    </record>
+    <record id="ad_pt_moi_12" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">12</field>
+        <field name="text">جنسية الموظف</field>
+        <field name="original">جنسية الموظف</field>
+    </record>
+    <record id="ad_pt_moi_13" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">13</field>
+        <field name="text">الحالة الاجتماعية</field>
+        <field name="original">الحالة الاجتماعية</field>
+    </record>
+    <record id="ad_pt_moi_14" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">14</field>
+        <field name="text">محل الولادة</field>
+        <field name="original">محل الولادة</field>
+    </record>
+    <record id="ad_pt_moi_15" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">15</field>
+        <field name="text">تاريخ الولادة</field>
+        <field name="original">تاريخ الولادة</field>
+    </record>
+    <record id="ad_pt_moi_16" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">16</field>
+        <field name="text">الوظيفة الحالية</field>
+        <field name="original">الوظيفة الحالية</field>
+    </record>
+    <record id="ad_pt_moi_17" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">17</field>
+        <field name="text">مقر العمل</field>
+        <field name="original">مقر العمل</field>
+    </record>
+    <record id="ad_pt_moi_18" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">18</field>
+        <field name="text">المحافظة</field>
+        <field name="original">المحافظة</field>
+    </record>
+    <record id="ad_pt_moi_19" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">19</field>
+        <field name="text">المنطقة</field>
+        <field name="original">المنطقة</field>
+    </record>
+    <record id="ad_pt_moi_20" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">20</field>
+        <field name="text">الوظيفة السابقة</field>
+        <field name="original">الوظيفة السابقة</field>
+    </record>
+    <record id="ad_pt_moi_21" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">21</field>
+        <field name="text">اسم الأم الثلاثي واللقب</field>
+        <field name="original">اسم الأم الثلاثي واللقب</field>
+    </record>
+    <record id="ad_pt_moi_22" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">22</field>
+        <field name="text">عنوان السكن الحالي</field>
+        <field name="original">عنوان السكن الحالي</field>
+    </record>
+    <record id="ad_pt_moi_23" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">23</field>
+        <field name="text">المحافظة</field>
+        <field name="original">المحافظة</field>
+    </record>
+    <record id="ad_pt_moi_24" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">24</field>
+        <field name="text">قضاء - ناحية</field>
+        <field name="original">قضاء - ناحية</field>
+    </record>
+    <record id="ad_pt_moi_25" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">25</field>
+        <field name="text">صورة حديثة بخلفية بيضاء بالزي الخاص بالشركة – عدد 2 وتختم الصورة المرفقة بالاستمارة</field>
+        <field name="original">صورة حديثة بخلفية بيضاء بالزي الخاص بالشركة – عدد 2 وتختم الصورة المرفقة بالاستمارة</field>
+    </record>
+    <record id="ad_pt_moi_26" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">26</field>
+        <field name="text">الحي</field>
+        <field name="original">الحي</field>
+    </record>
+    <record id="ad_pt_moi_27" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">27</field>
+        <field name="text">المحلة</field>
+        <field name="original">المحلة</field>
+    </record>
+    <record id="ad_pt_moi_28" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">28</field>
+        <field name="text">الزقاق</field>
+        <field name="original">الزقاق</field>
+    </record>
+    <record id="ad_pt_moi_29" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">29</field>
+        <field name="text">الدار</field>
+        <field name="original">الدار</field>
+    </record>
+    <record id="ad_pt_moi_30" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">30</field>
+        <field name="text">اقرب نقطة دالة</field>
+        <field name="original">اقرب نقطة دالة</field>
+    </record>
+    <record id="ad_pt_moi_31" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">31</field>
+        <field name="text">ترفق نسخة تعهد الموظفين و نسخة ملونة من المستمسكات أدناه (بطاقة السكن، البطاقة التموينية، هوية الأحوال المدنية، شهادة الجنسية ) بالنسبة للعراقيين - ونسخة ملونة من جواز السفر و تأشيرة الإقامة بالنسبة للأجانب</field>
+        <field name="original">ترفق نسخة تعهد الموظفين و نسخة ملونة من المستمسكات أدناه (بطاقة السكن، البطاقة التموينية، هوية الأحوال المدنية، شهادة الجنسية ) بالنسبة للعراقيين - ونسخة ملونة من جواز السفر و تأشيرة الإقامة بالنسبة للأجانب</field>
+    </record>
+    <record id="ad_pt_moi_32" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">32</field>
+        <field name="text">جهة إصدار بطاقة السكن</field>
+        <field name="original">جهة إصدار بطاقة السكن</field>
+    </record>
+    <record id="ad_pt_moi_33" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">33</field>
+        <field name="text">اسم مركز البطاقة التموينية</field>
+        <field name="original">اسم مركز البطاقة التموينية</field>
+    </record>
+    <record id="ad_pt_moi_34" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">34</field>
+        <field name="text">جهة إصدار هوية الأحوال المدنية</field>
+        <field name="original">جهة إصدار هوية الأحوال المدنية</field>
+    </record>
+    <record id="ad_pt_moi_35" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">35</field>
+        <field name="text">جهة إصدار شهادة الجنسية</field>
+        <field name="original">جهة إصدار شهادة الجنسية</field>
+    </record>
+    <record id="ad_pt_moi_36" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">36</field>
+        <field name="text">جهة إصدار الجواز</field>
+        <field name="original">جهة إصدار الجواز</field>
+    </record>
+    <record id="ad_pt_moi_37" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">37</field>
+        <field name="text">رقم بطاقة السكن</field>
+        <field name="original">رقم بطاقة السكن</field>
+    </record>
+    <record id="ad_pt_moi_38" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">38</field>
+        <field name="text">رقم البطاقة</field>
+        <field name="original">رقم البطاقة</field>
+    </record>
+    <record id="ad_pt_moi_39" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">39</field>
+        <field name="text">رقم السجل</field>
+        <field name="original">رقم السجل</field>
+    </record>
+    <record id="ad_pt_moi_40" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">40</field>
+        <field name="text">رقم المحفظة</field>
+        <field name="original">رقم المحفظة</field>
+    </record>
+    <record id="ad_pt_moi_41" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">41</field>
+        <field name="text">رقم الجواز</field>
+        <field name="original">رقم الجواز</field>
+    </record>
+    <record id="ad_pt_moi_42" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">42</field>
+        <field name="text">تاريخ الإصدار</field>
+        <field name="original">تاريخ الإصدار</field>
+    </record>
+    <record id="ad_pt_moi_43" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">43</field>
+        <field name="text">تاريخ الإصدار</field>
+        <field name="original">تاريخ الإصدار</field>
+    </record>
+    <record id="ad_pt_moi_44" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">44</field>
+        <field name="text">رقم الصفحة</field>
+        <field name="original">رقم الصفحة</field>
+    </record>
+    <record id="ad_pt_moi_45" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">45</field>
+        <field name="text">تاريخ الإصدار</field>
+        <field name="original">تاريخ الإصدار</field>
+    </record>
+    <record id="ad_pt_moi_46" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">46</field>
+        <field name="text">تاريخ الإصدار</field>
+        <field name="original">تاريخ الإصدار</field>
+    </record>
+    <record id="ad_pt_moi_47" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">47</field>
+        <field name="text">أتعهد بان كل المعلومات التي قدمتها في هذه الاستمارة دقيقة وصحيحة وحقيقية وبخلاف ذلك أتحمل جميع التبعات والإجراءات والمسائلة القانونية</field>
+        <field name="original">أتعهد بان كل المعلومات التي قدمتها في هذه الاستمارة دقيقة وصحيحة وحقيقية وبخلاف ذلك أتحمل جميع التبعات والإجراءات والمسائلة القانونية</field>
+    </record>
+    <record id="ad_pt_moi_48" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">48</field>
+        <field name="text">توقيع صاحب الاستمارة</field>
+        <field name="original">توقيع صاحب الاستمارة</field>
+    </record>
+    <record id="ad_pt_moi_49" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">49</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_moi_50" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">50</field>
+        <field name="text">بصمة الابهام الايسر</field>
+        <field name="original">بصمة الابهام الايسر</field>
+    </record>
+    <record id="ad_pt_moi_51" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">51</field>
+        <field name="text">التوقيع:</field>
+        <field name="original">التوقيع:</field>
+    </record>
+    <record id="ad_pt_moi_52" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">52</field>
+        <field name="text">اسم المدير المفوض للشركة:</field>
+        <field name="original">اسم المدير المفوض للشركة:</field>
+    </record>
+    <record id="ad_pt_moi_53" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">53</field>
+        <field name="text">هل دققت المعلومات من قبل الشركة  نعم</field>
+        <field name="original">هل دققت المعلومات من قبل الشركة  نعم</field>
+    </record>
+    <record id="ad_pt_moi_54" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">54</field>
+        <field name="text">كلا</field>
+        <field name="original">كلا</field>
+    </record>
+    <record id="ad_pt_moi_55" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">55</field>
+        <field name="text">ختم الشركة</field>
+        <field name="original">ختم الشركة</field>
+    </record>
+    <record id="ad_pt_moi_56" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">56</field>
+        <field name="text">ختم مديرية الشركات الامنية</field>
+        <field name="original">ختم مديرية الشركات الامنية</field>
+    </record>
+    <record id="ad_pt_moi_57" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">57</field>
+        <field name="text">توقيع ضابط الشعبة</field>
+        <field name="original">توقيع ضابط الشعبة</field>
+    </record>
+    <record id="ad_pt_moi_58" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">58</field>
+        <field name="text">-1  أي اخفاء للمعلومات او عدم دقتها او نقص في المعلومات</field>
+        <field name="original">-1  أي اخفاء للمعلومات او عدم دقتها او نقص في المعلومات</field>
+    </record>
+    <record id="ad_pt_moi_59" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">59</field>
+        <field name="text">ملاحظات مهمة جدا – ( يجب ان ترسل الاستمارة مطبوعة بواسطة الحاسبة )</field>
+        <field name="original">ملاحظات مهمة جدا – ( يجب ان ترسل الاستمارة مطبوعة بواسطة الحاسبة )</field>
+    </record>
+    <record id="ad_pt_moi_60" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">60</field>
+        <field name="text">ملاحظة/ تملئ الحقول أدناه من قبل وزارة الداخلية</field>
+        <field name="original">ملاحظة/ تملئ الحقول أدناه من قبل وزارة الداخلية</field>
+    </record>
+    <record id="ad_pt_moi_61" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">61</field>
+        <field name="text">الرمز</field>
+        <field name="original">الرمز</field>
+    </record>
+    <record id="ad_pt_moi_62" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">62</field>
+        <field name="text">رقم الموظف</field>
+        <field name="original">رقم الموظف</field>
+    </record>
+    <record id="ad_pt_moi_63" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">63</field>
+        <field name="text">الرمز الرقمي للشركة</field>
+        <field name="original">الرمز الرقمي للشركة</field>
+    </record>
+    <record id="ad_pt_moi_64" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">64</field>
+        <field name="text">رقم JK</field>
+        <field name="original">رقم JK</field>
+    </record>
+    <record id="ad_pt_moi_65" model="ad.print.text">
+        <field name="report_key">moi</field>
+        <field name="seq">65</field>
+        <field name="text">رقم الاضبارة - الهوية</field>
+        <field name="original">رقم الاضبارة - الهوية</field>
+    </record>
+    <record id="ad_pt_onboarding_1" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">1</field>
+        <field name="text">اسم الموظف:</field>
+        <field name="original">اسم الموظف:</field>
+    </record>
+    <record id="ad_pt_onboarding_2" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">2</field>
+        <field name="text">موقع العمـــل:</field>
+        <field name="original">موقع العمـــل:</field>
+    </record>
+    <record id="ad_pt_onboarding_3" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">3</field>
+        <field name="text">تاريخ المباشرة:</field>
+        <field name="original">تاريخ المباشرة:</field>
+    </record>
+    <record id="ad_pt_onboarding_4" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">4</field>
+        <field name="text">رقم امر التعيين:</field>
+        <field name="original">رقم امر التعيين:</field>
+    </record>
+    <record id="ad_pt_onboarding_5" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">5</field>
+        <field name="text">اسم المشــــرف:</field>
+        <field name="original">اسم المشــــرف:</field>
+    </record>
+    <record id="ad_pt_onboarding_6" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">6</field>
+        <field name="text">رقم الموبايل:</field>
+        <field name="original">رقم الموبايل:</field>
+    </record>
+    <record id="ad_pt_onboarding_7" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">7</field>
+        <field name="text">تم تسليم الموظف:</field>
+        <field name="original">تم تسليم الموظف:</field>
+    </record>
+    <record id="ad_pt_onboarding_8" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">8</field>
+        <field name="text">فحص طبي   رقم الكتاب (</field>
+        <field name="original">فحص طبي   رقم الكتاب (</field>
+    </record>
+    <record id="ad_pt_onboarding_9" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">9</field>
+        <field name="text">توطين راتب   رقم الكتاب (</field>
+        <field name="original">توطين راتب   رقم الكتاب (</field>
+    </record>
+    <record id="ad_pt_onboarding_10" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">10</field>
+        <field name="text">كتاب تخويل   رقم الكتاب (</field>
+        <field name="original">كتاب تخويل   رقم الكتاب (</field>
+    </record>
+    <record id="ad_pt_onboarding_11" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">11</field>
+        <field name="text">الموظف المختص</field>
+        <field name="original">الموظف المختص</field>
+    </record>
+    <record id="ad_pt_onboarding_12" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">12</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_13" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">13</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_14" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">14</field>
+        <field name="text">مدير قسم الموارد البشرية</field>
+        <field name="original">مدير قسم الموارد البشرية</field>
+    </record>
+    <record id="ad_pt_onboarding_15" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">15</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_16" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">16</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_17" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">17</field>
+        <field name="text">تم تجهيز الموظف بالمواد التالية بتاريخ:</field>
+        <field name="original">تم تجهيز الموظف بالمواد التالية بتاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_18" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">18</field>
+        <field name="text">قميص قياس (</field>
+        <field name="original">قميص قياس (</field>
+    </record>
+    <record id="ad_pt_onboarding_19" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">19</field>
+        <field name="text">بنطرون قياس (</field>
+        <field name="original">بنطرون قياس (</field>
+    </record>
+    <record id="ad_pt_onboarding_20" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">20</field>
+        <field name="text">حذاء قياس (</field>
+        <field name="original">حذاء قياس (</field>
+    </record>
+    <record id="ad_pt_onboarding_21" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">21</field>
+        <field name="text">جعبة</field>
+        <field name="original">جعبة</field>
+    </record>
+    <record id="ad_pt_onboarding_22" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">22</field>
+        <field name="text">أخرى تذكر (</field>
+        <field name="original">أخرى تذكر (</field>
+    </record>
+    <record id="ad_pt_onboarding_23" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">23</field>
+        <field name="text">الموظف المختص</field>
+        <field name="original">الموظف المختص</field>
+    </record>
+    <record id="ad_pt_onboarding_24" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">24</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_25" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">25</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_26" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">26</field>
+        <field name="text">مشرف الموقع</field>
+        <field name="original">مشرف الموقع</field>
+    </record>
+    <record id="ad_pt_onboarding_27" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">27</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_28" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">28</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_29" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">29</field>
+        <field name="text">الى السيد مدير قسم العمليات المحترم: نأمل اعتماد مباشرة العمل للموظف:</field>
+        <field name="original">الى السيد مدير قسم العمليات المحترم: نأمل اعتماد مباشرة العمل للموظف:</field>
+    </record>
+    <record id="ad_pt_onboarding_30" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">30</field>
+        <field name="text">الذي باشر في الموقع بتاريخ:</field>
+        <field name="original">الذي باشر في الموقع بتاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_31" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">31</field>
+        <field name="text">نؤيد استلام ما يلي:</field>
+        <field name="original">نؤيد استلام ما يلي:</field>
+    </record>
+    <record id="ad_pt_onboarding_32" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">32</field>
+        <field name="text">فحص طبي</field>
+        <field name="original">فحص طبي</field>
+    </record>
+    <record id="ad_pt_onboarding_33" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">33</field>
+        <field name="text">توطين</field>
+        <field name="original">توطين</field>
+    </record>
+    <record id="ad_pt_onboarding_34" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">34</field>
+        <field name="text">تخويل</field>
+        <field name="original">تخويل</field>
+    </record>
+    <record id="ad_pt_onboarding_35" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">35</field>
+        <field name="text">مشرف الموقع</field>
+        <field name="original">مشرف الموقع</field>
+    </record>
+    <record id="ad_pt_onboarding_36" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">36</field>
+        <field name="text">الاسم:</field>
+        <field name="original">الاسم:</field>
+    </record>
+    <record id="ad_pt_onboarding_37" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">37</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_38" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">38</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_39" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">39</field>
+        <field name="text">الى / قسم الموارد البشرية: نأمل اعتماد مباشرة العمل للموظف:</field>
+        <field name="original">الى / قسم الموارد البشرية: نأمل اعتماد مباشرة العمل للموظف:</field>
+    </record>
+    <record id="ad_pt_onboarding_40" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">40</field>
+        <field name="text">بتاريخ:</field>
+        <field name="original">بتاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_41" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">41</field>
+        <field name="text">تم استيفاء التدريب اللازم.</field>
+        <field name="original">تم استيفاء التدريب اللازم.</field>
+    </record>
+    <record id="ad_pt_onboarding_42" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">42</field>
+        <field name="text">مدير قسم العمليات</field>
+        <field name="original">مدير قسم العمليات</field>
+    </record>
+    <record id="ad_pt_onboarding_43" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">43</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_44" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">44</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_45" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">45</field>
+        <field name="text">توقيع المدرب</field>
+        <field name="original">توقيع المدرب</field>
+    </record>
+    <record id="ad_pt_onboarding_46" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">46</field>
+        <field name="text">المدير المفوض</field>
+        <field name="original">المدير المفوض</field>
+    </record>
+    <record id="ad_pt_onboarding_47" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">47</field>
+        <field name="text">الاسم:</field>
+        <field name="original">الاسم:</field>
+    </record>
+    <record id="ad_pt_onboarding_48" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">48</field>
+        <field name="text">التوقيع: ................</field>
+        <field name="original">التوقيع: ................</field>
+    </record>
+    <record id="ad_pt_onboarding_49" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">49</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_onboarding_50" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">50</field>
+        <field name="text">نسخة منه الى:</field>
+        <field name="original">نسخة منه الى:</field>
+    </record>
+    <record id="ad_pt_onboarding_51" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">51</field>
+        <field name="text">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_onboarding_52" model="ad.print.text">
+        <field name="report_key">onboarding</field>
+        <field name="seq">52</field>
+        <field name="text">- قسم الموارد البشرية/ للحفظ واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- قسم الموارد البشرية/ للحفظ واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_pledge_1" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">1</field>
+        <field name="text">تعهد</field>
+        <field name="original">تعهد</field>
+    </record>
+    <record id="ad_pt_pledge_2" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">2</field>
+        <field name="text">أولا : تعهد عدم استخدام الهاتف اثناء الواجب :</field>
+        <field name="original">أولا : تعهد عدم استخدام الهاتف اثناء الواجب :</field>
+    </record>
+    <record id="ad_pt_pledge_3" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">3</field>
+        <field name="text">اني الموقع ادناه، اتعهد بالالتزام التام بعدم استخدام الهاتف المحمول اثناء الواجب المكلف به، والالتزام بقوانين وأنظمة العمل الداخلي الصادرة من إدارة الشركة، وفي حال مخالفة ذلك أكون خاضع للعقوبات التالية بحسب لائحة العقوبات المعتمدة:</field>
+        <field name="original">اني الموقع ادناه، اتعهد بالالتزام التام بعدم استخدام الهاتف المحمول اثناء الواجب المكلف به، والالتزام بقوانين وأنظمة العمل الداخلي الصادرة من إدارة الشركة، وفي حال مخالفة ذلك أكون خاضع للعقوبات التالية بحسب لائحة العقوبات المعتمدة:</field>
+    </record>
+    <record id="ad_pt_pledge_4" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">4</field>
+        <field name="text">1-المخالفة الأولى: خصم (20,000) عشرون الف دينار من الراتب الشهري.</field>
+        <field name="original">1-المخالفة الأولى: خصم (20,000) عشرون الف دينار من الراتب الشهري.</field>
+    </record>
+    <record id="ad_pt_pledge_5" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">5</field>
+        <field name="text">2-المخالفة الثانية: خصم (50,000) خمسون الف دينار من الراتب الشهري وانذار اول.</field>
+        <field name="original">2-المخالفة الثانية: خصم (50,000) خمسون الف دينار من الراتب الشهري وانذار اول.</field>
+    </record>
+    <record id="ad_pt_pledge_6" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">6</field>
+        <field name="text">3-المخالفة الثالثة: خصم (75,000) خمسة وسبعون الف دينار من الراتب الشهري وانذار نهائي.</field>
+        <field name="original">3-المخالفة الثالثة: خصم (75,000) خمسة وسبعون الف دينار من الراتب الشهري وانذار نهائي.</field>
+    </record>
+    <record id="ad_pt_pledge_7" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">7</field>
+        <field name="text">4-المخالفة الرابعة: فصل من العمل.</field>
+        <field name="original">4-المخالفة الرابعة: فصل من العمل.</field>
+    </record>
+    <record id="ad_pt_pledge_8" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">8</field>
+        <field name="text">ثانيا : تعهد عدم الانتماء الى أي جهة سياسية او حزبية :</field>
+        <field name="original">ثانيا : تعهد عدم الانتماء الى أي جهة سياسية او حزبية :</field>
+    </record>
+    <record id="ad_pt_pledge_9" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">9</field>
+        <field name="text">اني الموقع ادناه اتعهد بأني غير منتمي الى أي جهة سياسية او حزبية او أي جهة أخرى مهما كان نوعها او انتمائها او تنظيمها , وأتعهد كذلك بعدم اللجوء او استخدام العشائر في أي موضوع مهما كان نوعه او اسبابه , وعدم ادخال العشيرة التي انتمي اليها او أي عشيرة أخرى بأمور تخص العمل في (شركة أبناء دجلة لخدمات الامن والحماية المحدودة ) .</field>
+        <field name="original">اني الموقع ادناه اتعهد بأني غير منتمي الى أي جهة سياسية او حزبية او أي جهة أخرى مهما كان نوعها او انتمائها او تنظيمها , وأتعهد كذلك بعدم اللجوء او استخدام العشائر في أي موضوع مهما كان نوعه او اسبابه , وعدم ادخال العشيرة التي انتمي اليها او أي عشيرة أخرى بأمور تخص العمل في (شركة أبناء دجلة لخدمات الامن والحماية المحدودة ) .</field>
+    </record>
+    <record id="ad_pt_pledge_10" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">10</field>
+        <field name="text">ثالثا : تعهد عدم استخدام الزي الرسمي للشركة خارج السياقات المعتمدة :</field>
+        <field name="original">ثالثا : تعهد عدم استخدام الزي الرسمي للشركة خارج السياقات المعتمدة :</field>
+    </record>
+    <record id="ad_pt_pledge_11" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">11</field>
+        <field name="text">اني الموقع ادناه اتعهد بعدم الظهور بالزي الرسمي الخاص بالشركة (أبناء دجلة لخدمات الامن والحماية المحدودة) في أي مكان او موقف من شأنه الإساءة الى صورة الشركة او الظهور في مواقع التواصل الاجتماعي حسب الكتاب الصادر من مديرية شؤون الشركات الأمنية الخاصة ذي العدد (د.ق/619/3/3379) في(2024/2/20).</field>
+        <field name="original">اني الموقع ادناه اتعهد بعدم الظهور بالزي الرسمي الخاص بالشركة (أبناء دجلة لخدمات الامن والحماية المحدودة) في أي مكان او موقف من شأنه الإساءة الى صورة الشركة او الظهور في مواقع التواصل الاجتماعي حسب الكتاب الصادر من مديرية شؤون الشركات الأمنية الخاصة ذي العدد (د.ق/619/3/3379) في(2024/2/20).</field>
+    </record>
+    <record id="ad_pt_pledge_12" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">12</field>
+        <field name="text">والالتزام التام بحمل السلاح بشكل مخبأ وفقاً للتعليمات والأنظمة المعمول بها وعدم اظهاره الا في الحالات التي تستوجب ذلك امنياً , والتقيد بأساليب ومبادئ الحماية الأمنية السليمة اثناء أداء مهامي الوظيفية والعمل بمهنية ومسؤولية عالية , وعدم القيام بأي نشاط يهدد امن الدولة او يعرض سلامة المواطنين للخطر , واقر بأنني اتحمل كافة التبعات القانونية والإدارية في حال مخالفتي لأي من البنود المذكورة أعلاه.</field>
+        <field name="original">والالتزام التام بحمل السلاح بشكل مخبأ وفقاً للتعليمات والأنظمة المعمول بها وعدم اظهاره الا في الحالات التي تستوجب ذلك امنياً , والتقيد بأساليب ومبادئ الحماية الأمنية السليمة اثناء أداء مهامي الوظيفية والعمل بمهنية ومسؤولية عالية , وعدم القيام بأي نشاط يهدد امن الدولة او يعرض سلامة المواطنين للخطر , واقر بأنني اتحمل كافة التبعات القانونية والإدارية في حال مخالفتي لأي من البنود المذكورة أعلاه.</field>
+    </record>
+    <record id="ad_pt_pledge_13" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">13</field>
+        <field name="text">الاسم الثلاثي:</field>
+        <field name="original">الاسم الثلاثي:</field>
+    </record>
+    <record id="ad_pt_pledge_14" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">14</field>
+        <field name="text">التوقيع / البصمة:</field>
+        <field name="original">التوقيع / البصمة:</field>
+    </record>
+    <record id="ad_pt_pledge_15" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">15</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_pledge_16" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">16</field>
+        <field name="text">رقم الهاتف:</field>
+        <field name="original">رقم الهاتف:</field>
+    </record>
+    <record id="ad_pt_pledge_17" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">17</field>
+        <field name="text">العنوان:</field>
+        <field name="original">العنوان:</field>
+    </record>
+    <record id="ad_pt_pledge_18" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">18</field>
+        <field name="text">الكفيل:</field>
+        <field name="original">الكفيل:</field>
+    </record>
+    <record id="ad_pt_pledge_19" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">19</field>
+        <field name="text">التوقيع/ البصمة :</field>
+        <field name="original">التوقيع/ البصمة :</field>
+    </record>
+    <record id="ad_pt_pledge_20" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">20</field>
+        <field name="text">التاريخ:</field>
+        <field name="original">التاريخ:</field>
+    </record>
+    <record id="ad_pt_pledge_21" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">21</field>
+        <field name="text">رقم الهاتف:</field>
+        <field name="original">رقم الهاتف:</field>
+    </record>
+    <record id="ad_pt_pledge_22" model="ad.print.text">
+        <field name="report_key">pledge</field>
+        <field name="seq">22</field>
+        <field name="text">العنوان:</field>
+        <field name="original">العنوان:</field>
+    </record>
+    <record id="ad_pt_termination_1" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">1</field>
+        <field name="text">امر انهاء خدمات</field>
+        <field name="original">امر انهاء خدمات</field>
+    </record>
+    <record id="ad_pt_termination_2" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">2</field>
+        <field name="text">بموجب الصلاحيات المخولة لنا تقرر انهاء خدمات السيد (</field>
+        <field name="original">بموجب الصلاحيات المخولة لنا تقرر انهاء خدمات السيد (</field>
+    </record>
+    <record id="ad_pt_termination_3" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">3</field>
+        <field name="text">) بصفة (</field>
+        <field name="original">) بصفة (</field>
+    </record>
+    <record id="ad_pt_termination_4" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">4</field>
+        <field name="text">) المنسوب الى موقع (</field>
+        <field name="original">) المنسوب الى موقع (</field>
+    </record>
+    <record id="ad_pt_termination_5" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">5</field>
+        <field name="text">) اعتبارا من تاريخ (</field>
+        <field name="original">) اعتبارا من تاريخ (</field>
+    </record>
+    <record id="ad_pt_termination_6" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">6</field>
+        <field name="text">نسخة منه الى:</field>
+        <field name="original">نسخة منه الى:</field>
+    </record>
+    <record id="ad_pt_termination_7" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">7</field>
+        <field name="text">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_termination_8" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">8</field>
+        <field name="text">- قسم الموارد البشرية/ للتفضل بالاطلاع واتخاذ مايلزم .. مع التقدير</field>
+        <field name="original">- قسم الموارد البشرية/ للتفضل بالاطلاع واتخاذ مايلزم .. مع التقدير</field>
+    </record>
+    <record id="ad_pt_termination_9" model="ad.print.text">
+        <field name="report_key">termination</field>
+        <field name="seq">9</field>
+        <field name="text">- القسم المعني / لاتخاذ ما يلزم ... مع التقدير</field>
+        <field name="original">- القسم المعني / لاتخاذ ما يلزم ... مع التقدير</field>
+    </record>
+    <record id="ad_pt_transfer_1" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">1</field>
+        <field name="text">اسم الموظف :</field>
+        <field name="original">اسم الموظف :</field>
+    </record>
+    <record id="ad_pt_transfer_2" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">2</field>
+        <field name="text">قسم العمليات</field>
+        <field name="original">قسم العمليات</field>
+    </record>
+    <record id="ad_pt_transfer_3" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">3</field>
+        <field name="text">موقع العمل الحالي :</field>
+        <field name="original">موقع العمل الحالي :</field>
+    </record>
+    <record id="ad_pt_transfer_4" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">4</field>
+        <field name="text">رقم الموظــــــف :</field>
+        <field name="original">رقم الموظــــــف :</field>
+    </record>
+    <record id="ad_pt_transfer_5" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">5</field>
+        <field name="text">اسم المشرف الحالي :</field>
+        <field name="original">اسم المشرف الحالي :</field>
+    </record>
+    <record id="ad_pt_transfer_6" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">6</field>
+        <field name="text">رقم الموبايل :</field>
+        <field name="original">رقم الموبايل :</field>
+    </record>
+    <record id="ad_pt_transfer_7" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">7</field>
+        <field name="text">مدير قسم العمليات</field>
+        <field name="original">مدير قسم العمليات</field>
+    </record>
+    <record id="ad_pt_transfer_8" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">8</field>
+        <field name="text">التوقيع</field>
+        <field name="original">التوقيع</field>
+    </record>
+    <record id="ad_pt_transfer_9" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">9</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_10" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">10</field>
+        <field name="text">الى السيد مشرف الموقع :</field>
+        <field name="original">الى السيد مشرف الموقع :</field>
+    </record>
+    <record id="ad_pt_transfer_11" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">11</field>
+        <field name="text">نأمل اعتماد مباشرة العمل للموظف المذكور في موقع العمل:</field>
+        <field name="original">نأمل اعتماد مباشرة العمل للموظف المذكور في موقع العمل:</field>
+    </record>
+    <record id="ad_pt_transfer_12" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">12</field>
+        <field name="text">الذي باشر بتاريخ :</field>
+        <field name="original">الذي باشر بتاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_13" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">13</field>
+        <field name="text">مدير قسم العمليات</field>
+        <field name="original">مدير قسم العمليات</field>
+    </record>
+    <record id="ad_pt_transfer_14" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">14</field>
+        <field name="text">التوقيع</field>
+        <field name="original">التوقيع</field>
+    </record>
+    <record id="ad_pt_transfer_15" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">15</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_16" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">16</field>
+        <field name="text">اسم المشرف الحالي :</field>
+        <field name="original">اسم المشرف الحالي :</field>
+    </record>
+    <record id="ad_pt_transfer_17" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">17</field>
+        <field name="text">التوقيع</field>
+        <field name="original">التوقيع</field>
+    </record>
+    <record id="ad_pt_transfer_18" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">18</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_19" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">19</field>
+        <field name="text">اسم المشرف المستلم :</field>
+        <field name="original">اسم المشرف المستلم :</field>
+    </record>
+    <record id="ad_pt_transfer_20" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">20</field>
+        <field name="text">التوقيع</field>
+        <field name="original">التوقيع</field>
+    </record>
+    <record id="ad_pt_transfer_21" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">21</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_22" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">22</field>
+        <field name="text">الى / قسم الموارد البشرية</field>
+        <field name="original">الى / قسم الموارد البشرية</field>
+    </record>
+    <record id="ad_pt_transfer_23" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">23</field>
+        <field name="text">تم اعتماد مباشرة العمل المذكور في موقع العمل :</field>
+        <field name="original">تم اعتماد مباشرة العمل المذكور في موقع العمل :</field>
+    </record>
+    <record id="ad_pt_transfer_24" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">24</field>
+        <field name="text">بدلا من موقع العمل :</field>
+        <field name="original">بدلا من موقع العمل :</field>
+    </record>
+    <record id="ad_pt_transfer_25" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">25</field>
+        <field name="text">بتاريخ:</field>
+        <field name="original">بتاريخ:</field>
+    </record>
+    <record id="ad_pt_transfer_26" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">26</field>
+        <field name="text">مشرف الموقع</field>
+        <field name="original">مشرف الموقع</field>
+    </record>
+    <record id="ad_pt_transfer_27" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">27</field>
+        <field name="text">مدير قسم العمليات</field>
+        <field name="original">مدير قسم العمليات</field>
+    </record>
+    <record id="ad_pt_transfer_28" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">28</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_29" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">29</field>
+        <field name="text">المدير المفوض</field>
+        <field name="original">المدير المفوض</field>
+    </record>
+    <record id="ad_pt_transfer_30" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">30</field>
+        <field name="text">نود لكم بان الموظف المذكور هو احد منتسبي شركة ابناء دجلة لخدمات الامن والحماية المحدودة والتي تحمل رخصة رمز (</field>
+        <field name="original">نود لكم بان الموظف المذكور هو احد منتسبي شركة ابناء دجلة لخدمات الامن والحماية المحدودة والتي تحمل رخصة رمز (</field>
+    </record>
+    <record id="ad_pt_transfer_31" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">31</field>
+        <field name="text">) ويعتبر هذا الامر بمثابة تخويل للموظف لممارسة عمله لدى الشركة في الموقع المذكور ونافذا لغاية شهر واحد من تاريخ إصداره.</field>
+        <field name="original">) ويعتبر هذا الامر بمثابة تخويل للموظف لممارسة عمله لدى الشركة في الموقع المذكور ونافذا لغاية شهر واحد من تاريخ إصداره.</field>
+    </record>
+    <record id="ad_pt_transfer_32" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">32</field>
+        <field name="text">المدير المفوض</field>
+        <field name="original">المدير المفوض</field>
+    </record>
+    <record id="ad_pt_transfer_33" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">33</field>
+        <field name="text">الاسم :</field>
+        <field name="original">الاسم :</field>
+    </record>
+    <record id="ad_pt_transfer_34" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">34</field>
+        <field name="text">التوقيع :</field>
+        <field name="original">التوقيع :</field>
+    </record>
+    <record id="ad_pt_transfer_35" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">35</field>
+        <field name="text">التاريخ :</field>
+        <field name="original">التاريخ :</field>
+    </record>
+    <record id="ad_pt_transfer_36" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">36</field>
+        <field name="text">نسخة منه الى:</field>
+        <field name="original">نسخة منه الى:</field>
+    </record>
+    <record id="ad_pt_transfer_37" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">37</field>
+        <field name="text">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- القسم المالي / للتفضل بالاطلاع واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_transfer_38" model="ad.print.text">
+        <field name="report_key">transfer</field>
+        <field name="seq">38</field>
+        <field name="text">- قسم الموارد البشرية/ للحفظ واتخاذ ما يلزم.. مع التقدير</field>
+        <field name="original">- قسم الموارد البشرية/ للحفظ واتخاذ ما يلزم.. مع التقدير</field>
+    </record>
+    <record id="ad_pt_general_1" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">1</field>
+        <field name="text">Abna’a Dijla Security Services Co. (AD)</field>
+        <field name="original">Abna’a Dijla Security Services Co. (AD)</field>
+    </record>
+    <record id="ad_pt_general_2" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">2</field>
+        <field name="text">Doc:</field>
+        <field name="original">Doc:</field>
+    </record>
+    <record id="ad_pt_general_3" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">3</field>
+        <field name="text">Issue :</field>
+        <field name="original">Issue :</field>
+    </record>
+    <record id="ad_pt_general_4" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">4</field>
+        <field name="text">Issue Date :</field>
+        <field name="original">Issue Date :</field>
+    </record>
+    <record id="ad_pt_general_5" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">5</field>
+        <field name="text">Rev. Date:</field>
+        <field name="original">Rev. Date:</field>
+    </record>
+    <record id="ad_pt_general_6" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">6</field>
+        <field name="text">Page</field>
+        <field name="original">Page</field>
+    </record>
+    <record id="ad_pt_general_7" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">7</field>
+        <field name="text">of</field>
+        <field name="original">of</field>
+    </record>
+    <record id="ad_pt_general_8" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">8</field>
+        <field name="text">Sequence no:</field>
+        <field name="original">Sequence no:</field>
+    </record>
+    <record id="ad_pt_general_9" model="ad.print.text">
+        <field name="report_key">general</field>
+        <field name="seq">9</field>
+        <field name="text">Date:</field>
+        <field name="original">Date:</field>
+    </record>
+</odoo>

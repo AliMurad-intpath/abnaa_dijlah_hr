@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Standalone application -->
+    <menuitem id="menu_ad_hr_root" name="Abnaa Dijlah HR" sequence="45"
+              web_icon="abnaa_dijlah_hr,static/description/icon.png"
+              groups="hr.group_hr_user,group_ad_ops_manager,group_ad_site_supervisor,group_ad_logistics,group_ad_admin,group_ad_motor,group_ad_finance,group_ad_md"/>
+    <menuitem id="menu_ad_dashboard" name="لوحة المتابعة" parent="menu_ad_hr_root" sequence="1" action="ad_dashboard_action"/>
+    <menuitem id="menu_ad_hr_config" name="الاعداد" parent="menu_ad_hr_root" sequence="90" groups="hr.group_hr_manager"/>
+    <menuitem id="menu_ad_work_site" name="مواقع العمل" parent="menu_ad_hr_config" sequence="10" action="ad_work_site_action"/>
+    <menuitem id="menu_ad_form_template" name="قوالب الاستمارات" parent="menu_ad_hr_config" sequence="20" action="ad_form_template_action"/>
+    <menuitem id="menu_ad_print_text" name="نصوص الطباعة" parent="menu_ad_hr_config" sequence="25" action="ad_print_text_action"/>
+    <menuitem id="menu_ad_dashboard_block" name="صلاحيات العناصر والاستمارات" parent="menu_ad_hr_config" sequence="30" action="ad_dashboard_block_action"/>
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_transfer_view_list" model="ir.ui.view">
+        <field name="name">ad.transfer.list</field>
+        <field name="model">ad.transfer</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'cancel'" decoration-success="state == 'done'">
+                <field name="name"/><field name="date"/><field name="employee_id"/>
+                <field name="old_site_id"/><field name="new_site_id"/><field name="valid_until"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_transfer_view_form" model="ir.ui.view">
+        <field name="name">ad.transfer.form</field>
+        <field name="model">ad.transfer</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_ops" type="object" string="تأييد العمليات" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_site" type="object" string="تأييد تسليم الموقع" class="btn-primary" invisible="state != 'ops'"/>
+                    <button name="action_hr" type="object" string="تأييد الموارد البشرية" class="btn-primary" invisible="state != 'site'"/>
+                    <button name="action_done" type="object" string="تخويل المدير المفوض" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="%(action_report_ad_transfer)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
+                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,ops,site,hr,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><label for="name"/><h1><field name="name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="date"/><field name="employee_id"/><field name="employee_no"/>
+                            <field name="old_site_id"/><field name="old_supervisor"/><field name="old_supervisor_mobile"/>
+                        </group>
+                        <group>
+                            <field name="new_site_id"/><field name="new_supervisor"/>
+                            <field name="start_date"/><field name="start_shift"/>
+                            <field name="leave_date"/><field name="leave_shift"/>
+                            <field name="md_date"/><field name="valid_until"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="الموافقات" name="approvals">
+                            <field name="signature_ids" readonly="1">
+                                <list><field name="step"/><field name="user_id"/><field name="date"/></list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="ad_transfer_action" model="ir.actions.act_window">
+        <field name="name">تنقلات الحراس (AD-HR-FM-09)</field>
+        <field name="res_model">ad.transfer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

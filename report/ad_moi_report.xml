@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="action_report_ad_moi" model="ir.actions.report">
+        <field name="name">استمارة معلومات موظفي الشركات الأمنية الخاصة</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">abnaa_dijlah_hr.report_ad_moi</field>
+        <field name="print_report_name">'MoI form - %s' % (object.name or '')</field>
+        <field name="paperformat_id" ref="abnaa_dijlah_hr.paperformat_ad_a4_landscape" />
+        <field name="binding_model_id" ref="hr.model_hr_employee" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_ad_moi">
+        <t t-call="abnaa_dijlah_hr.ad_form_wrapper">
+            <t t-set="h" t-value="docs.env['ad.report.helper']" />
+            <style>
+                .moi { font-size: 8.5pt; }
+                .moi td { border: 1.2px solid #000; padding: 0.6mm 1.5mm; height: 8.5mm; }
+                .moi td.lb { background: #d9d9d9; font-weight: bold; text-align: center; font-size: 8.3pt; }
+                .moi td.v { font-weight: bold; text-align: center; }
+                .moi-red { color: #c00000; font-weight: bold; }
+                .moi-gap { height: 1.6mm; }
+                .moi table.free td { border: none; }
+            </style>
+            <t t-foreach="docs" t-as="emp">
+                <div class="ad-page moi">
+                    <table class="ad-nb free" style="margin-bottom:1mm;">
+                        <tr>
+                            <td style="width:30%; vertical-align:top;"><div style="border:1.2px solid #000; width:55mm; height:8mm;" /></td>
+                            <td style="width:40%;" />
+                            <td style="width:30%; text-align:right;" class="moi-red">
+                                <div style="font-size:10.5pt;"><t t-out="h.t('moi', 1, 'جمهورية العراق')" /></div>
+                                <div style="font-size:10.5pt;"><t t-out="h.t('moi', 2, 'وزارة الداخلية')" /></div>
+                                <div style="font-size:10.5pt;"><t t-out="h.t('moi', 3, 'مديرية الشركات الأمنية الخاصة')" /></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ad-c" style="color:#c00000; text-decoration:underline; font-size:10.5pt; margin-top:-3mm;"><t t-out="h.t('moi', 4, 'استمارة معلومات موظفي الشركات الأمنية الخاصة')" /></div>
+
+                    <table class="ad-w100" style="margin-top:1mm;">
+                        <tr>
+                            <td class="lb" style="width:12%;"><t t-out="h.t('moi', 5, 'الاسم الرباعي واللقب')" /></td>
+                            <td class="v" style="width:11%;" t-out="emp.ad_surname" /><td class="lb ad-ltr" style="width:6%;"><t t-out="h.t('moi', 6, 'Surname')" /></td>
+                            <td class="v" style="width:13%;" t-out="emp.ad_last_name" /><td class="lb ad-ltr" style="width:7%;"><t t-out="h.t('moi', 7, 'Last Name')" /></td>
+                            <td class="v" style="width:13%;" t-out="emp.ad_mid_name" /><td class="lb ad-ltr" style="width:7%;"><t t-out="h.t('moi', 8, 'Mid Name')" /></td>
+                            <td class="v" style="width:13%;" t-out="emp.ad_first_name" /><td class="lb ad-ltr" style="width:6%;"><t t-out="h.t('moi', 9, 'First')" /><br /><t t-out="h.t('moi', 10, 'Name')" /></td>
+                        </tr>
+                    </table>
+                    <div class="moi-gap" />
+                    <table class="ad-nb free"><tr>
+                        <td style="padding:0; vertical-align:top;">
+                            <table class="ad-w100">
+                                <tr>
+                                    <td class="lb" style="width:8%;"><t t-out="h.t('moi', 11, 'الجنس')" /></td>
+                                    <td class="v" style="width:7%;" t-out="'ذكر' if emp.gender == 'male' else ('أنثى' if emp.gender == 'female' else emp.gender)" />
+                                    <td class="lb" style="width:10%;"><t t-out="h.t('moi', 12, 'جنسية الموظف')" /></td>
+                                    <td class="v" style="width:12%;" t-out="emp.country_id.name" />
+                                    <td class="lb" style="width:11%;"><t t-out="h.t('moi', 13, 'الحالة الاجتماعية')" /></td>
+                                    <td class="v" style="width:11%;" t-out="{'single': 'أعزب', 'married': 'متزوج', 'widower': 'أرمل', 'divorced': 'مطلق'}.get(emp.marital) or emp.marital" />
+                                    <td class="lb" style="width:9%;"><t t-out="h.t('moi', 14, 'محل الولادة')" /></td>
+                                    <td class="v" style="width:12%;" t-out="emp.place_of_birth" />
+                                    <td class="lb" style="width:9%;"><t t-out="h.t('moi', 15, 'تاريخ الولادة')" /></td>
+                                    <td class="v" style="width:11%;" t-out="emp.birthday and emp.birthday.strftime('%d/%m/%Y')" />
+                                </tr>
+                            </table>
+                            <div class="moi-gap" />
+                            <table class="ad-w100">
+                                <tr>
+                                    <td class="lb" style="width:11%;"><t t-out="h.t('moi', 16, 'الوظيفة الحالية')" /></td>
+                                    <td class="v" style="width:15%;" t-out="emp.job_title or emp.job_id.name" />
+                                    <td class="lb" style="width:6%;"><t t-out="h.t('moi', 17, 'مقر العمل')" /></td>
+                                    <td class="v" style="width:14%;" t-out="emp.ad_work_site_id.name" />
+                                    <td class="lb" style="width:8%;"><t t-out="h.t('moi', 18, 'المحافظة')" /></td>
+                                    <td class="v" style="width:10%;" t-out="emp.ad_work_governorate" />
+                                    <td class="lb" style="width:7%;"><t t-out="h.t('moi', 19, 'المنطقة')" /></td>
+                                    <td class="v" style="width:10%;" t-out="emp.ad_work_area" />
+                                    <td class="lb" style="width:10%;"><t t-out="h.t('moi', 20, 'الوظيفة السابقة')" /></td>
+                                    <td class="v" style="width:9%;" t-out="emp.ad_previous_job" />
+                                </tr>
+                            </table>
+                            <div class="moi-gap" />
+                            <table class="ad-w100">
+                                <tr>
+                                    <td class="lb" style="width:15%;"><t t-out="h.t('moi', 21, 'اسم الأم الثلاثي واللقب')" /></td>
+                                    <td class="v" style="width:25%;" t-out="emp.ad_mother_name" />
+                                    <td class="lb" style="width:11%;"><t t-out="h.t('moi', 22, 'عنوان السكن الحالي')" /></td>
+                                    <td class="v" style="width:15%;" t-out="emp.ad_address" />
+                                    <td class="lb" style="width:8%;"><t t-out="h.t('moi', 23, 'المحافظة')" /></td>
+                                    <td class="v" style="width:11%;" t-out="emp.ad_res_governorate" />
+                                    <td class="lb" style="width:8%;"><t t-out="h.t('moi', 24, 'قضاء - ناحية')" /></td>
+                                    <td class="v" style="width:7%;" t-out="emp.ad_res_district" />
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="width:38mm; padding:0 0 0 2mm; vertical-align:top;">
+                            <div style="border:1.5px solid #000; box-shadow:1.2mm 1.2mm 0 #000; height:34mm; padding:1mm; color:#c00000; font-weight:bold; font-size:8pt; text-align:center;"><t t-out="h.t('moi', 25, 'صورة حديثة بخلفية بيضاء بالزي الخاص بالشركة – عدد 2 وتختم الصورة المرفقة بالاستمارة')" /></div>
+                        </td>
+                    </tr></table>
+                    <div class="moi-gap" />
+                    <table class="ad-w100">
+                        <tr>
+                            <td class="lb" style="width:7%;"><t t-out="h.t('moi', 26, 'الحي')" /></td>
+                            <td class="v" style="width:16%;" t-out="emp.ad_neighborhood" />
+                            <td class="lb" style="width:8%;"><t t-out="h.t('moi', 27, 'المحلة')" /></td>
+                            <td class="v" style="width:13%;" t-out="emp.ad_mahalla" />
+                            <td class="lb" style="width:8%;"><t t-out="h.t('moi', 28, 'الزقاق')" /></td>
+                            <td class="v" style="width:11%;" t-out="emp.ad_alley" />
+                            <td class="lb" style="width:7%;"><t t-out="h.t('moi', 29, 'الدار')" /></td>
+                            <td class="v" style="width:10%;" t-out="emp.ad_house" />
+                            <td class="lb" style="width:10%;"><t t-out="h.t('moi', 30, 'اقرب نقطة دالة')" /></td>
+                            <td class="v" style="width:10%;" t-out="emp.ad_landmark" />
+                        </tr>
+                    </table>
+
+                    <table class="ad-w100" style="margin-top:3mm;"><tr>
+                        <td class="moi-red ad-c" style="font-size:7.8pt; height:9mm;"><t t-out="h.t('moi', 31, 'ترفق نسخة تعهد الموظفين و نسخة ملونة من المستمسكات أدناه (بطاقة السكن، البطاقة التموينية، هوية الأحوال المدنية، شهادة الجنسية ) بالنسبة للعراقيين - ونسخة ملونة من جواز السفر و تأشيرة الإقامة بالنسبة للأجانب')" /></td>
+                    </tr></table>
+
+                    <table class="ad-w100" style="margin-top:2.5mm;">
+                        <tr>
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 32, 'جهة إصدار بطاقة السكن')" /></td>
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 33, 'اسم مركز البطاقة التموينية')" /></td>
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 34, 'جهة إصدار هوية الأحوال المدنية')" /></td>
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 35, 'جهة إصدار شهادة الجنسية')" /></td>
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 36, 'جهة إصدار الجواز')" /></td>
+                        </tr>
+                        <tr style="height:6mm;">
+                            <td class="v" t-out="emp.ad_resid_issuer" /><td class="v" t-out="emp.ad_ration_center" /><td class="v" t-out="emp.ad_civil_issuer" /><td class="v" t-out="emp.ad_nat_issuer" /><td class="v" t-out="emp.ad_passport_issuer" />
+                        </tr>
+                        <tr>
+                            <td class="lb"><t t-out="h.t('moi', 37, 'رقم بطاقة السكن')" /></td><td class="lb"><t t-out="h.t('moi', 38, 'رقم البطاقة')" /></td><td class="lb"><t t-out="h.t('moi', 39, 'رقم السجل')" /></td><td class="lb"><t t-out="h.t('moi', 40, 'رقم المحفظة')" /></td><td class="lb"><t t-out="h.t('moi', 41, 'رقم الجواز')" /></td>
+                        </tr>
+                        <tr style="height:6mm;">
+                            <td class="v" t-out="emp.ad_resid_no" /><td class="v" t-out="emp.ad_ration_no" /><td class="v" t-out="emp.ad_civil_record_no" /><td class="v" t-out="emp.ad_nat_wallet_no" /><td class="v" t-out="emp.ad_passport_no" />
+                        </tr>
+                        <tr>
+                            <td class="lb"><t t-out="h.t('moi', 42, 'تاريخ الإصدار')" /></td><td class="lb"><t t-out="h.t('moi', 43, 'تاريخ الإصدار')" /></td><td class="lb"><t t-out="h.t('moi', 44, 'رقم الصفحة')" /></td><td class="lb"><t t-out="h.t('moi', 45, 'تاريخ الإصدار')" /></td><td class="lb"><t t-out="h.t('moi', 46, 'تاريخ الإصدار')" /></td>
+                        </tr>
+                        <tr style="height:6mm;">
+                            <td class="v" t-out="emp.ad_resid_date and emp.ad_resid_date.strftime('%d/%m/%Y')" />
+                            <td class="v" t-out="emp.ad_ration_date and emp.ad_ration_date.strftime('%d/%m/%Y')" />
+                            <td class="v" t-out="emp.ad_civil_page_no" />
+                            <td class="v" t-out="emp.ad_nat_date and emp.ad_nat_date.strftime('%d/%m/%Y')" />
+                            <td class="v" t-out="emp.ad_passport_date and emp.ad_passport_date.strftime('%d/%m/%Y')" />
+                        </tr>
+                    </table>
+
+                    <table class="ad-w100" style="margin-top:2.5mm;">
+                        <tr>
+                            <td style="width:30%; vertical-align:top; height:34mm;">
+                                <div class="ad-b"><t t-out="h.t('moi', 47, 'أتعهد بان كل المعلومات التي قدمتها في هذه الاستمارة دقيقة وصحيحة وحقيقية وبخلاف ذلك أتحمل جميع التبعات والإجراءات والمسائلة القانونية')" /></div>
+                                <table class="ad-nb free" style="margin-top:2mm;"><tr>
+                                    <td class="ad-b" style="width:60%;"><t t-out="h.t('moi', 48, 'توقيع صاحب الاستمارة')" /><br /><t t-out="h.t('moi', 49, 'التاريخ:')" /> <span t-out="h.d3(False)" /></td>
+                                    <td style="border:1.5px solid #1f3fff !important; width:40%; height:19mm; text-align:center; font-weight:bold; font-size:8pt;"><t t-out="h.t('moi', 50, 'بصمة الابهام الايسر')" /></td>
+                                </tr></table>
+                            </td>
+                            <td style="width:31%; vertical-align:top;">
+                                <div class="ad-b"><t t-out="h.t('moi', 51, 'التوقيع:')" /></div>
+                                <div class="ad-b" style="margin-top:2mm;"><t t-out="h.t('moi', 52, 'اسم المدير المفوض للشركة:')" /> <span t-out="emp.company_id.ad_md_name" /></div>
+                                <div class="ad-b" style="margin-top:2mm;"><span t-out="h.d3(False)" />   <t t-out="h.t('moi', 53, 'هل دققت المعلومات من قبل الشركة \xa0نعم')" /><span t-out="h.box(False)" /> <t t-out="h.t('moi', 54, 'كلا')" /><span t-out="h.box(False)" /></div>
+                            </td>
+                            <td style="width:16%; vertical-align:top; text-align:center;" class="ad-b"><t t-out="h.t('moi', 55, 'ختم الشركة')" /><div style="margin-top:20mm;"><span t-out="h.d3(False)" /></div></td>
+                            <td style="width:23%; vertical-align:top; text-align:center;" class="ad-b"><t t-out="h.t('moi', 56, 'ختم مديرية الشركات الامنية')" /><div style="margin-top:6mm;"><t t-out="h.t('moi', 57, 'توقيع ضابط الشعبة')" /><br /><span t-out="h.d3(False)" /></div></td>
+                        </tr>
+                    </table>
+                    <div style="margin-top:3mm; font-weight:bold; font-size:8.5pt;"><t t-out="h.t('moi', 58, '-1 \xa0أي اخفاء للمعلومات او عدم دقتها او نقص في المعلومات')" /></div>
+                </div>
+                <div class="ad-page moi">
+                    <table class="ad-w100"><tr>
+                        <td class="moi-red" style="width:50%; background:#d9d9d9; height:7mm;"><t t-out="h.t('moi', 59, 'ملاحظات مهمة جدا – ( يجب ان ترسل الاستمارة مطبوعة بواسطة الحاسبة )')" /></td>
+                        <td class="moi-red" style="width:50%; background:#d9d9d9; height:7mm;"><t t-out="h.t('moi', 60, 'ملاحظة/ تملئ الحقول أدناه من قبل وزارة الداخلية')" /></td>
+                    </tr></table>
+                    <table class="ad-w100" style="margin-top:6mm; width:60%;">
+                        <tr>
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 61, 'الرمز')" /></td><td class="v" style="width:15%;" t-out="emp.ad_moi_code" />
+                            <td class="lb" style="width:15%;"><t t-out="h.t('moi', 62, 'رقم الموظف')" /></td><td class="v" style="width:20%;" t-out="emp.ad_moi_emp_no" />
+                            <td class="lb" style="width:20%;"><t t-out="h.t('moi', 63, 'الرمز الرقمي للشركة')" /></td><td class="v" style="width:10%;" t-out="emp.ad_moi_company_code" />
+                        </tr>
+                    </table>
+                    <table class="ad-w100" style="margin-top:2mm; width:60%;">
+                        <tr>
+                            <td class="lb" style="width:25%;"><t t-out="h.t('moi', 64, 'رقم JK')" /></td><td class="v" style="width:25%;" t-out="emp.ad_moi_jk_no" />
+                            <td class="lb" style="width:25%;"><t t-out="h.t('moi', 65, 'رقم الاضبارة - الهوية')" /></td><td class="v" style="width:25%;" t-out="emp.ad_moi_file_no" />
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_demo_loader_view_form" model="ir.ui.view">
+        <field name="name">ad.demo.loader.form</field>
+        <field name="model">ad.demo.loader</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        يستورد هذا الاجراء بيانات تجريبية لجميع الاستمارات: 3 زبائن، 3 مواقع عمل، 6 موظفين،
+                        3 استمارات تقييم مقابلة، 4 اوامر تعيين، استمارتا تاريخ مباشرة، كفالات وتعهدات،
+                        تنقلان، 3 عقوبات، وامرا انهاء خدمات. جميع السجلات بحالة مسودة.
+                        يمكن تكرار الاستيراد دون تكرار السجلات.
+                    </div>
+                    <field name="log" nolabel="1" placeholder="ستظهر هنا نتيجة الاستيراد..."/>
+                </sheet>
+                <footer>
+                    <button name="action_import" type="object" string="استيراد بيانات التجربة" class="btn-primary"/>
+                    <button name="action_remove" type="object" string="حذف بيانات التجربة" class="btn-secondary"
+                            confirm="سيتم حذف جميع سجلات التجربة. هل انت متأكد؟"/>
+                    <button special="cancel" string="اغلاق"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="ad_demo_loader_action" model="ir.actions.act_window">
+        <field name="name">بيانات التجربة</field>
+        <field name="res_model">ad.demo.loader</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="menu_ad_demo_loader" name="بيانات التجربة" parent="abnaa_dijlah_hr.menu_ad_hr_config"
+              sequence="99" action="ad_demo_loader_action" groups="base.group_system"/>
+</odoo>

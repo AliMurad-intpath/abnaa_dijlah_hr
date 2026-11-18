@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_violation_type_view_list" model="ir.ui.view">
+        <field name="name">ad.violation.type.list</field>
+        <field name="model">ad.violation.type</field>
+        <field name="arch" type="xml">
+            <list editable="bottom"><field name="number"/><field name="name"/><field name="active" column_invisible="1"/></list>
+        </field>
+    </record>
+    <record id="ad_violation_type_action" model="ir.actions.act_window">
+        <field name="name">انواع المخالفات</field>
+        <field name="res_model">ad.violation.type</field>
+        <field name="view_mode">list</field>
+    </record>
+    <record id="ad_discipline_view_list" model="ir.ui.view">
+        <field name="name">ad.discipline.list</field>
+        <field name="model">ad.discipline</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'cancel'" decoration-success="state in ('approved', 'acknowledged')">
+                <field name="name"/><field name="date"/><field name="employee_id"/>
+                <field name="repetition"/><field name="decision"/><field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_discipline_view_form" model="ir.ui.view">
+        <field name="name">ad.discipline.form</field>
+        <field name="model">ad.discipline</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_hr" type="object" string="مراجعة الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_ops" type="object" string="موافقة العمليات" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="action_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'ops'"/>
+                    <button name="action_acknowledge" type="object" string="اقرار الموظف بالاستلام" class="btn-primary" invisible="state != 'approved'"/>
+                    <button name="%(action_report_ad_discipline)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('acknowledged', 'cancel')"/>
+                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,hr,ops,approved,acknowledged"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><label for="name"/><h1><field name="name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="date"/><field name="employee_id"/><field name="job_title"/><field name="employee_no"/>
+                        </group>
+                        <group>
+                            <field name="repetition"/><field name="decision"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="المخالفات"><field name="violation_ids" widget="many2many_tags" nolabel="1"/></group>
+                    <group string="القرار">
+                        <group invisible="decision != 'suspension'">
+                            <field name="date_from"/><field name="date_to"/><field name="total_days"/>
+                        </group>
+                        <group invisible="decision != 'deduction'">
+                            <field name="deduction_type"/><field name="deduction_amount"/><field name="deduction_from"/>
+                        </group>
+                        <group invisible="decision != 'termination'">
+                            <field name="termination_from"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="الموافقات" name="approvals">
+                            <field name="signature_ids" readonly="1">
+                                <list><field name="step"/><field name="user_id"/><field name="date"/></list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="ad_discipline_action" model="ir.actions.act_window">
+        <field name="name">استمارات العقوبات (AD-HR-FM-10)</field>
+        <field name="res_model">ad.discipline</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,code,partner_id/id,governorate,area,supervisor_mobile
+demo_site_1,مصرف الرافدين - فرع الكرادة,S001,demo_client_1,بغداد,الكرادة,07701234567
+demo_site_2,فندق بابل,S002,demo_client_2,بغداد,الجادرية,07709876543
+demo_site_3,شركة زين - المقر الرئيسي,S003,demo_client_3,بغداد,المنصور,07705554433

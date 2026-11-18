@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_view_form_ad_smart_ad_hr_discipline" model="ir.ui.view">
+        <field name="name">hr.employee.form.ad.smart.ad_hr_discipline</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_ad_open_discipline" type="object" class="oe_stat_button" icon="fa-gavel" invisible="ad_discipline_count == 0">
+                    <field name="ad_discipline_count" widget="statinfo" string="العقوبات"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

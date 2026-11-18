@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_clearance_view_list" model="ir.ui.view">
+        <field name="name">ad.clearance.list</field>
+        <field name="model">ad.clearance</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'cancel'" decoration-success="state == 'done'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="site_id"/>
+                <field name="stop_date"/>
+                <field name="amount_due"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_clearance_view_form" model="ir.ui.view">
+        <field name="name">ad.clearance.form</field>
+        <field name="model">ad.clearance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" type="object" string="بدء براءة الذمة" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_settle" type="object" string="تسوية المستحقات (المالية)" class="btn-primary" invisible="state != 'clearing'"/>
+                    <button name="action_hr_certify" type="object" string="مصادقة الموارد البشرية" class="btn-primary" invisible="state != 'settled'"/>
+                    <button name="action_md_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'hr_cert'"/>
+                    <button name="%(action_report_ad_clearance)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,clearing,settled,hr_cert,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><label for="name"/><h1><field name="name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="address"/>
+                            <field name="job_title"/>
+                            <field name="hire_date"/>
+                            <field name="site_id"/>
+                        </group>
+                        <group>
+                            <field name="stop_date"/>
+                            <field name="reason"/>
+                            <field name="order_no"/>
+                            <field name="order_date"/>
+                            <field name="termination_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="براءة الذمة من الاقسام" name="lines">
+                            <field name="line_ids">
+                                <list editable="bottom" create="0" delete="0">
+                                    <field name="sequence" column_invisible="1"/>
+                                    <field name="department" readonly="1"/>
+                                    <field name="manager_name"/>
+                                    <field name="has_liability"/>
+                                    <field name="note"/>
+                                    <field name="signed_user_id"/>
+                                    <field name="signed_date"/>
+                                    <button name="action_sign" type="object" string="توقيع" icon="fa-check" invisible="signed_date"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="المستحقات" name="dues">
+                            <field name="due_ids">
+                                <list editable="bottom"><field name="sequence" widget="handle"/><field name="name"/><field name="amount"/></list>
+                            </field>
+                            <group class="oe_subtotal_footer">
+                                <field name="amount_due"/>
+                                <field name="amount_paid"/>
+                            </group>
+                            <group>
+                                <field name="hr_note"/>
+                            </group>
+                        </page>
+                        <page string="المخالصة" name="quitclaim">
+                            <group>
+                                <field name="receipt_date"/>
+                                <field name="witness1"/>
+                                <field name="witness2"/>
+                            </group>
+                        </page>
+                        <page string="الموافقات" name="approvals">
+                            <field name="signature_ids" readonly="1">
+                                <list><field name="step"/><field name="user_id"/><field name="date"/></list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="ad_clearance_action" model="ir.actions.act_window">
+        <field name="name">براءة الذمة (AD-WI-FM-06-11)</field>
+        <field name="res_model">ad.clearance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

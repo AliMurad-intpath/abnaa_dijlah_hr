@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="action_report_ad_guarantee" model="ir.actions.report">
+        <field name="name">كفالة وتعهد خطي (ملحق)</field>
+        <field name="model">ad.employee.guarantee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">abnaa_dijlah_hr.report_ad_guarantee</field>
+        <field name="print_report_name">'AD-HR-FM-Annex - %s' % (object.employee_id.name or '')</field>
+        <field name="paperformat_id" ref="abnaa_dijlah_hr.paperformat_ad_a4" />
+        <field name="binding_model_id" ref="model_ad_employee_guarantee" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="ad_annex_head">
+        <div style="direction:ltr; text-align:left; height:30mm;">
+            <img t-att-src="h.logo(True, doc.ad_tpl())" style="height:28mm; background:transparent;" />
+        </div>
+        <table class="ad-t" style="font-size:8.5pt;">
+            <tr>
+                <td class="ad-b" style="width:14%"><t t-out="h.t('guarantee', 1, 'Emp. Name')" /><br /><t t-out="h.t('guarantee', 2, 'الاسم الكامل')" /></td>
+                <td style="width:36%" class="ad-b" t-out="emp.name" />
+                <td class="ad-b" style="width:11%"><t t-out="h.t('guarantee', 3, 'Emp. No.')" /><br /><t t-out="h.t('guarantee', 4, 'رقم الموظف')" /></td>
+                <td style="width:22%" class="ad-b" t-out="emp.ad_employee_no" />
+                <td class="ad-b ad-ltr" style="width:17%"><t t-out="h.t('guarantee', 5, 'Page')" /> <span t-out="pg" /> <t t-out="h.t('guarantee', 6, 'of')" /> <span t-out="pgs" /></td>
+            </tr>
+            <tr>
+                <td class="ad-b"><t t-out="h.t('guarantee', 7, 'Position')" /><br /><t t-out="h.t('guarantee', 8, 'المنصب')" /></td>
+                <td class="ad-b" t-out="emp.job_title or emp.job_id.name" />
+                <td class="ad-b"><t t-out="h.t('guarantee', 9, 'Location')" /><br /><t t-out="h.t('guarantee', 10, 'الموقع')" /></td>
+                <td class="ad-b" t-out="emp.ad_work_site_id.name" />
+                <td class="ad-b"><t t-out="h.t('guarantee', 11, 'Mobile No.')" /><br /><t t-out="h.t('guarantee', 12, 'رقم الهاتف')" /> <span t-out="h.get(emp, 'mobile_phone', 'work_phone')" /></td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="report_ad_guarantee">
+        <t t-call="abnaa_dijlah_hr.ad_form_wrapper">
+            <t t-set="h" t-value="docs.env['ad.report.helper']" />
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="emp" t-value="doc.employee_id" />
+                <t t-set="tpl" t-value="doc.ad_tpl()" />
+                <div class="ad-page">
+                    <t t-set="pg" t-value="1" /><t t-set="pgs" t-value="2" />
+                    <t t-call="abnaa_dijlah_hr.ad_annex_head" />
+                    <div class="ad-bd" style="margin-top:6mm; width:62mm; font-weight:bold; text-align:center; direction:ltr;" t-out="tpl.code" />
+                    <div class="ad-grey ad-c ad-b" style="border:1px solid #000; margin-top:2mm; padding:1mm; font-size:15pt; direction:ltr;">
+                        <t t-out="h.t('guarantee', 13, 'Employment Guarantee')" /><br />
+                        <span style="text-decoration:underline;"><t t-out="h.t('guarantee', 14, 'كـــــــــفـــــــــالـــــــــة')" /></span>
+                    </div>
+                    <p style="line-height:2.1; margin-top:8mm; font-size:11pt;">
+                        <t t-out="h.t('guarantee', 15, 'اني الموقع ادناه')" /> <span t-out="h.dots(doc.guarantor_name, 55)" /> <t t-out="h.t('guarantee', 16, 'اعلن نفسي كفيلاً ( ضامناً ) شخصياً للسيد')" />
+                        <span t-out="h.dots(emp.name, 55)" /> <t t-out="h.t('guarantee', 17, 'وذلك لغرض تعيينه لدى شركة أبناء دجلة بصفة (')" /> <span t-out="h.dots(doc.capacity, 30)" /> <t t-out="h.t('guarantee', 18, ') واتعهد بأحضاره امام أي سلطة مدنية او حكومية تطلبه مني وامام إدارة الشركة في حالة طلبها ذلك واكفله مالياً في حالة عدم تسديده مستحقات مالية ومتضامن معه في التسديد وبعكسه اتحمل كافة التبعات القانونية وكافة الاضرار والتعويضات المترتبة من جراء أي اخلال يقوم به تجاه الشركة باعتباري كفيلاً ضامناً شخصياً ومالياً بالنيابة عنه في حالة عدم حضوره ولأجله وقعت.')" />
+                    </p>
+                    <hr style="border:0; border-top:1px solid #000; margin:10mm 0 6mm 0;" />
+                    <table class="ad-nb" style="font-size:11pt; line-height:2.6;">
+                        <tr>
+                            <td style="width:50%"><t t-out="h.t('guarantee', 19, 'الكفيل :')" /> <span t-out="h.dots(doc.guarantor_name, 50)" /></td>
+                            <td style="width:50%"><t t-out="h.t('guarantee', 20, 'المكفول :')" /> <span t-out="h.dots(emp.name, 50)" /></td>
+                        </tr>
+                        <tr>
+                            <td><t t-out="h.t('guarantee', 21, 'البصمة / توقيع :')" /> <span t-out="h.dots('', 48)" /></td>
+                            <td><t t-out="h.t('guarantee', 22, 'البصمة / توقيع :')" /> <span t-out="h.dots('', 48)" /></td>
+                        </tr>
+                        <tr>
+                            <td><t t-out="h.t('guarantee', 23, 'التاريخ :')" /> <span t-out="h.d3(doc.date)" /></td>
+                            <td><t t-out="h.t('guarantee', 24, 'التاريخ :')" /> <span t-out="h.d3(doc.date)" /></td>
+                        </tr>
+                        <tr>
+                            <td><t t-out="h.t('guarantee', 25, 'الشاهد الاول :')" /> <span t-out="h.dots(doc.witness1, 45)" /></td>
+                            <td><t t-out="h.t('guarantee', 26, 'الشاهد الثاني :')" /> <span t-out="h.dots(doc.witness2, 45)" /></td>
+                        </tr>
+                    </table>
+                    <p style="margin-top:12mm; font-size:11pt;"><t t-out="h.t('guarantee', 27, 'اصادق على صحة توقيع الكفيل (')" /> <span t-out="h.dots('', 25)" /> <t t-out="h.t('guarantee', 28, ') المشاور القانوني')" />
+                        <span t-if="doc.legal_advisor" t-out="doc.legal_advisor" class="ad-b" /></p>
+                </div>
+                <div class="ad-page">
+                    <div style="border:3px double #000; height:268mm; padding:12mm 10mm; position:relative;">
+                        <div class="ad-c ad-b ad-u" style="font-size:20pt; margin-top:6mm;"><t t-out="h.t('guarantee', 29, 'تعهد خطي')" /></div>
+                        <p style="margin-top:22mm; font-size:15pt; line-height:2.1;">
+                            <t t-out="h.t('guarantee', 30, 'اني الموقع ادناه (')" /> <span t-out="h.dots(emp.name, 60)" /> <t t-out="h.t('guarantee', 31, ') اتعهد بعدم انتمائي الى أي (حزب او مليشيا او جماعة مسلحة) تمارس أي نشاط مخالف قوانين الدولة العراقية وبخلافه اتحمل المسؤولية الكاملة امام السلطات وعليه وقعت .')" />
+                        </p>
+                        <table class="ad-nb" style="margin-top:25mm; font-size:14pt; line-height:3.4;">
+                            <tr><td style="width:40mm"><t t-out="h.t('guarantee', 32, 'التوقيـــــــــــــع :')" /></td><td><span t-out="h.dots('', 70)" /></td></tr>
+                            <tr><td><t t-out="h.t('guarantee', 33, 'اسم الشركــــــة :')" /></td><td><span t-out="h.dots(doc.pledge_company, 110)" /></td></tr>
+                            <tr><td><t t-out="h.t('guarantee', 34, 'الاســـــــــــــــم :')" /></td><td><span t-out="h.dots(emp.name, 90)" /></td></tr>
+                            <tr><td><t t-out="h.t('guarantee', 35, 'التــــــــــــاريخ :')" /></td><td><span t-out="h.d3(doc.date)" /></td></tr>
+                        </table>
+                        <div style="position:absolute; left:10mm; right:10mm; bottom:14mm; font-size:10.5pt; line-height:1.8;">
+                            <hr style="border:0; border-top:1px solid #000; margin:0 0 3mm 0;" />
+                            <u><t t-out="h.t('guarantee', 36, 'ملاحظة:')" /></u> <t t-out="h.t('guarantee', 37, '1- تختم التعهدات بختم الشركة الصرح علماً ان أي تعهد او كتاب غير مختوم لا يعتمد من قبل مديريتنا.')" /><br />
+                            <t t-out="h.t('guarantee', 38, '2- يرفق نسخة التعهد أعلاه مع استمارة المعلومات الخاصة بموظفي الشركات الأمنية الخاصة.')" />
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

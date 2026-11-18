@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <template id="ad_form_wrapper">
+        <t t-call="web.html_container">
+            <meta charset="utf-8" />
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <style>
+
+                * { box-sizing: border-box; }
+                body.container, body { padding: 0 !important; margin: 0 !important; max-width: none !important; }
+                .ad-page { direction: rtl; text-align: right; font-family: 'Times New Roman', 'Liberation Serif', 'Tinos', serif;
+                           font-size: 10.5pt; color: #000; line-height: 1.3; width: 100%; }
+                .ad-page * { font-family: 'Times New Roman', 'Liberation Serif', 'Tinos', serif; }
+                .ad-page + .ad-page { page-break-before: always; }
+                .ad-page table { border-collapse: collapse; }
+                .ad-page td, .ad-page th { vertical-align: middle; padding: 0.8mm 1.6mm; }
+                .ad-ltr { direction: ltr; text-align: left; }
+                .ad-c { text-align: center; } .ad-r { text-align: right; } .ad-l { text-align: left; }
+                .ad-b { font-weight: bold; } .ad-u { text-decoration: underline; }
+                .ad-grey { background: #d9d9d9; }
+                .ad-w100 { width: 100%; }
+                .ad-bd { border: 1px solid #000; }
+                .ad-t { width: 100%; }
+                .ad-t td, .ad-t th { border: 1px solid #000; }
+                .ad-nb { width: 100%; }
+                .ad-nb td { border: none; }
+                .ad-hd { position: relative; direction: ltr; text-align: center; height: 22mm; }
+                .ad-hd img { position: absolute; left: 3mm; top: 0; height: 20mm; background: transparent; }
+                .ad-co { font-size: 21pt; font-weight: bold; text-decoration: underline; padding-top: 1mm; line-height: 1.15; }
+                .ad-tt { font-size: 10.5pt; font-weight: bold; line-height: 1.25; }
+                .ad-doc { width: 100%; direction: ltr; margin-top: 0.5mm; }
+                .ad-doc td { border: 1px solid #000; font-size: 7.5pt; font-weight: bold; padding: 0.7mm 1.5mm; }
+                .ad-dots { display: inline-block; border-bottom: 1px dotted #000; text-align: center; font-weight: bold;
+                           padding: 0 1mm; min-height: 1em; }
+                .ad-d { font-weight: bold; white-space: nowrap; direction: ltr; unicode-bidi: embed; }
+                .ad-box { display: inline-block; width: 3.4mm; height: 3.4mm; border: 0.3mm solid #000; vertical-align: middle; margin: 0 1mm; background: #fff; }
+                .ad-box.on { background: #000; }
+                .ad-fill { font-weight: bold; }
+                .ad-small { font-size: 8.5pt; }
+                .ad-copy { font-size: 8pt; font-weight: bold; line-height: 1.25; }
+                .ad-seq { display: inline-block; border: 1px solid #000; min-width: 28mm; min-height: 7mm; padding: 1mm 2mm; text-align: center; font-weight: bold; vertical-align: middle; }
+                .ad-seq-rnd { border-radius: 2mm; }
+            </style>
+            <t t-out="0" />
+        </t>
+    </template>
+
+    
+    <template id="ad_form_head">
+        <div class="ad-hd">
+            <img t-att-src="h.logo(False, tpl)" />
+            <div class="ad-co"><t t-out="h.t('general', 1, 'Abna’a Dijla Security Services Co. (AD)')" /></div>
+            <t t-if="tpl.title_layout == 'stack'">
+                <div class="ad-tt ad-u" t-if="tpl.title_ar" t-out="tpl.title_ar" />
+                <div class="ad-tt" t-if="tpl.title_en" t-out="tpl.title_en" />
+            </t>
+            <t t-elif="tpl.title_layout == 'inline'">
+                <div class="ad-tt"><span t-out="tpl.title_ar" />  <span t-out="tpl.title_en" /></div>
+            </t>
+            <t t-else="">
+                <div class="ad-tt" t-out="tpl.title_ar" />
+            </t>
+        </div>
+        <table class="ad-doc">
+            <tr>
+                <td style="width:28%"><t t-out="h.t('general', 2, 'Doc:')" /> <span t-out="tpl.code" /></td>
+                <td style="width:12%"><t t-out="h.t('general', 3, 'Issue :')" /> <span t-out="tpl.issue" /></td>
+                <td style="width:21%"><t t-out="h.t('general', 4, 'Issue Date :')" /> <span t-out="tpl.issue_date" /></td>
+                <td style="width:21%"><t t-out="h.t('general', 5, 'Rev. Date:')" /> <span t-out="tpl.rev_date" /></td>
+                <td style="width:18%"><t t-out="h.t('general', 6, 'Page')" /> <span t-out="pg" /> <t t-out="h.t('general', 7, 'of')" /> <span t-out="pgs" /></td>
+            </tr>
+        </table>
+    </template>
+
+    
+    <template id="ad_form_seqrow">
+        <table class="ad-nb ad-ltr" style="margin-top:3mm; margin-bottom:2mm;">
+            <tr>
+                <td style="width:70%; font-weight:bold; white-space:nowrap;">
+                    <t t-out="h.t('general', 8, 'Sequence no:')" /> <span t-attf-class="ad-seq {{ 'ad-seq-rnd' if rounded else '' }}" t-out="seq or ' '" />
+                    <span style="display:inline-block; width:14mm;" />
+                    <t t-out="h.t('general', 9, 'Date:')" /> <span t-attf-class="ad-seq {{ 'ad-seq-rnd' if rounded else '' }}" t-out="h.d3(dt)" />
+                </td>
+                <td />
+            </tr>
+        </table>
+    </template>
+</odoo>

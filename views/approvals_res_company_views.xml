@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_company_view_form_ad_approvals" model="ir.ui.view">
+        <field name="name">res.company.form.ad.approvals</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.res_company_view_form_ad"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ad_license_code']" position="after">
+                <field name="ad_use_approvals"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

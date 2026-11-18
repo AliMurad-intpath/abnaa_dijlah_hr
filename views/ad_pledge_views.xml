@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_employee_pledge_view_list" model="ir.ui.view">
+        <field name="name">ad.employee.pledge.list</field>
+        <field name="model">ad.employee.pledge</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id"/>
+                <field name="guarantor_name"/>
+                <field name="date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_employee_pledge_view_form" model="ir.ui.view">
+        <field name="name">ad.employee.pledge.form</field>
+        <field name="model">ad.employee.pledge</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_signed" type="object" string="تأشير موقّع" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state == 'draft'"/>
+                    <button name="%(action_report_ad_pledge)d" type="action" string="طباعة الاستمارة"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="الموظف">
+                            <field name="employee_id"/>
+                            <field name="date"/>
+                            <field name="employee_phone"/>
+                            <field name="employee_address"/>
+                        </group>
+                        <group string="الكفيل">
+                            <field name="guarantor_name"/>
+                            <field name="guarantor_phone"/>
+                            <field name="guarantor_address"/>
+                            <field name="guarantor_date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="ad_employee_pledge_action" model="ir.actions.act_window">
+        <field name="name">التعهدات الخطية (FM-17)</field>
+        <field name="res_model">ad.employee.pledge</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
