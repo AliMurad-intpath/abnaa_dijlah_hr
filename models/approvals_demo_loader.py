@@ -40,6 +40,9 @@ class AdDemoLoader(models.TransientModel):
                 if user:
                     vals.append((0, 0, {'user_id': user.id, 'required': True}))
             if vals:
-                cat.approver_ids = vals
+                write = {'approver_ids': vals, 'approval_minimum': len(vals)}   # all approvers are required
+                if 'approver_sequence' in cat._fields:
+                    write['approver_sequence'] = True                           # one after the other
+                cat.write(write)
                 lines.append('✓ معتمدون: %s' % cat.display_name)
         return lines
