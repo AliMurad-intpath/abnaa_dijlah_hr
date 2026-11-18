@@ -16,6 +16,28 @@ class ApprovalCategory(models.Model):
     ad_group_ids = fields.Many2many('res.groups', 'ad_approval_category_group_rel', 'category_id', 'group_id',
                                     string='المجموعات المسموح لها')
 
+    @api.model
+    def _search(self, domain, *args, **kwargs):
+        """Hide approval types from users who were not allowed them.
+
+        Nothing chosen on a type = visible to everyone. Approvals managers and
+        administrators always see every type. (Odoo 20 has no ir.rule, so the
+        filter is applied here, on every search / list / dropdown.)"""
+        user = self.env.user
+        if (not self.env.su and not kwargs.get('bypass_access')
+                and not user.has_group('approvals.group_approval_manager')
+                and not user.has_group('base.group_system')):
+            groups = (user.all_group_ids if 'all_group_ids' in user._fields else user.group_ids).ids
+            extra = ['|', '|', '&', ('ad_user_ids', '=', False), ('ad_group_ids', '=', False),
+                     ('ad_user_ids', 'in', [user.id]), ('ad_group_ids', 'in', groups)]
+            try:
+                from odoo.fields import Domain
+                domain = Domain(domain) & Domain(extra)
+            except ImportError:
+                from odoo.osv import expression
+                domain = expression.AND([domain, extra])
+        return super()._search(domain, *args, **kwargs)
+
 
 class ApprovalRequest(models.Model):
     _inherit = 'approval.request'

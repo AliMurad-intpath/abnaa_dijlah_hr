@@ -70,7 +70,6 @@
           'views/approvals_form_views.xml',
           'views/approvals_hr_employee_views.xml',
           'views/approvals_res_company_views.xml',
-          'security/approvals_security.xml',
           'views/approvals_category_access_views.xml'],
  'assets': {'web.assets_backend': ['abnaa_dijlah_hr/static/src/dashboard/ad_fonts.scss',
                                    'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.scss',
