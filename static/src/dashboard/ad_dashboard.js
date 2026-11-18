@@ -150,6 +150,15 @@ export class AdDashboard extends Component {
             res_id: id, views: [[false, "form"]], target: "new",
         }, { onClose: () => this.load() });
     }
+    widthChoices = [{ v: 1, l: "ربع" }, { v: 2, l: "نصف" }, { v: 4, l: "كامل" }];
+    widthOf(key) { return ((this.state.data && this.state.data.widths) || {})[key] || 1; }
+    async setWidth(ev, key, w) {
+        ev.stopPropagation();
+        const d = this.state.data;
+        this.state.data = { ...d, widths: { ...(d.widths || {}), [key]: w } };
+        try { await this.orm.call("ad.dashboard.block", "set_width", [key, w]); }
+        catch (e) { console.error(e); await this.load(); }
+    }
     toggleOffice() { this.state.office = !this.state.office; }
     reload() { return this.load(); }
     openList(model, domain, name) {

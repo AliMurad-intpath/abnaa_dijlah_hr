@@ -39,6 +39,9 @@ BLOCKS = [
     ('chart_sites', 'رسم: الموظفون حسب الموقع'),
 ] + [(_form_key(m), 'استمارة: %s (عرض وقوائم وطباعة)' % t) for m, t, *_r in FORMS]
 
+# default width on the 4-column grid: 1 = quarter, 2 = half, 4 = full
+DEFAULT_WIDTH = {'panel_create': 4, 'panel_alerts': 2, 'panel_recent': 2, 'chart_trend': 2}
+
 
 class AdDashboardBlock(models.Model):
     """Who may see / use each block of the dashboard and each form.
@@ -58,6 +61,8 @@ class AdDashboardBlock(models.Model):
     user_ids = fields.Many2many('res.users', 'ad_dashboard_block_user_rel', 'block_id', 'user_id',
                                 string='المستخدمون المسموح لهم',
                                 help='اتركها مع المجموعات فارغة لاظهار العنصر للجميع.')
+    width = fields.Selection([('1', 'ربع'), ('2', 'نصف'), ('4', 'كامل')], string='عرض العنصر',
+                             help='عرض العنصر في لوحة المتابعة. الفارغ = الافتراضي.')
     group_ids = fields.Many2many('res.groups', 'ad_dashboard_block_group_rel', 'block_id', 'group_id',
                                  string='المجموعات المسموح لها')
 
@@ -92,3 +97,26 @@ class AdDashboardBlock(models.Model):
     def _check_form_access(self, model_name):
         if _form_key(model_name) not in self._allowed_keys():
             raise AccessError(_('ليس لديك صلاحية على هذه الاستمارة. راجع مدير الموارد البشرية.'))
+
+    @api.model
+    def _widths(self):
+        out = {}
+        for b in self.sudo().search([]):
+            out[b.key] = int(b.width) if b.width else DEFAULT_WIDTH.get(b.key, 1)
+        return out
+
+    @api.model
+    def set_width(self, key, width):
+        """Called from the dashboard edit mode (HR managers / admins only)."""
+        user = self.env.user
+        if not (user.has_group('hr.group_hr_manager') or user.has_group('base.group_system')):
+            raise AccessError(_('ليس لديك صلاحية تعديل عرض العناصر.'))
+        if str(width) not in ('1', '2', '4') or key not in self._all_keys():
+            raise ValueError('bad width or key')
+        rec = self.sudo().search([('key', '=', key)], limit=1)
+        if rec:
+            rec.width = str(width)
+        else:
+            name = dict(BLOCKS).get(key, key)
+            self.sudo().create({'key': key, 'name': name, 'width': str(width)})
+        return True

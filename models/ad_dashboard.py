@@ -171,6 +171,7 @@ class AdDashboard(models.AbstractModel):
             'show': {k: True for k in allowed},
             'can_edit_access': can_edit, 'edit': edit,
             'ids': Block._ids_by_key() if can_edit else {},
+            'widths': Block._widths(),
             'kpis': kpis, 'tiles': tiles if (can('nav_forms') or can('chart_types')) else [], 'alerts': alerts, 'create': create,
             'recent': recent if can('panel_recent') else [],
             'trend': ([{'label': m.strftime('%m/%Y'), 'count': trend[i]} for i, m in enumerate(months)]

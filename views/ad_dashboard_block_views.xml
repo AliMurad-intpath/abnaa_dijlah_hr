@@ -21,6 +21,7 @@
                     <h2><field name="name" readonly="1"/></h2>
                     <p class="text-muted">اترك المستخدمين والمجموعات فارغين ليظهر العنصر لكل من يفتح اللوحة.</p>
                     <group>
+                        <field name="width"/>
                         <field name="user_ids" widget="many2many_tags"/>
                         <field name="group_ids" widget="many2many_tags"/>
                     </group>
