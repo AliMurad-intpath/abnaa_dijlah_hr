@@ -5,7 +5,7 @@
             <aside class="dj-sidebar">
                 <div class="dj-brand">Abnaa Dijlah<span> /</span> HR &amp; Approvals</div>
                 <div class="dj-brand-sub">أبناء دجلة للخدمات الأمنية</div>
-                <div class="dj-nav-label">استمارات الموارد البشرية</div>
+                <div class="dj-nav-label">استمارات شركة ابناء دجلة</div>
                 <nav t-if="this.state.data and this.state.data.show.nav_forms">
                     <button t-if="this.state.data.show.nav_overview" class="active"><span class="dj-nav-dot"/><span>نظرة عامة</span><span t-if="this.state.edit" class="dj-lock" role="button" t-on-click="(ev) => this.editAccess(ev, 'nav_overview')">&#128274;</span></button>
                     <button t-foreach="this.state.data.tiles" t-as="tile" t-key="tile.model" t-on-click="() => this.openTile(tile)">
@@ -21,7 +21,7 @@
                 <header class="dj-topbar">
                     <div>
                         <div class="dj-eyebrow">لوحة المتابعة</div>
-                        <h1>استمارات الموارد البشرية</h1>
+                        <h1>استمارات شركة ابناء دجلة</h1>
                         <p class="dj-greeting" t-if="this.state.data">
                             <span class="dj-greet-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon(this.greetIcon)" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
                             <span t-out="this.greeting"/> · <span t-out="this.dateLabel"/>

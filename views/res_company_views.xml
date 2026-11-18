@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="استمارات الموارد البشرية" name="ad_hr_forms">
+                <page string="استمارات شركة ابناء دجلة" name="ad_hr_forms">
                     <group>
                         <field name="ad_md_name"/>
                         <field name="ad_md_title"/>

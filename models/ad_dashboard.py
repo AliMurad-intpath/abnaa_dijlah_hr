@@ -20,7 +20,7 @@ FORMS = [
 
 class AdDashboard(models.AbstractModel):
     _name = 'ad.dashboard'
-    _description = 'لوحة استمارات الموارد البشرية'
+    _description = 'لوحة استمارات شركة ابناء دجلة'
 
     # ---- helpers -------------------------------------------------------
     def _ok(self, model_name, mode='read'):
