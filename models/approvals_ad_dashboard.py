@@ -23,3 +23,10 @@ class AdDashboardBlock(models.Model):
     @api.model
     def _all_keys(self):
         return super()._all_keys() | {'kpi_approvals'}
+
+    @api.model
+    def _layout_keys(self):
+        keys = super()._layout_keys()
+        if 'kpi_approvals' not in keys:
+            keys.insert(keys.index('kpi_slips') + 1 if 'kpi_slips' in keys else 0, 'kpi_approvals')
+        return keys

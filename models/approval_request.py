@@ -9,6 +9,12 @@ class ApprovalCategory(models.Model):
     _inherit = 'approval.category'
 
     ad_model = fields.Char('استمارة AD', index=True, help='The Abnaa Dijlah HR form this approval type serves.')
+    ad_user_ids = fields.Many2many('res.users', 'ad_approval_category_user_rel', 'category_id', 'user_id',
+                                   string='المستخدمون المسموح لهم',
+                                   help='اتركها مع المجموعات فارغة لاظهار نوع الموافقة للجميع. '
+                                        'اضف المعتمدين هنا ايضا ليتمكنوا من رؤية الطلبات.')
+    ad_group_ids = fields.Many2many('res.groups', 'ad_approval_category_group_rel', 'category_id', 'group_id',
+                                    string='المجموعات المسموح لها')
 
 
 class ApprovalRequest(models.Model):

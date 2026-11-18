@@ -1,4 +1,4 @@
-{'name': 'Abnaa Dijlah HR (Enterprise)',
+{'name': 'Abnaa Dijlah HR & Approvals',
  'version': '20.0.1.0.0',
  'category': 'Human Resources',
  'summary': 'Abnaa Dijlah Security Services - HR forms, dashboard, editable printouts and routing through '
@@ -69,7 +69,9 @@
           'data/approvals_ir_cron.xml',
           'views/approvals_form_views.xml',
           'views/approvals_hr_employee_views.xml',
-          'views/approvals_res_company_views.xml'],
+          'views/approvals_res_company_views.xml',
+          'security/approvals_security.xml',
+          'views/approvals_category_access_views.xml'],
  'assets': {'web.assets_backend': ['abnaa_dijlah_hr/static/src/dashboard/ad_fonts.scss',
                                    'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.scss',
                                    'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js',

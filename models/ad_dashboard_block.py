@@ -15,6 +15,7 @@ def _create_key(model_name):
 # key -> Arabic name. Order = order shown in the settings list.
 BLOCKS = [
     ('nav_forms', 'القائمة الجانبية'),
+    ('nav_overview', 'القائمة الجانبية: نظرة عامة (لوحة المتابعة)'),
     ('kpi_emp', 'بطاقة: الموظفون'),
     ('kpi_open', 'بطاقة: استمارات قيد الاجراء'),
     ('kpi_present', 'بطاقة: حاضرون الآن'),
@@ -82,7 +83,13 @@ class AdDashboardBlock(models.Model):
 
     @api.model
     def _ids_by_key(self):
-        return {b.key: b.id for b in self.sudo().search([])}
+        """Id of the permission record of every key (missing records are created)."""
+        Block = self.sudo()
+        have = {b.key: b.id for b in Block.search([])}
+        names = dict(BLOCKS)
+        for key in sorted(self._all_keys() - set(have)):
+            have[key] = Block.create({'key': key, 'name': names.get(key, key)}).id
+        return have
 
     @api.model
     def _allowed_keys(self):
@@ -118,9 +125,14 @@ class AdDashboardBlock(models.Model):
         return spans, chosen
 
     @api.model
+    def _layout_keys(self):
+        return list(LAYOUT)
+
+    @api.model
     def _layout_order(self):
-        seq = {b.key: b.sequence for b in self.sudo().search([('key', 'in', LAYOUT)])}
-        return sorted(LAYOUT, key=lambda k: (seq.get(k, 10), LAYOUT.index(k)))
+        keys = self._layout_keys()
+        seq = {b.key: b.sequence for b in self.sudo().search([('key', 'in', keys)])}
+        return sorted(keys, key=lambda k: (seq.get(k, 10), keys.index(k)))
 
     @api.model
     def _orders(self):
@@ -142,7 +154,7 @@ class AdDashboardBlock(models.Model):
             return False
         ia, ib = order.index(vis[i]), order.index(vis[j])
         order[ia], order[ib] = order[ib], order[ia]
-        recs = {b.key: b for b in self.sudo().search([('key', 'in', LAYOUT)])}
+        recs = {b.key: b for b in self.sudo().search([('key', 'in', self._layout_keys())])}
         for n, k in enumerate(order):
             if k in recs:
                 recs[k].sequence = 10 * (n + 1)

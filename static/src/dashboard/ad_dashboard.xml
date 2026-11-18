@@ -3,11 +3,11 @@
     <t t-name="abnaa_dijlah_hr.AdDashboard">
         <div t-att-class="'dj-workspace ' + (this.state.dark ? 'dj-dark ' : '') + (this.state.office ? 'dj-office' : '')" dir="rtl" lang="ar">
             <aside class="dj-sidebar">
-                <div class="dj-brand">Abnaa Dijlah<span> /</span> HR</div>
+                <div class="dj-brand">Abnaa Dijlah<span> /</span> HR &amp; Approvals</div>
                 <div class="dj-brand-sub">أبناء دجلة للخدمات الأمنية</div>
                 <div class="dj-nav-label">استمارات الموارد البشرية</div>
                 <nav t-if="this.state.data and this.state.data.show.nav_forms">
-                    <button class="active"><span class="dj-nav-dot"/><span>نظرة عامة</span></button>
+                    <button t-if="this.state.data.show.nav_overview" class="active"><span class="dj-nav-dot"/><span>نظرة عامة</span><span t-if="this.state.edit" class="dj-lock" role="button" t-on-click="(ev) => this.editAccess(ev, 'nav_overview')">&#128274;</span></button>
                     <button t-foreach="this.state.data.tiles" t-as="tile" t-key="tile.model" t-on-click="() => this.openTile(tile)">
                         <span class="dj-nav-dot"/><span class="dj-nav-text" t-out="tile.title"/>
                         <span t-if="tile.open" class="dj-nav-count" t-out="tile.open"/>
@@ -51,7 +51,8 @@
 
                 <t t-if="this.state.data">
                     <!-- KPI cards -->
-                    <section class="dj-grid dj-board" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
+                    <div t-if="!this.state.data.show.nav_overview" class="dj-empty">اختر استمارة من القائمة الجانبية.</div>
+                    <section t-if="this.state.data.show.nav_overview" class="dj-grid dj-board" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
                         <article t-foreach="this.state.data.kpis" t-as="k" t-key="k.key"
                                  t-att-class="'dj-panel dj-block dj-kpi dj-kind-' + k.kind + (k.model ? ' dj-click' : '') + ' dj-span-' + this.widthOf('kpi_' + k.key)" t-att-style="'order:' + this.orderOf('kpi_' + k.key)"
                                  t-on-click="() => this.openKpi(k)">
