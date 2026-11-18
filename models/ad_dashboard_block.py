@@ -39,8 +39,12 @@ BLOCKS = [
     ('chart_sites', 'رسم: الموظفون حسب الموقع'),
 ] + [(_form_key(m), 'استمارة: %s (عرض وقوائم وطباعة)' % t) for m, t, *_r in FORMS]
 
-# default width on the 4-column grid: 1 = quarter, 2 = half, 4 = full
-DEFAULT_WIDTH = {'panel_create': 4, 'panel_alerts': 2, 'panel_recent': 2, 'chart_trend': 2}
+# The grid has 12 columns. Chosen sizes: quarter = 3, half = 6, full = 12.
+# Defaults (used until a size is chosen) reproduce the original arrangement:
+# six cards per row, quick-create full, alerts|recent halves, three charts.
+SPAN = {'1': 3, '2': 6, '4': 12}
+DEFAULT_SPAN = {'panel_create': 12, 'panel_alerts': 6, 'panel_recent': 6,
+                'chart_trend': 4, 'chart_types': 4, 'chart_sites': 4}
 
 
 class AdDashboardBlock(models.Model):
@@ -100,10 +104,14 @@ class AdDashboardBlock(models.Model):
 
     @api.model
     def _widths(self):
-        out = {}
+        """(spans, chosen): spans on the 12-column grid for every key, and the
+        explicitly chosen size ('1'/'2'/'4') of the keys that have one."""
+        spans, chosen = {}, {}
         for b in self.sudo().search([]):
-            out[b.key] = int(b.width) if b.width else DEFAULT_WIDTH.get(b.key, 1)
-        return out
+            if b.width:
+                chosen[b.key] = b.width
+            spans[b.key] = SPAN[b.width] if b.width else (2 if b.key.startswith('kpi_') else DEFAULT_SPAN.get(b.key, 4))
+        return spans, chosen
 
     @api.model
     def set_width(self, key, width):
@@ -111,12 +119,13 @@ class AdDashboardBlock(models.Model):
         user = self.env.user
         if not (user.has_group('hr.group_hr_manager') or user.has_group('base.group_system')):
             raise AccessError(_('ليس لديك صلاحية تعديل عرض العناصر.'))
-        if str(width) not in ('1', '2', '4') or key not in self._all_keys():
+        width = str(width) if width else False      # 0 / empty = back to default
+        if (width and width not in SPAN) or key not in self._all_keys():
             raise ValueError('bad width or key')
         rec = self.sudo().search([('key', '=', key)], limit=1)
         if rec:
-            rec.width = str(width)
-        else:
+            rec.width = width
+        elif width:
             name = dict(BLOCKS).get(key, key)
-            self.sudo().create({'key': key, 'name': name, 'width': str(width)})
+            self.sudo().create({'key': key, 'name': name, 'width': width})
         return True
