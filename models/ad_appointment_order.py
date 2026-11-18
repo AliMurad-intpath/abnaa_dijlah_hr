@@ -25,6 +25,15 @@ class AdAppointmentOrder(models.Model):
                               ('cancel', 'ملغاة')], default='draft', tracking=True, copy=False, string='الحالة')
     interview_ref = fields.Char('مرجع تقييم المقابلة')
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        # job_title is a required stored compute: fill it before the INSERT (imports, API calls)
+        for vals in vals_list:
+            if not vals.get('job_title') and vals.get('employee_id'):
+                emp = self.env['hr.employee'].browse(vals['employee_id'])
+                vals['job_title'] = emp.job_title or emp.job_id.name or ''
+        return super().create(vals_list)
+
     @api.depends('employee_id')
     def _compute_job_title(self):
         for rec in self:
