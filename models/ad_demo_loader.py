@@ -57,7 +57,7 @@ class AdDemoLoader(models.TransientModel):
         return rows[0], rows[1:]
 
     def _demo_users(self):
-        """Create (or find) the demo users with their roles. Returns {key: user}."""
+        """Create (or find) the demo users with their roles. Returns ({key: user}, log lines)."""
         Users = self.env['res.users'].sudo().with_context(no_reset_password=True, mail_create_nosubscribe=True)
         gfield = 'group_ids' if 'group_ids' in Users._fields else 'groups_id'
         users, lines = {}, []
@@ -86,8 +86,7 @@ class AdDemoLoader(models.TransientModel):
             if bkey in ids:
                 Block.browse(ids[bkey]).write({'user_ids': [(4, users[k].id) for k in ukeys]})
         lines.append('كلمة المرور لجميع مستخدمي التجربة: %s' % DEMO_PASSWORD)
-        self._demo_user_lines = lines
-        return users
+        return users, lines
 
     def _demo_remove_users(self):
         Users = self.env['res.users'].sudo().with_context(active_test=False)
@@ -132,8 +131,8 @@ class AdDemoLoader(models.TransientModel):
                 lines.append('✓ %s : %s' % (filename, len(result.get('ids') or [])))
         try:
             with self.env.cr.savepoint():
-                self._demo_users()
-            lines.extend(self._demo_user_lines)
+                _users, user_lines = self._demo_users()
+            lines.extend(user_lines)
         except Exception as exc:
             lines.append('✗ مستخدمو التجربة : %s' % exc)
         self.log = '\n'.join(lines)
