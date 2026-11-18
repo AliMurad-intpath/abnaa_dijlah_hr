@@ -35,3 +35,4 @@ from . import approval_request
 from . import approvals_hr_employee
 from . import approvals_res_company
 from . import approvals_ad_dashboard
+from . import approvals_demo_loader

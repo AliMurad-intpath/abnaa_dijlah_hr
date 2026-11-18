@@ -7,6 +7,10 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='ad_license_code']" position="after">
                 <field name="ad_use_approvals"/>
+                <field name="ad_reminder_enabled"/>
+                <field name="ad_reminder_after_days" invisible="not ad_reminder_enabled"/>
+                <field name="ad_reminder_repeat_days" invisible="not ad_reminder_enabled"/>
+                <field name="ad_reminder_summary" invisible="not ad_reminder_enabled"/>
             </xpath>
         </field>
     </record>

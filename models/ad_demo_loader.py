@@ -21,6 +21,24 @@ DEMO_FILES = [
     '11_termination_orders_ad.termination.order.csv',
 ]
 
+# Demo internal users: (key, name, login, role groups). Password is shown in the import log.
+DEMO_PASSWORD = 'Demo@2026'
+DEMO_USERS = [
+    ('hr_manager', 'مدير الموارد البشرية (تجربة)', 'demo.hr.manager',
+     ['abnaa_dijlah_hr.group_ad_hr_manager', 'approvals.group_approval_manager']),
+    ('hr_user', 'موظف الموارد البشرية (تجربة)', 'demo.hr.user', ['abnaa_dijlah_hr.group_ad_hr_user']),
+    ('ops_manager', 'مدير العمليات (تجربة)', 'demo.ops.manager', ['abnaa_dijlah_hr.group_ad_ops_manager']),
+    ('site_supervisor', 'مشرف الموقع (تجربة)', 'demo.site.supervisor', ['abnaa_dijlah_hr.group_ad_site_supervisor']),
+    ('logistics', 'قسم اللوجستيك (تجربة)', 'demo.logistics', ['abnaa_dijlah_hr.group_ad_logistics']),
+    ('admin_aa', 'قسم الادارة AA (تجربة)', 'demo.admin.aa', ['abnaa_dijlah_hr.group_ad_admin']),
+    ('motor', 'قسم الاليات MD (تجربة)', 'demo.motor', ['abnaa_dijlah_hr.group_ad_motor']),
+    ('finance', 'القسم المالي (تجربة)', 'demo.finance', ['abnaa_dijlah_hr.group_ad_finance']),
+    ('md', 'المدير المفوض (تجربة)', 'demo.md', ['abnaa_dijlah_hr.group_ad_md']),
+    ('plain', 'مستخدم بدون صلاحيات استمارات (تجربة)', 'demo.plain', []),
+]
+# Forms limited to chosen demo users, to show the per-user access of the dashboard.
+DEMO_RESTRICTED_FORMS = {'form_ad_termination_order': ['hr_manager', 'md']}
+
 
 def _model_of(filename):
     return re.match(r'^\d+_[a-z_]+_(.+)\.csv$', filename).group(1)
@@ -37,6 +55,56 @@ class AdDemoLoader(models.TransientModel):
         with open(path, newline='', encoding='utf-8') as fh:
             rows = list(csv.reader(io.StringIO(fh.read())))
         return rows[0], rows[1:]
+
+    def _demo_users(self):
+        """Create (or find) the demo users with their roles. Returns {key: user}."""
+        Users = self.env['res.users'].sudo().with_context(no_reset_password=True, mail_create_nosubscribe=True)
+        gfield = 'group_ids' if 'group_ids' in Users._fields else 'groups_id'
+        users, lines = {}, []
+        for key, name, login, groups in DEMO_USERS:
+            user = Users.with_context(active_test=False).search([('login', '=', login)], limit=1)
+            if not user:
+                gids = [self.env.ref('base.group_user').id]
+                for xmlid in groups:
+                    group = self.env.ref(xmlid, raise_if_not_found=False)
+                    if group:
+                        gids.append(group.id)
+                appr = self.env.ref('approvals.group_approval_user', raise_if_not_found=False)
+                if appr:
+                    gids.append(appr.id)
+                user = Users.create({'name': name, 'login': login, 'email': login + '@abnaa-demo.example',
+                                     'password': DEMO_PASSWORD, gfield: [(6, 0, gids)]})
+                lines.append('✓ مستخدم: %s  (%s)' % (name, login))
+            else:
+                user.active = True
+                lines.append('= موجود: %s' % login)
+            users[key] = user
+        # who may open which restricted form
+        Block = self.env['ad.dashboard.block'].sudo()
+        ids = Block._ids_by_key()
+        for bkey, ukeys in DEMO_RESTRICTED_FORMS.items():
+            if bkey in ids:
+                Block.browse(ids[bkey]).write({'user_ids': [(4, users[k].id) for k in ukeys]})
+        lines.append('كلمة المرور لجميع مستخدمي التجربة: %s' % DEMO_PASSWORD)
+        self._demo_user_lines = lines
+        return users
+
+    def _demo_remove_users(self):
+        Users = self.env['res.users'].sudo().with_context(active_test=False)
+        demo = Users.search([('login', 'in', [u[2] for u in DEMO_USERS])])
+        Block = self.env['ad.dashboard.block'].sudo()
+        for blk in Block.search([('user_ids', 'in', demo.ids)]):
+            blk.user_ids = [(3, u.id) for u in demo]
+        done = 0
+        for user in demo:
+            try:
+                with self.env.cr.savepoint():
+                    user.unlink()
+                done += 1
+            except Exception:
+                user.active = False      # cannot be deleted (has history): archive instead
+                done += 1
+        return 'مستخدمو التجربة : حذف/ارشفة %s' % done
 
     def _reopen(self):
         return {
@@ -62,6 +130,12 @@ class AdDemoLoader(models.TransientModel):
                 lines.append('✗ %s : %s' % (filename, '; '.join(str(m.get('message')) for m in errors[:3])))
             else:
                 lines.append('✓ %s : %s' % (filename, len(result.get('ids') or [])))
+        try:
+            with self.env.cr.savepoint():
+                self._demo_users()
+            lines.extend(self._demo_user_lines)
+        except Exception as exc:
+            lines.append('✗ مستخدمو التجربة : %s' % exc)
         self.log = '\n'.join(lines)
         return self._reopen()
 
@@ -87,5 +161,6 @@ class AdDemoLoader(models.TransientModel):
                 except Exception:
                     failed += 1
             lines.append('%s : حذف %s%s' % (filename, removed, ' / تعذر حذف %s' % failed if failed else ''))
+        lines.append(self._demo_remove_users())
         self.log = '\n'.join(lines)
         return self._reopen()
