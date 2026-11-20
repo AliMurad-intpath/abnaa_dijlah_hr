@@ -137,10 +137,7 @@ class AdFormStep(models.Model):
 
     @api.model
     def _ad_send_daily_summary(self, now):
-        param = self.env['ir.config_parameter'].sudo()
-        today = str(fields.Date.to_date(now))
-        if param.get_param('abnaa_dijlah_hr.last_approval_summary') == today:
-            return
+        today = fields.Date.to_date(now)
         steps = self.sudo().search([('state', '=', 'pending')])
         if not steps:
             return
@@ -151,6 +148,8 @@ class AdFormStep(models.Model):
                 continue
             company = rec.company_id or self.env.company
             if not (company.ad_reminder_enabled and company.ad_reminder_summary):
+                continue
+            if company.sudo().ad_last_summary == today:
                 continue
             by_company.setdefault(company, []).append(
                 Markup('<li><a href="#" data-oe-model="%s" data-oe-id="%s">%s</a> — %s (%s)</li>') % (
@@ -165,7 +164,7 @@ class AdFormStep(models.Model):
                 self.env._('استمارات ما زالت بانتظار المعتمدين: %s', len(rows)), Markup('').join(rows))
             self.env['res.partner'].sudo().browse(partners.ids[:1]).message_notify(
                 partner_ids=partners.ids, subject=self.env._('ملخص يومي: موافقات معلقة'), body=body)
-        param.set_param('abnaa_dijlah_hr.last_approval_summary', today)
+            company.sudo().ad_last_summary = today
 
 
 class AdApprovalMixin(models.AbstractModel):

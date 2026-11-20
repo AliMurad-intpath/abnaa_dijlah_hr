@@ -18,6 +18,7 @@ class ResCompany(models.Model):
         'اول تذكير بعد (ايام)', default=1, help='عدد ايام انتظار الاستمارة قبل اول تذكير للمعتمد.')
     ad_reminder_repeat_days = fields.Integer(
         'تكرار التذكير كل (ايام)', default=1, help='بعد اول تذكير يتكرر كل N يوم حتى يتم القرار.')
+    ad_last_summary = fields.Date(copy=False)
     ad_reminder_summary = fields.Boolean(
         'ملخص يومي لمدير الموارد البشرية', default=True,
         help='اشعار يومي واحد لمدراء الموارد البشرية بكل الاستمارات التي ما زالت بانتظار معتمد.')
