@@ -54,7 +54,10 @@
         <div t-if="this.state.drawMode" class="alert alert-info small">ارسم مستطيلا على الـ PDF لوضع العنصر الجديد. <button class="btn btn-sm btn-link" t-on-click="this.cancelCreator">الغاء</button></div>
 <div t-if="this.state.creator" class="o_hr_pdf_create card card-body mb-3">
 <t t-set="c" t-value="this.state.creator"/>
-<h5><t t-if="c.kind === 'field'">
+<h5><t t-if="c.kind === 'field'">حقل جديد</t><t t-else="">مرحلة موافقة جديدة</t></h5>
+<p t-if="c.kind === 'rule'" class="small text-muted">تضاف مرحلة جديدة الى مسار الموافقة وتوقيعها في المستطيل المرسوم.</p>
+<label>الاسم</label><input class="form-control form-control-sm mb-2" t-att-value="c.name" t-on-input="(ev) =&gt; this.creatorInput('name', ev)"/>
+<t t-if="c.kind === 'field'">
 <label>قيمة الحقل من</label>
 <select class="form-select form-select-sm mb-2" t-on-change="(ev) =&gt; this.creatorInput('source', ev)">
 <option value="" t-att-selected="!c.source">اختر...</option>
