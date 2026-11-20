@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_ad_hiring" name="التعيين" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="30"/>
-    <menuitem id="menu_ad_appointment_order" name="اوامر التعيين" parent="menu_ad_hiring" sequence="20" action="ad_appointment_order_action"/>
+    <menuitem id="menu_ad_hiring" name="Appointment" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="30"/>
+    <menuitem id="menu_ad_appointment_order" name="Appointment orders" parent="menu_ad_hiring" sequence="20" action="ad_appointment_order_action"/>
 </odoo>

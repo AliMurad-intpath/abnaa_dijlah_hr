@@ -19,17 +19,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_open_designer" type="object" string="فتح مصمم الاستمارة" class="btn-primary"
+                    <button name="action_open_designer" type="object" string="Open form designer" class="btn-primary"
                             invisible="not template_attachment_id"/>
-                    <button name="action_download_pdf" type="object" string="تنزيل الـ PDF الفارغ"
+                    <button name="action_download_pdf" type="object" string="Download blank PDF"
                             invisible="not template_attachment_id"/>
-                    <button name="action_clear_pdf" type="object" string="حذف الملف لرفع ملف جديد"
+                    <button name="action_clear_pdf" type="object" string="Delete file to upload a new one"
                             invisible="not template_attachment_id"
-                            confirm="سيحذف الملف الحالي. الحقول والمراحل تبقى كما هي. متابعة؟"/>
+                            confirm="The current file will be deleted. Fields and stages stay as they are. Continue?"/>
                 </header>
                 <sheet>
                     <group>
-                        <group string="الوثيقة">
+                        <group string="Document">
                             <field name="name"/>
                             <field name="code"/>
                             <field name="title_ar"/>
@@ -37,21 +37,20 @@
                             <field name="res_model"/>
                             <field name="active"/>
                         </group>
-                        <group string="ملف الـ PDF">
+                        <group string="PDF file">
                             <field name="template_pdf" filename="template_filename" invisible="template_attachment_id"/>
                             <field name="template_filename"/>
                             <field name="page_count"/>
                             <field name="template_attachment_id" invisible="1"/>
                             <div class="text-muted" colspan="2">
-                                ملف PDF الفارغ للاستمارة (كما تطبع على الورق). تطبع البيانات فوقه في الصناديق التي تحددها في المصمم.
-                                لتبديل الملف اضغط (حذف الملف لرفع ملف جديد) ثم ارفع الجديد واحفظ.
+                                The blank PDF of the form (as printed on paper). Data is printed over it in the boxes you define in the designer.
                             </div>
                         </group>
                     </group>
                     <notebook>
-                        <page string="مراحل الموافقة" name="stages">
+                        <page string="Approval stages" name="stages">
                             <p class="text-muted">
-                                تمر الاستمارة بالمراحل بالترتيب. حدد مستخدما بعينه، او اتركه فارغا ليوافق اي عضو من المجموعة.
+                                The form goes through the stages in order. Select a specific user, or leave empty to let any member of the group approve.
                             </p>
                             <field name="stage_ids">
                                 <list editable="bottom">
@@ -62,11 +61,11 @@
                                     <field name="group_id"/>
                                     <field name="print_signature"/>
                                     <field name="signature_page" optional="hide"/>
-                                    <button name="action_place_on_pdf" type="object" string="موضع التوقيع" icon="fa-arrows"/>
+                                    <button name="action_place_on_pdf" type="object" string="Signature position" icon="fa-arrows"/>
                                 </list>
                             </field>
                         </page>
-                        <page string="الحقول المطبوعة" name="fields">
+                        <page string="Printed fields" name="fields">
                             <field name="field_ids">
                                 <list>
                                     <field name="sequence" widget="handle"/>
@@ -106,7 +105,7 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="ترويسة الوثيقة" name="header">
+                        <page string="Document header" name="header">
                             <group>
                                 <field name="issue"/>
                                 <field name="issue_date"/>
@@ -114,7 +113,7 @@
                                 <field name="title_layout"/>
                                 <field name="logo" widget="image" options="{'size': [0, 90]}"/>
                             </group>
-                            <p class="text-muted">هذه القيم مطبوعة اصلا داخل ملف الـ PDF. تغييرها لا يغير الملف؛ ارفع PDF جديدا لتغيير الترويسة.</p>
+                            <p class="text-muted">These values are already printed inside the PDF file. Changing them does not change the file; upload a new PDF to change the header.</p>
                         </page>
                     </notebook>
                 </sheet>
@@ -122,7 +121,7 @@
         </field>
     </record>
     <record id="ad_form_template_action" model="ir.actions.act_window">
-        <field name="name">قوالب الاستمارات (PDF والموافقات)</field>
+        <field name="name">Form templates (PDF and approvals)</field>
         <field name="res_model">ad.form.template</field>
         <field name="view_mode">list,form</field>
     </record>

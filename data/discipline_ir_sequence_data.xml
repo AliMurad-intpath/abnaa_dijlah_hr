@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <record id="seq_ad_discipline" model="ir.sequence">
-        <field name="name">استمارة العقوبات - AD</field>
+        <field name="name">Penalties form - AD</field>
         <field name="code">ad.discipline</field>
         <field name="prefix">PN/%(year)s/</field>
         <field name="padding">4</field>

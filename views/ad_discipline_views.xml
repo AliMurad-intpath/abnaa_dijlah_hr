@@ -8,7 +8,7 @@
         </field>
     </record>
     <record id="ad_violation_type_action" model="ir.actions.act_window">
-        <field name="name">انواع المخالفات</field>
+        <field name="name">Violation types</field>
         <field name="res_model">ad.violation.type</field>
         <field name="view_mode">list</field>
     </record>
@@ -28,13 +28,13 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_hr" type="object" string="مراجعة الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_ops" type="object" string="موافقة العمليات" class="btn-primary" invisible="state != 'hr'"/>
-                    <button name="action_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'ops'"/>
-                    <button name="action_acknowledge" type="object" string="اقرار الموظف بالاستلام" class="btn-primary" invisible="state != 'approved'"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
-                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('acknowledged', 'cancel')"/>
-                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <button name="action_hr" type="object" string="HR review" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_ops" type="object" string="Operations approval" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="action_approve" type="object" string="Managing director approval" class="btn-primary" invisible="state != 'ops'"/>
+                    <button name="action_acknowledge" type="object" string="Employee acknowledgment of receipt" class="btn-primary" invisible="state != 'approved'"/>
+                    <button name="action_ad_print" type="object" string="Print form" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('acknowledged', 'cancel')"/>
+                    <button name="action_draft" type="object" string="Reset to draft" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,ops,approved,acknowledged"/>
                 </header>
                 <sheet>
@@ -48,8 +48,8 @@
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </group>
-                    <group string="المخالفات"><field name="violation_ids" widget="many2many_tags" nolabel="1"/></group>
-                    <group string="القرار">
+                    <group string="Violations"><field name="violation_ids" widget="many2many_tags" nolabel="1"/></group>
+                    <group string="Decision">
                         <group invisible="decision != 'suspension'">
                             <field name="date_from"/><field name="date_to"/><field name="total_days"/>
                         </group>
@@ -61,7 +61,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="الموافقات" name="approvals">
+                        <page string="Approvals" name="approvals">
                             <field name="signature_ids" readonly="1">
                                 <list><field name="step"/><field name="user_id"/><field name="date"/></list>
                             </field>
@@ -73,7 +73,7 @@
         </field>
     </record>
     <record id="ad_discipline_action" model="ir.actions.act_window">
-        <field name="name">استمارات العقوبات (AD-HR-FM-10)</field>
+        <field name="name">Penalties forms (AD-HR-FM-10)</field>
         <field name="res_model">ad.discipline</field>
         <field name="view_mode">list,form</field>
     </record>

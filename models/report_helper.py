@@ -8,7 +8,7 @@ from . import tools
 class AdReportHelper(models.AbstractModel):
     """Formatting helpers called from the QWeb forms: env['ad.report.helper'].d3(date)"""
     _name = 'ad.report.helper'
-    _description = 'مساعدات طباعة الاستمارات'
+    _description = 'Form printing helpers'
 
     @api.model
     def d3(self, value):

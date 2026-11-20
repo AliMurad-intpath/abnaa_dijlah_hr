@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button name="action_ad_open_discipline" type="object" class="oe_stat_button" icon="fa-gavel" invisible="ad_discipline_count == 0">
-                    <field name="ad_discipline_count" widget="statinfo" string="العقوبات"/>
+                    <field name="ad_discipline_count" widget="statinfo" string="Penalties"/>
                 </button>
             </xpath>
         </field>

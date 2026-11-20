@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <record id="seq_ad_interview" model="ir.sequence">
-        <field name="name">تقييم المقابلة - AD</field>
+        <field name="name">Interview rating - AD</field>
         <field name="code">ad.interview</field>
         <field name="prefix">IV/%(year)s/</field>
         <field name="padding">4</field>

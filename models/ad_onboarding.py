@@ -4,45 +4,45 @@ from odoo import fields, models
 class AdOnboarding(models.Model):
     """Effective Date Notice AD-WI-FM-06-03 (استمارة تاريخ مباشرة العمل)."""
     _name = 'ad.onboarding'
-    _description = 'استمارة تاريخ مباشرة العمل'
+    _description = 'Start of work date form'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'ad.approval.mixin']
     _order = 'date desc, id desc'
     _ad_seq_code = 'ad.onboarding'
     _ad_form_xmlid = 'abnaa_dijlah_hr.form_tpl_onboarding'
 
-    date = fields.Date(default=fields.Date.context_today, required=True, string='التاريخ')
-    employee_id = fields.Many2one('hr.employee', string='اسم الموظف', required=True, tracking=True)
-    appointment_id = fields.Many2one('ad.appointment.order', string='رقم امر التعيين',
+    date = fields.Date(default=fields.Date.context_today, required=True, string='Date')
+    employee_id = fields.Many2one('hr.employee', string='Employee name', required=True, tracking=True)
+    appointment_id = fields.Many2one('ad.appointment.order', string='Appointment order number',
                                      domain="[('employee_id', '=', employee_id)]")
-    site_id = fields.Many2one('ad.work.site', string='موقع العمل')
-    start_date = fields.Date('تاريخ المباشرة', tracking=True)
-    start_shift = fields.Selection([('am', 'قبل الظهر (ق.ظ)'), ('pm', 'بعد الظهر (ب.ظ)')], string='الفترة (ق.ظ / ب.ظ)', default='am')
-    supervisor_name = fields.Char('اسم المشرف')
-    supervisor_mobile = fields.Char('رقم الموبايل')
+    site_id = fields.Many2one('ad.work.site', string='Work site')
+    start_date = fields.Date('Start date', tracking=True)
+    start_shift = fields.Selection([('am', 'Morning (AM)'), ('pm', 'Afternoon (PM)')], string='Period (AM / PM)', default='am')
+    supervisor_name = fields.Char('Supervisor name')
+    supervisor_mobile = fields.Char('Mobile number')
     # HR stage
-    medical_done = fields.Boolean('فحص طبي')
-    medical_letter = fields.Char('رقم الكتاب')
-    salary_done = fields.Boolean('توطين راتب')
-    salary_letter = fields.Char('رقم الكتاب ')
-    auth_done = fields.Boolean('كتاب تخويل')
-    auth_letter = fields.Char('رقم الكتاب  ')
+    medical_done = fields.Boolean('Medical examination')
+    medical_letter = fields.Char('Letter number')
+    salary_done = fields.Boolean('Salary domiciliation')
+    salary_letter = fields.Char('Letter number ')
+    auth_done = fields.Boolean('Authorization letter')
+    auth_letter = fields.Char('Letter number  ')
     # Logistics stage
-    issue_date = fields.Date('تاريخ تجهيز الموظف بالمواد')
-    shirt_size = fields.Char('قميص')
-    trouser_size = fields.Char('بنطرون')
-    shoe_size = fields.Char('حذاء')
-    has_pouch = fields.Boolean('جعبة')
-    other_items = fields.Char('أخرى')
+    issue_date = fields.Date('Date employee was issued equipment')
+    shirt_size = fields.Char('Shirt')
+    trouser_size = fields.Char('Trousers')
+    shoe_size = fields.Char('Shoes')
+    has_pouch = fields.Boolean('Belt pouch')
+    other_items = fields.Char('Other')
     # Operations stage confirmations
-    ops_medical = fields.Boolean('العمليات تؤيد استلام الفحص الطبي')
-    ops_salary = fields.Boolean('العمليات تؤيد استلام توطين الراتب')
-    ops_auth = fields.Boolean('العمليات تؤيد استلام التخويل')
-    training_done = fields.Boolean('تم استيفاء التدريب')
-    trainer_name = fields.Char('المدرب')
+    ops_medical = fields.Boolean('Operations confirms receipt of the medical examination')
+    ops_salary = fields.Boolean('Operations confirms receipt of the salary domiciliation')
+    ops_auth = fields.Boolean('Operations confirms receipt of the authorization')
+    training_done = fields.Boolean('Training completed')
+    trainer_name = fields.Char('Trainer')
     state = fields.Selection([
-        ('draft', 'مسودة'), ('hr', 'اكتمل قسم الموارد البشرية'), ('logistics', 'تم تجهيز الموظف'),
-        ('site', 'مشرف الموقع'), ('ops', 'العمليات'), ('done', 'معتمد من المدير المفوض'), ('cancel', 'ملغاة'),
-    ], default='draft', tracking=True, copy=False, string='الحالة')
+        ('draft', 'Draft'), ('hr', 'HR section completed'), ('logistics', 'Employee equipped'),
+        ('site', 'Site supervisor'), ('ops', 'Operations'), ('done', 'Approved by the managing director'), ('cancel', 'Cancelled'),
+    ], default='draft', tracking=True, copy=False, string='Status')
 
     def action_hr(self):
         self.ad_require_group('abnaa_dijlah_hr.group_ad_hr_user')

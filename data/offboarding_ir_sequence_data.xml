@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <record id="seq_ad_termination_order" model="ir.sequence">
-        <field name="name">انهاء الخدمات - AD</field>
+        <field name="name">Termination of services - AD</field>
         <field name="code">ad.termination.order</field>
         <field name="prefix">TO/%(year)s/</field>
         <field name="padding">4</field>
     </record>
     <record id="seq_ad_clearance" model="ir.sequence">
-        <field name="name">براءة الذمة - AD</field>
+        <field name="name">Clearance - AD</field>
         <field name="code">ad.clearance</field>
         <field name="prefix">CL/%(year)s/</field>
         <field name="padding">4</field>

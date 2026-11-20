@@ -4,36 +4,36 @@ from odoo import api, fields, models
 class AdDiscipline(models.Model):
     """Penalty form AD-HR-FM-10 (استمارة العقوبات)."""
     _name = 'ad.discipline'
-    _description = 'استمارة العقوبات'
+    _description = 'Penalties form'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'ad.approval.mixin']
     _order = 'date desc, id desc'
     _ad_seq_code = 'ad.discipline'
     _ad_form_xmlid = 'abnaa_dijlah_hr.form_tpl_penalty'
 
-    date = fields.Date(default=fields.Date.context_today, required=True, string='التاريخ')
-    employee_id = fields.Many2one('hr.employee', string='اسم الموظف', required=True, tracking=True)
-    job_title = fields.Char('العنوان الوظيفي', compute='_compute_employee_data', store=True, readonly=False)
-    employee_no = fields.Char('الرقم الوظيفي', compute='_compute_employee_data', store=True, readonly=False)
-    violation_ids = fields.Many2many('ad.violation.type', string='المخالفات')
-    repetition = fields.Selection([('1', 'الأولى'), ('2', 'الثانية'), ('3', 'الثالثة')],
-                                  compute='_compute_repetition', store=True, readonly=False, tracking=True, string='تكرار المخالفة')
+    date = fields.Date(default=fields.Date.context_today, required=True, string='Date')
+    employee_id = fields.Many2one('hr.employee', string='Employee name', required=True, tracking=True)
+    job_title = fields.Char('Job title', compute='_compute_employee_data', store=True, readonly=False)
+    employee_no = fields.Char('Employee number', compute='_compute_employee_data', store=True, readonly=False)
+    violation_ids = fields.Many2many('ad.violation.type', string='Violations')
+    repetition = fields.Selection([('1', 'First'), ('2', 'Second'), ('3', 'Third')],
+                                  compute='_compute_repetition', store=True, readonly=False, tracking=True, string='Violation repetition')
     decision = fields.Selection([
-        ('suspension', 'إيقاف عن العمل'),
-        ('deduction', 'عقوبة خصم الراتب'),
-        ('termination', 'عقوبة انهاء الخدمات'),
-    ], tracking=True, string='القرار')
-    date_from = fields.Date('من تاريخ')
-    date_to = fields.Date('الى تاريخ')
-    total_days = fields.Integer('مجموع الأيام', compute='_compute_total_days', store=True, readonly=False)
-    deduction_type = fields.Char('نوع الخصم')
-    deduction_amount = fields.Monetary('مبلغ الخصم', currency_field='currency_id')
-    deduction_from = fields.Date('من تأريخ')
-    termination_from = fields.Date('من تأريخ')
+        ('suspension', 'Suspension from work'),
+        ('deduction', 'Salary deduction penalty'),
+        ('termination', 'Termination penalty'),
+    ], tracking=True, string='Decision')
+    date_from = fields.Date('From date')
+    date_to = fields.Date('To date')
+    total_days = fields.Integer('Total days', compute='_compute_total_days', store=True, readonly=False)
+    deduction_type = fields.Char('Deduction type')
+    deduction_amount = fields.Monetary('Deduction amount', currency_field='currency_id')
+    deduction_from = fields.Date('From date')
+    termination_from = fields.Date('From date')
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
     state = fields.Selection([
-        ('draft', 'مسودة'), ('hr', 'مراجعة الموارد البشرية'), ('ops', 'العمليات'), ('approved', 'معتمد من المدير المفوض'),
-        ('acknowledged', 'اقرار الموظف بالاستلام'), ('cancel', 'ملغاة'),
-    ], default='draft', tracking=True, copy=False, string='الحالة')
+        ('draft', 'Draft'), ('hr', 'HR review'), ('ops', 'Operations'), ('approved', 'Approved by the managing director'),
+        ('acknowledged', 'Employee acknowledgment of receipt'), ('cancel', 'Cancelled'),
+    ], default='draft', tracking=True, copy=False, string='Status')
 
     @api.depends('employee_id')
     def _compute_employee_data(self):

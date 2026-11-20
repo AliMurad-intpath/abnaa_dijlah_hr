@@ -16,13 +16,13 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_hr" type="object" string="اكتملت مقابلة الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_ops" type="object" string="اكتمل التدريب / العمليات" class="btn-primary" invisible="state != 'hr'"/>
-                    <button name="action_done" type="object" string="اعتماد التوصية" class="btn-primary" invisible="state != 'ops'"/>
-                    <button name="action_create_employee" type="object" string="انشاء موظف" invisible="state != 'done' or recommendation != 'hire' or employee_id"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
-                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
-                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <button name="action_hr" type="object" string="HR interview completed" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_ops" type="object" string="Training / operations completed" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="action_done" type="object" string="Approve recommendation" class="btn-primary" invisible="state != 'ops'"/>
+                    <button name="action_create_employee" type="object" string="Create employee" invisible="state != 'done' or recommendation != 'hire' or employee_id"/>
+                    <button name="action_ad_print" type="object" string="Print form" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done', 'cancel')"/>
+                    <button name="action_draft" type="object" string="Reset to draft" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,ops,done"/>
                 </header>
                 <sheet>
@@ -39,7 +39,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="الدرجات" name="scores">
+                        <page string="Scores" name="scores">
                             <field name="score_ids">
                                 <list editable="bottom" create="0" delete="0">
                                     <field name="sequence" column_invisible="1"/>
@@ -47,12 +47,12 @@
                                 </list>
                             </field>
                             <group>
-                                <group string="العربية"><field name="ar_read"/><field name="ar_write"/><field name="ar_speak"/></group>
-                                <group string="الانكليزية"><field name="en_read"/><field name="en_write"/><field name="en_speak"/></group>
+                                <group string="Arabic"><field name="ar_read"/><field name="ar_write"/><field name="ar_speak"/></group>
+                                <group string="English"><field name="en_read"/><field name="en_write"/><field name="en_speak"/></group>
                             </group>
                             <group><field name="overall_score"/></group>
                         </page>
-                        <page string="الصحة" name="health">
+                        <page string="Health" name="health">
                             <group>
                                 <group>
                                     <field name="health_general"/><field name="weight"/><field name="height"/>
@@ -62,33 +62,33 @@
                             </group>
                             <field name="surgery_ids"><list editable="bottom"><field name="name"/><field name="date"/></list></field>
                         </page>
-                        <page string="الامن" name="security">
+                        <page string="Security" name="security">
                             <group>
                                 <field name="q_party"/><field name="q_convicted"/><field name="q_pending_case"/>
                             </group>
                             <field name="reference_ids"><list editable="bottom"><field name="name"/><field name="relation"/><field name="phone"/></list></field>
                         </page>
-                        <page string="التدريب" name="training">
+                        <page string="Training" name="training">
                             <group>
                                 <field name="t_weapon"/><field name="t_force_law"/><field name="t_armed_conflict"/><field name="t_search"/>
                             </group>
                         </page>
-                        <page string="التوصية" name="recommendation">
+                        <page string="Recommendation" name="recommendation">
                             <group>
-                                <group string="القرار">
+                                <group string="Decision">
                                     <field name="recommendation"/><field name="ack_date"/>
                                 </group>
-                                <group string="اسباب الانسحاب" invisible="recommendation != 'withdraw'">
+                                <group string="Withdrawal reasons" invisible="recommendation != 'withdraw'">
                                     <field name="w_salary"/><field name="w_duties"/><field name="w_hours"/>
                                     <field name="w_other_job"/><field name="w_mind"/><field name="w_other"/>
                                 </group>
-                                <group string="اسباب عدم التعيين" invisible="recommendation != 'reject'">
+                                <group string="Reasons for not hiring" invisible="recommendation != 'reject'">
                                     <field name="r_qualif"/><field name="r_health"/><field name="r_security"/>
                                     <field name="r_training"/><field name="r_other"/>
                                 </group>
                             </group>
                         </page>
-                        <page string="الموافقات" name="approvals">
+                        <page string="Approvals" name="approvals">
                             <field name="signature_ids" readonly="1">
                                 <list><field name="step"/><field name="user_id"/><field name="date"/></list>
                             </field>
@@ -100,7 +100,7 @@
         </field>
     </record>
     <record id="ad_interview_action" model="ir.actions.act_window">
-        <field name="name">استمارات تقييم المقابلة (AD-WI-FM-06-01)</field>
+        <field name="name">Interview rating forms (AD-WI-FM-06-01)</field>
         <field name="res_model">ad.interview</field>
         <field name="view_mode">list,form</field>
     </record>

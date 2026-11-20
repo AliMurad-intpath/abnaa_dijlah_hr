@@ -6,32 +6,32 @@ from odoo import api, fields, models
 class AdTransfer(models.Model):
     """Guard transfer to work sites AD-HR-FM-09 (استمارة تنقلات الحراس لمواقع العمل)."""
     _name = 'ad.transfer'
-    _description = 'تنقل حارس'
+    _description = 'Guard transfer'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'ad.approval.mixin']
     _order = 'date desc, id desc'
     _ad_seq_code = 'ad.transfer'
     _ad_form_xmlid = 'abnaa_dijlah_hr.form_tpl_transfer'
 
-    date = fields.Date(default=fields.Date.context_today, required=True, string='التاريخ')
-    employee_id = fields.Many2one('hr.employee', string='اسم الموظف', required=True, tracking=True)
-    old_site_id = fields.Many2one('ad.work.site', string='موقع العمل الحالي',
+    date = fields.Date(default=fields.Date.context_today, required=True, string='Date')
+    employee_id = fields.Many2one('hr.employee', string='Employee name', required=True, tracking=True)
+    old_site_id = fields.Many2one('ad.work.site', string='Current work site',
                                   compute='_compute_old_site', store=True, readonly=False)
-    employee_no = fields.Char('رقم الموظف', related='employee_id.ad_employee_no')
-    old_supervisor = fields.Char('المشرف الحالي')
-    old_supervisor_mobile = fields.Char('رقم موبايل المشرف')
-    new_site_id = fields.Many2one('ad.work.site', string='موقع العمل الجديد', required=True, tracking=True)
-    new_supervisor = fields.Char('المشرف المستلم')
-    start_date = fields.Date('تاريخ المباشرة', tracking=True)
-    start_shift = fields.Selection([('am', 'ق.ظ'), ('pm', 'ب.ظ')], default='am', string='الفترة (ق.ظ / ب.ظ)')
-    leave_date = fields.Date('بدلا من موقع العمل')
-    leave_shift = fields.Selection([('am', 'ق.ظ'), ('pm', 'ب.ظ')], default='am', string='الفترة (ق.ظ / ب.ظ)')
+    employee_no = fields.Char('Employee number', related='employee_id.ad_employee_no')
+    old_supervisor = fields.Char('Current supervisor')
+    old_supervisor_mobile = fields.Char('Supervisor mobile number')
+    new_site_id = fields.Many2one('ad.work.site', string='New work site', required=True, tracking=True)
+    new_supervisor = fields.Char('Receiving supervisor')
+    start_date = fields.Date('Start date', tracking=True)
+    start_shift = fields.Selection([('am', 'AM'), ('pm', 'PM')], default='am', string='Period (AM / PM)')
+    leave_date = fields.Date('Instead of work site')
+    leave_shift = fields.Selection([('am', 'AM'), ('pm', 'PM')], default='am', string='Period (AM / PM)')
     state = fields.Selection([
-        ('draft', 'مسودة'), ('ops', 'العمليات'), ('site', 'تأييد الموقع'),
-        ('hr', 'تأييد الموارد البشرية'), ('done', 'مخوّل من المدير المفوض'), ('cancel', 'ملغاة'),
-    ], default='draft', tracking=True, copy=False, string='الحالة')
-    md_date = fields.Date('تاريخ تخويل المدير المفوض', readonly=True, copy=False)
-    valid_until = fields.Date('التخويل نافذ لغاية', compute='_compute_valid_until', store=True)
-    reminder_sent = fields.Boolean(copy=False, string='تم ارسال التنبيه')
+        ('draft', 'Draft'), ('ops', 'Operations'), ('site', 'Site confirmation'),
+        ('hr', 'HR confirmation'), ('done', 'Authorized by the managing director'), ('cancel', 'Cancelled'),
+    ], default='draft', tracking=True, copy=False, string='Status')
+    md_date = fields.Date('Managing director authorization date', readonly=True, copy=False)
+    valid_until = fields.Date('Authorization valid until', compute='_compute_valid_until', store=True)
+    reminder_sent = fields.Boolean(copy=False, string='Alert sent')
 
     @api.depends('employee_id')
     def _compute_old_site(self):
@@ -78,6 +78,6 @@ class AdTransfer(models.Model):
         for rec in self.search([('state', '=', 'done'), ('reminder_sent', '=', False),
                                 ('valid_until', '<=', today + relativedelta(days=3))]):
             rec.activity_schedule('mail.mail_activity_data_todo', date_deadline=rec.valid_until,
-                                  summary=self.env._('ينتهي تخويل النقل'),
+                                  summary=self.env._('Transfer authorization expires'),
                                   user_id=rec.create_uid.id)
             rec.reminder_sent = True

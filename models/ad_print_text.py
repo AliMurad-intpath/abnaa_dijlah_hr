@@ -1,17 +1,17 @@
 from odoo import fields, models
 
 REPORT_KEYS = [
-    ('appointment', 'أمر تعيين'),
-    ('clearance', 'براءة الذمة'),
-    ('discipline', 'العقوبات'),
-    ('guarantee', 'الكفالة والتعهد الخطي'),
-    ('interview', 'تقييم المقابلة'),
-    ('moi', 'نموذج وزارة الداخلية'),
-    ('onboarding', 'مباشرة العمل'),
-    ('pledge', 'التعهدات الخطية'),
-    ('termination', 'انهاء الخدمات'),
-    ('transfer', 'تنقلات الحراس'),
-    ('general', 'ترويسة وعناصر مشتركة'),
+    ('appointment', 'Appointment order'),
+    ('clearance', 'Clearance'),
+    ('discipline', 'Penalties'),
+    ('guarantee', 'Guarantee and written pledge'),
+    ('interview', 'Interview rating'),
+    ('moi', 'Ministry of Interior form'),
+    ('onboarding', 'Start of work'),
+    ('pledge', 'Written pledges'),
+    ('termination', 'Termination of services'),
+    ('transfer', 'Guard transfers'),
+    ('general', 'Header and shared elements'),
 ]
 
 
@@ -22,14 +22,14 @@ class AdPrintText(models.Model):
     as 'original'. HR edits `text`; the report prints `text`. A line may contain
     line breaks. Leaving it empty prints nothing for that line."""
     _name = 'ad.print.text'
-    _description = 'نص قابل للتعديل في الطباعة'
+    _description = 'Text editable in print'
     _order = 'report_key, seq'
 
-    report_key = fields.Selection(REPORT_KEYS, 'الاستمارة', required=True, readonly=True, index=True)
-    seq = fields.Integer('رقم السطر', required=True, readonly=True)
-    text = fields.Text('النص المطبوع')
-    original = fields.Text('النص الأصلي', readonly=True)
-    edited = fields.Boolean('معدل', compute='_compute_edited', search='_search_edited')
+    report_key = fields.Selection(REPORT_KEYS, 'Form', required=True, readonly=True, index=True)
+    seq = fields.Integer('Line number', required=True, readonly=True)
+    text = fields.Text('Printed text')
+    original = fields.Text('Original text', readonly=True)
+    edited = fields.Boolean('Modified', compute='_compute_edited', search='_search_edited')
 
     def _compute_edited(self):
         for rec in self:

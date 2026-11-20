@@ -3,6 +3,9 @@ import { Component, onMounted, onWillUnmount, proxy, useProps } from "@odoo/owl"
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { standardActionServiceProps } from "@web/webclient/actions/action_plugin";
+import { _t } from "@web/core/l10n/translation";
+import { localization } from "@web/core/l10n/localization";
+import { user } from "@web/core/user";
 
 const circle = (cx, cy, r) =>
     `M${cx - r} ${cy}a${r} ${r} 0 1 0 ${r * 2} 0a${r} ${r} 0 1 0 ${-r * 2} 0`;
@@ -37,8 +40,8 @@ const ICONS = {
     shield: ["M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"],
     pen: ["M12 20h9", "M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"],
     monitor: ["M2 4h20v12H2z", "M8 20h8", "M12 16v4"],
+    lock: ["M5 11h14v10H5z", "M8 11V7a4 4 0 0 1 8 0v4"],
 };
-const PALETTE = ["#6366f1", "#0ea5e9", "#14b8a6", "#f97316", "#d946ef", "#8b5cf6", "#3b82f6", "#ef4444", "#64748b"];
 
 export class AdDashboard extends Component {
     static template = "abnaa_dijlah_hr.AdDashboard";
@@ -80,13 +83,12 @@ export class AdDashboard extends Component {
 
     // ---- presentation helpers ----
     icon(name) { return ICONS[name] || ICONS.kpi; }
-    get greetIcon() { const h = new Date().getHours(); return h >= 18 || h < 5 ? "moon" : "sun"; }
-    get greeting() {
-        const h = new Date().getHours();
-        return (h >= 5 && h < 12 ? "صباح الخير" : h >= 12 && h < 18 ? "مساء الخير" : "مساء الخير") + "، " + this.state.data.user_name;
-    }
+    get dir() { return localization.direction || "ltr"; }
+    get lang() { return (user.lang || "en_US").replace("_", "-"); }
+    get editLabel() { return this.state.edit ? _t("Finish editing permissions") : _t("Edit permissions"); }
+    get officeLabel() { return this.state.office ? _t("Exit office screen") : _t("Office screen"); }
     get dateLabel() {
-        try { return new Date().toLocaleDateString("ar", { weekday: "long", year: "numeric", month: "long", day: "numeric" }); }
+        try { return new Date().toLocaleDateString(this.lang, { weekday: "long", year: "numeric", month: "long", day: "numeric" }); }
         catch { return this.state.data.today; }
     }
     get trendMax() { return Math.max(1, ...this.state.data.trend.map((t) => t.count)); }
@@ -96,23 +98,15 @@ export class AdDashboard extends Component {
     get createGroups() {
         const c = this.state.data.create;
         return [
-            { title: "الموارد البشرية", items: c.filter((x) => x.group === "hr") },
-            { title: "استمارات AD", items: c.filter((x) => x.group === "forms") },
+            { title: _t("Human Resources"), items: c.filter((x) => x.group === "hr") },
+            { title: _t("AD Forms"), items: c.filter((x) => x.group === "forms") },
         ].filter((g) => g.items.length);
     }
-    /** Doughnut slices: forms created in the last 6 months, by type. */
-    get doughnut() {
-        const rows = this.state.data.tiles.filter((t) => t.created_6m > 0);
-        const total = rows.reduce((a, t) => a + t.created_6m, 0);
-        let offset = 0;
-        const slices = rows.map((t, i) => {
-            const pct = (t.created_6m / total) * 100;
-            const s = { title: t.title, count: t.created_6m, color: PALETTE[i % PALETTE.length],
-                        dash: `${pct} ${100 - pct}`, offset: -offset, model: t.model, tile: t };
-            offset += pct;
-            return s;
-        });
-        return { total, slices };
+    /** Forms created in the last 6 months, by type, largest first. */
+    get typeRows() {
+        const rows = this.state.data.tiles.filter((t) => t.created_6m > 0).sort((a, b) => b.created_6m - a.created_6m);
+        const max = Math.max(1, ...rows.map((t) => t.created_6m));
+        return rows.map((t) => ({ title: t.title, count: t.created_6m, pct: Math.round((t.created_6m / max) * 100), model: t.model, tile: t }));
     }
     stamp(s) { return (s || "").slice(0, 10); }
 
@@ -146,11 +140,11 @@ export class AdDashboard extends Component {
         const id = this.state.data.ids[key];
         if (!id) { return; }
         this.action.doAction({
-            type: "ir.actions.act_window", name: "صلاحيات العنصر", res_model: "ad.dashboard.block",
+            type: "ir.actions.act_window", name: _t("Block permissions"), res_model: "ad.dashboard.block",
             res_id: id, views: [[false, "form"]], target: "new",
         }, { onClose: () => this.load() });
     }
-    widthChoices = [{ v: 1, l: "ربع" }, { v: 2, l: "نصف" }, { v: 4, l: "كامل" }, { v: 0, l: "افتراضي" }];
+    get widthChoices() { return [{ v: 1, l: _t("Quarter") }, { v: 2, l: _t("Half") }, { v: 4, l: _t("Full") }, { v: 0, l: _t("Default") }]; }
     widthOf(key) { return ((this.state.data && this.state.data.widths) || {})[key] || 4; }
     isWidth(key, v) { return String(((this.state.data && this.state.data.wset) || {})[key] || 0) === String(v); }
     async setWidth(ev, key, w) {

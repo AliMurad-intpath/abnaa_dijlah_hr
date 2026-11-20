@@ -2,207 +2,207 @@
 <odoo noupdate="1">
     <record id="ad_dash_block_nav_forms" model="ad.dashboard.block">
         <field name="key">nav_forms</field>
-        <field name="name">القائمة الجانبية</field>
+        <field name="name">Sidebar</field>
         <field name="sequence">10</field>
     </record>
     <record id="ad_dash_block_kpi_emp" model="ad.dashboard.block">
         <field name="key">kpi_emp</field>
-        <field name="name">بطاقة: الموظفون</field>
+        <field name="name">Card: Employees</field>
         <field name="sequence">20</field>
     </record>
     <record id="ad_dash_block_kpi_open" model="ad.dashboard.block">
         <field name="key">kpi_open</field>
-        <field name="name">بطاقة: استمارات قيد الاجراء</field>
+        <field name="name">Card: Forms in progress</field>
         <field name="sequence">30</field>
     </record>
     <record id="ad_dash_block_kpi_present" model="ad.dashboard.block">
         <field name="key">kpi_present</field>
-        <field name="name">بطاقة: حاضرون الآن</field>
+        <field name="name">Card: Present now</field>
         <field name="sequence">40</field>
     </record>
     <record id="ad_dash_block_kpi_out" model="ad.dashboard.block">
         <field name="key">kpi_out</field>
-        <field name="name">بطاقة: في اجازة اليوم</field>
+        <field name="name">Card: On leave today</field>
         <field name="sequence">50</field>
     </record>
     <record id="ad_dash_block_kpi_leave_pending" model="ad.dashboard.block">
         <field name="key">kpi_leave_pending</field>
-        <field name="name">بطاقة: طلبات اجازة بانتظار الموافقة</field>
+        <field name="name">Card: Leave requests awaiting approval</field>
         <field name="sequence">60</field>
     </record>
     <record id="ad_dash_block_kpi_slips" model="ad.dashboard.block">
         <field name="key">kpi_slips</field>
-        <field name="name">بطاقة: قسائم رواتب غير مؤكدة</field>
+        <field name="name">Card: Unconfirmed payslips</field>
         <field name="sequence">70</field>
     </record>
     <record id="ad_dash_block_panel_create" model="ad.dashboard.block">
         <field name="key">panel_create</field>
-        <field name="name">لوحة الانشاء السريع</field>
+        <field name="name">Quick create panel</field>
         <field name="sequence">80</field>
     </record>
     <record id="ad_dash_block_create_emp" model="ad.dashboard.block">
         <field name="key">create_emp</field>
-        <field name="name">انشاء: موظف جديد</field>
+        <field name="name">Create: New employee</field>
         <field name="sequence">90</field>
     </record>
     <record id="ad_dash_block_create_att" model="ad.dashboard.block">
         <field name="key">create_att</field>
-        <field name="name">انشاء: تسجيل حضور</field>
+        <field name="name">Create: Check-in</field>
         <field name="sequence">100</field>
     </record>
     <record id="ad_dash_block_create_leave" model="ad.dashboard.block">
         <field name="key">create_leave</field>
-        <field name="name">انشاء: طلب اجازة</field>
+        <field name="name">Create: Leave request</field>
         <field name="sequence">110</field>
     </record>
     <record id="ad_dash_block_create_payslip" model="ad.dashboard.block">
         <field name="key">create_payslip</field>
-        <field name="name">انشاء: قسيمة راتب ودفعة رواتب</field>
+        <field name="name">Create: Payslip and payslip batch</field>
         <field name="sequence">120</field>
     </record>
     <record id="ad_dash_block_create_ad_interview" model="ad.dashboard.block">
         <field name="key">create_ad_interview</field>
-        <field name="name">انشاء: تقييم المقابلة</field>
+        <field name="name">Create: Interview rating</field>
         <field name="sequence">130</field>
     </record>
     <record id="ad_dash_block_create_ad_appointment_order" model="ad.dashboard.block">
         <field name="key">create_ad_appointment_order</field>
-        <field name="name">انشاء: أمر التعيين</field>
+        <field name="name">Create: Appointment order</field>
         <field name="sequence">140</field>
     </record>
     <record id="ad_dash_block_create_ad_onboarding" model="ad.dashboard.block">
         <field name="key">create_ad_onboarding</field>
-        <field name="name">انشاء: مباشرة العمل</field>
+        <field name="name">Create: Start of work</field>
         <field name="sequence">150</field>
     </record>
     <record id="ad_dash_block_create_ad_transfer" model="ad.dashboard.block">
         <field name="key">create_ad_transfer</field>
-        <field name="name">انشاء: تنقل حارس</field>
+        <field name="name">Create: Guard transfer</field>
         <field name="sequence">160</field>
     </record>
     <record id="ad_dash_block_create_ad_discipline" model="ad.dashboard.block">
         <field name="key">create_ad_discipline</field>
-        <field name="name">انشاء: عقوبة</field>
+        <field name="name">Create: Penalty</field>
         <field name="sequence">170</field>
     </record>
     <record id="ad_dash_block_create_ad_termination_order" model="ad.dashboard.block">
         <field name="key">create_ad_termination_order</field>
-        <field name="name">انشاء: أمر إنهاء خدمة</field>
+        <field name="name">Create: Termination order</field>
         <field name="sequence">180</field>
     </record>
     <record id="ad_dash_block_create_ad_clearance" model="ad.dashboard.block">
         <field name="key">create_ad_clearance</field>
-        <field name="name">انشاء: براءة ذمة</field>
+        <field name="name">Create: Clearance</field>
         <field name="sequence">190</field>
     </record>
     <record id="ad_dash_block_create_ad_employee_guarantee" model="ad.dashboard.block">
         <field name="key">create_ad_employee_guarantee</field>
-        <field name="name">انشاء: كفالة وتعهد</field>
+        <field name="name">Create: Guarantee and pledge</field>
         <field name="sequence">200</field>
     </record>
     <record id="ad_dash_block_create_ad_employee_pledge" model="ad.dashboard.block">
         <field name="key">create_ad_employee_pledge</field>
-        <field name="name">انشاء: تعهد خطي</field>
+        <field name="name">Create: Written pledge</field>
         <field name="sequence">210</field>
     </record>
     <record id="ad_dash_block_panel_alerts" model="ad.dashboard.block">
         <field name="key">panel_alerts</field>
-        <field name="name">لوحة التنبيهات</field>
+        <field name="name">Alerts panel</field>
         <field name="sequence">220</field>
     </record>
     <record id="ad_dash_block_alert_leave" model="ad.dashboard.block">
         <field name="key">alert_leave</field>
-        <field name="name">تنبيه: اجازات بانتظار الموافقة</field>
+        <field name="name">Alert: Leaves awaiting approval</field>
         <field name="sequence">230</field>
     </record>
     <record id="ad_dash_block_alert_slips" model="ad.dashboard.block">
         <field name="key">alert_slips</field>
-        <field name="name">تنبيه: قسائم رواتب غير مؤكدة</field>
+        <field name="name">Alert: Unconfirmed payslips</field>
         <field name="sequence">240</field>
     </record>
     <record id="ad_dash_block_alert_transfer" model="ad.dashboard.block">
         <field name="key">alert_transfer</field>
-        <field name="name">تنبيه: انتهاء تخويل تنقل</field>
+        <field name="name">Alert: Transfer authorization expiring</field>
         <field name="sequence">250</field>
     </record>
     <record id="ad_dash_block_alert_probation" model="ad.dashboard.block">
         <field name="key">alert_probation</field>
-        <field name="name">تنبيه: انتهاء فترة التجربة</field>
+        <field name="name">Alert: Probation ending</field>
         <field name="sequence">260</field>
     </record>
     <record id="ad_dash_block_alert_clearance" model="ad.dashboard.block">
         <field name="key">alert_clearance</field>
-        <field name="name">تنبيه: براءة ذمة غير مكتملة</field>
+        <field name="name">Alert: Incomplete clearance</field>
         <field name="sequence">270</field>
     </record>
     <record id="ad_dash_block_panel_recent" model="ad.dashboard.block">
         <field name="key">panel_recent</field>
-        <field name="name">جدول: اخر الاستمارات</field>
+        <field name="name">Table: Latest forms</field>
         <field name="sequence">280</field>
     </record>
     <record id="ad_dash_block_chart_trend" model="ad.dashboard.block">
         <field name="key">chart_trend</field>
-        <field name="name">رسم: الاستمارات خلال 6 اشهر</field>
+        <field name="name">Chart: Forms over 6 months</field>
         <field name="sequence">290</field>
     </record>
     <record id="ad_dash_block_chart_types" model="ad.dashboard.block">
         <field name="key">chart_types</field>
-        <field name="name">رسم: حسب نوع الاستمارة</field>
+        <field name="name">Chart: By form type</field>
         <field name="sequence">300</field>
     </record>
     <record id="ad_dash_block_chart_sites" model="ad.dashboard.block">
         <field name="key">chart_sites</field>
-        <field name="name">رسم: الموظفون حسب الموقع</field>
+        <field name="name">Chart: Employees by site</field>
         <field name="sequence">310</field>
     </record>
     <record id="ad_dash_block_form_ad_interview" model="ad.dashboard.block">
         <field name="key">form_ad_interview</field>
-        <field name="name">استمارة: تقييم المقابلة (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Interview rating (view, lists and print)</field>
         <field name="sequence">320</field>
     </record>
     <record id="ad_dash_block_form_ad_appointment_order" model="ad.dashboard.block">
         <field name="key">form_ad_appointment_order</field>
-        <field name="name">استمارة: أمر التعيين (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Appointment order (view, lists and print)</field>
         <field name="sequence">330</field>
     </record>
     <record id="ad_dash_block_form_ad_onboarding" model="ad.dashboard.block">
         <field name="key">form_ad_onboarding</field>
-        <field name="name">استمارة: مباشرة العمل (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Start of work (view, lists and print)</field>
         <field name="sequence">340</field>
     </record>
     <record id="ad_dash_block_form_ad_transfer" model="ad.dashboard.block">
         <field name="key">form_ad_transfer</field>
-        <field name="name">استمارة: تنقل حارس (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Guard transfer (view, lists and print)</field>
         <field name="sequence">350</field>
     </record>
     <record id="ad_dash_block_form_ad_discipline" model="ad.dashboard.block">
         <field name="key">form_ad_discipline</field>
-        <field name="name">استمارة: عقوبة (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Penalty (view, lists and print)</field>
         <field name="sequence">360</field>
     </record>
     <record id="ad_dash_block_form_ad_termination_order" model="ad.dashboard.block">
         <field name="key">form_ad_termination_order</field>
-        <field name="name">استمارة: أمر إنهاء خدمة (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Termination order (view, lists and print)</field>
         <field name="sequence">370</field>
     </record>
     <record id="ad_dash_block_form_ad_clearance" model="ad.dashboard.block">
         <field name="key">form_ad_clearance</field>
-        <field name="name">استمارة: براءة ذمة (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Clearance (view, lists and print)</field>
         <field name="sequence">380</field>
     </record>
     <record id="ad_dash_block_form_ad_employee_guarantee" model="ad.dashboard.block">
         <field name="key">form_ad_employee_guarantee</field>
-        <field name="name">استمارة: كفالة وتعهد (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Guarantee and pledge (view, lists and print)</field>
         <field name="sequence">390</field>
     </record>
     <record id="ad_dash_block_form_ad_employee_pledge" model="ad.dashboard.block">
         <field name="key">form_ad_employee_pledge</field>
-        <field name="name">استمارة: تعهد خطي (عرض وقوائم وطباعة)</field>
+        <field name="name">Form: Written pledge (view, lists and print)</field>
         <field name="sequence">400</field>
     </record>
     <record id="ad_dash_block_kpi_approvals" model="ad.dashboard.block">
         <field name="key">kpi_approvals</field>
-        <field name="name">بطاقة: موافقات بانتظاري</field>
+        <field name="name">Card: My pending approvals</field>
         <field name="sequence">65</field>
     </record>
 </odoo>

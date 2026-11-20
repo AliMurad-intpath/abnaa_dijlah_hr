@@ -7,28 +7,26 @@
             <form>
                 <sheet>
                     <div class="alert alert-info" role="alert">
-                        يستورد هذا الاجراء بيانات تجريبية لجميع الاستمارات: 3 زبائن، 3 مواقع عمل، 6 موظفين،
-                        3 استمارات تقييم مقابلة، 4 اوامر تعيين، استمارتا تاريخ مباشرة، كفالات وتعهدات،
-                        تنقلان، 3 عقوبات، وامرا انهاء خدمات. جميع السجلات بحالة مسودة. كما ينشئ 10 مستخدمين داخليين تجريبيين بأدوار مختلفة (مدير موارد بشرية، موظف، مدير عمليات، مشرف موقع، لوجستيك، ادارة AA، اليات MD، مالي، مدير مفوض، ومستخدم بلا صلاحيات) بكلمة المرور Demo@2026، ويقيد استمارة انهاء الخدمات على مدير الموارد البشرية والمدير المفوض لتجربة الصلاحيات. احذف بيانات التجربة قبل الاستخدام الفعلي.
-                        يمكن تكرار الاستيراد دون تكرار السجلات.
+                        This action imports demo data for all forms: 3 customers, 3 work sites, 6 employees, 3 interview rating forms, 4 appointment orders, 2 start-of-work forms, guarantees and pledges, 2 transfers, 3 penalties and 2 termination orders. All records are in draft state. It also creates 10 demo internal users with different roles (HR manager, officer, operations manager, site supervisor, logistics, AA administration, MD vehicles, finance, managing director, and a user without permissions) with the password Demo@2026, and restricts the termination form to the HR manager and the managing director to test permissions. Delete the demo data before real use.
+                        The import can be repeated without duplicating records.
                     </div>
-                    <field name="log" nolabel="1" placeholder="ستظهر هنا نتيجة الاستيراد..."/>
+                    <field name="log" nolabel="1" placeholder="The import result will appear here..."/>
                 </sheet>
                 <footer>
-                    <button name="action_import" type="object" string="استيراد بيانات التجربة" class="btn-primary"/>
-                    <button name="action_remove" type="object" string="حذف بيانات التجربة" class="btn-secondary"
-                            confirm="سيتم حذف جميع سجلات التجربة. هل انت متأكد؟"/>
-                    <button special="cancel" string="اغلاق"/>
+                    <button name="action_import" type="object" string="Import demo data" class="btn-primary"/>
+                    <button name="action_remove" type="object" string="Delete demo data" class="btn-secondary"
+                            confirm="All demo records will be deleted. Are you sure?"/>
+                    <button special="cancel" string="Close"/>
                 </footer>
             </form>
         </field>
     </record>
     <record id="ad_demo_loader_action" model="ir.actions.act_window">
-        <field name="name">بيانات التجربة</field>
+        <field name="name">Demo data</field>
         <field name="res_model">ad.demo.loader</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
-    <menuitem id="menu_ad_demo_loader" name="بيانات التجربة" parent="abnaa_dijlah_hr.menu_ad_hr_config"
+    <menuitem id="menu_ad_demo_loader" name="Demo data" parent="abnaa_dijlah_hr.menu_ad_hr_config"
               sequence="99" action="ad_demo_loader_action" groups="base.group_system"/>
 </odoo>

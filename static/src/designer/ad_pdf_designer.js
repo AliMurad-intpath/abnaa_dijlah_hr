@@ -1,5 +1,6 @@
 /** @odoo-module **/
 import { Component, onWillStart, onWillUnmount, proxy, useProps } from "@odoo/owl";
+import { _t } from "@web/core/l10n/translation";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { ConfirmationDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
@@ -11,6 +12,7 @@ const FIELD_PROPS = ["page", "x", "y", "width", "height", "font_size", "min_font
 const FONT_STACKS = {
     naskh: '"AdDocNaskh", Arial, Helvetica, sans-serif',
     dejavu: '"AdDocDejaVu", sans-serif',
+    times: '"Times New Roman", "Tinos", "AdDocTimes", "Liberation Serif", "AdDocDejaVu", serif',
 };
 const RULE_PROPS = ["signature_page", "signature_x", "signature_y", "signature_width", "signature_height", "print_signature"];
 
@@ -222,7 +224,7 @@ export class AdPdfDesigner extends Component {
         const ranked = [...frames].sort((a, b) => overlap(b) - overlap(a) || distance(a) - distance(b));
         const frame = ranked[0];
         if (!frame || (!overlap(frame) && distance(frame) > 60)) {
-            this.notification.add("لا يوجد مربع مرسوم قرب هذا الحقل. اسحبه فوق مربع من الاستمارة اولا.", { type: "warning" });
+            this.notification.add(_t("There is no drawn box near this field. Drag it over a box on the form first."), { type: "warning" });
             return;
         }
         this.pushHistory();
@@ -302,7 +304,7 @@ export class AdPdfDesigner extends Component {
             this.state.drawing = null; this.state.drawMode = null;
             if (rect && rect.width >= MIN_SIZE && rect.height >= MIN_SIZE) {
                 this.state.creator = {kind, page:this.state.page, name:"", field_type:"text", source:"", approver_id:0, group_id:0, ...Object.fromEntries(Object.entries(rect).map(([k,v])=>[k,round(v)]))};
-            } else this.notification.add("ارسم مستطيلا اكبر.",{type:"warning"});
+            } else this.notification.add(_t("Draw a larger rectangle."),{type:"warning"});
         }
         this.drag = null;
         this.stopListening();
@@ -420,9 +422,9 @@ export class AdPdfDesigner extends Component {
     cancelCreator() { this.state.creator=null; this.state.drawMode=null; this.state.drawing=null; }
     addCreator() {
         const c=this.state.creator;
-        if (!c || !c.name.trim()) {this.notification.add("ادخل اسم الحقل او المرحلة.",{type:"warning"});return;}
-        if (c.kind==="rule" && !Number(c.approver_id) && !Number(c.group_id)) {this.notification.add("اختر معتمدا او مجموعة.",{type:"warning"});return;}
-        if (c.kind==="field" && !c.source) {this.notification.add("اختر مصدر القيمة.",{type:"warning"});return;}
+        if (!c || !c.name.trim()) {this.notification.add(_t("Enter the field or stage name."),{type:"warning"});return;}
+        if (c.kind==="rule" && !Number(c.approver_id) && !Number(c.group_id)) {this.notification.add(_t("Select an approver or a group."),{type:"warning"});return;}
+        if (c.kind==="field" && !c.source) {this.notification.add(_t("Select the value source."),{type:"warning"});return;}
         this.pushHistory();
         const id=this.nextLocalId--;
         if (c.kind==="field") {
@@ -447,7 +449,7 @@ export class AdPdfDesigner extends Component {
         const item=this.selectedItem;
         if (!item || item.kind!=="field" || this.state.structureLocked || this.state.locked || this.state.saving || this.state.creator) return;
         const f=item.ref;
-        if (["approver_name","approval_date"].includes(f.system_source)) {this.notification.add("حقول المعتمد/تاريخ الموافقة تنسخ من تبويب الحقول المطبوعة.",{type:"info"});return;}
+        if (["approver_name","approval_date"].includes(f.system_source)) {this.notification.add(_t("Approver / approval date fields are copied from the printed fields tab."),{type:"info"});return;}
         this.state.creator={...JSON.parse(JSON.stringify(f)),kind:"field",name:f.name+" 2",
             source:f.field_type==="system" ? "system:"+f.system_source : "path:"+f.source_path,
             x:Math.max(0,Math.min(this.pageSize.width-item.width,item.x+8)),
@@ -471,7 +473,7 @@ export class AdPdfDesigner extends Component {
                 f.multiline ? "ملاحظات تجريبية طويلة لاختبار مساحة الحقل\nSecond test line 2026" : "عبد الرحمن محمد علي حسن أحمد نظير عيسى";
             this.markDirty({kind:"field",id:f.id});
         }
-        this.notification.add("تم ملء قيم طويلة للتجربة. احفظ ثم فعّل المعاينة الدقيقة للطباعة. بيانات الاستمارات لا تتغير.",{type:"info"});
+        this.notification.add(_t("Long sample values were filled in. Save, then enable the exact print preview. Form data is not changed."),{type:"info"});
     }
     collectChanges() {
         const changes={fields:{},rules:{},new_fields:[],new_rules:[]};
@@ -486,19 +488,19 @@ export class AdPdfDesigner extends Component {
         }
         return changes;
     }
-    confirmDialog(body,confirmLabel="متابعة") {
+    confirmDialog(body,confirmLabel=_t("Continue")) {
         return new Promise(resolve=>this.dialog.add(ConfirmationDialog,{body,confirmLabel,confirm:()=>resolve(true),cancel:()=>resolve(false)}, {onClose:()=>resolve(false)}));
     }
     async confirmLeave() {
         if (!this.hasUnsaved && !this.state.saving) return true;
         if (this.state.saving) return false;
-        if (this.state.creator || this.state.drawing) {this.notification.add("انه الحقل الجديد او الغه قبل المغادرة.",{type:"warning"});return false;}
-        if (!await this.confirmDialog("حفظ التعديلات قبل المغادرة؟ الالغاء يبقيك في المصمم.","حفظ ومغادرة")) return false;
+        if (this.state.creator || this.state.drawing) {this.notification.add(_t("Finish the new field or cancel it before leaving."),{type:"warning"});return false;}
+        if (!await this.confirmDialog(_t("Save changes before leaving? Cancel keeps you in the designer."),_t("Save and leave"))) return false;
         return await this.save();
     }
 
     async save() {
-        if (this.state.creator || this.state.drawing) {this.notification.add("انه الحقل الجديد او الغه اولا.",{type:"warning"});return false;}
+        if (this.state.creator || this.state.drawing) {this.notification.add(_t("Finish the new field or cancel it first."),{type:"warning"});return false;}
         if (this.state.locked || this.state.saving) return false;
         if (!this.dirtyCount) return true;
         this.state.saving = true;
@@ -507,7 +509,7 @@ export class AdPdfDesigner extends Component {
             const remap=sel=>sel ? {kind:sel.kind,id:data.created_ids?.[sel.kind]?.[String(sel.id)] || sel.id} : null;
             const selected=remap(this.state.selected), selection=this.state.selection.map(remap);
             this.applyData(data);this.state.selected=selected;this.state.selection=selection;
-            this.notification.add(this.state.issues.length ? "تم الحفظ — راجع تحذيرات التخطيط" : "تم حفظ التخطيط",
+            this.notification.add(this.state.issues.length ? _t("Saved — review the layout warnings") : _t("Layout saved"),
                 { type: this.state.issues.length ? "warning" : "success" });
             return true;
         } finally {
@@ -517,13 +519,13 @@ export class AdPdfDesigner extends Component {
 
     async reload() {
         if (this.state.saving) return;
-        if (this.hasUnsaved && !await this.confirmDialog("تجاهل كل التعديلات غير المحفوظة؟","تجاهل التعديلات")) return;
+        if (this.hasUnsaved && !await this.confirmDialog(_t("Discard all unsaved changes?"),_t("Discard changes"))) return;
         this.applyData(await this.orm.call("ad.form.template", "designer_load", [[this.typeId]]));
     }
 
     toggleExact() {
         if (this.dirtyCount) {
-            this.notification.add("احفظ التخطيط اولا لترى المعاينة الدقيقة.", { type: "warning" });
+            this.notification.add(_t("Save the layout first to see the exact preview."), { type: "warning" });
             return;
         }
         this.state.exact = !this.state.exact;

@@ -4,6 +4,16 @@
     unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
 @font-face {
+    font-family: "AdDocTimes";
+    src: url("/abnaa_dijlah_hr/static/fonts/LiberationSerif-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "AdDocTimes";
+    src: url("/abnaa_dijlah_hr/static/fonts/LiberationSerif-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+@font-face {
     font-family: "AdDocDejaVu";
     src: url("/abnaa_dijlah_hr/static/fonts/DejaVuSans.ttf") format("truetype");
     font-weight: normal;

@@ -16,14 +16,14 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_hr" type="object" string="اكتمل قسم الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_logistics" type="object" string="تم تجهيز الموظف" class="btn-primary" invisible="state != 'hr'"/>
-                    <button name="action_site" type="object" string="تأييد مشرف الموقع" class="btn-primary" invisible="state != 'logistics'"/>
-                    <button name="action_ops" type="object" string="تأييد العمليات" class="btn-primary" invisible="state != 'site'"/>
-                    <button name="action_done" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'ops'"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
-                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
-                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <button name="action_hr" type="object" string="HR section completed" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_logistics" type="object" string="Employee equipped" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="action_site" type="object" string="Site supervisor confirmation" class="btn-primary" invisible="state != 'logistics'"/>
+                    <button name="action_ops" type="object" string="Operations confirmation" class="btn-primary" invisible="state != 'site'"/>
+                    <button name="action_done" type="object" string="Managing director approval" class="btn-primary" invisible="state != 'ops'"/>
+                    <button name="action_ad_print" type="object" string="Print form" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done', 'cancel')"/>
+                    <button name="action_draft" type="object" string="Reset to draft" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,logistics,site,ops,done"/>
                 </header>
                 <sheet>
@@ -39,7 +39,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="الموارد البشرية" name="hr">
+                        <page string="Human Resources" name="hr">
                             <group>
                                 <group>
                                     <field name="medical_done"/><field name="medical_letter" invisible="not medical_done"/>
@@ -48,7 +48,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="اللوجستيك" name="logistics">
+                        <page string="Logistics" name="logistics">
                             <group>
                                 <group>
                                     <field name="issue_date"/><field name="shirt_size"/><field name="trouser_size"/>
@@ -56,7 +56,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="العمليات" name="ops">
+                        <page string="Operations" name="ops">
                             <group>
                                 <group>
                                     <field name="ops_medical"/><field name="ops_salary"/><field name="ops_auth"/>
@@ -64,7 +64,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="الموافقات" name="approvals">
+                        <page string="Approvals" name="approvals">
                             <field name="signature_ids" readonly="1">
                                 <list><field name="step"/><field name="user_id"/><field name="date"/></list>
                             </field>
@@ -76,7 +76,7 @@
         </field>
     </record>
     <record id="ad_onboarding_action" model="ir.actions.act_window">
-        <field name="name">استمارات تاريخ مباشرة العمل (AD-WI-FM-06-03)</field>
+        <field name="name">Start of work date forms (AD-WI-FM-06-03)</field>
         <field name="res_model">ad.onboarding</field>
         <field name="view_mode">list,form</field>
     </record>

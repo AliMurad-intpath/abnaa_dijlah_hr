@@ -14,32 +14,32 @@ def _create_key(model_name):
 
 # key -> Arabic name. Order = order shown in the settings list.
 BLOCKS = [
-    ('nav_forms', 'القائمة الجانبية'),
-    ('nav_overview', 'القائمة الجانبية: نظرة عامة (لوحة المتابعة)'),
-    ('kpi_emp', 'بطاقة: الموظفون'),
-    ('kpi_open', 'بطاقة: استمارات قيد الاجراء'),
-    ('kpi_present', 'بطاقة: حاضرون الآن'),
-    ('kpi_out', 'بطاقة: في اجازة اليوم'),
-    ('kpi_leave_pending', 'بطاقة: طلبات اجازة بانتظار الموافقة'),
-    ('kpi_slips', 'بطاقة: قسائم رواتب غير مؤكدة'),
-    ('kpi_approvals', 'بطاقة: موافقات بانتظاري'),
-    ('panel_create', 'لوحة الانشاء السريع'),
-    ('create_emp', 'انشاء: موظف جديد'),
-    ('create_att', 'انشاء: تسجيل حضور'),
-    ('create_leave', 'انشاء: طلب اجازة'),
-    ('create_payslip', 'انشاء: قسيمة راتب ودفعة رواتب'),
-] + [(_create_key(m), 'انشاء: ' + t) for m, t, *_r in FORMS] + [
-    ('panel_alerts', 'لوحة التنبيهات'),
-    ('alert_leave', 'تنبيه: اجازات بانتظار الموافقة'),
-    ('alert_slips', 'تنبيه: قسائم رواتب غير مؤكدة'),
-    ('alert_transfer', 'تنبيه: انتهاء تخويل تنقل'),
-    ('alert_probation', 'تنبيه: انتهاء فترة التجربة'),
-    ('alert_clearance', 'تنبيه: براءة ذمة غير مكتملة'),
-    ('panel_recent', 'جدول: اخر الاستمارات'),
-    ('chart_trend', 'رسم: الاستمارات خلال 6 اشهر'),
-    ('chart_types', 'رسم: حسب نوع الاستمارة'),
-    ('chart_sites', 'رسم: الموظفون حسب الموقع'),
-] + [(_form_key(m), 'استمارة: %s (عرض وقوائم وطباعة)' % t) for m, t, *_r in FORMS]
+    ('nav_forms', 'Sidebar'),
+    ('nav_overview', 'Sidebar: Overview (dashboard)'),
+    ('kpi_emp', 'Card: Employees'),
+    ('kpi_open', 'Card: Forms in progress'),
+    ('kpi_present', 'Card: Present now'),
+    ('kpi_out', 'Card: On leave today'),
+    ('kpi_leave_pending', 'Card: Leave requests awaiting approval'),
+    ('kpi_slips', 'Card: Unconfirmed payslips'),
+    ('kpi_approvals', 'Card: My pending approvals'),
+    ('panel_create', 'Quick create panel'),
+    ('create_emp', 'Create: New employee'),
+    ('create_att', 'Create: Check-in'),
+    ('create_leave', 'Create: Leave request'),
+    ('create_payslip', 'Create: Payslip and payslip batch'),
+] + [(_create_key(m), 'Create: ' + t) for m, t, *_r in FORMS] + [
+    ('panel_alerts', 'Alerts panel'),
+    ('alert_leave', 'Alert: Leaves awaiting approval'),
+    ('alert_slips', 'Alert: Unconfirmed payslips'),
+    ('alert_transfer', 'Alert: Transfer authorization expiring'),
+    ('alert_probation', 'Alert: Probation ending'),
+    ('alert_clearance', 'Alert: Incomplete clearance'),
+    ('panel_recent', 'Table: Latest forms'),
+    ('chart_trend', 'Chart: Forms over 6 months'),
+    ('chart_types', 'Chart: By form type'),
+    ('chart_sites', 'Chart: Employees by site'),
+] + [(_form_key(m), 'Form: %s (view, lists and print)' % t) for m, t, *_r in FORMS]
 
 # The grid has 12 columns. Chosen sizes: quarter = 3, half = 6, full = 12.
 # Defaults (used until a size is chosen) reproduce the original arrangement:
@@ -62,21 +62,21 @@ class AdDashboardBlock(models.Model):
     sent to the browser, and a restricted form cannot be printed by others.
     """
     _name = 'ad.dashboard.block'
-    _description = 'صلاحيات عناصر لوحة المتابعة'
+    _description = 'Dashboard block permissions'
     _order = 'sequence, id'
 
-    key = fields.Char('المفتاح', required=True, readonly=True, index=True)
-    name = fields.Char('العنصر', required=True, translate=True)
-    sequence = fields.Integer('الترتيب', default=10)
+    key = fields.Char('Key', required=True, readonly=True, index=True)
+    name = fields.Char('Block', required=True, translate=True)
+    sequence = fields.Integer('Order', default=10)
     user_ids = fields.Many2many('res.users', 'ad_dashboard_block_user_rel', 'block_id', 'user_id',
-                                string='المستخدمون المسموح لهم',
-                                help='اتركها مع المجموعات فارغة لاظهار العنصر للجميع.')
-    width = fields.Selection([('1', 'ربع'), ('2', 'نصف'), ('4', 'كامل')], string='عرض العنصر',
-                             help='عرض العنصر في لوحة المتابعة. الفارغ = الافتراضي.')
+                                string='Allowed users',
+                                help='Leave empty together with groups to show the block to everyone.')
+    width = fields.Selection([('1', 'Quarter'), ('2', 'Half'), ('4', 'Full')], string='Block width',
+                             help='Block width on the dashboard. Empty = default.')
     group_ids = fields.Many2many('res.groups', 'ad_dashboard_block_group_rel', 'block_id', 'group_id',
-                                 string='المجموعات المسموح لها')
+                                 string='Allowed groups')
 
-    _key_uniq = models.Constraint('unique(key)', 'المفتاح يجب ان يكون فريدا.')
+    _key_uniq = models.Constraint('unique(key)', 'The key must be unique.')
 
     @api.model
     def _all_keys(self):
@@ -112,7 +112,7 @@ class AdDashboardBlock(models.Model):
     @api.model
     def _check_form_access(self, model_name):
         if _form_key(model_name) not in self._allowed_keys():
-            raise AccessError(_('ليس لديك صلاحية على هذه الاستمارة. راجع مدير الموارد البشرية.'))
+            raise AccessError(_('You do not have access to this form. Contact the HR manager.'))
 
     @api.model
     def _widths(self):
@@ -144,7 +144,7 @@ class AdDashboardBlock(models.Model):
         """Move a block one place earlier (-1) or later (+1) among the visible ones."""
         user = self.env.user
         if not (user.has_group('hr.group_hr_manager') or user.has_group('base.group_system')):
-            raise AccessError(_('ليس لديك صلاحية تعديل ترتيب العناصر.'))
+            raise AccessError(_('You do not have permission to change the block order.'))
         order = self._layout_order()
         vis = [k for k in order if k in set(visible or [])]
         if key not in vis:
@@ -168,7 +168,7 @@ class AdDashboardBlock(models.Model):
         """Called from the dashboard edit mode (HR managers / admins only)."""
         user = self.env.user
         if not (user.has_group('hr.group_hr_manager') or user.has_group('base.group_system')):
-            raise AccessError(_('ليس لديك صلاحية تعديل عرض العناصر.'))
+            raise AccessError(_('You do not have permission to change the block width.'))
         width = str(width) if width else False      # 0 / empty = back to default
         if (width and width not in SPAN) or key not in self._all_keys():
             raise ValueError('bad width or key')

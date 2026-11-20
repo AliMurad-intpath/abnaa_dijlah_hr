@@ -14,7 +14,7 @@ class HrEmployee(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': title,
+            'name': self.env._(title),
             'res_model': model_name,
             'view_mode': 'list,form',
             'domain': [('employee_id', '=', self.id)],

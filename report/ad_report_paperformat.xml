@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="paperformat_ad_a4" model="report.paperformat">
-        <field name="name">استمارات AD - A4 عمودي</field>
+        <field name="name">AD Forms - A4 portrait</field>
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
@@ -14,7 +14,7 @@
         <field name="dpi">90</field>
     </record>
     <record id="paperformat_ad_a4_landscape" model="report.paperformat">
-        <field name="name">استمارات AD - A4 افقي</field>
+        <field name="name">AD Forms - A4 landscape</field>
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Landscape</field>

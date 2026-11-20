@@ -34,25 +34,25 @@ PLAN = {
 class AdFormStep(models.Model):
     """One approval step of one form (a copy of the stage taken when the request was sent)."""
     _name = 'ad.form.step'
-    _description = 'خطوة موافقة على استمارة'
+    _description = 'Form approval step'
     _order = 'res_model, res_id, sequence, id'
 
-    res_model = fields.Char(required=True, index=True, string='نموذج السجل')
-    res_id = fields.Many2oneReference(model_field='res_model', required=True, index=True, string='معرف السجل')
-    record_name = fields.Char('الاستمارة', compute='_compute_record_name')
-    stage_id = fields.Many2one('ad.form.stage', readonly=True, ondelete='set null', string='المرحلة')
-    key = fields.Char('رمز التوقيع')
-    sequence = fields.Integer('الترتيب')
-    name = fields.Char('الخطوة', required=True)
-    approver_id = fields.Many2one('res.users', 'المعتمد', ondelete='restrict')
-    group_id = fields.Many2one('res.groups', 'مجموعة المعتمدين', ondelete='restrict')
-    state = fields.Selection([('waiting', 'بانتظار الدور'), ('pending', 'بانتظار الموافقة'),
-                              ('approved', 'تمت الموافقة'), ('rejected', 'مرفوضة')], default='waiting',
-                             required=True, string='الحالة', index=True)
-    action_date = fields.Datetime('تاريخ القرار', readonly=True)
-    signed_by_id = fields.Many2one('res.users', 'اعتمد بواسطة', readonly=True)
-    signed_by_name = fields.Char('اسم المعتمد', readonly=True)
-    note = fields.Text('ملاحظة / سبب الرفض', readonly=True)
+    res_model = fields.Char(required=True, index=True, string='Record model')
+    res_id = fields.Many2oneReference(model_field='res_model', required=True, index=True, string='Record ID')
+    record_name = fields.Char('Form', compute='_compute_record_name')
+    stage_id = fields.Many2one('ad.form.stage', readonly=True, ondelete='set null', string='Stage')
+    key = fields.Char('Signature code')
+    sequence = fields.Integer('Order')
+    name = fields.Char('Step', required=True)
+    approver_id = fields.Many2one('res.users', 'Approver', ondelete='restrict')
+    group_id = fields.Many2one('res.groups', 'Approver group', ondelete='restrict')
+    state = fields.Selection([('waiting', 'Waiting for turn'), ('pending', 'Awaiting approval'),
+                              ('approved', 'Approved'), ('rejected', 'Rejected')], default='waiting',
+                             required=True, string='Status', index=True)
+    action_date = fields.Datetime('Decision date', readonly=True)
+    signed_by_id = fields.Many2one('res.users', 'Approved by', readonly=True)
+    signed_by_name = fields.Char('Approver name', readonly=True)
+    note = fields.Text('Note / rejection reason', readonly=True)
     signature_snapshot = fields.Binary(attachment=True, readonly=True)
     print_signature = fields.Boolean()
     signature_page = fields.Integer()
@@ -60,9 +60,9 @@ class AdFormStep(models.Model):
     signature_y = fields.Float()
     signature_width = fields.Float()
     signature_height = fields.Float()
-    pending_since = fields.Datetime('بانتظار منذ', readonly=True)
-    last_reminder = fields.Datetime('اخر تذكير', readonly=True)
-    approver_label = fields.Char('المعتمد', compute='_compute_approver_label')
+    pending_since = fields.Datetime('Waiting since', readonly=True)
+    last_reminder = fields.Datetime('Last reminder', readonly=True)
+    approver_label = fields.Char('Approver', compute='_compute_approver_label')
 
     @api.depends('approver_id', 'group_id', 'signed_by_name')
     def _compute_approver_label(self):
@@ -96,6 +96,13 @@ class AdFormStep(models.Model):
         return bool(self.group_id) and self.group_id in (user.all_group_ids if 'all_group_ids' in user._fields else user.group_ids)
 
     @api.model
+    def _action_my_pending(self):
+        return {
+            'type': 'ir.actions.act_window', 'name': self.env._('My pending approvals'),
+            'res_model': 'ad.form.step', 'view_mode': 'list,form', 'domain': self._pending_domain(),
+        }
+
+    @api.model
     def _pending_domain(self, user=None):
         user = user or self.env.user
         groups = (user.all_group_ids if 'all_group_ids' in user._fields else user.group_ids).ids
@@ -126,9 +133,9 @@ class AdFormStep(models.Model):
                 partners = step._eligible_users().partner_id
                 if partners:
                     rec.message_notify(
-                        partner_ids=partners.ids, subject=self.env._('تذكير: استمارة بانتظار موافقتك'),
+                        partner_ids=partners.ids, subject=self.env._('Reminder: a form is awaiting your approval'),
                         body=Markup('%s <a href="#" data-oe-model="%s" data-oe-id="%s">%s</a> (%s)') % (
-                            self.env._('الاستمارة بانتظار قرارك منذ %s يوم:', days), rec._name, rec.id,
+                            self.env._('The form has been waiting for your decision for %s days:', days), rec._name, rec.id,
                             rec.display_name, step.name))
                 step.last_reminder = now
             except Exception:
@@ -161,26 +168,26 @@ class AdFormStep(models.Model):
             if not partners:
                 continue
             body = Markup('<p>%s</p><ul>%s</ul>') % (
-                self.env._('استمارات ما زالت بانتظار المعتمدين: %s', len(rows)), Markup('').join(rows))
+                self.env._('Forms still awaiting approvers: %s', len(rows)), Markup('').join(rows))
             self.env['res.partner'].sudo().browse(partners.ids[:1]).message_notify(
-                partner_ids=partners.ids, subject=self.env._('ملخص يومي: موافقات معلقة'), body=body)
+                partner_ids=partners.ids, subject=self.env._('Daily summary: pending approvals'), body=body)
             company.sudo().ad_last_summary = today
 
 
 class AdApprovalMixin(models.AbstractModel):
     _inherit = 'ad.approval.mixin'
 
-    ad_state = fields.Selection([('none', 'لم ترسل'), ('pending', 'بانتظار الموافقة'),
-                                 ('approved', 'تمت الموافقة'), ('rejected', 'مرفوضة')],
-                                default='none', copy=False, readonly=True, string='سلسلة الموافقات', index=True)
-    ad_step_ids = fields.One2many('ad.form.step', 'res_id', string='خطوات الموافقة', copy=False,
+    ad_state = fields.Selection([('none', 'Not submitted'), ('pending', 'Awaiting approval'),
+                                 ('approved', 'Approved'), ('rejected', 'Rejected')],
+                                default='none', copy=False, readonly=True, string='Approval chain', index=True)
+    ad_step_ids = fields.One2many('ad.form.step', 'res_id', string='Approval steps', copy=False,
                                   domain=lambda self: [('res_model', '=', self._name)])
     ad_layout_snapshot = fields.Json(copy=False, readonly=True)
-    ad_reject_note = fields.Text('سبب الرفض', copy=False, readonly=True)
-    ad_approver_user_ids = fields.Many2many('res.users', string='المعتمدون المعنيون', compute='_compute_ad_approver_user_ids',
+    ad_reject_note = fields.Text('Rejection reason', copy=False, readonly=True)
+    ad_approver_user_ids = fields.Many2many('res.users', string='Approvers involved', compute='_compute_ad_approver_user_ids',
                                             store=True, copy=False, compute_sudo=True)
     ad_can_approve = fields.Boolean(compute='_compute_ad_can_approve')
-    ad_waiting_for = fields.Char('بانتظار', compute='_compute_ad_can_approve')
+    ad_waiting_for = fields.Char('Pending', compute='_compute_ad_can_approve')
 
     @api.depends('ad_state', 'ad_step_ids.state', 'ad_step_ids.approver_id', 'ad_step_ids.group_id')
     @api.depends_context('uid')
@@ -216,7 +223,7 @@ class AdApprovalMixin(models.AbstractModel):
         if not self.env.context.get('ad_approval_sync') and self._name in PLAN:
             for rec in self:
                 if rec._ad_chain_active():
-                    raise UserError(self.env._('الموافقة النهائية تتم عبر سلسلة الموافقات. اضغط "ارسال للموافقة" في الاستمارة.'))
+                    raise UserError(self.env._('Final approval is done through the approval chain. Click "Send for approval" on the form.'))
         return res
 
     # ------------------------------------------------------------------ printing data
@@ -256,8 +263,7 @@ class AdApprovalMixin(models.AbstractModel):
 
     def _ad_layout_error(self, issues):
         lines = ['• %s: %s' % (issue['label'], issue['message']) for issue in issues]
-        return UserError(self.env._('لا يمكن للقالب استيعاب هذه القيم. عدّل الصناديق في مصمم الاستمارة '
-                                    '(صندوق اكبر او خط اصغر او عدة اسطر) او اختصر القيمة:\n%s', '\n'.join(lines)))
+        return UserError(self.env._('The template cannot fit these values. Adjust the boxes in the form designer (larger box, smaller font or multiple lines) or shorten the text.', '\n'.join(lines)))
 
     def _ad_render_pdf(self):
         self.ensure_one()
@@ -265,7 +271,7 @@ class AdApprovalMixin(models.AbstractModel):
         tpl = self.ad_tpl().sudo()
         data = tpl._get_pdf_bytes()
         if not data:
-            raise UserError(self.env._('لا يوجد ملف PDF لهذه الاستمارة. ارفعه من: الاعداد > قوالب الاستمارات.'))
+            raise UserError(self.env._('There is no PDF file for this form. Upload it from: Configuration > Form templates.'))
         pdf, _issues = _engine().render(data, self._ad_pdf_items(), collect=True)
         return pdf
 
@@ -279,7 +285,7 @@ class AdApprovalMixin(models.AbstractModel):
         """Todo activity for the user(s) who must decide (specific user only; groups get a notification)."""
         self.ensure_one()
         rec = self.sudo()
-        summary = self.env._('موافقة: %s', step.name)
+        summary = self.env._('Approval: %s', step.name)
         users = step._eligible_users()
         if not users:
             return
@@ -287,18 +293,18 @@ class AdApprovalMixin(models.AbstractModel):
             for user in users[:10]:
                 try:
                     rec.activity_schedule('mail.mail_activity_data_todo', user_id=user.id, summary=summary,
-                                          note=self.env._('راجع الاستمارة ووافق عليها او ارفضها.'),
+                                          note=self.env._('Review the form and approve or reject it.'),
                                           date_deadline=fields.Date.context_today(self))
                 except Exception:
                     _logger.exception('could not schedule the approval activity')
         if hasattr(rec, 'message_notify') and not step.approver_id:
             rec.message_notify(partner_ids=users.partner_id.ids, subject=summary,
                                body=Markup('%s <a href="#" data-oe-model="%s" data-oe-id="%s">%s</a>') % (
-                                   self.env._('استمارة بانتظار موافقتك:'), rec._name, rec.id, rec.display_name))
+                                   self.env._('A form awaiting your approval:'), rec._name, rec.id, rec.display_name))
 
     def _ad_close_activities(self, step, feedback=None):
         self.ensure_one()
-        summary = self.env._('موافقة: %s', step.name)
+        summary = self.env._('Approval: %s', step.name)
         rec = self.sudo()
         if not hasattr(rec, 'activity_ids'):
             return
@@ -318,21 +324,21 @@ class AdApprovalMixin(models.AbstractModel):
         for rec in self:
             plan = PLAN.get(rec._name)
             if not plan:
-                raise UserError(self.env._('هذه الاستمارة لا تدعم سلسلة الموافقات.'))
+                raise UserError(self.env._('This form does not support the approval chain.'))
             if rec.state not in plan['states']:
-                raise UserError(self.env._('لا يمكن ارسال الاستمارة للموافقة في حالتها الحالية.'))
+                raise UserError(self.env._('The form cannot be sent for approval in its current state.'))
             if rec.ad_state == 'pending' or rec.ad_state == 'approved':
-                raise UserError(self.env._('الاستمارة مرسلة مسبقا للموافقة.'))
+                raise UserError(self.env._('The form has already been sent for approval.'))
             tpl = rec.ad_tpl().sudo()
             stages = tpl.stage_ids.sorted(lambda s: (s.sequence, s.id))
             if not stages:
-                raise UserError(self.env._('لم تضبط مراحل الموافقة لهذه الاستمارة. افتح: الاعداد > قوالب الاستمارات.'))
+                raise UserError(self.env._('Approval stages are not set for this form. Open: Configuration > Form templates.'))
             for stage in stages:
                 if not stage._eligible_check():
-                    raise UserError(self.env._('المرحلة "%s" ليس فيها اي مستخدم فعال. حدد المعتمد من قوالب الاستمارات.', stage.name))
+                    raise UserError(self.env._('The stage "%s" has no active user. Set the approver in the form templates.', stage.name))
             data = tpl._get_pdf_bytes()
             if not data:
-                raise UserError(self.env._('لا يوجد ملف PDF لهذه الاستمارة. ارفعه من قوالب الاستمارات.'))
+                raise UserError(self.env._('There is no PDF file for this form. Upload it from the form templates.'))
             _pdf, issues = _engine().render(data, rec._ad_pdf_items(check=True), collect=True, output=False)
             if issues:
                 raise rec._ad_layout_error(issues)
@@ -356,18 +362,18 @@ class AdApprovalMixin(models.AbstractModel):
             rec.sudo().write({'ad_state': 'pending', 'ad_layout_snapshot': snapshot, 'ad_reject_note': False})
             rec.invalidate_recordset(['ad_step_ids'])
             rec._ad_notify_step(rec._ad_pending_step())
-            rec._ad_post(self.env._('تم ارسال الاستمارة للموافقة (%s مراحل).', len(stages)))
+            rec._ad_post(self.env._('The form was sent for approval (%s stages).', len(stages)))
         return True
 
     def _ad_current_step_for_user(self):
         self.ensure_one()
         if self.ad_state != 'pending':
-            raise UserError(self.env._('الاستمارة ليست بانتظار الموافقة (قد تكون عولجت مسبقا).'))
+            raise UserError(self.env._('The form is not awaiting approval (it may already have been processed).'))
         step = self._ad_pending_step()
         if not step or not step._user_may_act(self.env.user):
             if self.sudo().ad_step_ids.filtered(lambda s: s.state == 'approved' and s.signed_by_id == self.env.user):
-                raise UserError(self.env._('وافقت على هذه الاستمارة مسبقا.'))
-            raise AccessError(self.env._('لست المعتمد الحالي لهذه الاستمارة.'))
+                raise UserError(self.env._('You have already approved this form.'))
+            raise AccessError(self.env._('You are not the current approver of this form.'))
         return step
 
     def _ad_lock(self):
@@ -388,18 +394,18 @@ class AdApprovalMixin(models.AbstractModel):
                 'signed_by_name': employee.name or self.env.user.name,
                 'signature_snapshot': BinaryBytes(signature.content, filename='signature.png') if signature else False,
             })
-            rec._ad_close_activities(step, self.env._('تمت الموافقة.'))
+            rec._ad_close_activities(step, self.env._('Approved.'))
             rec._ad_record_signature(step)
             following = rec.sudo().ad_step_ids.filtered(lambda s: s.state == 'waiting').sorted(lambda s: (s.sequence, s.id))[:1]
             if following:
                 following.sudo().write({'state': 'pending', 'pending_since': fields.Datetime.now(), 'last_reminder': False})
                 rec._ad_notify_step(following)
-                rec._ad_post(self.env._('وافق %(user)s على مرحلة "%(step)s". الدور الان: %(next)s.',
+                rec._ad_post(self.env._('%(user)s approved the stage "%(step)s". Now it is the turn of: %(next)s.',
                                         user=self.env.user.name, step=step.name, next=following.name))
             else:
                 rec._ad_apply_approved()
                 rec.sudo().write({'ad_state': 'approved'})
-                rec._ad_post(self.env._('اكتملت جميع مراحل الموافقة بموافقة %s.', self.env.user.name))
+                rec._ad_post(self.env._('All approval stages were completed with the approval of %s.', self.env.user.name))
         return True
 
     def action_ad_reject(self):
@@ -414,30 +420,30 @@ class AdApprovalMixin(models.AbstractModel):
             step = rec._ad_current_step_for_user()
             step.sudo().write({'state': 'rejected', 'action_date': fields.Datetime.now(), 'note': note,
                                'signed_by_id': self.env.uid, 'signed_by_name': self.env.user.name})
-            rec._ad_close_activities(step, self.env._('رُفضت الاستمارة.'))
+            rec._ad_close_activities(step, self.env._('The form was rejected.'))
             rec.sudo().write({'ad_state': 'rejected', 'ad_reject_note': note})
-            rec._ad_post(Markup('%s <b>%s</b>: %s') % (self.env._('رفض %s الاستمارة في مرحلة', self.env.user.name),
+            rec._ad_post(Markup('%s <b>%s</b>: %s') % (self.env._('%s rejected the form at stage', self.env.user.name),
                                                        escape(step.name), escape(note or '')))
             owner = rec.create_uid
             if owner and hasattr(rec.sudo(), 'message_notify') and owner != self.env.user:
                 rec.sudo().message_notify(partner_ids=owner.partner_id.ids,
-                                          subject=self.env._('رُفضت الاستمارة %s', rec.display_name),
-                                          body=Markup('%s %s') % (self.env._('سبب الرفض:'), escape(note or '-')))
+                                          subject=self.env._('The form %s was rejected', rec.display_name),
+                                          body=Markup('%s %s') % (self.env._('Rejection reason:'), escape(note or '-')))
         return True
 
     def action_ad_cancel_request(self):
         self._ad_lock()
         for rec in self:
             if rec.ad_state != 'pending':
-                raise UserError(self.env._('لا يوجد طلب موافقة قائم لسحبه.'))
+                raise UserError(self.env._('There is no pending approval request to withdraw.'))
             if not (self.env.user == rec.create_uid or self.env.user.has_group('abnaa_dijlah_hr.group_ad_hr_manager')
                     or self.env.is_superuser()):
-                raise AccessError(self.env._('يسحب الطلب من انشأ الاستمارة او مدير الموارد البشرية فقط.'))
+                raise AccessError(self.env._('Only the form creator or the HR manager can withdraw the request.'))
             for step in rec.sudo().ad_step_ids:
                 rec._ad_close_activities(step)
             rec.sudo().ad_step_ids.unlink()
             rec.sudo().write({'ad_state': 'none', 'ad_layout_snapshot': False})
-            rec._ad_post(self.env._('سحب %s طلب الموافقة.', self.env.user.name))
+            rec._ad_post(self.env._('%s withdrew the approval request.', self.env.user.name))
         return True
 
     # ------------------------------------------------------------------ outcome

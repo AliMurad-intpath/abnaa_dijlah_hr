@@ -19,25 +19,27 @@ MONTHS_AR = ['كانون الثاني', 'شباط', 'آذار', 'نيسان', '�
 PROBATION_AR = {1: 'شهر واحد', 2: 'شهرين', 3: 'ثلاثة اشهر', 4: 'اربعة اشهر', 6: 'ستة اشهر'}
 
 FIELD_TYPES = [
-    ('text', 'نص'), ('date', 'تاريخ'), ('money', 'مبلغ'), ('mark', 'علامة ✔ (خيار / مربع)'),
-    ('mark_in', 'علامة ✔ (مخالفة محددة)'), ('selection', 'اختيار (يطبع اسم الخيار)'),
-    ('month_year', 'شهر وسنة'), ('months_ar', 'فترة بالاشهر (نص)'), ('system', 'قيمة النظام'),
+    ('text', 'Text'), ('date', 'Date'), ('money', 'Amount'), ('mark', '✔ mark (option / box)'),
+    ('mark_in', '✔ mark (specific violation)'), ('selection', 'Choice (prints the option name)'),
+    ('month_year', 'Month and year'), ('months_ar', 'Period in months (text)'), ('system', 'System value'),
 ]
-SYSTEM_SOURCES = [('request_name', 'رقم الاستمارة'), ('request_date', 'تاريخ اليوم'),
-                  ('company_name', 'اسم الشركة'), ('approver_name', 'اسم المعتمد'),
-                  ('approval_date', 'تاريخ الموافقة')]
+SYSTEM_SOURCES = [('request_name', 'Form number'), ('request_date', "Today's date"),
+                  ('company_name', 'Company name'), ('approver_name', 'Approver name'),
+                  ('approval_date', 'Approval date')]
 DESIGNER_FIELD_KEYS = {'page', 'x', 'y', 'width', 'height', 'font_size', 'min_font_size',
                        'text_align', 'bold', 'multiline', 'sample_value', 'font_family', 'date_format'}
 DESIGNER_STAGE_KEYS = {'signature_page', 'signature_x', 'signature_y',
                        'signature_width', 'signature_height', 'print_signature'}
 MARK = '✔'
+# Paper forms are always printed in Arabic, whatever the user's language
+PRINT_SELECTION_AR = {'start_shift': {'am': 'ق.ظ', 'pm': 'ب.ظ'}, 'leave_shift': {'am': 'ق.ظ', 'pm': 'ب.ظ'}}
 # model fields never offered as a printable value
 SKIP_FIELDS = {'id', 'create_uid', 'create_date', 'write_uid', 'write_date', 'display_name', '__last_update',
                'message_ids', 'message_follower_ids', 'activity_ids', 'website_message_ids', 'signature_ids',
                'ad_step_ids', 'ad_layout_snapshot'}
-EMPLOYEE_SUB = [('name', 'الاسم'), ('identification_id', 'رقم الهوية'), ('job_title', 'المسمى الوظيفي'),
-                ('mobile_phone', 'الهاتف'), ('ad_employee_no', 'الرقم الوظيفي'), ('ad_work_site_id.name', 'موقع العمل'),
-                ('birthday', 'تاريخ الميلاد')]
+EMPLOYEE_SUB = [('name', 'Name'), ('identification_id', 'ID number'), ('job_title', 'Job title'),
+                ('mobile_phone', 'Phone'), ('ad_employee_no', 'Employee number'), ('ad_work_site_id.name', 'Work site'),
+                ('birthday', 'Date of birth')]
 
 
 def _engine():
@@ -59,8 +61,8 @@ def _sample_signature_png():
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    document_signature = fields.Binary('توقيع الموافقة', attachment=True,
-                                       help='صورة PNG بخلفية شفافة تطبع على الاستمارات عند موافقة هذا الموظف.')
+    document_signature = fields.Binary('Approval signature', attachment=True,
+                                       help='PNG image with a transparent background, printed on forms when this employee approves.')
     document_signature_filename = fields.Char()
 
     @api.constrains('document_signature')
@@ -76,21 +78,21 @@ class HrEmployee(models.Model):
                     if image.width * image.height > 4_000_000 or len(raw) > 2 * 1024 * 1024:
                         raise ValueError('too large')
             except Exception:
-                raise ValidationError(self.env._('توقيع الموافقة يجب ان يكون صورة PNG صالحة (حتى 2 ميغابايت).'))
+                raise ValidationError(self.env._('The approval signature must be a valid PNG image (up to 2 MB).'))
 
 
 class AdFormTemplate(models.Model):
     _inherit = 'ad.form.template'
 
-    res_model = fields.Char('نموذج الاستمارة', readonly=True, copy=False,
-                            help='النموذج الذي تطبع بياناته على الـ PDF.')
-    template_pdf = fields.Binary('ملف PDF الفارغ', attachment=False)
-    template_attachment_id = fields.Many2one('ir.attachment', string='الملف المخزن', readonly=True, copy=False,
+    res_model = fields.Char('Form template', readonly=True, copy=False,
+                            help='The model whose data is printed on the PDF.')
+    template_pdf = fields.Binary('Blank PDF file', attachment=False)
+    template_attachment_id = fields.Many2one('ir.attachment', string='Stored file', readonly=True, copy=False,
                                              ondelete='set null')
-    template_filename = fields.Char('اسم الملف')
-    field_ids = fields.One2many('ad.form.field', 'template_id', string='الحقول المطبوعة', copy=True)
-    stage_ids = fields.One2many('ad.form.stage', 'template_id', string='مراحل الموافقة', copy=True)
-    page_count = fields.Integer('عدد الصفحات', compute='_compute_page_count')
+    template_filename = fields.Char('File name')
+    field_ids = fields.One2many('ad.form.field', 'template_id', string='Printed fields', copy=True)
+    stage_ids = fields.One2many('ad.form.stage', 'template_id', string='Approval stages', copy=True)
+    page_count = fields.Integer('Page count', compute='_compute_page_count')
 
     # ------------------------------------------------------------------ pdf storage
     @api.model
@@ -102,19 +104,19 @@ class AdFormTemplate(models.Model):
             payload = payload.content
         if isinstance(payload, dict):
             if 'content' not in payload:
-                raise ValidationError(self.env._('اختر ملف PDF مرة اخرى؛ محتوى الملف مفقود.'))
+                raise ValidationError(self.env._('Choose the PDF file again; the file content is missing.'))
             payload = payload['content']
             if not payload:
-                raise ValidationError(self.env._('الملف المختار فارغ.'))
+                raise ValidationError(self.env._('The selected file is empty.'))
         if isinstance(payload, memoryview):
             payload = payload.tobytes()
         if isinstance(payload, str):
             try:
                 payload = payload.encode('ascii')
             except UnicodeEncodeError:
-                raise ValidationError(self.env._('الملف المرفوع ليس PDF صالحا.'))
+                raise ValidationError(self.env._('The uploaded file is not a valid PDF.'))
         if not isinstance(payload, bytes):
-            raise ValidationError(self.env._('قيمة PDF غير صالحة. اختر الملف مرة اخرى.'))
+            raise ValidationError(self.env._('Invalid PDF value. Choose the file again.'))
         if payload.startswith(b'%PDF-'):
             data = payload
         else:
@@ -123,11 +125,11 @@ class AdFormTemplate(models.Model):
             try:
                 data = base64.b64decode(b''.join(payload.split()), validate=True)
             except (binascii.Error, ValueError):
-                raise ValidationError(self.env._('الملف المرفوع ليس PDF صالحا.'))
+                raise ValidationError(self.env._('The uploaded file is not a valid PDF.'))
             if not data.startswith(b'%PDF-'):
-                raise ValidationError(self.env._('يرجى رفع ملف PDF.'))
+                raise ValidationError(self.env._('Please upload a PDF file.'))
         if len(data) > MAX_PDF_BYTES:
-            raise ValidationError(self.env._('حجم ملف PDF يجب الا يتجاوز 25 ميغابايت.'))
+            raise ValidationError(self.env._('The PDF file must not exceed 25 MB.'))
         return data
 
     @api.model
@@ -138,7 +140,7 @@ class AdFormTemplate(models.Model):
                 if len(pdf) == 0 or pdf.needs_pass:
                     raise ValueError('empty or password-protected PDF')
         except Exception as exc:
-            raise ValidationError(self.env._('ملف PDF غير صالح او غير مدعوم: %s', exc))
+            raise ValidationError(self.env._('Invalid or unsupported PDF file: %s', exc))
 
     def _get_pdf_bytes(self):
         self.ensure_one()
@@ -188,7 +190,7 @@ class AdFormTemplate(models.Model):
                 vals.pop('template_pdf')
                 payload = None
         if 'template_attachment_id' in vals and not self.env.su:
-            raise AccessError(self.env._('الملف المخزن يدار تلقائيا.'))
+            raise AccessError(self.env._('The stored file is managed automatically.'))
         new_pdf = vals.pop('template_pdf', None) if vals.get('template_pdf') else None
         clear = 'template_pdf' in vals and not vals['template_pdf']
         if clear:
@@ -234,7 +236,7 @@ class AdFormTemplate(models.Model):
         self.ensure_one()
         self.check_access('read')
         if not self.template_attachment_id:
-            raise UserError(self.env._('لا يوجد ملف.'))
+            raise UserError(self.env._('There is no file.'))
         return {'type': 'ir.actions.act_url', 'target': 'self',
                 'url': '/web/content/%s?download=true' % self.template_attachment_id.id}
 
@@ -243,8 +245,8 @@ class AdFormTemplate(models.Model):
         self.ensure_one()
         self.check_access('write')
         if not self._get_pdf_bytes():
-            raise UserError(self.env._('ارفع ملف PDF واحفظ اولا.'))
-        return {'type': 'ir.actions.client', 'tag': 'ad_pdf_designer', 'name': self.env._('مصمم الاستمارة'),
+            raise UserError(self.env._('Upload a PDF file and save first.'))
+        return {'type': 'ir.actions.client', 'tag': 'ad_pdf_designer', 'name': self.env._('Form designer'),
                 'params': {'type_id': self.id}, 'context': {'active_id': self.id}}
 
     def _designer_items(self):
@@ -270,18 +272,20 @@ class AdFormTemplate(models.Model):
                 out.append((name, fld.string or name, kind))
             elif fld.type == 'many2one' and name not in ('company_id', 'create_uid', 'write_uid'):
                 if fld.comodel_name == 'hr.employee':
-                    out += [('%s.%s' % (name, sub), '%s / %s' % (fld.string or name, label),
+                    out += [('%s.%s' % (name, sub), '%s / %s' % (fld.string or name, self.env._(label)),
                              'date' if sub == 'birthday' else 'text') for sub, label in EMPLOYEE_SUB]
                 else:
                     out.append(('%s.name' % name, fld.string or name, 'text'))
-        out += [('company_id.ad_md_name', 'اسم المدير المفوض', 'text'),
-                ('company_id.ad_md_title', 'عنوان المدير المفوض', 'text')]
+        out += [('company_id.ad_md_name', self.env._('Managing director name'), 'text'),
+                ('company_id.ad_md_title', self.env._('Managing director title'), 'text')]
         return out
 
     def designer_load(self):
         self.ensure_one()
         self.check_access('write')
-        groups = self.env['res.groups'].search([('name', 'like', 'استمارات AD')])
+        group_ids = self.env['ir.model.data'].sudo().search([
+            ('module', '=', 'abnaa_dijlah_hr'), ('model', '=', 'res.groups'), ('name', '=like', 'group\\_ad\\_%')]).mapped('res_id')
+        groups = self.env['res.groups'].browse(group_ids).exists()
         return {
             'id': self.id, 'name': self.display_name, 'locked': False, 'structure_locked': False,
             'pages': [[round(w, 2), round(h, 2)] for w, h in self._page_sizes()],
@@ -290,8 +294,9 @@ class AdFormTemplate(models.Model):
                                            'sequence', 'date_format'] + sorted(DESIGNER_FIELD_KEYS - {'date_format'})),
             'rules': self.stage_ids.read(['name', 'print_signature', 'approver_id', 'group_id', 'sequence']
                                          + sorted(DESIGNER_STAGE_KEYS)),
-            'sources': [list(s) for s in self._source_choices()],
-            'field_types': FIELD_TYPES, 'system_sources': [list(p) for p in SYSTEM_SOURCES[:3]],
+            'sources': [[s[0], self.env._(s[1]), *s[2:]] for s in self._source_choices()],
+            'field_types': [[k, self.env._(v)] for k, v in FIELD_TYPES],
+            'system_sources': [[k, self.env._(v)] for k, v in SYSTEM_SOURCES[:3]],
             'approvers': self.env['res.users'].search_read([('active', '=', True), ('share', '=', False)], ['name']),
             'groups': [{'id': g.id, 'name': g.name} for g in groups],
             'issues': self.layout_issues(),
@@ -301,18 +306,18 @@ class AdFormTemplate(models.Model):
         self.ensure_one()
         self.check_access('write')
         if not isinstance(changes, dict) or set(changes) - {'fields', 'rules', 'new_fields', 'new_rules'}:
-            raise ValidationError(self.env._('طلب مصمم غير صالح.'))
+            raise ValidationError(self.env._('Invalid designer request.'))
         mapping = {'field': {}, 'rule': {}}
         with self.env.cr.savepoint():
             for model, allowed, key in (('ad.form.field', DESIGNER_FIELD_KEYS, 'fields'),
                                         ('ad.form.stage', DESIGNER_STAGE_KEYS, 'rules')):
                 updates = changes.get(key) or {}
                 if not isinstance(updates, dict):
-                    raise ValidationError(self.env._('قائمة تغييرات غير صالحة.'))
+                    raise ValidationError(self.env._('Invalid change list.'))
                 for record_id, vals in updates.items():
                     record = self.env[model].browse(int(record_id)).exists()
                     if not record or record.template_id != self or not isinstance(vals, dict) or set(vals) - allowed:
-                        raise AccessError(self.env._('تغيير غير صالح.'))
+                        raise AccessError(self.env._('Invalid change.'))
                     record.write(vals)
             field_allowed = DESIGNER_FIELD_KEYS | {'name', 'key', 'field_type', 'source_path', 'match_value',
                                                    'system_source', 'sequence'}
@@ -321,22 +326,22 @@ class AdFormTemplate(models.Model):
                                               ('rule', 'new_rules', 'ad.form.stage', stage_allowed)):
                 new_records = changes.get(key) or []
                 if not isinstance(new_records, list) or len(new_records) > 100:
-                    raise ValidationError(self.env._('لا تضف اكثر من 100 عنصر في الحفظ الواحد.'))
+                    raise ValidationError(self.env._('Do not add more than 100 items in one save.'))
                 for entry in new_records:
                     if not isinstance(entry, dict) or not isinstance(entry.get('values'), dict):
-                        raise ValidationError(self.env._('عنصر جديد غير صالح.'))
+                        raise ValidationError(self.env._('Invalid new item.'))
                     vals = dict(entry['values'])
                     local_id = str(entry.get('local_id', ''))
                     if not re.fullmatch(r'-[1-9][0-9]*', local_id) or local_id in mapping[kind] or set(vals) - allowed:
-                        raise AccessError(self.env._('عنصر جديد غير صالح.'))
+                        raise AccessError(self.env._('Invalid new item.'))
                     if not (vals.get('name') or '').strip():
-                        raise ValidationError(self.env._('ادخل اسما للحقل او المرحلة.'))
+                        raise ValidationError(self.env._('Enter a name for the field or stage.'))
                     if kind == 'rule':
                         for k in ('approver_id', 'group_id'):
                             if not vals.get(k):
                                 vals.pop(k, None)
                         if not vals.get('approver_id') and not vals.get('group_id'):
-                            raise ValidationError(self.env._('اختر معتمدا او مجموعة للمرحلة الجديدة.'))
+                            raise ValidationError(self.env._('Select an approver or a group for the new stage.'))
                     vals['template_id'] = self.id
                     record = self.env[model].create(vals)
                     mapping[kind][local_id] = record.id
@@ -392,51 +397,52 @@ class AdFormTemplate(models.Model):
 
 class AdFormField(models.Model):
     _name = 'ad.form.field'
-    _description = 'حقل مطبوع على الاستمارة'
+    _description = 'Printed form field'
     _order = 'sequence, id'
 
-    template_id = fields.Many2one('ad.form.template', required=True, ondelete='cascade', string='الاستمارة')
+    template_id = fields.Many2one('ad.form.template', required=True, ondelete='cascade', string='Form')
     sequence = fields.Integer(default=10)
-    name = fields.Char('الاسم', required=True)
-    key = fields.Char('المفتاح', required=True, help='معرف فريد بحروف انكليزية صغيرة')
-    field_type = fields.Selection(FIELD_TYPES, 'نوع القيمة', required=True, default='text')
-    source_path = fields.Char('مصدر القيمة', help='اسم حقل في الاستمارة، مثال: employee_id.name او score_ids.0.score')
-    match_value = fields.Char('تطبع العلامة عندما تساوي', help='للعلامات: القيمة التي تفعّل العلامة (اتركه فارغا للحقل المنطقي).')
-    system_source = fields.Selection(SYSTEM_SOURCES, 'قيمة النظام')
-    stage_id = fields.Many2one('ad.form.stage', 'مرحلة الموافقة', ondelete='restrict',
+    name = fields.Char('Name', required=True)
+    key = fields.Char('Key', required=True, help='Unique identifier in lowercase English letters')
+    field_type = fields.Selection(FIELD_TYPES, 'Value type', required=True, default='text')
+    source_path = fields.Char('Value source', help='A field name on the form, e.g. employee_id.name or score_ids.0.score')
+    match_value = fields.Char('Mark prints when equal to', help='For marks: the value that activates the mark (leave empty for a boolean field).')
+    system_source = fields.Selection(SYSTEM_SOURCES, 'System value')
+    stage_id = fields.Many2one('ad.form.stage', 'Approval stage', ondelete='restrict',
                                domain="[('template_id', '=', template_id)]")
-    date_format = fields.Char('صيغة التاريخ', default='%d / %m / %Y')
-    page = fields.Integer('الصفحة', default=1, required=True)
+    date_format = fields.Char('Date format', default='%d / %m / %Y')
+    page = fields.Integer('Page', default=1, required=True)
     x = fields.Float('X (pt)', default=40, digits=(16, 2))
-    y = fields.Float('Y من الاعلى (pt)', default=40, digits=(16, 2))
-    width = fields.Float('العرض', default=120, digits=(16, 2))
-    height = fields.Float('الارتفاع', default=16, digits=(16, 2))
-    font_size = fields.Integer('حجم الخط', default=11)
-    min_font_size = fields.Integer('اصغر حجم خط', default=6)
-    bold = fields.Boolean('غامق')
-    font_family = fields.Selection([('dejavu', 'DejaVu Sans (قابل للبحث)'), ('naskh', 'Naskh (غير قابل للبحث)')],
-                                   default='dejavu', string='الخط')
-    multiline = fields.Boolean('عدة اسطر')
-    text_align = fields.Selection([('left', 'يسار'), ('center', 'وسط'), ('right', 'يمين')], default='right',
-                                  string='المحاذاة')
-    sample_value = fields.Char('قيمة تجريبية', help='نص يظهر في المصمم، مثلا اسم طويل.')
+    y = fields.Float('Y from top (pt)', default=40, digits=(16, 2))
+    width = fields.Float('Width', default=120, digits=(16, 2))
+    height = fields.Float('Height', default=16, digits=(16, 2))
+    font_size = fields.Integer('Font size', default=11)
+    min_font_size = fields.Integer('Minimum font size', default=6)
+    bold = fields.Boolean('Bold')
+    font_family = fields.Selection([('dejavu', 'DejaVu Sans (searchable)'), ('times', 'Times New Roman (searchable)'),
+                                    ('naskh', 'Naskh (not searchable)')],
+                                   default='dejavu', string='Font')
+    multiline = fields.Boolean('Multiple lines')
+    text_align = fields.Selection([('left', 'Left'), ('center', 'Center'), ('right', 'Right')], default='right',
+                                  string='Alignment')
+    sample_value = fields.Char('Sample value', help='Text shown in the designer, e.g. a long name.')
 
     @api.constrains('key')
     def _check_key(self):
         for rec in self:
             if not re.fullmatch(r'[a-z][a-z0-9_]*', rec.key or ''):
-                raise ValidationError(self.env._('مفتاح الحقل: حروف انكليزية صغيرة وارقام و _ فقط.'))
+                raise ValidationError(self.env._('Field key: lowercase English letters, digits and _ only.'))
 
     @api.constrains('field_type', 'system_source', 'stage_id', 'source_path')
     def _check_source(self):
         for rec in self:
             if rec.field_type == 'system':
                 if not rec.system_source:
-                    raise ValidationError(self.env._('اختر قيمة النظام التي يطبعها "%s".', rec.name))
+                    raise ValidationError(self.env._('Select the system value printed by "%s".', rec.name))
                 if rec.system_source in ('approver_name', 'approval_date') and not rec.stage_id:
-                    raise ValidationError(self.env._('اختر مرحلة الموافقة للحقل "%s".', rec.name))
+                    raise ValidationError(self.env._('Select the approval stage for the field "%s".', rec.name))
             elif not rec.source_path:
-                raise ValidationError(self.env._('اختر مصدر القيمة للحقل "%s".', rec.name))
+                raise ValidationError(self.env._('Select the value source for the field "%s".', rec.name))
 
     @api.constrains('page', 'x', 'y', 'width', 'height', 'font_size', 'min_font_size')
     def _check_placement(self):
@@ -445,7 +451,7 @@ class AdFormField(models.Model):
             if (not all(math.isfinite(v) for v in values) or rec.page < 1 or rec.x < 0 or rec.y < 0
                     or rec.width <= 0 or rec.height <= 0 or not 4 <= rec.font_size <= 72
                     or not 4 <= rec.min_font_size <= 72):
-                raise ValidationError(self.env._('موضع غير صالح للحقل "%s".', rec.name))
+                raise ValidationError(self.env._('Invalid position for field "%s".', rec.name))
         if not self.env.context.get('ad_engine_seed'):
             self._check_inside_page()
 
@@ -456,12 +462,12 @@ class AdFormField(models.Model):
                 continue
             for rec in self.filtered(lambda f: f.template_id == tpl):
                 if rec.page > len(sizes):
-                    raise ValidationError(self.env._('الحقل "%(name)s" في الصفحة %(page)s لكن الملف %(count)s صفحة.',
+                    raise ValidationError(self.env._('The field "%(name)s" is on page %(page)s but the file has %(count)s pages.',
                                                      name=rec.name, page=rec.page, count=len(sizes)))
                 width, height = sizes[rec.page - 1]
                 if rec.x + rec.width > width + 0.5 or rec.y + rec.height > height + 0.5:
                     raise ValidationError(self.env._(
-                        'الحقل "%(name)s" يخرج عن الصفحة %(page)s (%(width).0f x %(height).0f pt). صغّر الصندوق او حرّكه.',
+                        'The field "%(name)s" falls outside page %(page)s (%(width).0f x %(height).0f pt). Make the box smaller or move it.',
                         name=rec.name, page=rec.page, width=width, height=height))
 
     # -------------------------------------------------------------- printing
@@ -551,6 +557,8 @@ class AdFormField(models.Model):
             except (TypeError, ValueError):
                 return str(value)
         if ftype == 'selection' and holder is not None and fname:
+            if value in PRINT_SELECTION_AR.get(fname, {}):
+                return PRINT_SELECTION_AR[fname][value]
             selection = dict(holder._fields[fname]._description_selection(holder.env))
             return selection.get(value, str(value))
         if isinstance(value, bool):
@@ -588,23 +596,23 @@ class AdFormField(models.Model):
 
 class AdFormStage(models.Model):
     _name = 'ad.form.stage'
-    _description = 'مرحلة موافقة على استمارة'
+    _description = 'Form approval stage'
     _order = 'sequence, id'
 
-    template_id = fields.Many2one('ad.form.template', required=True, ondelete='cascade', string='الاستمارة')
-    sequence = fields.Integer('الترتيب', default=10)
-    name = fields.Char('المرحلة', required=True, copy=True)
-    key = fields.Char('رمز التوقيع', help='يربط المرحلة بخانة التوقيع في سجل الموافقات (مثل hr, md).')
-    approver_id = fields.Many2one('res.users', 'المعتمد (مستخدم محدد)', domain="[('share', '=', False)]",
-                                  help='اذا حددت مستخدما فهو وحده من يوافق. اتركه فارغا ليوافق اي عضو من المجموعة.')
-    group_id = fields.Many2one('res.groups', 'او اي عضو من مجموعة')
+    template_id = fields.Many2one('ad.form.template', required=True, ondelete='cascade', string='Form')
+    sequence = fields.Integer('Order', default=10)
+    name = fields.Char('Stage', required=True, copy=True)
+    key = fields.Char('Signature code', help='Links the stage to the signature slot in the approval record (e.g. hr, md).')
+    approver_id = fields.Many2one('res.users', 'Approver (specific user)', domain="[('share', '=', False)]",
+                                  help='If you select a user, only that user approves. Leave empty to let any member of the group approve.')
+    group_id = fields.Many2one('res.groups', 'Or any member of a group')
     signature_page = fields.Integer(default=1)
     signature_x = fields.Float(default=40, digits=(16, 2))
     signature_y = fields.Float(default=40, digits=(16, 2))
     signature_width = fields.Float(default=100, digits=(16, 2))
     signature_height = fields.Float(default=40, digits=(16, 2))
-    print_signature = fields.Boolean('طباعة صورة التوقيع', default=True)
-    approver_label = fields.Char('المعتمد', compute='_compute_approver_label')
+    print_signature = fields.Boolean('Print signature image', default=True)
+    approver_label = fields.Char('Approver', compute='_compute_approver_label')
 
     @api.depends('approver_id', 'group_id')
     def _compute_approver_label(self):
@@ -615,7 +623,7 @@ class AdFormStage(models.Model):
     def _check_approver(self):
         for rec in self:
             if not rec.approver_id and not rec.group_id:
-                raise ValidationError(self.env._('حدد معتمدا او مجموعة للمرحلة "%s".', rec.name))
+                raise ValidationError(self.env._('Select an approver or a group for the stage "%s".', rec.name))
 
     @api.constrains('signature_page', 'signature_x', 'signature_y', 'signature_width', 'signature_height', 'print_signature')
     def _check_signature_location(self):
@@ -623,7 +631,7 @@ class AdFormStage(models.Model):
             values = (rec.signature_x, rec.signature_y, rec.signature_width, rec.signature_height)
             if (not all(math.isfinite(v) for v in values) or rec.signature_page < 1
                     or min(rec.signature_x, rec.signature_y) < 0 or min(rec.signature_width, rec.signature_height) <= 0):
-                raise ValidationError(self.env._('موضع توقيع غير صالح للمرحلة "%s".', rec.name))
+                raise ValidationError(self.env._('Invalid signature position for the stage "%s".', rec.name))
         if not self.env.context.get('ad_engine_seed'):
             self._check_signature_inside_page()
 
@@ -633,12 +641,12 @@ class AdFormStage(models.Model):
             if not sizes:
                 continue
             if rec.signature_page > len(sizes):
-                raise ValidationError(self.env._('توقيع "%(name)s" في الصفحة %(page)s لكن الملف %(count)s صفحة.',
+                raise ValidationError(self.env._('Signature "%(name)s" is on page %(page)s but the file has %(count)s pages.',
                                                  name=rec.name, page=rec.signature_page, count=len(sizes)))
             width, height = sizes[rec.signature_page - 1]
             if (rec.signature_x + rec.signature_width > width + 0.5
                     or rec.signature_y + rec.signature_height > height + 0.5):
-                raise ValidationError(self.env._('توقيع "%(name)s" يخرج عن الصفحة %(page)s.', name=rec.name,
+                raise ValidationError(self.env._('Signature "%(name)s" falls outside page %(page)s.', name=rec.name,
                                                  page=rec.signature_page))
 
     def _eligible_check(self):
@@ -667,5 +675,5 @@ class AdFormStage(models.Model):
 
     def unlink(self):
         if self.env['ad.form.field'].sudo().search_count([('stage_id', 'in', self.ids)], limit=1):
-            raise UserError(self.env._('هذه المرحلة تزود حقل نظام. غيّر المعتمد بدل حذفها.'))
+            raise UserError(self.env._('This stage supplies a system field. Change the approver instead of deleting it.'))
         return super().unlink()

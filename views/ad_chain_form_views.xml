@@ -6,13 +6,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_appointment_order_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -21,15 +21,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
@@ -51,13 +51,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_onboarding_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -66,15 +66,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
@@ -96,13 +96,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_transfer_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -111,15 +111,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
@@ -141,13 +141,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_discipline_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -156,15 +156,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
@@ -186,13 +186,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_termination_order_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -201,15 +201,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
@@ -231,13 +231,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_clearance_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'hr_cert' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -246,15 +246,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
@@ -276,13 +276,13 @@
         <field name="inherit_id" ref="abnaa_dijlah_hr.ad_interview_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                <button name="action_ad_submit" type="object" string="Send for approval" class="btn-primary"
                         invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
-                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                <button name="action_ad_approve" type="object" string="Approve" class="btn-success"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                <button name="action_ad_reject" type="object" string="Reject" class="btn-danger"
                         invisible="ad_state != 'pending' or not ad_can_approve"/>
-                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                <button name="action_ad_cancel_request" type="object" string="Withdraw approval request"
                         invisible="ad_state != 'pending'"/>
                 <field name="ad_can_approve" invisible="1"/>
                 <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
@@ -291,15 +291,15 @@
             </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
-                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                    Awaiting approval from: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
                 </div>
                 <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
-                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
-                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                    The form was rejected. Reason: <field name="ad_reject_note" class="oe_inline"/>
+                    — You can edit it and send it for approval again.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="سلسلة الموافقات" name="ad_chain">
+                <page string="Approval chain" name="ad_chain">
                     <field name="ad_step_ids" readonly="1">
                         <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
                               decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">

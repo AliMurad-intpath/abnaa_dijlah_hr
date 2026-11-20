@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <record id="seq_ad_transfer" model="ir.sequence">
-        <field name="name">تنقلات الحراس - AD</field>
+        <field name="name">Guard transfers - AD</field>
         <field name="code">ad.transfer</field>
         <field name="prefix">TR/%(year)s/</field>
         <field name="padding">4</field>

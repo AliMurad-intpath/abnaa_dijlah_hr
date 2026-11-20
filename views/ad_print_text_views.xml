@@ -5,12 +5,12 @@
         <field name="model">ad.print.text</field>
         <field name="arch" type="xml">
             <list editable="bottom" create="0" delete="0" decoration-info="edited">
-                <field name="report_key" string="الاستمارة"/>
+                <field name="report_key" string="Form"/>
                 <field name="seq"/>
                 <field name="text"/>
                 <field name="original" optional="hide"/>
                 <field name="edited" column_invisible="1"/>
-                <button name="action_reset" type="object" icon="fa-undo" title="اعادة النص الاصلي" invisible="not edited"/>
+                <button name="action_reset" type="object" icon="fa-undo" title="Restore original text" invisible="not edited"/>
             </list>
         </field>
     </record>
@@ -21,21 +21,21 @@
             <search>
                 <field name="text"/>
                 <field name="report_key"/>
-                <filter name="edited" string="المعدلة فقط" domain="[('edited', '=', True)]"/>
+                <filter name="edited" string="Modified only" domain="[('edited', '=', True)]"/>
                 <group>
-                    <filter name="group_report" string="الاستمارة" context="{'group_by': 'report_key'}"/>
+                    <filter name="group_report" string="Form" context="{'group_by': 'report_key'}"/>
                 </group>
             </search>
         </field>
     </record>
     <record id="ad_print_text_action" model="ir.actions.act_window">
-        <field name="name">نصوص الطباعة</field>
+        <field name="name">Print texts</field>
         <field name="res_model">ad.print.text</field>
         <field name="view_mode">list</field>
         <field name="context">{'search_default_group_report': 1}</field>
     </record>
     <record id="ad_print_text_reset_action" model="ir.actions.server">
-        <field name="name">اعادة النص الاصلي للسطور المحددة</field>
+        <field name="name">Restore original text for selected lines</field>
         <field name="model_id" ref="model_ad_print_text"/>
         <field name="binding_model_id" ref="model_ad_print_text"/>
         <field name="state">code</field>

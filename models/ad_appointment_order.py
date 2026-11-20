@@ -6,24 +6,24 @@ from odoo import api, fields, models
 class AdAppointmentOrder(models.Model):
     """Appointment Order Form AD-WI-FM-06-02 (أمر تعيين)."""
     _name = 'ad.appointment.order'
-    _description = 'أمر تعيين'
+    _description = 'Appointment order'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'ad.approval.mixin']
     _order = 'date desc, id desc'
     _ad_seq_code = 'ad.appointment.order'
     _ad_form_xmlid = 'abnaa_dijlah_hr.form_tpl_appointment'
 
-    date = fields.Date(default=fields.Date.context_today, required=True, tracking=True, string='التاريخ')
-    employee_id = fields.Many2one('hr.employee', string='السيد (الموظف)', required=True, tracking=True)
-    job_title = fields.Char('بعنوان', compute='_compute_job_title', store=True, readonly=False, required=True)
-    site_id = fields.Many2one('ad.work.site', string='موقع', required=True, tracking=True)
+    date = fields.Date(default=fields.Date.context_today, required=True, tracking=True, string='Date')
+    employee_id = fields.Many2one('hr.employee', string='Mr. (employee)', required=True, tracking=True)
+    job_title = fields.Char('Addressed to', compute='_compute_job_title', store=True, readonly=False, required=True)
+    site_id = fields.Many2one('ad.work.site', string='Site', required=True, tracking=True)
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
-    nominal_salary = fields.Monetary('راتب اسمي شهريا', currency_field='currency_id', required=True, tracking=True)
-    allowance = fields.Monetary('مخصصات موقع عمل', currency_field='currency_id', tracking=True)
-    probation_months = fields.Integer('فترة التجربة (اشهر)', default=3)
-    start_date = fields.Date('تاريخ المباشرة', required=True, tracking=True)
-    state = fields.Selection([('draft', 'مسودة'), ('hr', 'تمت مراجعة الموارد البشرية'), ('approved', 'معتمد من المدير المفوض'),
-                              ('cancel', 'ملغاة')], default='draft', tracking=True, copy=False, string='الحالة')
-    interview_ref = fields.Char('مرجع تقييم المقابلة')
+    nominal_salary = fields.Monetary('Monthly nominal salary', currency_field='currency_id', required=True, tracking=True)
+    allowance = fields.Monetary('Work site allowance', currency_field='currency_id', tracking=True)
+    probation_months = fields.Integer('Probation period (months)', default=3)
+    start_date = fields.Date('Start date', required=True, tracking=True)
+    state = fields.Selection([('draft', 'Draft'), ('hr', 'HR reviewed'), ('approved', 'Approved by the managing director'),
+                              ('cancel', 'Cancelled')], default='draft', tracking=True, copy=False, string='Status')
+    interview_ref = fields.Char('Interview rating reference')
 
     @api.model_create_multi
     def create(self, vals_list):

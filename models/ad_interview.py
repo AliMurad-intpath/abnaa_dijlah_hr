@@ -1,87 +1,87 @@
 from odoo import api, fields, models
 
 CRITERIA = [
-    ('1', 'التعليم والمؤهلات المهنية', 'طريقة القياس: وثائق ثبوتية لتأكيد مستوى التعليم والمؤهلات'),
-    ('2', 'الخبرة العملية', 'طريقة القياس: وثائق مرجعية من أماكن العمل السابقة'),
-    ('3', 'مهارات قيادة العجلات', 'طريقة القياس: وثيقة ثبوتية ( إجازة السوق)'),
-    ('4', 'المظهر والانضباط العام', 'طريقة القياس: ملاحظة مباشرة (ان يكون الهندام مناسب)'),
-    ('5', 'اللياقة البدنية والتحمل', 'طريقة القياس: اختبارات ميدانية بسيطة (جري، تمرين ضغط، حمل اوزان)'),
-    ('6', 'الثبات الانفعالي وضبط النفس', 'طريقة القياس: طرح مجموعة من الأسئلة السلوكية'),
-    ('7', 'الوعي الأمني والملاحظة', 'طريقة القياس: عرض صورة او فديو ومن ثم طرح مجموعة من الأسئلة'),
+    ('1', 'Education and professional qualifications', 'Measured by: supporting documents confirming education and qualifications'),
+    ('2', 'Work experience', 'Measured by: reference documents from previous workplaces'),
+    ('3', 'Vehicle driving skills', 'Measured by: supporting document (driving license)'),
+    ('4', 'Appearance and general discipline', 'Measured by: direct observation (appropriate attire)'),
+    ('5', 'Physical fitness and endurance', 'Measured by: simple field tests (running, push-ups, carrying weights)'),
+    ('6', 'Emotional stability and self-control', 'Measured by: a set of behavioral questions'),
+    ('7', 'Security awareness and observation', 'Measured by: showing a picture or video and then asking a set of questions'),
 ]
-LEVELS = [('excellent', 'ممتاز'), ('very_good', 'جيد جدا'), ('good', 'جيد'), ('weak', 'ضعيف'), ('very_weak', 'ضعيف جدا')]
-YESNO = [('yes', 'نعم'), ('no', 'كلا')]
-PASSFAIL = [('pass', 'اجتياز'), ('fail', 'اخفاق')]
+LEVELS = [('excellent', 'Excellent'), ('very_good', 'Very good'), ('good', 'Good'), ('weak', 'Weak'), ('very_weak', 'Very weak')]
+YESNO = [('yes', 'Yes'), ('no', 'No')]
+PASSFAIL = [('pass', 'Pass'), ('fail', 'Fail')]
 
 
 class AdInterview(models.Model):
     """Interview rating form AD-WI-FM-06-01 (استمارة تقييم المقابلة) - 5 pages."""
     _name = 'ad.interview'
-    _description = 'استمارة تقييم المقابلة'
+    _description = 'Interview rating form'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'ad.approval.mixin']
     _order = 'date desc, id desc'
     _ad_seq_code = 'ad.interview'
     _ad_form_xmlid = 'abnaa_dijlah_hr.form_tpl_interview'
 
-    date = fields.Date(default=fields.Date.context_today, required=True, string='التاريخ')
-    applicant_id = fields.Many2one('hr.applicant', string='سجل المتقدم')
-    employee_id = fields.Many2one('hr.employee', string='الموظف المنشأ', readonly=True, copy=False)
-    candidate_name = fields.Char('اسم المرشح', required=True, tracking=True)
-    birth_date = fields.Date('تاريخ الميلاد')
-    phone = fields.Char('رقم الهاتف')
-    governorate = fields.Char('المحافظة')
-    area = fields.Char('الناحية')
-    district = fields.Char('الحي')
-    interview_date = fields.Date('تاريخ المقابلة', default=fields.Date.context_today)
-    job_title = fields.Char('المسمى الوظيفي')
-    referral = fields.Char('اسم جهة الترشيح')
-    score_ids = fields.One2many('ad.interview.score', 'interview_id', string='الدرجات', copy=True)
-    overall_score = fields.Float('درجة التقييم العام', compute='_compute_overall', store=True, digits=(4, 1))
-    ar_read = fields.Selection(LEVELS, 'اتقان العربية - قراءة')
-    ar_write = fields.Selection(LEVELS, 'اتقان العربية - كتابة')
-    ar_speak = fields.Selection(LEVELS, 'اتقان العربية - محادثة')
-    en_read = fields.Selection(LEVELS, 'اتقان الانكليزية - قراءة')
-    en_write = fields.Selection(LEVELS, 'اتقان الانكليزية - كتابة')
-    en_speak = fields.Selection(LEVELS, 'اتقان الانكليزية - محادثة')
+    date = fields.Date(default=fields.Date.context_today, required=True, string='Date')
+    applicant_id = fields.Many2one('hr.applicant', string='Applicant record')
+    employee_id = fields.Many2one('hr.employee', string='Created employee', readonly=True, copy=False)
+    candidate_name = fields.Char('Candidate name', required=True, tracking=True)
+    birth_date = fields.Date('Date of birth')
+    phone = fields.Char('Phone number')
+    governorate = fields.Char('Governorate')
+    area = fields.Char('Sub-district')
+    district = fields.Char('Neighborhood')
+    interview_date = fields.Date('Interview date', default=fields.Date.context_today)
+    job_title = fields.Char('Job title')
+    referral = fields.Char('Referring party name')
+    score_ids = fields.One2many('ad.interview.score', 'interview_id', string='Scores', copy=True)
+    overall_score = fields.Float('Overall rating score', compute='_compute_overall', store=True, digits=(4, 1))
+    ar_read = fields.Selection(LEVELS, 'Arabic proficiency - reading')
+    ar_write = fields.Selection(LEVELS, 'Arabic proficiency - writing')
+    ar_speak = fields.Selection(LEVELS, 'Arabic proficiency - speaking')
+    en_read = fields.Selection(LEVELS, 'English proficiency - reading')
+    en_write = fields.Selection(LEVELS, 'English proficiency - writing')
+    en_speak = fields.Selection(LEVELS, 'English proficiency - speaking')
     # health assessment
-    health_general = fields.Selection(LEVELS, 'الوضع الصحي العام')
-    weight = fields.Char('الوزن')
-    height = fields.Char('الطول')
-    chronic_diseases = fields.Text('الامراض المزمنة والمعدية')
-    surgery_ids = fields.One2many('ad.interview.surgery', 'interview_id', string='العمليات الجراحية السابقة')
-    q_medication = fields.Selection(YESNO, 'يتعاطى ادوية او عقاقير بشكل دوري')
-    q_tattoo = fields.Selection(YESNO, 'وشم على جزء ظاهر من الجسم')
-    q_planned_surgery = fields.Selection(YESNO, 'علاج او عمليات جراحية مخطط لها')
-    q_care_program = fields.Selection(YESNO, 'يخضع لبرنامج رعاية')
+    health_general = fields.Selection(LEVELS, 'General health condition')
+    weight = fields.Char('Weight')
+    height = fields.Char('Height')
+    chronic_diseases = fields.Text('Chronic and infectious diseases')
+    surgery_ids = fields.One2many('ad.interview.surgery', 'interview_id', string='Previous surgeries')
+    q_medication = fields.Selection(YESNO, 'Regularly takes medication or drugs')
+    q_tattoo = fields.Selection(YESNO, 'Tattoo on a visible part of the body')
+    q_planned_surgery = fields.Selection(YESNO, 'Planned treatment or surgery')
+    q_care_program = fields.Selection(YESNO, 'Under a care program')
     # security assessment
-    q_party = fields.Selection(YESNO, 'صلة بالميليشيات او تنظيمات او احزاب')
-    q_convicted = fields.Selection(YESNO, 'محكوم بجريمة او جنحة او جناية')
-    q_pending_case = fields.Selection(YESNO, 'قضايا منظورة في المحاكم')
-    reference_ids = fields.One2many('ad.interview.reference', 'interview_id', string='المعرّفون')
+    q_party = fields.Selection(YESNO, 'Links to militias, organizations or parties')
+    q_convicted = fields.Selection(YESNO, 'Convicted of a misdemeanor or felony')
+    q_pending_case = fields.Selection(YESNO, 'Cases pending in court')
+    reference_ids = fields.One2many('ad.interview.reference', 'interview_id', string='References')
     # training
-    t_weapon = fields.Selection(PASSFAIL, 'تدريب السلاح')
-    t_force_law = fields.Selection(PASSFAIL, 'قانون استخدام القوة')
-    t_armed_conflict = fields.Selection(PASSFAIL, 'قانون النزاع المسلح')
-    t_search = fields.Selection(PASSFAIL, 'تفتيش الاشخاص والعجلات')
+    t_weapon = fields.Selection(PASSFAIL, 'Weapons training')
+    t_force_law = fields.Selection(PASSFAIL, 'Use of force law')
+    t_armed_conflict = fields.Selection(PASSFAIL, 'Armed conflict law')
+    t_search = fields.Selection(PASSFAIL, 'Searching persons and vehicles')
     # recommendation
-    recommendation = fields.Selection([('hire', 'تعيين المرشح'), ('reject', 'عدم تعيين المرشح'), ('withdraw', 'انسحاب المرشح')],
-                                      tracking=True, string='التوصية')
-    w_salary = fields.Boolean('الراتب منخفض جدا')
-    w_duties = fields.Boolean('الواجبات الوظيفية')
-    w_hours = fields.Boolean('ساعات العمل')
-    w_other_job = fields.Boolean('وظيفة أخرى')
-    w_mind = fields.Boolean('تغير الرأي')
-    w_other = fields.Char('سبب آخر للانسحاب')
-    r_qualif = fields.Boolean('المؤهلات والجدارات دون المتطلبات')
-    r_health = fields.Boolean('اخفاق في التقييم الصحي')
-    r_security = fields.Boolean('اخفاق في التقييم الامني')
-    r_training = fields.Boolean('عدم اجتياز التدريب الأمني')
-    r_other = fields.Char('سبب آخر لعدم التعيين')
-    ack_date = fields.Date('تاريخ الإقرار')
+    recommendation = fields.Selection([('hire', 'Hire the candidate'), ('reject', 'Do not hire the candidate'), ('withdraw', 'Candidate withdrew')],
+                                      tracking=True, string='Recommendation')
+    w_salary = fields.Boolean('Salary too low')
+    w_duties = fields.Boolean('Job duties')
+    w_hours = fields.Boolean('Working hours')
+    w_other_job = fields.Boolean('Another job')
+    w_mind = fields.Boolean('Changed mind')
+    w_other = fields.Char('Other reason for withdrawal')
+    r_qualif = fields.Boolean('Qualifications and competencies below requirements')
+    r_health = fields.Boolean('Failed the health assessment')
+    r_security = fields.Boolean('Failed the security assessment')
+    r_training = fields.Boolean('Did not pass security training')
+    r_other = fields.Char('Other reason for not hiring')
+    ack_date = fields.Date('Declaration date')
     state = fields.Selection([
-        ('draft', 'مسودة'), ('hr', 'مقابلة الموارد البشرية'), ('ops', 'العمليات / التدريب'),
-        ('done', 'التوصية النهائية'), ('cancel', 'ملغاة'),
-    ], default='draft', tracking=True, copy=False, string='الحالة')
+        ('draft', 'Draft'), ('hr', 'HR interview'), ('ops', 'Operations / training'),
+        ('done', 'Final recommendation'), ('cancel', 'Cancelled'),
+    ], default='draft', tracking=True, copy=False, string='Status')
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -139,37 +139,37 @@ class AdInterview(models.Model):
 
 class AdInterviewScore(models.Model):
     _name = 'ad.interview.score'
-    _description = 'درجة تقييم المقابلة'
+    _description = 'Interview rating score'
     _order = 'sequence, id'
 
-    interview_id = fields.Many2one('ad.interview', required=True, ondelete='cascade', string='استمارة المقابلة')
-    sequence = fields.Integer(default=10, string='التسلسل')
-    criterion = fields.Selection([(n, t) for n, t, _m in CRITERIA], required=True, string='المعيار')
-    score = fields.Integer('الدرجة (0-10)')
-    comments = fields.Char('التعليقات')
+    interview_id = fields.Many2one('ad.interview', required=True, ondelete='cascade', string='Interview form')
+    sequence = fields.Integer(default=10, string='Sequence')
+    criterion = fields.Selection([(n, t) for n, t, _m in CRITERIA], required=True, string='Criterion')
+    score = fields.Integer('Score (0-10)')
+    comments = fields.Char('Comments')
 
     @api.constrains('score')
     def _check_score(self):
         from odoo.exceptions import ValidationError
         for rec in self:
             if not 0 <= rec.score <= 10:
-                raise ValidationError(self.env._('يجب أن تكون الدرجات بين 0 و 10.'))
+                raise ValidationError(self.env._('Scores must be between 0 and 10.'))
 
 
 class AdInterviewSurgery(models.Model):
     _name = 'ad.interview.surgery'
-    _description = 'عملية جراحية (المقابلة)'
+    _description = 'Surgery (interview)'
 
-    interview_id = fields.Many2one('ad.interview', required=True, ondelete='cascade', string='استمارة المقابلة')
-    name = fields.Char('نوع العملية', required=True)
-    date = fields.Date('التاريخ')
+    interview_id = fields.Many2one('ad.interview', required=True, ondelete='cascade', string='Interview form')
+    name = fields.Char('Operation type', required=True)
+    date = fields.Date('Date')
 
 
 class AdInterviewReference(models.Model):
     _name = 'ad.interview.reference'
-    _description = 'معرّف (المقابلة)'
+    _description = 'Reference (interview)'
 
-    interview_id = fields.Many2one('ad.interview', required=True, ondelete='cascade', string='استمارة المقابلة')
-    name = fields.Char('اسم المعرف', required=True)
-    relation = fields.Char('العلاقة')
-    phone = fields.Char('رقم الهاتف')
+    interview_id = fields.Many2one('ad.interview', required=True, ondelete='cascade', string='Interview form')
+    name = fields.Char('Reference name', required=True)
+    relation = fields.Char('Relationship')
+    phone = fields.Char('Phone number')

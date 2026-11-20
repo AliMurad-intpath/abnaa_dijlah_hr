@@ -1,6 +1,6 @@
 {
  'name': 'Abnaa Dijlah HR & Approvals',
- 'version': '20.0.2.0.0',
+ 'version': '20.0.2.1.0',
  'category': 'Human Resources',
  'summary': 'Abnaa Dijlah Security Services - HR forms printed on the original PDFs, approval chain, dashboard',
  'author': "Abna'a Dijla Security Services Co. (AD)",
@@ -63,7 +63,8 @@
   'views/res_company_approvals_views.xml',
   'data/ad_chain_cron.xml',
  ],
- 'assets': {'web.assets_backend': ['abnaa_dijlah_hr/static/src/dashboard/ad_fonts.scss', 'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.scss', 'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js', 'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml', 'abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js', 'abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml', 'abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.scss']},
+ 'assets': {'web.assets_backend': ['abnaa_dijlah_hr/static/src/ad_google_fonts.js',
+            'abnaa_dijlah_hr/static/src/dashboard/ad_fonts.scss', 'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.scss', 'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js', 'abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml', 'abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js', 'abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml', 'abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.scss']},
  'installable': True,
  'application': True,
  'post_init_hook': 'post_init',

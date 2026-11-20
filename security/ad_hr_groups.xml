@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="group_ad_hr_user" model="res.groups">
-        <field name="name">استمارات AD: الموظف المختص</field>
+        <field name="name">AD Forms: Specialist employee</field>
         <field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]"/>
     </record>
     <record id="group_ad_hr_manager" model="res.groups">
-        <field name="name">استمارات AD: مدير قسم الموارد البشرية</field>
+        <field name="name">AD Forms: HR department manager</field>
         <field name="implied_ids" eval="[(4, ref('group_ad_hr_user')), (4, ref('hr.group_hr_manager'))]"/>
     </record>
     <record id="group_ad_ops_manager" model="res.groups">
-        <field name="name">استمارات AD: مدير قسم العمليات</field>
+        <field name="name">AD Forms: Operations department manager</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="group_ad_site_supervisor" model="res.groups">
-        <field name="name">استمارات AD: مشرف الموقع</field>
+        <field name="name">AD Forms: Site supervisor</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="group_ad_logistics" model="res.groups">
-        <field name="name">استمارات AD: قسم اللوجستيك</field>
+        <field name="name">AD Forms: Logistics department</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="group_ad_admin" model="res.groups">
-        <field name="name">استمارات AD: قسم الإدارة AA</field>
+        <field name="name">AD Forms: Administration AA department</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="group_ad_motor" model="res.groups">
-        <field name="name">استمارات AD: قسم الاليات MD</field>
+        <field name="name">AD Forms: Vehicles MD department</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="group_ad_finance" model="res.groups">
-        <field name="name">استمارات AD: القسم المالي</field>
+        <field name="name">AD Forms: Finance department</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
     <record id="group_ad_md" model="res.groups">
-        <field name="name">استمارات AD: المدير المفوض</field>
+        <field name="name">AD Forms: Managing director</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 </odoo>

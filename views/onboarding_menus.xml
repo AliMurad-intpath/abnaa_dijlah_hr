@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_ad_onboarding" name="تاريخ مباشرة العمل (06-03)" parent="abnaa_dijlah_hr.menu_ad_hiring" sequence="30" action="ad_onboarding_action"/>
+    <menuitem id="menu_ad_onboarding" name="Start of work date (06-03)" parent="abnaa_dijlah_hr.menu_ad_hiring" sequence="30" action="ad_onboarding_action"/>
 </odoo>

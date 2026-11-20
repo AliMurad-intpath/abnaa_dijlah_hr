@@ -2,82 +2,82 @@
 <odoo noupdate="1">
     <record id="violation_01" model="ad.violation.type">
         <field name="number">1</field>
-        <field name="name">الغياب عن الدوام الرسمي بدون تبليغ مسبق</field>
+        <field name="name">Absence from official work without prior notice</field>
     </record>
     <record id="violation_02" model="ad.violation.type">
         <field name="number">2</field>
-        <field name="name">مخالفة القوانين والأنظمة والآداب الخاصة والعامة</field>
+        <field name="name">Violating laws, regulations and public or private morals</field>
     </record>
     <record id="violation_03" model="ad.violation.type">
         <field name="number">3</field>
-        <field name="name">الحضور الى العمل متأخر او تركه مبكر دون اذن</field>
+        <field name="name">Arriving late or leaving early without permission</field>
     </record>
     <record id="violation_04" model="ad.violation.type">
         <field name="number">4</field>
-        <field name="name">التعامل بأسلوب غير لائق مع المسؤول المباشر</field>
+        <field name="name">Improper conduct toward the direct supervisor</field>
     </record>
     <record id="violation_05" model="ad.violation.type">
         <field name="number">5</field>
-        <field name="name">عدم العودة من الاجازة في اليوم المحدد</field>
+        <field name="name">Not returning from leave on the due date</field>
     </record>
     <record id="violation_06" model="ad.violation.type">
         <field name="number">6</field>
-        <field name="name">الكذب والتحايل للحصول على ما ليس بحق</field>
+        <field name="name">Lying or cheating to obtain an undue benefit</field>
     </record>
     <record id="violation_07" model="ad.violation.type">
         <field name="number">7</field>
-        <field name="name">تمرد او سلوك سيء بالتهديد او شجار مع الموظفين</field>
+        <field name="name">Insubordination, misconduct, threats or fighting with staff</field>
     </record>
     <record id="violation_08" model="ad.violation.type">
         <field name="number">8</field>
-        <field name="name">عدم حلاقة الذقن والظهور بمظهر غير لائق يضر بسمعة الشركة</field>
+        <field name="name">Not shaving and appearing in a way that harms the company's reputation</field>
     </record>
     <record id="violation_09" model="ad.violation.type">
         <field name="number">9</field>
-        <field name="name">عدم اتباع التعليمات او اطاعة الأوامر</field>
+        <field name="name">Not following instructions or obeying orders</field>
     </record>
     <record id="violation_10" model="ad.violation.type">
         <field name="number">10</field>
-        <field name="name">استلام رشوة او هدايا من زبائن الشركة</field>
+        <field name="name">Accepting bribes or gifts from company customers</field>
     </record>
     <record id="violation_11" model="ad.violation.type">
         <field name="number">11</field>
-        <field name="name">افشاء اسرار العمل</field>
+        <field name="name">Disclosing business secrets</field>
     </record>
     <record id="violation_12" model="ad.violation.type">
         <field name="number">12</field>
-        <field name="name">التحدث بأمور طائفية او سياسية او نقل اشاعات</field>
+        <field name="name">Talking about sectarian or political matters or spreading rumors</field>
     </record>
     <record id="violation_13" model="ad.violation.type">
         <field name="number">13</field>
-        <field name="name">رفض العمل او التباطؤ في إنجازه مسببا تعطيله او توقيفه واهمال في أداء الواجبات</field>
+        <field name="name">Refusing or delaying work, causing it to stop, and neglecting duties</field>
     </record>
     <record id="violation_14" model="ad.violation.type">
         <field name="number">14</field>
-        <field name="name">التلاعب في اثبات الحضور والانصراف</field>
+        <field name="name">Tampering with attendance records</field>
     </record>
     <record id="violation_15" model="ad.violation.type">
         <field name="number">15</field>
-        <field name="name">إطلاق العيارات النارية بقصد او غير قصد</field>
+        <field name="name">Firing shots, intentionally or not</field>
     </record>
     <record id="violation_16" model="ad.violation.type">
         <field name="number">16</field>
-        <field name="name">التحريض على مخالفة الأوامر والتعليمات الخاصة بالعمل</field>
+        <field name="name">Inciting others to violate work orders and instructions</field>
     </record>
     <record id="violation_17" model="ad.violation.type">
         <field name="number">17</field>
-        <field name="name">النوم اثناء العمل</field>
+        <field name="name">Sleeping on duty</field>
     </record>
     <record id="violation_18" model="ad.violation.type">
         <field name="number">18</field>
-        <field name="name">تجاوز السرعة المسموح بها اثناء قيادة العجلات</field>
+        <field name="name">Exceeding the speed limit while driving vehicles</field>
     </record>
     <record id="violation_19" model="ad.violation.type">
         <field name="number">19</field>
-        <field name="name">تخريب ممتلكات الشركة او الزبائن او سرقتها او استعمالها بدون اذن رسمي</field>
+        <field name="name">Damaging, stealing or using company or customer property without official permission</field>
     </record>
     <record id="violation_20" model="ad.violation.type">
         <field name="number">20</field>
-        <field name="name">عدم الالتزام بالقيافة وارتداء الدرع ومتطلبات الصحة والسلامة المهنية اثناء العمل</field>
+        <field name="name">Not complying with dress code, body armor and occupational health and safety requirements on duty</field>
     </record>
 </odoo>

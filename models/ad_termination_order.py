@@ -1,33 +1,33 @@
 from odoo import api, fields, models
 
 LEAVE_REASONS = [
-    ('martyr', 'لاستشهاده'),
-    ('death', 'لوفاته'),
-    ('resignation', 'لاستقالته'),
-    ('termination', 'انهاء خدماته'),
-    ('investigation', 'مجلس تحقيقي'),
+    ('martyr', 'For his martyrdom'),
+    ('death', 'For his death'),
+    ('resignation', 'For his resignation'),
+    ('termination', 'Termination of his services'),
+    ('investigation', 'Investigation board'),
 ]
 
 
 class AdTerminationOrder(models.Model):
     """Order termination services AD-WI-FM-06-10 (أمر انهاء خدمات)."""
     _name = 'ad.termination.order'
-    _description = 'أمر انهاء خدمات'
+    _description = 'Termination order'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'ad.approval.mixin']
     _order = 'date desc, id desc'
     _ad_seq_code = 'ad.termination.order'
     _ad_form_xmlid = 'abnaa_dijlah_hr.form_tpl_termination'
 
-    date = fields.Date(default=fields.Date.context_today, required=True, tracking=True, string='التاريخ')
-    employee_id = fields.Many2one('hr.employee', string='السيد (الموظف)', required=True, tracking=True)
-    capacity = fields.Char('بصفة', compute='_compute_from_employee', store=True, readonly=False)
-    site_id = fields.Many2one('ad.work.site', string='المنسوب الى موقع', compute='_compute_from_employee', store=True, readonly=False)
-    effective_date = fields.Date('اعتبارا من تاريخ', required=True, tracking=True)
-    reason = fields.Selection(LEAVE_REASONS, required=True, default='termination', tracking=True, string='سبب ترك العمل')
-    disciplinary_ref = fields.Char('مرجع استمارة العقوبات')
-    state = fields.Selection([('draft', 'مسودة'), ('hr', 'تمت مراجعة الموارد البشرية'), ('approved', 'معتمد من المدير المفوض'),
-                              ('cancel', 'ملغاة')], default='draft', tracking=True, copy=False, string='الحالة')
-    clearance_id = fields.Many2one('ad.clearance', string='براءة الذمة', readonly=True, copy=False)
+    date = fields.Date(default=fields.Date.context_today, required=True, tracking=True, string='Date')
+    employee_id = fields.Many2one('hr.employee', string='Mr. (employee)', required=True, tracking=True)
+    capacity = fields.Char('In the capacity of', compute='_compute_from_employee', store=True, readonly=False)
+    site_id = fields.Many2one('ad.work.site', string='Assigned to site', compute='_compute_from_employee', store=True, readonly=False)
+    effective_date = fields.Date('Effective from', required=True, tracking=True)
+    reason = fields.Selection(LEAVE_REASONS, required=True, default='termination', tracking=True, string='Reason for leaving')
+    disciplinary_ref = fields.Char('Penalties form reference')
+    state = fields.Selection([('draft', 'Draft'), ('hr', 'HR reviewed'), ('approved', 'Approved by the managing director'),
+                              ('cancel', 'Cancelled')], default='draft', tracking=True, copy=False, string='Status')
+    clearance_id = fields.Many2one('ad.clearance', string='Clearance', readonly=True, copy=False)
 
     @api.depends('employee_id')
     def _compute_from_employee(self):

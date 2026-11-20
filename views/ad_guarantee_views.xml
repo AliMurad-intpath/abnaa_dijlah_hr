@@ -18,25 +18,25 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_signed" type="object" string="تأشير موقّع ومختوم" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state == 'draft'"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة"/>
+                    <button name="action_signed" type="object" string="Signed and stamped mark" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_draft" type="object" string="Reset to draft" invisible="state == 'draft'"/>
+                    <button name="action_ad_print" type="object" string="Print form"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <group>
-                        <group string="المكفول">
+                        <group string="Guaranteed person">
                             <field name="employee_id"/>
                             <field name="capacity"/>
                             <field name="date"/>
                         </group>
-                        <group string="الكفيل">
+                        <group string="Guarantor">
                             <field name="guarantor_name"/>
                             <field name="guarantor_phone"/>
                             <field name="guarantor_address"/>
                         </group>
                     </group>
-                    <group string="الشهود والمشاور القانوني">
+                    <group string="Witnesses and legal advisor">
                         <group>
                             <field name="witness1"/>
                             <field name="witness2"/>
@@ -52,7 +52,7 @@
         </field>
     </record>
     <record id="ad_employee_guarantee_action" model="ir.actions.act_window">
-        <field name="name">الكفالة والتعهد الخطي (ملحق)</field>
+        <field name="name">Guarantee and written pledge (annex)</field>
         <field name="res_model">ad.employee.guarantee</field>
         <field name="view_mode">list,form</field>
     </record>

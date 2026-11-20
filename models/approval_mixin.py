@@ -4,15 +4,15 @@ from odoo.exceptions import UserError
 
 class AdApprovalMixin(models.AbstractModel):
     _name = 'ad.approval.mixin'
-    _description = 'موافقات الاستمارات'
+    _description = 'Form approvals'
 
     _ad_seq_code = None
     _ad_form_xmlid = None
 
-    name = fields.Char('الرقم', copy=False, readonly=True, default='/', index=True)
-    company_id = fields.Many2one('res.company', default=lambda self: self.env.company, required=True, string='الشركة')
+    name = fields.Char('No.', copy=False, readonly=True, default='/', index=True)
+    company_id = fields.Many2one('res.company', default=lambda self: self.env.company, required=True, string='Company')
     signature_ids = fields.One2many(
-        'ad.signature', 'res_id', string='الموافقات', copy=False,
+        'ad.signature', 'res_id', string='Approvals', copy=False,
         domain=lambda self: [('res_model', '=', self._name)])
 
     @api.model_create_multi
@@ -33,7 +33,7 @@ class AdApprovalMixin(models.AbstractModel):
             return
         if not self.env.user.has_group(xmlid):
             group = self.env.ref(xmlid, raise_if_not_found=False)
-            raise UserError(self.env._('هذه الخطوة متاحة فقط لأعضاء المجموعة "%s".',
+            raise UserError(self.env._('This step is only available to members of the group "%s".',
                                        group.name if group else xmlid))
 
     def ad_sign(self, step, note=False):

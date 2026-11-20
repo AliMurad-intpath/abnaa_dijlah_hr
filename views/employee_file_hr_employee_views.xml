@@ -6,9 +6,9 @@
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="منتسبو الحماية - AD" name="ad_staff" groups="hr.group_hr_user">
+                <page string="Security personnel - AD" name="ad_staff" groups="hr.group_hr_user">
                     <group>
-                        <group string="الهوية (استمارة وزارة الداخلية)">
+                        <group string="ID (Ministry of Interior form)">
                             <field name="ad_employee_no"/>
                             <field name="ad_first_name"/>
                             <field name="ad_mid_name"/>
@@ -17,13 +17,13 @@
                             <field name="ad_mother_name"/>
                             <field name="ad_previous_job"/>
                         </group>
-                        <group string="العمل">
+                        <group string="Work">
                             <field name="ad_work_site_id"/>
                             <field name="ad_work_governorate"/>
                             <field name="ad_work_area"/>
                         </group>
                     </group>
-                    <group string="عنوان السكن">
+                    <group string="Residential address">
                         <group>
                             <field name="ad_res_governorate"/>
                             <field name="ad_res_district"/>
@@ -37,7 +37,7 @@
                             <field name="ad_address"/>
                         </group>
                     </group>
-                    <group string="المستمسكات الثبوتية">
+                    <group string="Supporting documents">
                         <group>
                             <field name="ad_resid_issuer"/>
                             <field name="ad_resid_no"/>
@@ -58,7 +58,7 @@
                             <field name="ad_passport_date"/>
                         </group>
                     </group>
-                    <group string="تملأ من قبل وزارة الداخلية">
+                    <group string="Filled in by the Ministry of Interior">
                         <group>
                             <field name="ad_moi_code"/>
                             <field name="ad_moi_emp_no"/>

@@ -1,124 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
+    <t t-name="abnaa_dijlah_hr.AdIcon">
+        <svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon(icn)" t-as="d" t-key="d_index" t-att-d="d"/></svg>
+    </t>
+
+    <t t-name="abnaa_dijlah_hr.AdLock">
+        <button class="dj-lock" type="button" title="Edit permissions" t-on-click="(ev) => this.editAccess(ev, bk)">
+            <t t-set="icn" t-value="'lock'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
+        </button>
+    </t>
+
+    <t t-name="abnaa_dijlah_hr.AdBlockTools">
+        <span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-tools" t-on-click="(ev) => ev.stopPropagation()">
+            <select title="Block width" t-on-change="(ev) => this.setWidth(ev, bk, ev.target.value)">
+                <option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth(bk, w.v)" t-out="w.l"/>
+            </select>
+            <button type="button" title="Move forward" t-on-click="(ev) => this.moveBlock(ev, bk, -1)">&#8593;</button>
+            <button type="button" title="Move back" t-on-click="(ev) => this.moveBlock(ev, bk, 1)">&#8595;</button>
+            <t t-call="abnaa_dijlah_hr.AdLock"/>
+        </span>
+    </t>
+
     <t t-name="abnaa_dijlah_hr.AdDashboard">
-        <div t-att-class="'dj-workspace ' + (this.state.dark ? 'dj-dark ' : '') + (this.state.office ? 'dj-office' : '')" dir="rtl" lang="ar">
+        <div t-att-class="'dj-workspace ' + (this.state.dark ? 'dj-dark ' : '') + (this.state.office ? 'dj-office' : '')" t-att-dir="this.dir" t-att-lang="this.lang">
             <aside class="dj-sidebar">
-                <div class="dj-brand">Abnaa Dijlah<span> /</span> HR &amp; Approvals</div>
-                <div class="dj-brand-sub">أبناء دجلة للخدمات الأمنية</div>
-                <div class="dj-nav-label">استمارات شركة ابناء دجلة</div>
+                <div class="dj-brand">Abnaa Dijlah</div>
+                <div class="dj-brand-sub">Security Services</div>
+                <div class="dj-nav-label">Company forms</div>
                 <nav t-if="this.state.data and this.state.data.show.nav_forms">
-                    <button t-if="this.state.data.show.nav_overview" class="active"><span class="dj-nav-dot"/><span>نظرة عامة</span><span t-if="this.state.edit" class="dj-lock" role="button" t-on-click="(ev) => this.editAccess(ev, 'nav_overview')">&#128274;</span></button>
-                    <button t-foreach="this.state.data.tiles" t-as="tile" t-key="tile.model" t-on-click="() => this.openTile(tile)">
-                        <span class="dj-nav-dot"/><span class="dj-nav-text" t-out="tile.title"/>
+                    <button t-if="this.state.data.show.nav_overview" class="active" type="button">
+                        <span class="dj-nav-text">Overview</span>
+                        <t t-if="this.state.edit"><t t-set="bk" t-value="'nav_overview'"/><t t-call="abnaa_dijlah_hr.AdLock"/></t>
+                    </button>
+                    <button t-foreach="this.state.data.tiles" t-as="tile" t-key="tile.model" type="button" t-on-click="() => this.openTile(tile)">
+                        <span class="dj-nav-text" t-out="tile.title"/>
                         <span t-if="tile.open" class="dj-nav-count" t-out="tile.open"/>
-                        <span t-if="this.state.edit" class="dj-lock" role="button" t-on-click="(ev) => this.editAccess(ev, tile.block)">&#128274;</span>
+                        <t t-if="this.state.edit"><t t-set="bk" t-value="tile.block"/><t t-call="abnaa_dijlah_hr.AdLock"/></t>
                     </button>
                 </nav>
-                <div class="dj-sidebar-footer"><span class="dj-status-dot"/> بيانات اودو المباشرة</div>
             </aside>
 
             <main class="dj-main">
                 <header class="dj-topbar">
                     <div>
-                        <div class="dj-eyebrow">لوحة المتابعة</div>
-                        <h1>استمارات شركة ابناء دجلة</h1>
-                        <p class="dj-greeting" t-if="this.state.data">
-                            <span class="dj-greet-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon(this.greetIcon)" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                            <span t-out="this.greeting"/> · <span t-out="this.dateLabel"/>
-                        </p>
+                        <h1>Abnaa Dijlah Company Forms</h1>
+                        <p class="dj-date" t-if="this.state.data" t-out="this.dateLabel"/>
                     </div>
                     <div class="dj-actions">
-                        <label class="dj-auto" title="تحديث تلقائي كل 5 دقائق">
+                        <label class="dj-auto" title="Auto-refresh every 5 minutes">
                             <input type="checkbox" t-att-checked="this.state.auto" t-on-change="(ev) => this.setAuto(ev.target.checked)"/>
-                            <span>تحديث كل 5 دقائق</span>
+                            <span>Refreshes every 5 minutes</span>
                         </label>
-                        <button t-if="this.state.data and this.state.data.can_edit_access" t-att-class="'dj-btn ' + (this.state.edit ? 'dj-primary' : '')" t-on-click="() => this.toggleEdit()">&#128274; <t t-out="this.state.edit ? 'انهاء تعديل الصلاحيات' : 'تعديل الصلاحيات'"/></button>
-                        <button class="dj-btn dj-theme" t-on-click="() => this.toggleTheme()" title="الوضع الليلي/النهاري">
-                            <svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon(this.state.dark ? 'sun' : 'moon')" t-as="d" t-key="d_index" t-att-d="d"/></svg>
+                        <button t-if="this.state.data and this.state.data.can_edit_access" type="button" t-att-class="'dj-btn ' + (this.state.edit ? 'dj-on' : '')" t-on-click="() => this.toggleEdit()">
+                            <t t-set="icn" t-value="'lock'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
+                            <t t-out="this.editLabel"/>
                         </button>
-                        <button class="dj-btn" t-on-click="() => this.toggleOffice()">
-                            <svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('monitor')" t-as="d" t-key="d_index" t-att-d="d"/></svg>
-                            <t t-out="this.state.office ? 'خروج من شاشة المكتب' : 'شاشة المكتب'"/>
+                        <button class="dj-btn dj-icon-btn" type="button" title="Night / day mode" t-on-click="() => this.toggleTheme()">
+                            <t t-set="icn" t-value="this.state.dark ? 'sun' : 'moon'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
                         </button>
-                        <button class="dj-btn dj-primary" t-on-click="() => this.reload()" t-att-disabled="this.state.loading">
-                            <svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('refresh')" t-as="d" t-key="d_index" t-att-d="d"/></svg> تحديث
+                        <button class="dj-btn" type="button" t-on-click="() => this.toggleOffice()">
+                            <t t-set="icn" t-value="'monitor'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
+                            <t t-out="this.officeLabel"/>
+                        </button>
+                        <button class="dj-btn dj-primary" type="button" t-on-click="() => this.reload()" t-att-disabled="this.state.loading">
+                            <t t-set="icn" t-value="'refresh'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
+                            Refresh
                         </button>
                     </div>
                 </header>
 
-                <div t-if="this.state.error" class="dj-alert" role="alert">تعذر تحميل البيانات: <span dir="ltr" t-out="this.state.errorMessage"/></div>
-                <div t-if="this.state.loading and !this.state.data" class="dj-empty">جاري التحميل...</div>
+                <div t-if="this.state.error" class="dj-alert" role="alert">Could not load data: <span dir="ltr" t-out="this.state.errorMessage"/></div>
+                <div t-if="this.state.loading and !this.state.data" class="dj-empty">Loading...</div>
 
                 <t t-if="this.state.data">
-                    <!-- KPI cards -->
-                    <div t-if="!this.state.data.show.nav_overview" class="dj-empty">اختر استمارة من القائمة الجانبية.</div>
-                    <section t-if="this.state.data.show.nav_overview" class="dj-grid dj-board" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
+                    <div t-if="!this.state.data.show.nav_overview" class="dj-empty">Choose a form from the sidebar.</div>
+                    <section t-if="this.state.data.show.nav_overview" class="dj-board" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
+
                         <article t-foreach="this.state.data.kpis" t-as="k" t-key="k.key"
-                                 t-att-class="'dj-panel dj-block dj-kpi dj-kind-' + k.kind + (k.model ? ' dj-click' : '') + ' dj-span-' + this.widthOf('kpi_' + k.key)" t-att-style="'order:' + this.orderOf('kpi_' + k.key)"
-                                 t-on-click="() => this.openKpi(k)">
-                            <div class="dj-panel-head">
-                                <span class="dj-block-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon(k.icon)" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
+                                 t-att-class="'dj-card dj-kpi' + (k.key === 'approvals' ? ' dj-key' : '') + (k.model ? ' dj-click' : '') + ' dj-span-' + this.widthOf('kpi_' + k.key)"
+                                 t-att-style="'order:' + this.orderOf('kpi_' + k.key)" t-on-click="() => this.openKpi(k)">
+                            <div class="dj-card-head">
                                 <h3 t-out="k.label"/>
-                                <span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'kpi_' + k.key, ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('kpi_' + k.key, w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'kpi_' + k.key, -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'kpi_' + k.key, 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'kpi_' + k.key)">&#128274;</button>
+                                <t t-set="bk" t-value="'kpi_' + k.key"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
                             <div class="dj-kpi-value" t-out="k.value"/>
                         </article>
 
-                    <!-- Create directly from the dashboard -->
-                    <section t-if="this.state.data.show.panel_create and this.createGroups.length" t-att-class="'dj-panel dj-create dj-span-' + this.widthOf('panel_create')" t-att-style="'order:' + this.orderOf('panel_create')">
-                        <div class="dj-panel-head"><h3>انشاء سريع</h3><span class="dj-block-type">من هنا مباشرة</span><span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'panel_create', ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('panel_create', w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'panel_create', -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'panel_create', 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'panel_create')">&#128274;</button></div>
-                        <div t-foreach="this.createGroups" t-as="g" t-key="g.title" class="dj-create-group">
-                            <div class="dj-create-title" t-out="g.title"/>
-                            <div class="dj-create-btns">
-                                <button t-foreach="g.items" t-as="item" t-key="item.key" class="dj-btn dj-create-btn"
-                                        t-on-click="() => this.createNew(item)">
-                                    <svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon(item.icon)" t-as="d" t-key="d_index" t-att-d="d"/></svg>
-                                    <span t-out="item.label"/>
-                                    <t t-if="this.state.edit"><span class="dj-lock" role="button" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, item.block)">&#128274;</span></t>
-                                    <span class="dj-create-plus"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('plus')" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                                </button>
+                        <section t-if="this.state.data.show.panel_create and this.createGroups.length" t-att-class="'dj-card dj-create dj-span-' + this.widthOf('panel_create')" t-att-style="'order:' + this.orderOf('panel_create')">
+                            <div class="dj-card-head">
+                                <h3>Quick create</h3>
+                                <t t-set="bk" t-value="'panel_create'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                        </div>
-                    </section>
+                            <div t-foreach="this.createGroups" t-as="g" t-key="g.title" class="dj-create-group">
+                                <div class="dj-create-title" t-out="g.title"/>
+                                <div class="dj-create-btns">
+                                    <button t-foreach="g.items" t-as="item" t-key="item.key" type="button" class="dj-btn dj-create-btn" t-on-click="() => this.createNew(item)">
+                                        <t t-set="icn" t-value="item.icon"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
+                                        <span t-out="item.label"/>
+                                        <t t-if="this.state.edit"><t t-set="bk" t-value="item.block"/><t t-call="abnaa_dijlah_hr.AdLock"/></t>
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
 
-                        <article t-if="this.state.data.show.panel_alerts" t-att-class="'dj-panel dj-block dj-kind-pie dj-span-' + this.widthOf('panel_alerts')" t-att-style="'order:' + this.orderOf('panel_alerts')">
-                            <div class="dj-panel-head">
-                                <span class="dj-block-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('alert')" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                                <h3>تنبيهات تحتاج اجراء</h3><span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'panel_alerts', ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('panel_alerts', w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'panel_alerts', -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'panel_alerts', 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'panel_alerts')">&#128274;</button>
+                        <article t-if="this.state.data.show.panel_alerts" t-att-class="'dj-card dj-span-' + this.widthOf('panel_alerts')" t-att-style="'order:' + this.orderOf('panel_alerts')">
+                            <div class="dj-card-head">
+                                <h3>Alerts that need action</h3>
+                                <t t-set="bk" t-value="'panel_alerts'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <div t-if="!this.state.data.alerts.length" class="dj-empty">لا توجد تنبيهات.</div>
-                            <button t-foreach="this.state.data.alerts" t-as="a" t-key="a_index" t-att-class="'dj-alert-row dj-lvl-' + a.level"
-                                    t-on-click="() => this.openAlert(a)">
-                                <span class="dj-dot"/><span t-out="a.text"/>
-                                <span t-if="this.state.edit" class="dj-lock" role="button" t-on-click="(ev) => this.editAccess(ev, a.block)">&#128274;</span>
+                            <div t-if="!this.state.data.alerts.length" class="dj-empty">No alerts.</div>
+                            <button t-foreach="this.state.data.alerts" t-as="a" t-key="a_index" type="button" t-att-class="'dj-alert-row dj-lvl-' + a.level" t-on-click="() => this.openAlert(a)">
+                                <span class="dj-dot"/><span class="dj-alert-text" t-out="a.text"/>
+                                <t t-if="this.state.edit"><t t-set="bk" t-value="a.block"/><t t-call="abnaa_dijlah_hr.AdLock"/></t>
                             </button>
                         </article>
 
-                        <article t-if="this.state.data.show.panel_recent" t-att-class="'dj-panel dj-block dj-kind-table dj-span-' + this.widthOf('panel_recent')" t-att-style="'order:' + this.orderOf('panel_recent')">
-                            <div class="dj-panel-head">
-                                <span class="dj-block-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('table')" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                                <h3>اخر الاستمارات</h3><span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'panel_recent', ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('panel_recent', w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'panel_recent', -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'panel_recent', 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'panel_recent')">&#128274;</button>
+                        <article t-if="this.state.data.show.panel_recent" t-att-class="'dj-card dj-span-' + this.widthOf('panel_recent')" t-att-style="'order:' + this.orderOf('panel_recent')">
+                            <div class="dj-card-head">
+                                <h3>Latest forms</h3>
+                                <t t-set="bk" t-value="'panel_recent'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <div t-if="!this.state.data.recent.length" class="dj-empty">لا توجد استمارات بعد.</div>
+                            <div t-if="!this.state.data.recent.length" class="dj-empty">No forms yet.</div>
                             <div class="dj-table-wrap" t-else="">
                                 <table>
-                                    <thead><tr><th>الاستمارة</th><th>الرقم</th><th>الحالة</th><th>التاريخ</th></tr></thead>
+                                    <thead><tr><th>Form</th><th>No.</th><th>Status</th><th>Date</th></tr></thead>
                                     <tbody>
                                         <tr t-foreach="this.state.data.recent" t-as="r" t-key="r.model + r.id" class="dj-click" t-on-click="() => this.openRecord(r)">
-                                            <td t-out="r.title"/><td dir="ltr" t-out="r.name"/><td t-out="r.state"/><td dir="ltr" t-out="this.stamp(r.when)"/>
+                                            <td t-out="r.title"/><td class="dj-num" dir="ltr" t-out="r.name"/><td t-out="r.state"/><td class="dj-num" dir="ltr" t-out="this.stamp(r.when)"/>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </article>
 
-                        <article t-if="this.state.data.show.chart_trend" t-att-class="'dj-panel dj-block dj-kind-column dj-span-' + this.widthOf('chart_trend')" t-att-style="'order:' + this.orderOf('chart_trend')">
-                            <div class="dj-panel-head">
-                                <span class="dj-block-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('column')" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                                <h3>الاستمارات المنشأة - اخر 6 اشهر</h3><span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'chart_trend', ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('chart_trend', w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'chart_trend', -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'chart_trend', 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'chart_trend')">&#128274;</button>
+                        <article t-if="this.state.data.show.chart_trend" t-att-class="'dj-card dj-span-' + this.widthOf('chart_trend')" t-att-style="'order:' + this.orderOf('chart_trend')">
+                            <div class="dj-card-head">
+                                <h3>Forms created - last 6 months</h3>
+                                <t t-set="bk" t-value="'chart_trend'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
                             <div class="dj-cols" dir="ltr">
-                                <div t-foreach="this.state.data.trend" t-as="t" t-key="t.label" class="dj-col">
+                                <div t-foreach="this.state.data.trend" t-as="t" t-key="t.label" t-att-class="'dj-col' + (t_last ? ' dj-now' : '')">
                                     <span class="dj-col-val" t-out="t.count"/>
                                     <div class="dj-col-bar" t-att-style="'height:' + this.colHeight(t.count) + '%'"/>
                                     <span class="dj-col-lbl" t-out="t.label"/>
@@ -126,38 +147,28 @@
                             </div>
                         </article>
 
-                        <article t-if="this.state.data.show.chart_types" t-att-class="'dj-panel dj-block dj-kind-doughnut dj-span-' + this.widthOf('chart_types')" t-att-style="'order:' + this.orderOf('chart_types')">
-                            <div class="dj-panel-head">
-                                <span class="dj-block-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('doughnut')" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                                <h3>حسب نوع الاستمارة</h3><span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'chart_types', ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('chart_types', w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'chart_types', -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'chart_types', 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'chart_types')">&#128274;</button>
+                        <article t-if="this.state.data.show.chart_types" t-att-class="'dj-card dj-span-' + this.widthOf('chart_types')" t-att-style="'order:' + this.orderOf('chart_types')">
+                            <div class="dj-card-head">
+                                <h3>By form type</h3>
+                                <t t-set="bk" t-value="'chart_types'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <t t-set="dn" t-value="this.doughnut"/>
-                            <div t-if="!dn.total" class="dj-empty">لا توجد بيانات.</div>
-                            <t t-else="">
-                                <svg viewBox="0 0 120 120" class="dj-round" role="img" aria-label="الاستمارات حسب النوع">
-                                    <circle t-foreach="dn.slices" t-as="s" t-key="s.model" cx="60" cy="60" r="38" fill="none"
-                                            t-att-stroke="s.color" stroke-width="18" pathLength="100"
-                                            t-att-stroke-dasharray="s.dash" t-att-stroke-dashoffset="s.offset" transform="rotate(-90 60 60)"/>
-                                    <text x="60" y="66" text-anchor="middle" class="dj-donut-total" t-out="dn.total"/>
-                                </svg>
-                                <ul class="dj-legend">
-                                    <li t-foreach="dn.slices" t-as="s" t-key="s.model" class="dj-click" t-on-click="() => this.openAll(s.tile)">
-                                        <span class="dj-swatch" t-att-style="'background:' + s.color"/>
-                                        <span class="dj-legend-label" t-out="s.title"/><bdi dir="ltr" t-out="s.count"/>
-                                    </li>
-                                </ul>
-                            </t>
+                            <t t-set="rows" t-value="this.typeRows"/>
+                            <div t-if="!rows.length" class="dj-empty">No data.</div>
+                            <div t-foreach="rows" t-as="s" t-key="s.model" class="dj-rank dj-click" t-on-click="() => this.openAll(s.tile)">
+                                <div class="dj-rank-line"><span t-out="s.title"/><bdi class="dj-num" dir="ltr" t-out="s.count"/></div>
+                                <div class="dj-track"><span t-att-style="'width:' + s.pct + '%'"/></div>
+                            </div>
                         </article>
 
-                        <article t-if="this.state.data.show.chart_sites" t-att-class="'dj-panel dj-block dj-kind-bar dj-span-' + this.widthOf('chart_sites')" t-att-style="'order:' + this.orderOf('chart_sites')">
-                            <div class="dj-panel-head">
-                                <span class="dj-block-icon"><svg class="dj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path t-foreach="this.icon('bar')" t-as="d" t-key="d_index" t-att-d="d"/></svg></span>
-                                <h3>الموظفون حسب موقع العمل</h3><span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-width" t-on-click="(ev) => ev.stopPropagation()"><select title="عرض العنصر" t-on-change="(ev) => this.setWidth(ev, 'chart_sites', ev.target.value)"><option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth('chart_sites', w.v)" t-out="w.l"/></select><button title="نقل للامام" t-on-click="(ev) => this.moveBlock(ev, 'chart_sites', -1)">&#8593;</button><button title="نقل للخلف" t-on-click="(ev) => this.moveBlock(ev, 'chart_sites', 1)">&#8595;</button></span><button t-if="this.state.edit" class="dj-lock" title="تعديل الصلاحيات" t-on-click="(ev) => this.editAccess(ev, 'chart_sites')">&#128274;</button>
+                        <article t-if="this.state.data.show.chart_sites" t-att-class="'dj-card dj-span-' + this.widthOf('chart_sites')" t-att-style="'order:' + this.orderOf('chart_sites')">
+                            <div class="dj-card-head">
+                                <h3>Employees by work site</h3>
+                                <t t-set="bk" t-value="'chart_sites'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <div t-if="!this.state.data.sites.length" class="dj-empty">لا توجد مواقع معينة.</div>
-                            <div t-foreach="this.state.data.sites" t-as="s" t-key="s.id" class="dj-bar-row dj-click" t-on-click="() => this.openSite(s)">
-                                <div><span t-out="s.name"/><bdi dir="ltr" t-out="s.count"/></div>
-                                <div class="dj-bar-track"><span t-att-style="'width:' + this.barWidth(s.count) + '%'"/></div>
+                            <div t-if="!this.state.data.sites.length" class="dj-empty">No sites assigned.</div>
+                            <div t-foreach="this.state.data.sites" t-as="s" t-key="s.id" class="dj-rank dj-click" t-on-click="() => this.openSite(s)">
+                                <div class="dj-rank-line"><span t-out="s.name"/><bdi class="dj-num" dir="ltr" t-out="s.count"/></div>
+                                <div class="dj-track"><span t-att-style="'width:' + this.barWidth(s.count) + '%'"/></div>
                             </div>
                         </article>
                     </section>

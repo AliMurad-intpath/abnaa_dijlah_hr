@@ -21,12 +21,12 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_submit" type="object" string="مراجعة الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'hr'"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
-                    <button name="action_open_clearance" type="object" string="فتح براءة الذمة" invisible="not clearance_id"/>
-                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('approved', 'cancel')"/>
-                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
+                    <button name="action_submit" type="object" string="HR review" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Managing director approval" class="btn-primary" invisible="state != 'hr'"/>
+                    <button name="action_ad_print" type="object" string="Print form" invisible="state == 'cancel'"/>
+                    <button name="action_open_clearance" type="object" string="Open clearance" invisible="not clearance_id"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('approved', 'cancel')"/>
+                    <button name="action_draft" type="object" string="Reset to draft" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,approved"/>
                 </header>
                 <sheet>
@@ -47,7 +47,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="الموافقات" name="approvals">
+                        <page string="Approvals" name="approvals">
                             <field name="signature_ids" readonly="1">
                                 <list><field name="step"/><field name="user_id"/><field name="date"/></list>
                             </field>
@@ -59,7 +59,7 @@
         </field>
     </record>
     <record id="ad_termination_order_action" model="ir.actions.act_window">
-        <field name="name">اوامر انهاء الخدمات (AD-WI-FM-06-10)</field>
+        <field name="name">Termination orders (AD-WI-FM-06-10)</field>
         <field name="res_model">ad.termination.order</field>
         <field name="view_mode">list,form</field>
     </record>

@@ -18,20 +18,20 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_signed" type="object" string="تأشير موقّع" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state == 'draft'"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة"/>
+                    <button name="action_signed" type="object" string="Signed mark" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_draft" type="object" string="Reset to draft" invisible="state == 'draft'"/>
+                    <button name="action_ad_print" type="object" string="Print form"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <group>
-                        <group string="الموظف">
+                        <group string="Employee">
                             <field name="employee_id"/>
                             <field name="date"/>
                             <field name="employee_phone"/>
                             <field name="employee_address"/>
                         </group>
-                        <group string="الكفيل">
+                        <group string="Guarantor">
                             <field name="guarantor_name"/>
                             <field name="guarantor_phone"/>
                             <field name="guarantor_address"/>
@@ -44,7 +44,7 @@
         </field>
     </record>
     <record id="ad_employee_pledge_action" model="ir.actions.act_window">
-        <field name="name">التعهدات الخطية (FM-17)</field>
+        <field name="name">Written pledges (FM-17)</field>
         <field name="res_model">ad.employee.pledge</field>
         <field name="view_mode">list,form</field>
     </record>

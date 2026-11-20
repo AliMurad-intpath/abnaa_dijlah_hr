@@ -15,6 +15,14 @@ FONT_CSS = {
 @font-face {font-family: hrdoc; src: url(DejaVuSans-Bold.ttf); font-weight: bold;}
 * {font-family: hrdoc; margin: 0; padding: 0;}
 """,
+    # Times New Roman look-alike (Liberation Serif / Tinos metrics); DejaVu covers Arabic and symbols
+    'times': """
+@font-face {font-family: hrdoc; src: url(DejaVuSans.ttf);}
+@font-face {font-family: hrdoc; src: url(DejaVuSans-Bold.ttf); font-weight: bold;}
+@font-face {font-family: hrtimes; src: url(LiberationSerif-Regular.ttf);}
+@font-face {font-family: hrtimes; src: url(LiberationSerif-Bold.ttf); font-weight: bold;}
+* {font-family: hrtimes, hrdoc; margin: 0; padding: 0;}
+""",
 }
 ARABIC_SCRIPT = 6                                               
                                                                              
@@ -31,7 +39,7 @@ def _locked(func):
 def _font_archive():
                                                                                      
     archive = pymupdf.Archive()
-    for name in ('DejaVuSans.ttf', 'DejaVuSans-Bold.ttf'):
+    for name in ('DejaVuSans.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSerif-Regular.ttf', 'LiberationSerif-Bold.ttf'):
         archive.add((FONT_DIR / name).read_bytes(), name)
     return archive
 

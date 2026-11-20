@@ -1,0 +1,4830 @@
+# Translation template for Abnaa Dijlah HR & Approvals.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n\n"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/wizard/ad_reject_wizard.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_form_reject_wizard
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_reject_wizard_form
+msgid "Reject form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/wizard/ad_reject_wizard.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_reject_wizard__step_name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__stage_id
+msgid "Stage"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/wizard/ad_reject_wizard.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__ad_reject_note
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_reject_wizard__note
+msgid "Rejection reason"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/transfer_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_transfer_count
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_transfer_root
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_transfer
+msgid "Transfers"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_onboarding
+msgid "Start of work date form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__receipt_date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_surgery__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_signature__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__date
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__date
+msgid "Date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__employee_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__employee_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__employee_id
+msgid "Employee name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__appointment_id
+msgid "Appointment order number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_work_site
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__site_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_work_site_id
+msgid "Work site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: code:addons/abnaa_dijlah_hr/models/appointment_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__start_date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__start_date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__start_date
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_start_date
+msgid "Start date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__start_shift
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__leave_shift
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__start_shift
+msgid "Period (AM / PM)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__start_shift__am
+msgid "Morning (AM)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__start_shift__pm
+msgid "Afternoon (PM)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__supervisor_name
+msgid "Supervisor name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__supervisor_mobile
+msgid "Mobile number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__medical_done
+msgid "Medical examination"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__auth_letter
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__medical_letter
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__salary_letter
+msgid "Letter number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__salary_done
+msgid "Salary domiciliation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__auth_done
+msgid "Authorization letter"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__issue_date
+msgid "Date employee was issued equipment"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__shirt_size
+msgid "Shirt"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__trouser_size
+msgid "Trousers"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__shoe_size
+msgid "Shoes"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__has_pouch
+msgid "Belt pouch"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__other_items
+msgid "Other"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__ops_medical
+msgid "Operations confirms receipt of the medical examination"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__ops_salary
+msgid "Operations confirms receipt of the salary domiciliation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__ops_auth
+msgid "Operations confirms receipt of the authorization"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__training_done
+msgid "Training completed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__trainer_name
+msgid "Trainer"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__state
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+msgid "Status"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_appointment_order__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_employee_guarantee__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_employee_pledge__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__state__draft
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__draft
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
+msgid "Draft"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+msgid "HR section completed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__logistics
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+msgid "Employee equipped"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__site
+msgid "Site supervisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__state__ops
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__ops
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__ops
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+msgid "Operations"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_appointment_order__state__approved
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__state__done
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__state__approved
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__done
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__state__approved
+msgid "Approved by the managing director"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_onboarding.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_appointment_order__state__cancel
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__state__cancel
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__state__cancel
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__state__cancel
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__cancel
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__state__cancel
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__cancel
+msgid "Cancelled"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_violation.py:0
+#: code:addons/abnaa_dijlah_hr/models/approval_mixin.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_violation_type__number
+msgid "No."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: code:addons/abnaa_dijlah_hr/models/approval_mixin.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__company_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__company_id
+msgid "Company"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/approval_mixin.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_onboarding__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__signature_ids
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__signature_ids
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Approvals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/recruitment_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_interview_count
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_recruitment
+msgid "Interview"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__site_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__name
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
+msgid "Site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__code
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_moi_code
+msgid "Code"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__governorate
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__governorate
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_res_governorate
+msgid "Governorate"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__area
+msgid "Area"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__old_supervisor
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__supervisor_id
+msgid "Current supervisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__old_supervisor_mobile
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__supervisor_mobile
+msgid "Supervisor mobile number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_violation.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_work_site.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__active
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_violation_type__active
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_work_site__active
+msgid "Active"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_employee_guarantee_action
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_employee_guarantee
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_guarantee
+msgid "Guarantee and written pledge (annex)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__employee_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__employee_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__employee_id
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_pledge_view_form
+msgid "Employee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__capacity
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__capacity
+msgid "In the capacity of"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__guarantor_name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__guarantor_name
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_guarantee_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_pledge_view_form
+msgid "Guarantor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__guarantor_phone
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__guarantor_phone
+msgid "Guarantor phone number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__guarantor_address
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__guarantor_address
+msgid "Guarantor address"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__witness1
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__witness1
+msgid "First witness"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__witness2
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__witness2
+msgid "Second witness"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__legal_advisor
+msgid "Legal advisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__pledge_company
+msgid "Company name in the pledge"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_guarantee.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_employee_guarantee__state__signed
+msgid "Signed and stamped"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_employee_pledge
+msgid "Written pledges for security personnel (AD-HR-FM-17)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__employee_phone
+msgid "Employee phone number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__employee_address
+msgid "Employee address"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__guarantor_date
+msgid "Guarantee date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_pledge.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_employee_pledge__state__signed
+msgid "Signed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/appointment_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_nominal_salary
+msgid "Nominal salary"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/appointment_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__allowance
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_site_allowance
+msgid "Work site allowance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/appointment_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_probation_end
+msgid "End of probation period"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_termination_order
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__termination_id
+msgid "Termination order"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__employee_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__employee_id
+msgid "Mr. (employee)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__site_id
+msgid "Assigned to site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__effective_date
+msgid "Effective from"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__reason
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__reason
+msgid "Reason for leaving"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__reason__martyr
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__reason__martyr
+msgid "For his martyrdom"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__reason__death
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__reason__death
+msgid "For his death"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__reason__resignation
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__reason__resignation
+msgid "For his resignation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__reason__termination
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__reason__termination
+msgid "Termination of his services"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__reason__investigation
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__reason__investigation
+msgid "Investigation board"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__disciplinary_ref
+msgid "Penalties form reference"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_appointment_order__state__hr
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__state__hr
+msgid "HR reviewed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/offboarding_hr_employee_ad_smart.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_clearance
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_due__clearance_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__clearance_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_termination_order__clearance_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_clearance_count
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__clearance
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_offboarding
+msgid "Clearance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_interview
+msgid "Interview rating form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__applicant_id
+msgid "Applicant record"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__employee_id
+msgid "Created employee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__candidate_name
+msgid "Candidate name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__birth_date
+msgid "Date of birth"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__phone
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_reference__phone
+msgid "Phone number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__area
+msgid "Sub-district"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__district
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_neighborhood
+msgid "Neighborhood"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__interview_date
+msgid "Interview date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__job_title
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__job_title
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__job_title
+msgid "Job title"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__referral
+msgid "Referring party name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__score_ids
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Scores"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__overall_score
+msgid "Overall rating score"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__ar_read
+msgid "Arabic proficiency - reading"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_read__excellent
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_speak__excellent
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_write__excellent
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_read__excellent
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_speak__excellent
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_write__excellent
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__health_general__excellent
+msgid "Excellent"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_read__very_good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_speak__very_good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_write__very_good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_read__very_good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_speak__very_good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_write__very_good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__health_general__very_good
+msgid "Very good"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_read__good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_speak__good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_write__good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_read__good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_speak__good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_write__good
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__health_general__good
+msgid "Good"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_read__weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_speak__weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_write__weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_read__weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_speak__weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_write__weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__health_general__weak
+msgid "Weak"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_read__very_weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_speak__very_weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__ar_write__very_weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_read__very_weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_speak__very_weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__en_write__very_weak
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__health_general__very_weak
+msgid "Very weak"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__ar_write
+msgid "Arabic proficiency - writing"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__ar_speak
+msgid "Arabic proficiency - speaking"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__en_read
+msgid "English proficiency - reading"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__en_write
+msgid "English proficiency - writing"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__en_speak
+msgid "English proficiency - speaking"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__health_general
+msgid "General health condition"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__weight
+msgid "Weight"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__height
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__height
+msgid "Height"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__chronic_diseases
+msgid "Chronic and infectious diseases"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__surgery_ids
+msgid "Previous surgeries"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_medication
+msgid "Regularly takes medication or drugs"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_care_program__yes
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_convicted__yes
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_medication__yes
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_party__yes
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_pending_case__yes
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_planned_surgery__yes
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_tattoo__yes
+msgid "Yes"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_care_program__no
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_convicted__no
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_medication__no
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_party__no
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_pending_case__no
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_planned_surgery__no
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__q_tattoo__no
+msgid "No"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_tattoo
+msgid "Tattoo on a visible part of the body"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_planned_surgery
+msgid "Planned treatment or surgery"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_care_program
+msgid "Under a care program"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_party
+msgid "Links to militias, organizations or parties"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_convicted
+msgid "Convicted of a misdemeanor or felony"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__q_pending_case
+msgid "Cases pending in court"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__reference_ids
+msgid "References"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__t_weapon
+msgid "Weapons training"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_armed_conflict__pass
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_force_law__pass
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_search__pass
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_weapon__pass
+msgid "Pass"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_armed_conflict__fail
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_force_law__fail
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_search__fail
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__t_weapon__fail
+msgid "Fail"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__t_force_law
+msgid "Use of force law"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__t_armed_conflict
+msgid "Armed conflict law"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__t_search
+msgid "Searching persons and vehicles"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__recommendation
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Recommendation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__recommendation__hire
+msgid "Hire the candidate"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__recommendation__reject
+msgid "Do not hire the candidate"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__recommendation__withdraw
+msgid "Candidate withdrew"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__w_salary
+msgid "Salary too low"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__w_duties
+msgid "Job duties"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__w_hours
+msgid "Working hours"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__w_other_job
+msgid "Another job"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__w_mind
+msgid "Changed mind"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__w_other
+msgid "Other reason for withdrawal"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__r_qualif
+msgid "Qualifications and competencies below requirements"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__r_health
+msgid "Failed the health assessment"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__r_security
+msgid "Failed the security assessment"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__r_training
+msgid "Did not pass security training"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__r_other
+msgid "Other reason for not hiring"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview__ack_date
+msgid "Declaration date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__state__hr
+msgid "HR interview"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__state__ops
+msgid "Operations / training"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_interview__state__done
+msgid "Final recommendation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_interview_score
+msgid "Interview rating score"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_reference__interview_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_score__interview_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_surgery__interview_id
+msgid "Interview form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_due__sequence
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__sequence
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_score__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_score__criterion
+msgid "Criterion"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_score__score
+msgid "Score (0-10)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_score__comments
+msgid "Comments"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_interview_surgery
+msgid "Surgery (interview)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_surgery__name
+msgid "Operation type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_interview_reference
+msgid "Reference (interview)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_reference__name
+msgid "Reference name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_interview_reference__relation
+msgid "Relationship"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_appointment_order
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__appointment
+msgid "Appointment order"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__job_title
+msgid "Addressed to"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__nominal_salary
+msgid "Monthly nominal salary"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__probation_months
+msgid "Probation period (months)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_appointment_order.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_appointment_order__interview_ref
+msgid "Interview rating reference"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__address
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_address
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad
+msgid "Residential address"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__hire_date
+msgid "Hire date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__site_id
+msgid "Workplace"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__stop_date
+msgid "Date work stopped"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__order_no
+msgid "In numbers"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__order_date
+msgid "Dated"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__line_ids
+msgid "Department signatures"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_clearance_due
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__due_ids
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "Dues"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__hr_note
+msgid "Note to the managing director"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__amount_paid
+msgid "An amount of"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__amount_due
+msgid "Total dues"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__state__clearing
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "Clearance from departments"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__state__settled
+msgid "Dues settled"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance__state__hr_cert
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "HR approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__all_signed
+msgid "Signatures completed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_clearance_line
+msgid "Department clearance signature"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__department
+msgid "Department"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance_line__department__ops
+msgid "Operations Dept - OPS + Armory"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance_line__department__aa
+msgid "Administration Dept - AA"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance_line__department__lo
+msgid "Logistics Dept - LO"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance_line__department__md
+msgid "Vehicles Dept - MD"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance_line__department__hr
+msgid "Human Resources Dept - HR"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_clearance_line__department__fin
+msgid "Finance Dept - FIN"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__manager_name
+msgid "Department manager name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__has_liability
+msgid "Liability outstanding"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__note
+msgid "Notes"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__signed_user_id
+msgid "Signed by"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_line__signed_date
+msgid "Signature date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_due__name
+msgid "Description"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance_due__amount
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__money
+msgid "Amount"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_md_name
+msgid "Managing director (printed)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_md_title
+msgid "Managing director title (printed)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_license_code
+msgid "Company security license code"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_logo
+msgid "Print logo"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_res_company__ad_logo
+msgid "Shown in the header of all forms. If empty, the default logo is used."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__ad_state
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_use_approvals
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "Approval chain"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_res_company__ad_use_approvals
+msgid "When enabled, final approval of forms is only possible through the approval chain (\"Send for approval\" button). When disabled, the old manual approval buttons are used."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_reminder_enabled
+msgid "Remind approvers of pending approvals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_reminder_after_days
+msgid "First reminder after (days)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_res_company__ad_reminder_after_days
+msgid "Number of days a form waits before the first reminder to the approver."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_reminder_repeat_days
+msgid "Repeat reminder every (days)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_res_company__ad_reminder_repeat_days
+msgid "After the first reminder, it repeats every N days until a decision is made."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_company__ad_reminder_summary
+msgid "Daily summary for the HR manager"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/res_company.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_res_company__ad_reminder_summary
+msgid "One daily notification to HR managers listing all forms still awaiting an approver."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_violation.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_violation_type
+msgid "Violation type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_violation.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_violation_type__name
+msgid "Violation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_demo_loader__log
+msgid "Operation result"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__employee_no
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__employee_no
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_employee_no
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_moi_emp_no
+msgid "Employee number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_first_name
+msgid "First name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_mid_name
+msgid "Father's name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_last_name
+msgid "Grandfather's name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_surname
+msgid "Surname"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_mother_name
+msgid "Mother's name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_previous_job
+msgid "Previous job"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_work_governorate
+msgid "Work governorate"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_work_area
+msgid "Work area"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_res_district
+msgid "District - sub-district"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_mahalla
+msgid "Neighborhood (Mahalla)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_alley
+msgid "Alley"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_house
+msgid "House"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_landmark
+msgid "Nearest landmark"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_resid_issuer
+msgid "Residence card - issuing authority"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_resid_no
+msgid "Residence card - number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_resid_date
+msgid "Residence card - issue date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_ration_center
+msgid "Ration card - center name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_ration_no
+msgid "Ration card - number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_ration_date
+msgid "Ration card - issue date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_civil_issuer
+msgid "Civil status ID - issuing authority"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_civil_record_no
+msgid "Civil status ID - record number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_civil_page_no
+msgid "Civil status ID - page number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_nat_issuer
+msgid "Nationality certificate - issuing authority"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_nat_wallet_no
+msgid "Nationality certificate - folder number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_nat_date
+msgid "Nationality certificate - issue date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_passport_issuer
+msgid "Passport - issuing authority"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_passport_no
+msgid "Passport - number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_passport_date
+msgid "Passport - issue date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_moi_company_code
+msgid "Company numeric code"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_moi_jk_no
+msgid "JK number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_moi_file_no
+msgid "File number - ID"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_dashboard_block
+msgid "Dashboard block permissions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__key
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__key
+msgid "Key"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__name
+msgid "Block"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__sequence
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__sequence
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__sequence
+msgid "Order"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__user_ids
+msgid "Allowed users"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_dashboard_block__user_ids
+msgid "Leave empty together with groups to show the block to everyone."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__width
+msgid "Block width"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_dashboard_block__width
+msgid "Block width on the dashboard. Empty = default."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_dashboard_block__width__1
+msgid "Quarter"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_dashboard_block__width__2
+msgid "Half"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_dashboard_block__width__4
+msgid "Full"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__group_ids
+msgid "Allowed groups"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: code:addons/abnaa_dijlah_hr/models/onboarding_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_onboarding_count
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__onboarding
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_onboarding
+msgid "Start of work"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_form_step
+msgid "Form approval step"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__res_model
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_signature__res_model
+msgid "Record model"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__res_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_signature__res_id
+msgid "Record ID"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__template_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__template_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__record_name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_print_text__report_key
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_print_text_list
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_print_text_search
+msgid "Form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__key
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__key
+msgid "Signature code"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__name
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_signature__step
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+msgid "Step"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__approver_label
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__approver_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__approver_label
+msgid "Approver"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__group_id
+msgid "Approver group"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_step__state__waiting
+msgid "Waiting for turn"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_state__pending
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_step__state__pending
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+msgid "Awaiting approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_state__approved
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_step__state__approved
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+msgid "Approved"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_state__rejected
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_step__state__rejected
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+msgid "Rejected"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__action_date
+msgid "Decision date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__signed_by_id
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_signature__user_id
+msgid "Approved by"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__signed_by_name
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__system_source__approver_name
+msgid "Approver name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__note
+msgid "Note / rejection reason"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__pending_since
+msgid "Waiting since"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_step__last_reminder
+msgid "Last reminder"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_state__none
+msgid "Not submitted"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__ad_step_ids
+msgid "Approval steps"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__ad_approver_user_ids
+msgid "Approvers involved"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_approval_mixin__ad_waiting_for
+msgid "Pending"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_form_template
+msgid "Document control header"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__name
+msgid "Form name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__title_ar
+msgid "Title in Arabic"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__title_en
+msgid "Title in English"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__title_layout
+msgid "Title layout"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_template__title_layout__stack
+msgid "Arabic title with English below"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_template__title_layout__inline
+msgid "English and Arabic on one line"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_template__title_layout__ar_only
+msgid "Arabic title only"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__logo
+msgid "Logo of this form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_template__logo
+msgid "Optional: overrides the company logo for this form only."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_dashboard
+msgid "Abnaa Dijlah Company Forms dashboard"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/offboarding_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_termination_count
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_offboarding
+msgid "Termination orders"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/appointment_hr_employee_ad_smart.py:0
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_appointment_order_action
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_appointment_count
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_appointment_order
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_appointment
+msgid "Appointment orders"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__document_signature
+msgid "Approval signature"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_hr_employee__document_signature
+msgid "PNG image with a transparent background, printed on forms when this employee approves."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__res_model
+msgid "Form template"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_template__res_model
+msgid "The model whose data is printed on the PDF."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__template_pdf
+msgid "Blank PDF file"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__template_attachment_id
+msgid "Stored file"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__template_filename
+msgid "File name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__field_ids
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Printed fields"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__stage_ids
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Approval stages"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__page_count
+msgid "Page count"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_form_field
+msgid "Printed form field"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__name
+msgid "Name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_field__key
+msgid "Unique identifier in lowercase English letters"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__field_type
+msgid "Value type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__text
+msgid "Text"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__mark
+msgid "✔ mark (option / box)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__mark_in
+msgid "✔ mark (specific violation)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__selection
+msgid "Choice (prints the option name)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__month_year
+msgid "Month and year"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__months_ar
+msgid "Period in months (text)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__system_source
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__field_type__system
+msgid "System value"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__source_path
+msgid "Value source"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_field__source_path
+msgid "A field name on the form, e.g. employee_id.name or score_ids.0.score"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__match_value
+msgid "Mark prints when equal to"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_field__match_value
+msgid "For marks: the value that activates the mark (leave empty for a boolean field)."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__system_source__request_name
+msgid "Form number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__system_source__request_date
+msgid "Today's date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__system_source__company_name
+msgid "Company name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__system_source__approval_date
+msgid "Approval date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__stage_id
+msgid "Approval stage"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__date_format
+msgid "Date format"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__page
+msgid "Page"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__y
+msgid "Y from top (pt)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__width
+msgid "Width"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__font_size
+msgid "Font size"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__min_font_size
+msgid "Minimum font size"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__bold
+msgid "Bold"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__font_family
+msgid "Font"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__font_family__dejavu
+msgid "DejaVu Sans (searchable)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__font_family__times
+msgid "Times New Roman (searchable)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__font_family__naskh
+msgid "Naskh (not searchable)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__multiline
+msgid "Multiple lines"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__text_align
+msgid "Alignment"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__text_align__left
+msgid "Left"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__text_align__center
+msgid "Center"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_field__text_align__right
+msgid "Right"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_field__sample_value
+msgid "Sample value"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_field__sample_value
+msgid "Text shown in the designer, e.g. a long name."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_form_stage
+msgid "Form approval stage"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_stage__key
+msgid "Links the stage to the signature slot in the approval record (e.g. hr, md)."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__approver_id
+msgid "Approver (specific user)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,help:abnaa_dijlah_hr.field_ad_form_stage__approver_id
+msgid "If you select a user, only that user approves. Leave empty to let any member of the group approve."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__group_id
+msgid "Or any member of a group"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_stage__print_signature
+msgid "Print signature image"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_guarantee_count
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_employee_file
+msgid "Guarantee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/employee_file_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_pledge_count
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_employee_file
+msgid "Pledges"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_signature
+msgid "Form approval stamp"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_signature.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_signature__note
+msgid "Note"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/approval_mixin.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_approval_mixin
+msgid "Form approvals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/report_helper.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_report_helper
+msgid "Form printing helpers"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_print_text
+msgid "Text editable in print"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: code:addons/abnaa_dijlah_hr/models/discipline_hr_employee_ad_smart.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_discipline_count
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__discipline
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_discipline_root
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_discipline
+msgid "Penalties"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__guarantee
+msgid "Guarantee and written pledge"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__interview
+msgid "Interview rating"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__moi
+msgid "Ministry of Interior form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__pledge
+msgid "Written pledges"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__termination
+msgid "Termination of services"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__transfer
+msgid "Guard transfers"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__general
+msgid "Header and shared elements"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_print_text__seq
+msgid "Line number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_print_text__text
+msgid "Printed text"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_print_text__original
+msgid "Original text"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_print_text__edited
+msgid "Modified"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_transfer
+msgid "Guard transfer"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__old_site_id
+msgid "Current work site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__new_site_id
+msgid "New work site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__new_supervisor
+msgid "Receiving supervisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__leave_shift__am
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__start_shift__am
+msgid "AM"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__leave_shift__pm
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__start_shift__pm
+msgid "PM"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__leave_date
+msgid "Instead of work site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__site
+msgid "Site confirmation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "HR confirmation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__done
+msgid "Authorized by the managing director"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__md_date
+msgid "Managing director authorization date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__valid_until
+msgid "Authorization valid until"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__reminder_sent
+msgid "Alert sent"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_discipline
+msgid "Penalties form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__violation_ids
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+msgid "Violations"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__repetition
+msgid "Violation repetition"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__repetition__1
+msgid "First"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__repetition__2
+msgid "Second"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__repetition__3
+msgid "Third"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__decision
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Decision"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__decision__suspension
+msgid "Suspension from work"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__decision__deduction
+msgid "Salary deduction penalty"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__decision__termination
+msgid "Termination penalty"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__date_from
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__deduction_from
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__termination_from
+msgid "From date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__date_to
+msgid "To date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__total_days
+msgid "Total days"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__deduction_type
+msgid "Deduction type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_discipline__deduction_amount
+msgid "Deduction amount"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__state__hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+msgid "HR review"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_discipline.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_discipline__state__acknowledged
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+msgid "Employee acknowledgment of receipt"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_print_text_list
+msgid "Restore original text"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_print_text_search
+msgid "Modified only"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_print_text_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_print_text
+msgid "Print texts"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.server,name:abnaa_dijlah_hr.ad_print_text_reset_action
+msgid "Restore original text for selected lines"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_offboarding
+msgid "Termination of services and clearance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_termination_order
+msgid "Termination orders (06-10)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_clearance
+msgid "Clearance (06-11)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "HR interview completed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Training / operations completed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Approve recommendation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Create employee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_guarantee_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_pledge_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Print form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_reject_wizard_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_guarantee_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_pledge_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Reset to draft"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Arabic"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "English"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Health"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Security"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Training"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Withdrawal reasons"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Reasons for not hiring"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_interview_action
+msgid "Interview rating forms (AD-WI-FM-06-01)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_guarantee_view_form
+msgid "Signed and stamped mark"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_guarantee_view_form
+msgid "Guaranteed person"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_guarantee_view_form
+msgid "Witnesses and legal advisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+msgid "Managing director approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
+msgid "Awaiting managing director approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad
+msgid "Security personnel - AD"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad
+msgid "ID (Ministry of Interior form)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad
+msgid "Work"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad
+msgid "Supporting documents"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad
+msgid "Filled in by the Ministry of Interior"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_interview
+msgid "Interview rating (06-01)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_pledge_view_form
+msgid "Signed mark"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_employee_pledge_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_pledge
+msgid "Written pledges (FM-17)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.res_company_view_form_ad
+msgid "Abnaa Dijlah Company Forms"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_demo_loader_view_form
+msgid "This action imports demo data for all forms: 3 customers, 3 work sites, 6 employees, 3 interview rating forms, 4 appointment orders, 2 start-of-work forms, guarantees and pledges, 2 transfers, 3 penalties and 2 termination orders. All records are in draft state. It also creates 10 demo internal users with different roles (HR manager, officer, operations manager, site supervisor, logistics, AA administration, MD vehicles, finance, managing director, and a user without permissions) with the password Demo@2026, and restricts the termination form to the HR manager and the managing director to test permissions. Delete the demo data before real use. The import can be repeated without duplicating records."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_demo_loader_view_form
+msgid "The import result will appear here..."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_demo_loader_view_form
+msgid "Import demo data"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_demo_loader_view_form
+msgid "Delete demo data"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_demo_loader_view_form
+msgid "All demo records will be deleted. Are you sure?"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_demo_loader_view_form
+msgid "Close"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_demo_loader_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_demo_loader
+msgid "Demo data"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_onboarding
+msgid "Start of work date (06-03)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Operations confirmation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Site handover confirmation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+msgid "Managing director authorization"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_transfer_action
+msgid "Guard transfers (AD-HR-FM-09)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_violation_type_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_violation_type
+msgid "Violation types"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+msgid "Operations approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_discipline_action
+msgid "Penalties forms (AD-HR-FM-10)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_work_site_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_work_site_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_work_site
+msgid "Work sites"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_employee_file
+msgid "Employee file"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_discipline
+msgid "Penalties forms (HR-FM-10)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+msgid "Open clearance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_termination_order_action
+msgid "Termination orders (AD-WI-FM-06-10)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "Send for approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "Approve"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "Reject"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "Withdraw approval request"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "Awaiting approval from:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "The form was rejected. Reason:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+msgid "— You can edit it and send it for approval again."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Open form designer"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Download blank PDF"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Delete file to upload a new one"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "The current file will be deleted. Fields and stages stay as they are. Continue?"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Document"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "PDF file"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "The blank PDF of the form (as printed on paper). Data is printed over it in the boxes you define in the designer."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "The form goes through the stages in order. Select a specific user, or leave empty to let any member of the group approve."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Signature position"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Document header"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "These values are already printed inside the PDF file. Changing them does not change the file; upload a new PDF to change the header."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_form_template_action
+msgid "Form templates (PDF and approvals)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_hiring
+msgid "Appointment"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+msgid "Site supervisor confirmation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/__manifest__.py:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+msgid "Human Resources"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+msgid "Logistics"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_onboarding_action
+msgid "Start of work date forms (AD-WI-FM-06-03)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_dashboard
+msgid "Dashboard"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_hr_config
+msgid "Configuration"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_form_template
+msgid "Form templates"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_dashboard_block
+msgid "Block and form permissions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_dashboard_block_form
+msgid "Leave users and groups empty to show the block to everyone who opens the dashboard."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_dashboard_block_action
+msgid "Dashboard permissions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_view_list
+msgid "Open form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_form_step_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_all_approvals
+msgid "All approval steps"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: model:ir.actions.server,name:abnaa_dijlah_hr.ad_form_step_my_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_my_approvals
+msgid "My pending approvals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_reject_wizard_form
+msgid "State the rejection reason so it reaches the form creator"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "Start clearance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "Settle dues (finance)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "Sign"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+msgid "Release"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_clearance_action
+msgid "Clearance (AD-WI-FM-06-11)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_transfer
+msgid "Guard transfers (HR-FM-09)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_01
+msgid "Absence from official work without prior notice"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_02
+msgid "Violating laws, regulations and public or private morals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_03
+msgid "Arriving late or leaving early without permission"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_04
+msgid "Improper conduct toward the direct supervisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_05
+msgid "Not returning from leave on the due date"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_06
+msgid "Lying or cheating to obtain an undue benefit"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_07
+msgid "Insubordination, misconduct, threats or fighting with staff"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_08
+msgid "Not shaving and appearing in a way that harms the company's reputation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_09
+msgid "Not following instructions or obeying orders"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_10
+msgid "Accepting bribes or gifts from company customers"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_11
+msgid "Disclosing business secrets"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_12
+msgid "Talking about sectarian or political matters or spreading rumors"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_13
+msgid "Refusing or delaying work, causing it to stop, and neglecting duties"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_14
+msgid "Tampering with attendance records"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_15
+msgid "Firing shots, intentionally or not"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_16
+msgid "Inciting others to violate work orders and instructions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_17
+msgid "Sleeping on duty"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_18
+msgid "Exceeding the speed limit while driving vehicles"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_19
+msgid "Damaging, stealing or using company or customer property without official permission"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.violation.type,name:abnaa_dijlah_hr.violation_20
+msgid "Not complying with dress code, body armor and occupational health and safety requirements on duty"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_nav_forms
+msgid "Sidebar"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_emp
+msgid "Card: Employees"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_open
+msgid "Card: Forms in progress"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_present
+msgid "Card: Present now"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_out
+msgid "Card: On leave today"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_leave_pending
+msgid "Card: Leave requests awaiting approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_slips
+msgid "Card: Unconfirmed payslips"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_panel_create
+msgid "Quick create panel"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_emp
+msgid "Create: New employee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_att
+msgid "Create: Check-in"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_leave
+msgid "Create: Leave request"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_payslip
+msgid "Create: Payslip and payslip batch"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_interview
+msgid "Create: Interview rating"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_appointment_order
+msgid "Create: Appointment order"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_onboarding
+msgid "Create: Start of work"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_transfer
+msgid "Create: Guard transfer"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_discipline
+msgid "Create: Penalty"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_termination_order
+msgid "Create: Termination order"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_clearance
+msgid "Create: Clearance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_employee_guarantee
+msgid "Create: Guarantee and pledge"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_create_ad_employee_pledge
+msgid "Create: Written pledge"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_panel_alerts
+msgid "Alerts panel"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_alert_leave
+msgid "Alert: Leaves awaiting approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_alert_slips
+msgid "Alert: Unconfirmed payslips"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_alert_transfer
+msgid "Alert: Transfer authorization expiring"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_alert_probation
+msgid "Alert: Probation ending"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_alert_clearance
+msgid "Alert: Incomplete clearance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_panel_recent
+msgid "Table: Latest forms"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_chart_trend
+msgid "Chart: Forms over 6 months"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_chart_types
+msgid "Chart: By form type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_chart_sites
+msgid "Chart: Employees by site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_interview
+msgid "Form: Interview rating (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_appointment_order
+msgid "Form: Appointment order (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_onboarding
+msgid "Form: Start of work (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_transfer
+msgid "Form: Guard transfer (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_discipline
+msgid "Form: Penalty (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_termination_order
+msgid "Form: Termination order (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_clearance
+msgid "Form: Clearance (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_employee_guarantee
+msgid "Form: Guarantee and pledge (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_form_ad_employee_pledge
+msgid "Form: Written pledge (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#: model:ad.dashboard.block,name:abnaa_dijlah_hr.ad_dash_block_kpi_approvals
+msgid "Card: My pending approvals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_hr_user
+msgid "AD Forms: Specialist employee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_hr_manager
+msgid "AD Forms: HR department manager"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_ops_manager
+msgid "AD Forms: Operations department manager"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_site_supervisor
+msgid "AD Forms: Site supervisor"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_logistics
+msgid "AD Forms: Logistics department"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_admin
+msgid "AD Forms: Administration AA department"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_motor
+msgid "AD Forms: Vehicles MD department"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_finance
+msgid "AD Forms: Finance department"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: model:res.groups,name:abnaa_dijlah_hr.group_ad_md
+msgid "AD Forms: Managing director"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/wizard/ad_reject_wizard.py:0
+msgid "Invalid form."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Education and professional qualifications"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: supporting documents confirming education and qualifications"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Work experience"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: reference documents from previous workplaces"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Vehicle driving skills"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: supporting document (driving license)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Appearance and general discipline"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: direct observation (appropriate attire)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Physical fitness and endurance"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: simple field tests (running, push-ups, carrying weights)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Emotional stability and self-control"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: a set of behavioral questions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Security awareness and observation"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Measured by: showing a picture or video and then asking a set of questions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_interview.py:0
+msgid "Scores must be between 0 and 10."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+msgid "Each department must sign its line before the dues are settled."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+msgid "You are not allowed to sign for this department."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_clearance.py:0
+#, python-format
+msgid "Clearance from %(dept)s was given by %(user)s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "HR manager (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "HR officer (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Operations manager (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Site supervisor (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Logistics department (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Administration AA department (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Vehicles MD department (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Finance department (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Managing director (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "User without form access (demo)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "Demo users: delete/archive %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "Password for all demo users: %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+msgid "Only the system administrator can delete demo data."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "%s : deleted %s%s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "✓ User: %s  (%s)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "= Exists: %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "✗ Demo users : %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_demo_loader.py:0
+#, python-format
+msgid "/ Could not delete %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+msgid "The key must be unique."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+#, python-format
+msgid "Form: %s (view, lists and print)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+msgid "Sidebar: Overview (dashboard)"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+msgid "You do not have access to this form. Contact the HR manager."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+msgid "You do not have permission to change the block order."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+msgid "You do not have permission to change the block width."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard_block.py:0
+msgid "Create:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "Approval: %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The template cannot fit these values. Adjust the boxes in the form designer (larger box, smaller font or multiple lines) or shorten the text."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "There is no PDF file for this form. Upload it from: Configuration > Form templates."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "The form was sent for approval (%s stages)."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The form is not awaiting approval (it may already have been processed)."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "You are not the current approver of this form."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Approved."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The form was rejected."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "%s withdrew the approval request."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "Forms still awaiting approvers: %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Daily summary: pending approvals"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "This form does not support the approval chain."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The form cannot be sent for approval in its current state."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The form has already been sent for approval."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Approval stages are not set for this form. Open: Configuration > Form templates."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "There is no PDF file for this form. Upload it from the form templates."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "You have already approved this form."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "%(user)s approved the stage \"%(step)s\". Now it is the turn of: %(next)s."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "All approval stages were completed with the approval of %s."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "There is no pending approval request to withdraw."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Only the form creator or the HR manager can withdraw the request."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Final approval is done through the approval chain. Click \"Send for approval\" on the form."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "The stage \"%s\" has no active user. Set the approver in the form templates."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "%s rejected the form at stage"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "The form %s was rejected"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Reminder: a form is awaiting your approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Review the form and approve or reject it."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "A form awaiting your approval:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Rejection reason:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+#, python-format
+msgid "The form has been waiting for your decision for %s days:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_form_template.py:0
+#, python-format
+msgid "The form code %s already exists."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Penalty"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Guarantee and pledge"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Annex"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Written pledge"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Employees"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Forms in progress"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "New employee"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Present now"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Check-in"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "On leave today"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Leave requests awaiting approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#, python-format
+msgid "%s leave request(s) awaiting approval"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Leave request"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Unconfirmed payslips"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#, python-format
+msgid "%s payslip(s) not yet confirmed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "New payslip"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+msgid "Payslip batch"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#, python-format
+msgid "%s transfer authorization(s) expiring within 7 days"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#, python-format
+msgid "%s employee(s) whose probation ends within 30 days"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#, python-format
+msgid "%s clearance(s) not completed"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "ID number"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Phone"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Form designer"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Invalid PDF value. Choose the file again."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "The PDF file must not exceed 25 MB."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "The stored file is managed automatically."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "There is no file."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Upload a PDF file and save first."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Managing director name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Managing director title"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Invalid designer request."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "This stage supplies a system field. Change the approver instead of deleting it."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Choose the PDF file again; the file content is missing."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "The selected file is empty."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Please upload a PDF file."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Invalid or unsupported PDF file: %s"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Field key: lowercase English letters, digits and _ only."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Invalid position for field \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Select an approver or a group for the stage \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Invalid signature position for the stage \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Signature \"%(name)s\" is on page %(page)s but the file has %(count)s pages."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Signature \"%(name)s\" falls outside page %(page)s."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "The approval signature must be a valid PNG image (up to 2 MB)."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "The uploaded file is not a valid PDF."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Invalid change list."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Do not add more than 100 items in one save."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Select the system value printed by \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Select the approval stage for the field \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "Select the value source for the field \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "The field \"%(name)s\" is on page %(page)s but the file has %(count)s pages."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+#, python-format
+msgid "The field \"%(name)s\" falls outside page %(page)s (%(width).0f x %(height).0f pt). Make the box smaller or move it."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Invalid change."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Invalid new item."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Enter a name for the field or stage."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
+msgid "Select an approver or a group for the new stage."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/approval_mixin.py:0
+#, python-format
+msgid "This step is only available to members of the group \"%s\"."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
+msgid "Transfer authorization expires"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+msgid "Finish editing permissions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Edit permissions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+msgid "Exit office screen"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+msgid "Office screen"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+msgid "AD Forms"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+msgid "Block permissions"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.js:0
+msgid "Default"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Move forward"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Move back"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Abnaa Dijlah"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Security Services"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Company forms"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Overview"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Auto-refresh every 5 minutes"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Refreshes every 5 minutes"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Night / day mode"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Refresh"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Could not load data:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Loading..."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Choose a form from the sidebar."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Quick create"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Alerts that need action"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "No alerts."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Latest forms"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "No forms yet."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Forms created - last 6 months"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "By form type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "No data."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "Employees by work site"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/dashboard/ad_dashboard.xml:0
+msgid "No sites assigned."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "There is no drawn box near this field. Drag it over a box on the form first."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Draw a larger rectangle."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Enter the field or stage name."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Select an approver or a group."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Select the value source."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Approver / approval date fields are copied from the printed fields tab."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Long sample values were filled in. Save, then enable the exact print preview. Form data is not changed."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Continue"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Finish the new field or cancel it before leaving."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Save changes before leaving? Cancel keeps you in the designer."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Save and leave"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Finish the new field or cancel it first."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Saved — review the layout warnings"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Layout saved"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Discard all unsaved changes?"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Discard changes"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.js:0
+msgid "Save the layout first to see the exact preview."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Back"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Form designer —"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Exact preview: on"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Exact print preview"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Save"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Add field"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Add signature / stage"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Undo"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Copy field"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Long sample values"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "The layout is locked."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Open the designer from a form template."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Draw a rectangle on the PDF to place the new item."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "New field"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "New approval stage"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "A new stage is added to the approval path, with its signature in the drawn rectangle."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Field value from"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Choose..."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Form data"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "System"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Print type"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "The drawn rectangle sets the page, position and size. New items are saved when the layout is saved."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Add to layout"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Ctrl/Shift + click to select several boxes. Align the selection:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Top"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Bottom"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Units are PDF points (1 point = 1/72 inch). Page size:"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Min font"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Test"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "e.g. a long name"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Long values shrink their font down to the minimum size. If they still do not fit, the form cannot be sent for approval."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Fits the box to the box drawn on the form"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Snap to form box"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Move to this page"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Select a box."
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Layout warnings ("
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "Fields and signatures"
+msgstr ""
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/static/src/designer/ad_pdf_designer.xml:0
+msgid "p."
+msgstr ""
+

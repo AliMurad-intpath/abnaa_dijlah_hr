@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_ad_employee_file" name="ملف الموظف" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="20"/>
-    <menuitem id="menu_ad_guarantee" name="الكفالة والتعهد الخطي (ملحق)" parent="menu_ad_employee_file" sequence="10" action="ad_employee_guarantee_action"/>
-    <menuitem id="menu_ad_pledge" name="التعهدات الخطية (FM-17)" parent="menu_ad_employee_file" sequence="20" action="ad_employee_pledge_action"/>
+    <menuitem id="menu_ad_employee_file" name="Employee file" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="20"/>
+    <menuitem id="menu_ad_guarantee" name="Guarantee and written pledge (annex)" parent="menu_ad_employee_file" sequence="10" action="ad_employee_guarantee_action"/>
+    <menuitem id="menu_ad_pledge" name="Written pledges (FM-17)" parent="menu_ad_employee_file" sequence="20" action="ad_employee_pledge_action"/>
 </odoo>

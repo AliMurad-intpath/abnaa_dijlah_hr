@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_ad_transfer_root" name="التنقلات" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="40"/>
-    <menuitem id="menu_ad_transfer" name="تنقلات الحراس (HR-FM-09)" parent="menu_ad_transfer_root" sequence="10" action="ad_transfer_action"/>
+    <menuitem id="menu_ad_transfer_root" name="Transfers" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="40"/>
+    <menuitem id="menu_ad_transfer" name="Guard transfers (HR-FM-09)" parent="menu_ad_transfer_root" sequence="10" action="ad_transfer_action"/>
 </odoo>

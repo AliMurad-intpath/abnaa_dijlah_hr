@@ -20,12 +20,12 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_start" type="object" string="بدء براءة الذمة" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_settle" type="object" string="تسوية المستحقات (المالية)" class="btn-primary" invisible="state != 'clearing'"/>
-                    <button name="action_hr_certify" type="object" string="مصادقة الموارد البشرية" class="btn-primary" invisible="state != 'settled'"/>
-                    <button name="action_md_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'hr_cert'"/>
-                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
-                    <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
+                    <button name="action_start" type="object" string="Start clearance" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_settle" type="object" string="Settle dues (finance)" class="btn-primary" invisible="state != 'clearing'"/>
+                    <button name="action_hr_certify" type="object" string="HR approval" class="btn-primary" invisible="state != 'settled'"/>
+                    <button name="action_md_approve" type="object" string="Managing director approval" class="btn-primary" invisible="state != 'hr_cert'"/>
+                    <button name="action_ad_print" type="object" string="Print form" invisible="state == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done', 'cancel')"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,clearing,settled,hr_cert,done"/>
                 </header>
                 <sheet>
@@ -48,7 +48,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="براءة الذمة من الاقسام" name="lines">
+                        <page string="Clearance from departments" name="lines">
                             <field name="line_ids">
                                 <list editable="bottom" create="0" delete="0">
                                     <field name="sequence" column_invisible="1"/>
@@ -58,11 +58,11 @@
                                     <field name="note"/>
                                     <field name="signed_user_id"/>
                                     <field name="signed_date"/>
-                                    <button name="action_sign" type="object" string="توقيع" icon="fa-check" invisible="signed_date"/>
+                                    <button name="action_sign" type="object" string="Sign" icon="fa-check" invisible="signed_date"/>
                                 </list>
                             </field>
                         </page>
-                        <page string="المستحقات" name="dues">
+                        <page string="Dues" name="dues">
                             <field name="due_ids">
                                 <list editable="bottom"><field name="sequence" widget="handle"/><field name="name"/><field name="amount"/></list>
                             </field>
@@ -74,14 +74,14 @@
                                 <field name="hr_note"/>
                             </group>
                         </page>
-                        <page string="المخالصة" name="quitclaim">
+                        <page string="Release" name="quitclaim">
                             <group>
                                 <field name="receipt_date"/>
                                 <field name="witness1"/>
                                 <field name="witness2"/>
                             </group>
                         </page>
-                        <page string="الموافقات" name="approvals">
+                        <page string="Approvals" name="approvals">
                             <field name="signature_ids" readonly="1">
                                 <list><field name="step"/><field name="user_id"/><field name="date"/></list>
                             </field>
@@ -93,7 +93,7 @@
         </field>
     </record>
     <record id="ad_clearance_action" model="ir.actions.act_window">
-        <field name="name">براءة الذمة (AD-WI-FM-06-11)</field>
+        <field name="name">Clearance (AD-WI-FM-06-11)</field>
         <field name="res_model">ad.clearance</field>
         <field name="view_mode">list,form</field>
     </record>

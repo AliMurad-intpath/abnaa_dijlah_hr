@@ -7,10 +7,10 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button name="action_ad_open_termination" type="object" class="oe_stat_button" icon="fa-sign-out" invisible="ad_termination_count == 0">
-                    <field name="ad_termination_count" widget="statinfo" string="أوامر إنهاء الخدمة"/>
+                    <field name="ad_termination_count" widget="statinfo" string="Termination orders"/>
                 </button>
                 <button name="action_ad_open_clearance" type="object" class="oe_stat_button" icon="fa-check-square-o" invisible="ad_clearance_count == 0">
-                    <field name="ad_clearance_count" widget="statinfo" string="براءة الذمة"/>
+                    <field name="ad_clearance_count" widget="statinfo" string="Clearance"/>
                 </button>
             </xpath>
         </field>

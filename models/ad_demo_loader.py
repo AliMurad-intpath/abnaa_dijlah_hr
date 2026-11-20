@@ -24,17 +24,17 @@ DEMO_FILES = [
 # Demo internal users: (key, name, login, role groups). Password is shown in the import log.
 DEMO_PASSWORD = 'Demo@2026'
 DEMO_USERS = [
-    ('hr_manager', 'مدير الموارد البشرية (تجربة)', 'demo.hr.manager',
+    ('hr_manager', 'HR manager (demo)', 'demo.hr.manager',
      ['abnaa_dijlah_hr.group_ad_hr_manager']),
-    ('hr_user', 'موظف الموارد البشرية (تجربة)', 'demo.hr.user', ['abnaa_dijlah_hr.group_ad_hr_user']),
-    ('ops_manager', 'مدير العمليات (تجربة)', 'demo.ops.manager', ['abnaa_dijlah_hr.group_ad_ops_manager']),
-    ('site_supervisor', 'مشرف الموقع (تجربة)', 'demo.site.supervisor', ['abnaa_dijlah_hr.group_ad_site_supervisor']),
-    ('logistics', 'قسم اللوجستيك (تجربة)', 'demo.logistics', ['abnaa_dijlah_hr.group_ad_logistics']),
-    ('admin_aa', 'قسم الادارة AA (تجربة)', 'demo.admin.aa', ['abnaa_dijlah_hr.group_ad_admin']),
-    ('motor', 'قسم الاليات MD (تجربة)', 'demo.motor', ['abnaa_dijlah_hr.group_ad_motor']),
-    ('finance', 'القسم المالي (تجربة)', 'demo.finance', ['abnaa_dijlah_hr.group_ad_finance']),
-    ('md', 'المدير المفوض (تجربة)', 'demo.md', ['abnaa_dijlah_hr.group_ad_md']),
-    ('plain', 'مستخدم بدون صلاحيات استمارات (تجربة)', 'demo.plain', []),
+    ('hr_user', 'HR officer (demo)', 'demo.hr.user', ['abnaa_dijlah_hr.group_ad_hr_user']),
+    ('ops_manager', 'Operations manager (demo)', 'demo.ops.manager', ['abnaa_dijlah_hr.group_ad_ops_manager']),
+    ('site_supervisor', 'Site supervisor (demo)', 'demo.site.supervisor', ['abnaa_dijlah_hr.group_ad_site_supervisor']),
+    ('logistics', 'Logistics department (demo)', 'demo.logistics', ['abnaa_dijlah_hr.group_ad_logistics']),
+    ('admin_aa', 'Administration AA department (demo)', 'demo.admin.aa', ['abnaa_dijlah_hr.group_ad_admin']),
+    ('motor', 'Vehicles MD department (demo)', 'demo.motor', ['abnaa_dijlah_hr.group_ad_motor']),
+    ('finance', 'Finance department (demo)', 'demo.finance', ['abnaa_dijlah_hr.group_ad_finance']),
+    ('md', 'Managing director (demo)', 'demo.md', ['abnaa_dijlah_hr.group_ad_md']),
+    ('plain', 'User without form access (demo)', 'demo.plain', []),
 ]
 # Forms limited to chosen demo users, to show the per-user access of the dashboard.
 DEMO_RESTRICTED_FORMS = {'form_ad_termination_order': ['hr_manager', 'md']}
@@ -48,7 +48,7 @@ class AdDemoLoader(models.TransientModel):
     _name = 'ad.demo.loader'
     _description = 'Demo data loader'
 
-    log = fields.Text('نتيجة العملية', readonly=True)
+    log = fields.Text('Operation result', readonly=True)
 
     def _read_rows(self, filename):
         path = file_path('abnaa_dijlah_hr/data/demo/' + filename)
@@ -69,12 +69,12 @@ class AdDemoLoader(models.TransientModel):
                     group = self.env.ref(xmlid, raise_if_not_found=False)
                     if group:
                         gids.append(group.id)
-                user = Users.create({'name': name, 'login': login, 'email': login + '@abnaa-demo.example',
+                user = Users.create({'name': self.env._(name), 'login': login, 'email': login + '@abnaa-demo.example',
                                      'password': DEMO_PASSWORD, gfield: [(6, 0, gids)]})
-                lines.append('✓ مستخدم: %s  (%s)' % (name, login))
+                lines.append(self.env._('✓ User: %s  (%s)', name, login))
             else:
                 user.active = True
-                lines.append('= موجود: %s' % login)
+                lines.append(self.env._('= Exists: %s', login))
             users[key] = user
         # who may open which restricted form
         Block = self.env['ad.dashboard.block'].sudo()
@@ -82,7 +82,7 @@ class AdDemoLoader(models.TransientModel):
         for bkey, ukeys in DEMO_RESTRICTED_FORMS.items():
             if bkey in ids:
                 Block.browse(ids[bkey]).write({'user_ids': [(4, users[k].id) for k in ukeys]})
-        lines.append('كلمة المرور لجميع مستخدمي التجربة: %s' % DEMO_PASSWORD)
+        lines.append(self.env._('Password for all demo users: %s', DEMO_PASSWORD))
         return users, lines
 
     def _demo_remove_users(self):
@@ -100,7 +100,7 @@ class AdDemoLoader(models.TransientModel):
             except Exception:
                 user.active = False      # cannot be deleted (has history): archive instead
                 done += 1
-        return 'مستخدمو التجربة : حذف/ارشفة %s' % done
+        return self.env._('Demo users: delete/archive %s', done)
 
     def _reopen(self):
         return {
@@ -131,14 +131,14 @@ class AdDemoLoader(models.TransientModel):
                 _users, user_lines = self._demo_users()
             lines.extend(user_lines)
         except Exception as exc:
-            lines.append('✗ مستخدمو التجربة : %s' % exc)
+            lines.append(self.env._('✗ Demo users : %s', exc))
         self.log = '\n'.join(lines)
         return self._reopen()
 
     def action_remove(self):
         self.ensure_one()
         if not self.env.user.has_group('base.group_system'):
-            raise UserError(self.env._('فقط مدير النظام يمكنه حذف بيانات التجربة.'))
+            raise UserError(self.env._('Only the system administrator can delete demo data.'))
         lines = []
         for filename in reversed(DEMO_FILES):
             model_name = _model_of(filename)
@@ -156,7 +156,7 @@ class AdDemoLoader(models.TransientModel):
                     removed += 1
                 except Exception:
                     failed += 1
-            lines.append('%s : حذف %s%s' % (filename, removed, ' / تعذر حذف %s' % failed if failed else ''))
+            lines.append(self.env._('%s : deleted %s%s', filename, removed, self.env._(' / Could not delete %s', failed) if failed else ''))
         lines.append(self._demo_remove_users())
         self.log = '\n'.join(lines)
         return self._reopen()

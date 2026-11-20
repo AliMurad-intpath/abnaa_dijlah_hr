@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="ad_dashboard_action" model="ir.actions.client">
-        <field name="name">لوحة استمارات شركة ابناء دجلة</field>
+        <field name="name">Abnaa Dijlah Company Forms dashboard</field>
         <field name="tag">ad_hr_dashboard</field>
     </record>
 </odoo>
