@@ -360,6 +360,32 @@ class AdFormTemplate(models.Model):
         issues += [issue for issue in _engine().overlap_issues(data, items) if issue['key'] not in blocked]
         return [dict(issue) for issue in issues]
 
+    @api.model
+    def _ad_reflow_layouts(self):
+        """Replace the blank PDFs and field positions with the continuous-flow versions
+        (no half-empty pages). Field keys, fonts and stages of existing records are kept."""
+        path = file_path('abnaa_dijlah_hr/data/engine_layouts.json')
+        with open(path, encoding='utf-8') as fh:
+            layouts = json.load(fh)
+        geometry = ('page', 'x', 'y', 'width', 'height')
+        for key, spec in layouts.items():
+            tpl = self.env.ref('abnaa_dijlah_hr.' + spec['xmlid'], raise_if_not_found=False)
+            if not tpl or not tpl.field_ids:
+                continue
+            try:
+                with self.env.cr.savepoint():
+                    with open(file_path('abnaa_dijlah_hr/' + spec['pdf']), 'rb') as fh:
+                        data = fh.read()
+                    tpl = tpl.sudo().with_context(ad_engine_seed=True)
+                    by_key = {f.key: f for f in tpl.field_ids}
+                    for new in spec['fields']:
+                        rec = by_key.get(new['key'])
+                        if rec:
+                            rec.with_context(ad_engine_seed=True).write({k: new[k] for k in geometry})
+                    tpl.write({'template_filename': '%s.pdf' % key, 'template_pdf': base64.b64encode(data)})
+            except Exception:
+                _logger.exception('Could not reflow the PDF layout of %s', key)
+
     # ------------------------------------------------------------------ seeding
     @api.model
     def _ad_seed_engine(self):
@@ -421,7 +447,7 @@ class AdFormField(models.Model):
     bold = fields.Boolean('Bold')
     font_family = fields.Selection([('dejavu', 'DejaVu Sans (searchable)'), ('times', 'Times New Roman (searchable)'),
                                     ('naskh', 'Naskh (not searchable)')],
-                                   default='dejavu', string='Font')
+                                   default='times', string='Font')
     multiline = fields.Boolean('Multiple lines')
     text_align = fields.Selection([('left', 'Left'), ('center', 'Center'), ('right', 'Right')], default='right',
                                   string='Alignment')

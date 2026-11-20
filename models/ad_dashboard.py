@@ -33,9 +33,14 @@ class AdDashboard(models.AbstractModel):
 
     # ---- main entry ----------------------------------------------------
     @api.model
-    def get_data(self, edit=False):
+    def get_data(self, edit=False, lang=None):
         """All numbers for the OWL screen. Runs with the caller's rights, so a
         user only counts (and can only create) what they are allowed to."""
+        if lang in ('ar', 'en'):
+            installed = self.env['res.lang'].search([('active', '=', True)]).mapped('code')
+            code = next((c for c in installed if c == lang or c.startswith(lang + '_')), None)
+            if code:
+                self = self.with_context(lang=code)
         env = self.env
         Block = env['ad.dashboard.block']
         can_edit = env.user.has_group('hr.group_hr_manager') or env.user.has_group('base.group_system')

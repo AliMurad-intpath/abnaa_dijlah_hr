@@ -181,7 +181,7 @@ def render(pdf_bytes, items, collect=False, output=True):
             font_size = float(item.get('font_size') or 11)
             min_size = min(font_size, max(4.0, float(item.get('min_font_size') or font_size)))
             markup = _html(item)
-            css = FONT_CSS.get(item.get('font'), FONT_CSS['dejavu'])
+            css = FONT_CSS.get(item.get('font'), FONT_CSS['times'])
             fit = _fit(box, markup, min_size / font_size, css, archive)
             if fit is None:
                 issues.append(LayoutIssue(key=item.get('key'), label=label, code='overflow', message=(

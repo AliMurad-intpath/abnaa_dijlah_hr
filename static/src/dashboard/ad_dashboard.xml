@@ -5,18 +5,18 @@
     </t>
 
     <t t-name="abnaa_dijlah_hr.AdLock">
-        <button class="dj-lock" type="button" title="Edit permissions" t-on-click="(ev) => this.editAccess(ev, bk)">
+        <button class="dj-lock" type="button" t-att-title="this.tr('Edit permissions')" t-on-click="(ev) => this.editAccess(ev, bk)">
             <t t-set="icn" t-value="'lock'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
         </button>
     </t>
 
     <t t-name="abnaa_dijlah_hr.AdBlockTools">
         <span t-if="this.state.edit and this.state.data.can_edit_access" class="dj-tools" t-on-click="(ev) => ev.stopPropagation()">
-            <select title="Block width" t-on-change="(ev) => this.setWidth(ev, bk, ev.target.value)">
+            <select t-att-title="this.tr('Block width')" t-on-change="(ev) => this.setWidth(ev, bk, ev.target.value)">
                 <option t-foreach="this.widthChoices" t-as="w" t-key="w.v" t-att-value="w.v" t-att-selected="this.isWidth(bk, w.v)" t-out="w.l"/>
             </select>
-            <button type="button" title="Move forward" t-on-click="(ev) => this.moveBlock(ev, bk, -1)">&#8593;</button>
-            <button type="button" title="Move back" t-on-click="(ev) => this.moveBlock(ev, bk, 1)">&#8595;</button>
+            <button type="button" t-att-title="this.tr('Move forward')" t-on-click="(ev) => this.moveBlock(ev, bk, -1)">&#8593;</button>
+            <button type="button" t-att-title="this.tr('Move back')" t-on-click="(ev) => this.moveBlock(ev, bk, 1)">&#8595;</button>
             <t t-call="abnaa_dijlah_hr.AdLock"/>
         </span>
     </t>
@@ -24,12 +24,12 @@
     <t t-name="abnaa_dijlah_hr.AdDashboard">
         <div t-att-class="'dj-workspace ' + (this.state.dark ? 'dj-dark ' : '') + (this.state.office ? 'dj-office' : '')" t-att-dir="this.dir" t-att-lang="this.lang">
             <aside class="dj-sidebar">
-                <div class="dj-brand">Abnaa Dijlah</div>
-                <div class="dj-brand-sub">Security Services</div>
-                <div class="dj-nav-label">Company forms</div>
+                <div class="dj-brand"><t t-out="this.tr('Abnaa Dijlah')"/></div>
+                <div class="dj-brand-sub"><t t-out="this.tr('Security Services')"/></div>
+                <div class="dj-nav-label"><t t-out="this.tr('Company forms')"/></div>
                 <nav t-if="this.state.data and this.state.data.show.nav_forms">
                     <button t-if="this.state.data.show.nav_overview" class="active" type="button">
-                        <span class="dj-nav-text">Overview</span>
+                        <span class="dj-nav-text"><t t-out="this.tr('Overview')"/></span>
                         <t t-if="this.state.edit"><t t-set="bk" t-value="'nav_overview'"/><t t-call="abnaa_dijlah_hr.AdLock"/></t>
                     </button>
                     <button t-foreach="this.state.data.tiles" t-as="tile" t-key="tile.model" type="button" t-on-click="() => this.openTile(tile)">
@@ -43,37 +43,41 @@
             <main class="dj-main">
                 <header class="dj-topbar">
                     <div>
-                        <h1>Abnaa Dijlah Company Forms</h1>
+                        <h1><t t-out="this.tr('Abnaa Dijlah Company Forms')"/></h1>
                         <p class="dj-date" t-if="this.state.data" t-out="this.dateLabel"/>
                     </div>
                     <div class="dj-actions">
-                        <label class="dj-auto" title="Auto-refresh every 5 minutes">
+                        <label class="dj-auto" t-att-title="this.tr('Auto-refresh every 5 minutes')">
                             <input type="checkbox" t-att-checked="this.state.auto" t-on-change="(ev) => this.setAuto(ev.target.checked)"/>
-                            <span>Refreshes every 5 minutes</span>
+                            <span><t t-out="this.tr('Refreshes every 5 minutes')"/></span>
                         </label>
                         <button t-if="this.state.data and this.state.data.can_edit_access" type="button" t-att-class="'dj-btn ' + (this.state.edit ? 'dj-on' : '')" t-on-click="() => this.toggleEdit()">
                             <t t-set="icn" t-value="'lock'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
                             <t t-out="this.editLabel"/>
                         </button>
-                        <button class="dj-btn dj-icon-btn" type="button" title="Night / day mode" t-on-click="() => this.toggleTheme()">
+                        <button class="dj-btn dj-icon-btn" type="button" t-att-title="this.tr('Night / day mode')" t-on-click="() => this.toggleTheme()">
                             <t t-set="icn" t-value="this.state.dark ? 'sun' : 'moon'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
                         </button>
+                        <div class="dj-seg" role="group" t-att-aria-label="this.tr('Language')">
+                            <button type="button" lang="ar" t-att-class="this.state.lang === 'ar' ? 'dj-on' : ''" t-att-aria-pressed="this.state.lang === 'ar'" t-on-click="() => this.setLang('ar')">العربية</button>
+                            <button type="button" lang="en" t-att-class="this.state.lang === 'en' ? 'dj-on' : ''" t-att-aria-pressed="this.state.lang === 'en'" t-on-click="() => this.setLang('en')">English</button>
+                        </div>
                         <button class="dj-btn" type="button" t-on-click="() => this.toggleOffice()">
                             <t t-set="icn" t-value="'monitor'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
                             <t t-out="this.officeLabel"/>
                         </button>
                         <button class="dj-btn dj-primary" type="button" t-on-click="() => this.reload()" t-att-disabled="this.state.loading">
                             <t t-set="icn" t-value="'refresh'"/><t t-call="abnaa_dijlah_hr.AdIcon"/>
-                            Refresh
+                            <t t-out="this.tr('Refresh')"/>
                         </button>
                     </div>
                 </header>
 
-                <div t-if="this.state.error" class="dj-alert" role="alert">Could not load data: <span dir="ltr" t-out="this.state.errorMessage"/></div>
-                <div t-if="this.state.loading and !this.state.data" class="dj-empty">Loading...</div>
+                <div t-if="this.state.error" class="dj-alert" role="alert"><t t-out="this.tr('Could not load data:')"/> <span dir="ltr" t-out="this.state.errorMessage"/></div>
+                <div t-if="this.state.loading and !this.state.data" class="dj-empty"><t t-out="this.tr('Loading...')"/></div>
 
                 <t t-if="this.state.data">
-                    <div t-if="!this.state.data.show.nav_overview" class="dj-empty">Choose a form from the sidebar.</div>
+                    <div t-if="!this.state.data.show.nav_overview" class="dj-empty"><t t-out="this.tr('Choose a form from the sidebar.')"/></div>
                     <section t-if="this.state.data.show.nav_overview" class="dj-board" t-att-aria-busy="this.state.loading ? 'true' : 'false'">
 
                         <article t-foreach="this.state.data.kpis" t-as="k" t-key="k.key"
@@ -88,7 +92,7 @@
 
                         <section t-if="this.state.data.show.panel_create and this.createGroups.length" t-att-class="'dj-card dj-create dj-span-' + this.widthOf('panel_create')" t-att-style="'order:' + this.orderOf('panel_create')">
                             <div class="dj-card-head">
-                                <h3>Quick create</h3>
+                                <h3><t t-out="this.tr('Quick create')"/></h3>
                                 <t t-set="bk" t-value="'panel_create'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
                             <div t-foreach="this.createGroups" t-as="g" t-key="g.title" class="dj-create-group">
@@ -105,10 +109,10 @@
 
                         <article t-if="this.state.data.show.panel_alerts" t-att-class="'dj-card dj-span-' + this.widthOf('panel_alerts')" t-att-style="'order:' + this.orderOf('panel_alerts')">
                             <div class="dj-card-head">
-                                <h3>Alerts that need action</h3>
+                                <h3><t t-out="this.tr('Alerts that need action')"/></h3>
                                 <t t-set="bk" t-value="'panel_alerts'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <div t-if="!this.state.data.alerts.length" class="dj-empty">No alerts.</div>
+                            <div t-if="!this.state.data.alerts.length" class="dj-empty"><t t-out="this.tr('No alerts.')"/></div>
                             <button t-foreach="this.state.data.alerts" t-as="a" t-key="a_index" type="button" t-att-class="'dj-alert-row dj-lvl-' + a.level" t-on-click="() => this.openAlert(a)">
                                 <span class="dj-dot"/><span class="dj-alert-text" t-out="a.text"/>
                                 <t t-if="this.state.edit"><t t-set="bk" t-value="a.block"/><t t-call="abnaa_dijlah_hr.AdLock"/></t>
@@ -117,13 +121,13 @@
 
                         <article t-if="this.state.data.show.panel_recent" t-att-class="'dj-card dj-span-' + this.widthOf('panel_recent')" t-att-style="'order:' + this.orderOf('panel_recent')">
                             <div class="dj-card-head">
-                                <h3>Latest forms</h3>
+                                <h3><t t-out="this.tr('Latest forms')"/></h3>
                                 <t t-set="bk" t-value="'panel_recent'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <div t-if="!this.state.data.recent.length" class="dj-empty">No forms yet.</div>
+                            <div t-if="!this.state.data.recent.length" class="dj-empty"><t t-out="this.tr('No forms yet.')"/></div>
                             <div class="dj-table-wrap" t-else="">
                                 <table>
-                                    <thead><tr><th>Form</th><th>No.</th><th>Status</th><th>Date</th></tr></thead>
+                                    <thead><tr><th><t t-out="this.tr('Form')"/></th><th><t t-out="this.tr('No.')"/></th><th><t t-out="this.tr('Status')"/></th><th><t t-out="this.tr('Date')"/></th></tr></thead>
                                     <tbody>
                                         <tr t-foreach="this.state.data.recent" t-as="r" t-key="r.model + r.id" class="dj-click" t-on-click="() => this.openRecord(r)">
                                             <td t-out="r.title"/><td class="dj-num" dir="ltr" t-out="r.name"/><td t-out="r.state"/><td class="dj-num" dir="ltr" t-out="this.stamp(r.when)"/>
@@ -135,7 +139,7 @@
 
                         <article t-if="this.state.data.show.chart_trend" t-att-class="'dj-card dj-span-' + this.widthOf('chart_trend')" t-att-style="'order:' + this.orderOf('chart_trend')">
                             <div class="dj-card-head">
-                                <h3>Forms created - last 6 months</h3>
+                                <h3><t t-out="this.tr('Forms created - last 6 months')"/></h3>
                                 <t t-set="bk" t-value="'chart_trend'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
                             <div class="dj-cols" dir="ltr">
@@ -149,11 +153,11 @@
 
                         <article t-if="this.state.data.show.chart_types" t-att-class="'dj-card dj-span-' + this.widthOf('chart_types')" t-att-style="'order:' + this.orderOf('chart_types')">
                             <div class="dj-card-head">
-                                <h3>By form type</h3>
+                                <h3><t t-out="this.tr('By form type')"/></h3>
                                 <t t-set="bk" t-value="'chart_types'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
                             <t t-set="rows" t-value="this.typeRows"/>
-                            <div t-if="!rows.length" class="dj-empty">No data.</div>
+                            <div t-if="!rows.length" class="dj-empty"><t t-out="this.tr('No data.')"/></div>
                             <div t-foreach="rows" t-as="s" t-key="s.model" class="dj-rank dj-click" t-on-click="() => this.openAll(s.tile)">
                                 <div class="dj-rank-line"><span t-out="s.title"/><bdi class="dj-num" dir="ltr" t-out="s.count"/></div>
                                 <div class="dj-track"><span t-att-style="'width:' + s.pct + '%'"/></div>
@@ -162,10 +166,10 @@
 
                         <article t-if="this.state.data.show.chart_sites" t-att-class="'dj-card dj-span-' + this.widthOf('chart_sites')" t-att-style="'order:' + this.orderOf('chart_sites')">
                             <div class="dj-card-head">
-                                <h3>Employees by work site</h3>
+                                <h3><t t-out="this.tr('Employees by work site')"/></h3>
                                 <t t-set="bk" t-value="'chart_sites'"/><t t-call="abnaa_dijlah_hr.AdBlockTools"/>
                             </div>
-                            <div t-if="!this.state.data.sites.length" class="dj-empty">No sites assigned.</div>
+                            <div t-if="!this.state.data.sites.length" class="dj-empty"><t t-out="this.tr('No sites assigned.')"/></div>
                             <div t-foreach="this.state.data.sites" t-as="s" t-key="s.id" class="dj-rank dj-click" t-on-click="() => this.openSite(s)">
                                 <div class="dj-rank-line"><span t-out="s.name"/><bdi class="dj-num" dir="ltr" t-out="s.count"/></div>
                                 <div class="dj-track"><span t-att-style="'width:' + this.barWidth(s.count) + '%'"/></div>

@@ -3,8 +3,6 @@ import { Component, onMounted, onWillUnmount, proxy, useProps } from "@odoo/owl"
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { standardActionServiceProps } from "@web/webclient/actions/action_plugin";
-import { _t } from "@web/core/l10n/translation";
-import { localization } from "@web/core/l10n/localization";
 import { user } from "@web/core/user";
 
 const circle = (cx, cy, r) =>
@@ -43,6 +41,51 @@ const ICONS = {
     lock: ["M5 11h14v10H5z", "M8 11V7a4 4 0 0 1 8 0v4"],
 };
 
+// Arabic for the dashboard's own interface text. Server labels are translated server-side for the chosen language.
+const AR = {
+    "Abnaa Dijlah": "أبناء دجلة",
+    "Security Services": "للخدمات الأمنية",
+    "Company forms": "استمارات الشركة",
+    "Overview": "نظرة عامة",
+    "Abnaa Dijlah Company Forms": "استمارات شركة أبناء دجلة",
+    "Refreshes every 5 minutes": "تحديث تلقائي كل 5 دقائق",
+    "Auto-refresh every 5 minutes": "تحديث تلقائي كل 5 دقائق",
+    "Night / day mode": "الوضع الليلي / النهاري",
+    "Refresh": "تحديث",
+    "Language": "اللغة",
+    "Could not load data:": "تعذّر تحميل البيانات:",
+    "Loading...": "جارٍ التحميل",
+    "Choose a form from the sidebar.": "اختر استمارة من القائمة الجانبية",
+    "Quick create": "إنشاء سريع",
+    "Alerts that need action": "تنبيهات تحتاج إلى إجراء",
+    "No alerts.": "لا توجد تنبيهات",
+    "Latest forms": "آخر الاستمارات",
+    "No forms yet.": "لا توجد استمارات بعد",
+    "Form": "الاستمارة",
+    "No.": "الرقم",
+    "Status": "الحالة",
+    "Date": "التاريخ",
+    "Forms created - last 6 months": "الاستمارات المنشأة خلال آخر 6 أشهر",
+    "By form type": "حسب نوع الاستمارة",
+    "No data.": "لا توجد بيانات",
+    "Employees by work site": "الموظفون حسب موقع العمل",
+    "No sites assigned.": "لا توجد مواقع مخصصة",
+    "Edit permissions": "تعديل الصلاحيات",
+    "Finish editing permissions": "إنهاء تعديل الصلاحيات",
+    "Office screen": "شاشة المكتب",
+    "Exit office screen": "إنهاء شاشة المكتب",
+    "Human Resources": "الموارد البشرية",
+    "AD Forms": "استمارات الشركة",
+    "Block permissions": "صلاحيات الكتلة",
+    "Block width": "عرض الكتلة",
+    "Move forward": "تقديم",
+    "Move back": "تأخير",
+    "Quarter": "ربع",
+    "Half": "نصف",
+    "Full": "كامل",
+    "Default": "افتراضي",
+};
+
 export class AdDashboard extends Component {
     static template = "abnaa_dijlah_hr.AdDashboard";
 
@@ -58,7 +101,10 @@ export class AdDashboard extends Component {
         } catch {}
         let auto = false;
         try { auto = localStorage.getItem("ad_dashboard.auto") === "1"; } catch {}
-        this.state = proxy({ loading: true, error: false, errorMessage: "", data: null, dark, office: false, auto, edit: false });
+        let lang = "";
+        try { lang = localStorage.getItem("ad_dashboard.lang") || ""; } catch {}
+        if (lang !== "ar" && lang !== "en") { lang = (user.lang || "").startsWith("ar") ? "ar" : "en"; }
+        this.state = proxy({ loading: true, error: false, errorMessage: "", data: null, dark, office: false, auto, edit: false, lang });
         this.timer = null;
         onMounted(async () => {
             await this.load();
@@ -71,7 +117,7 @@ export class AdDashboard extends Component {
         this.state.loading = true;
         this.state.error = false;
         try {
-            this.state.data = await this.orm.call("ad.dashboard", "get_data", [], { edit: this.state.edit });
+            this.state.data = await this.orm.call("ad.dashboard", "get_data", [], { edit: this.state.edit, lang: this.state.lang });
         } catch (e) {
             console.error("[abnaa_dijlah_hr] dashboard failed to load", e);
             this.state.error = true;
@@ -83,10 +129,18 @@ export class AdDashboard extends Component {
 
     // ---- presentation helpers ----
     icon(name) { return ICONS[name] || ICONS.kpi; }
-    get dir() { return localization.direction || "ltr"; }
-    get lang() { return (user.lang || "en_US").replace("_", "-"); }
-    get editLabel() { return this.state.edit ? _t("Finish editing permissions") : _t("Edit permissions"); }
-    get officeLabel() { return this.state.office ? _t("Exit office screen") : _t("Office screen"); }
+    /** Text in the dashboard language (not the session language). */
+    tr(text) { return this.state.lang === "ar" ? (AR[text] || text) : text; }
+    get dir() { return this.state.lang === "ar" ? "rtl" : "ltr"; }
+    get lang() { return this.state.lang === "ar" ? "ar" : "en"; }
+    get editLabel() { return this.tr(this.state.edit ? "Finish editing permissions" : "Edit permissions"); }
+    get officeLabel() { return this.tr(this.state.office ? "Exit office screen" : "Office screen"); }
+    async setLang(lang) {
+        if (lang === this.state.lang) { return; }
+        this.state.lang = lang;
+        try { localStorage.setItem("ad_dashboard.lang", lang); } catch {}
+        await this.load();
+    }
     get dateLabel() {
         try { return new Date().toLocaleDateString(this.lang, { weekday: "long", year: "numeric", month: "long", day: "numeric" }); }
         catch { return this.state.data.today; }
@@ -98,8 +152,8 @@ export class AdDashboard extends Component {
     get createGroups() {
         const c = this.state.data.create;
         return [
-            { title: _t("Human Resources"), items: c.filter((x) => x.group === "hr") },
-            { title: _t("AD Forms"), items: c.filter((x) => x.group === "forms") },
+            { title: this.tr("Human Resources"), items: c.filter((x) => x.group === "hr") },
+            { title: this.tr("AD Forms"), items: c.filter((x) => x.group === "forms") },
         ].filter((g) => g.items.length);
     }
     /** Forms created in the last 6 months, by type, largest first. */
@@ -140,11 +194,11 @@ export class AdDashboard extends Component {
         const id = this.state.data.ids[key];
         if (!id) { return; }
         this.action.doAction({
-            type: "ir.actions.act_window", name: _t("Block permissions"), res_model: "ad.dashboard.block",
+            type: "ir.actions.act_window", name: this.tr("Block permissions"), res_model: "ad.dashboard.block",
             res_id: id, views: [[false, "form"]], target: "new",
         }, { onClose: () => this.load() });
     }
-    get widthChoices() { return [{ v: 1, l: _t("Quarter") }, { v: 2, l: _t("Half") }, { v: 4, l: _t("Full") }, { v: 0, l: _t("Default") }]; }
+    get widthChoices() { return [{ v: 1, l: this.tr("Quarter") }, { v: 2, l: this.tr("Half") }, { v: 4, l: this.tr("Full") }, { v: 0, l: this.tr("Default") }]; }
     widthOf(key) { return ((this.state.data && this.state.data.widths) || {})[key] || 4; }
     isWidth(key, v) { return String(((this.state.data && this.state.data.wset) || {})[key] || 0) === String(v); }
     async setWidth(ev, key, w) {
