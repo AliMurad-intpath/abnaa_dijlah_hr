@@ -24,7 +24,7 @@
                 <header>
                     <button name="action_submit" type="object" string="مراجعة الموارد البشرية" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'hr'"/>
-                    <button name="%(action_report_ad_appointment)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
                     <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('approved', 'cancel')"/>
                     <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,approved"/>

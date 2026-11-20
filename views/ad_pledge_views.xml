@@ -20,7 +20,7 @@
                 <header>
                     <button name="action_signed" type="object" string="تأشير موقّع" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state == 'draft'"/>
-                    <button name="%(action_report_ad_pledge)d" type="action" string="طباعة الاستمارة"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>

@@ -25,7 +25,7 @@ DEMO_FILES = [
 DEMO_PASSWORD = 'Demo@2026'
 DEMO_USERS = [
     ('hr_manager', 'مدير الموارد البشرية (تجربة)', 'demo.hr.manager',
-     ['abnaa_dijlah_hr.group_ad_hr_manager', 'approvals.group_approval_manager']),
+     ['abnaa_dijlah_hr.group_ad_hr_manager']),
     ('hr_user', 'موظف الموارد البشرية (تجربة)', 'demo.hr.user', ['abnaa_dijlah_hr.group_ad_hr_user']),
     ('ops_manager', 'مدير العمليات (تجربة)', 'demo.ops.manager', ['abnaa_dijlah_hr.group_ad_ops_manager']),
     ('site_supervisor', 'مشرف الموقع (تجربة)', 'demo.site.supervisor', ['abnaa_dijlah_hr.group_ad_site_supervisor']),
@@ -69,9 +69,6 @@ class AdDemoLoader(models.TransientModel):
                     group = self.env.ref(xmlid, raise_if_not_found=False)
                     if group:
                         gids.append(group.id)
-                appr = self.env.ref('approvals.group_approval_user', raise_if_not_found=False)
-                if appr:
-                    gids.append(appr.id)
                 user = Users.create({'name': name, 'login': login, 'email': login + '@abnaa-demo.example',
                                      'password': DEMO_PASSWORD, gfield: [(6, 0, gids)]})
                 lines.append('✓ مستخدم: %s  (%s)' % (name, login))

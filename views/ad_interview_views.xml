@@ -20,7 +20,7 @@
                     <button name="action_ops" type="object" string="اكتمل التدريب / العمليات" class="btn-primary" invisible="state != 'hr'"/>
                     <button name="action_done" type="object" string="اعتماد التوصية" class="btn-primary" invisible="state != 'ops'"/>
                     <button name="action_create_employee" type="object" string="انشاء موظف" invisible="state != 'done' or recommendation != 'hire' or employee_id"/>
-                    <button name="%(action_report_ad_interview)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
                     <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
                     <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,ops,done"/>

@@ -21,7 +21,7 @@
                     <button name="action_site" type="object" string="تأييد تسليم الموقع" class="btn-primary" invisible="state != 'ops'"/>
                     <button name="action_hr" type="object" string="تأييد الموارد البشرية" class="btn-primary" invisible="state != 'site'"/>
                     <button name="action_done" type="object" string="تخويل المدير المفوض" class="btn-primary" invisible="state != 'hr'"/>
-                    <button name="%(action_report_ad_transfer)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
                     <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
                     <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,ops,site,hr,done"/>

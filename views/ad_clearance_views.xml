@@ -24,7 +24,7 @@
                     <button name="action_settle" type="object" string="تسوية المستحقات (المالية)" class="btn-primary" invisible="state != 'clearing'"/>
                     <button name="action_hr_certify" type="object" string="مصادقة الموارد البشرية" class="btn-primary" invisible="state != 'settled'"/>
                     <button name="action_md_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'hr_cert'"/>
-                    <button name="%(action_report_ad_clearance)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
                     <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,clearing,settled,hr_cert,done"/>
                 </header>

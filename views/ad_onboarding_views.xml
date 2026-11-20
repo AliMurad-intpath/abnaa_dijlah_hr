@@ -21,7 +21,7 @@
                     <button name="action_site" type="object" string="تأييد مشرف الموقع" class="btn-primary" invisible="state != 'logistics'"/>
                     <button name="action_ops" type="object" string="تأييد العمليات" class="btn-primary" invisible="state != 'site'"/>
                     <button name="action_done" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'ops'"/>
-                    <button name="%(action_report_ad_onboarding)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
                     <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('done', 'cancel')"/>
                     <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,logistics,site,ops,done"/>

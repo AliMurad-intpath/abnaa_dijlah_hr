@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<templates xml:space="preserve">
+<t t-name="abnaa_dijlah_hr.AdPdfDesigner">
+  <div class="o_hr_pdf_designer d-flex flex-column h-100" dir="rtl">
+    <div class="o_hr_pdf_toolbar d-flex flex-wrap gap-2 align-items-center p-2 border-bottom">
+      <button class="btn btn-secondary" t-on-click="this.back">رجوع</button>
+      <h4 class="m-0 me-2">مصمم الاستمارة — <t t-out="this.state.name"/></h4>
+      <div class="btn-group">
+        <button class="btn btn-outline-secondary" t-on-click="() =&gt; this.setPage(-1)" t-att-disabled="this.state.page === 1">‹</button>
+        <span class="btn btn-light disabled">صفحة <t t-out="this.state.page"/> / <t t-out="this.state.pages.length"/></span>
+        <button class="btn btn-outline-secondary" t-on-click="() =&gt; this.setPage(1)" t-att-disabled="this.state.page &gt;= this.state.pages.length">›</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline-secondary" t-on-click="() =&gt; this.setZoom(-0.25)">−</button>
+        <span class="btn btn-light disabled"><t t-out="Math.round(this.state.zoom * 100)"/>%</span>
+        <button class="btn btn-outline-secondary" t-on-click="() =&gt; this.setZoom(0.25)">+</button>
+      </div>
+      <button class="btn" t-att-class="this.state.exact ? 'btn-info' : 'btn-outline-info'" t-on-click="this.toggleExact">
+        <t t-if="this.state.exact">المعاينة الدقيقة: مفعلة</t><t t-else="">المعاينة الدقيقة للطباعة</t>
+      </button>
+      <button class="btn btn-primary" t-on-click="this.save" t-att-disabled="!this.dirtyCount or this.state.saving or this.state.locked">
+        حفظ<t t-if="this.dirtyCount"> (<t t-out="this.dirtyCount"/>)</t>
+      </button>
+      <button class="btn btn-outline-secondary" t-on-click="this.reload" t-att-disabled="this.state.saving">تجاهل التعديلات</button>
+    <button class="btn btn-outline-primary" t-on-click="() =&gt; this.startAdd('field')" t-att-disabled="(this.state.locked or this.state.saving or this.state.creator) or this.state.structureLocked">اضافة حقل</button>
+<button class="btn btn-outline-primary" t-on-click="() =&gt; this.startAdd('rule')" t-att-disabled="this.state.locked or this.state.saving or this.state.creator">اضافة توقيع / مرحلة</button>
+<button class="btn btn-outline-secondary" t-on-click="this.undo" t-att-disabled="!this.state.undoCount or this.state.saving or this.state.locked">تراجع</button>
+<button class="btn btn-outline-secondary" t-on-click="this.duplicateSelected" t-att-disabled="(!this.selectedItem or this.selectedItem.kind !== 'field' or this.state.locked or this.state.saving or this.state.creator) or this.state.structureLocked">نسخ الحقل</button>
+<button class="btn btn-outline-info" t-on-click="this.fillLongSamples" t-att-disabled="this.state.locked or this.state.saving or this.state.creator">قيم طويلة للتجربة</button>
+</div>
+    <div t-if="this.state.locked" class="alert alert-warning m-2 mb-0">التخطيط مقفل.</div>
+    <div t-if="!this.typeId" class="alert alert-danger m-2">افتح المصمم من قالب الاستمارة.</div>
+    <div class="d-flex flex-grow-1 overflow-hidden">
+      <div class="o_hr_pdf_stage flex-grow-1 overflow-auto p-3" dir="ltr">
+        <div class="o_hr_pdf_canvas" t-att-style="this.canvasStyle" t-on-pointerdown="this.drawStart" t-att-class="{'o_drawing_mode': this.state.drawMode}">
+          <img t-att-src="this.imageUrl" class="o_hr_pdf_page" alt="PDF page" draggable="false"/>
+          <t t-if="!this.state.exact">
+            <t t-foreach="this.pageItems" t-as="item" t-key="item.kind + item.id">
+              <div class="o_hr_pdf_box" t-att-class="{'o_selected': this.isSelected(item), 'o_signature': item.kind === 'rule', 'o_problem': this.issueFor(item), 'o_not_printed': item.kind === 'rule' and !item.ref.print_signature}" t-att-style="this.boxStyle(item)" t-att-title="item.label + ' — ' + item.width + ' × ' + item.height + ' pt'" t-on-pointerdown="(ev) =&gt; this.dragStart(ev, item, 'move')">
+                <span class="o_hr_pdf_label" t-out="item.label"/>
+                <div t-if="item.kind === 'field'" class="o_hr_pdf_text" t-att-style="this.textStyle(item)" t-out="this.sampleText(item)"/>
+                <div t-else="" class="o_hr_pdf_sig">✍ Signature <t t-if="!item.ref.print_signature">(not printed)</t></div>
+                <t t-if="this.isSelected(item) and !this.state.locked">
+                  <t t-foreach="this.handles" t-as="handle" t-key="handle">
+                    <span t-att-class="'o_hr_pdf_handle o_h_' + handle" t-on-pointerdown="(ev) =&gt; this.dragStart(ev, item, handle)"/>
+                  </t>
+                </t>
+              </div>
+            </t>
+          </t>
+        <div t-if="this.state.drawing" class="o_hr_pdf_draw_preview" t-att-style="this.drawingStyle"/></div>
+      </div>
+      <div class="o_hr_pdf_panel border-start p-3 overflow-auto">
+        <div t-if="this.state.drawMode" class="alert alert-info small">ارسم مستطيلا على الـ PDF لوضع العنصر الجديد. <button class="btn btn-sm btn-link" t-on-click="this.cancelCreator">الغاء</button></div>
+<div t-if="this.state.creator" class="o_hr_pdf_create card card-body mb-3">
+<t t-set="c" t-value="this.state.creator"/>
+<h5><t t-if="c.kind === 'field'">
+<label>قيمة الحقل من</label>
+<select class="form-select form-select-sm mb-2" t-on-change="(ev) =&gt; this.creatorInput('source', ev)">
+<option value="" t-att-selected="!c.source">اختر...</option>
+<optgroup label="بيانات الاستمارة">
+<option t-foreach="this.state.sources" t-as="source" t-key="source[0]" t-att-value="'path:' + source[0]" t-att-selected="c.source === 'path:' + source[0]" t-out="source[1]"/>
+</optgroup>
+<optgroup label="النظام">
+<option t-foreach="this.state.systemSources" t-as="source" t-key="source[0]" t-att-value="'system:' + source[0]" t-att-selected="c.source === 'system:' + source[0]" t-out="source[1]"/>
+</optgroup></select>
+<label>نوع الطباعة</label>
+<select class="form-select form-select-sm mb-2" t-on-change="(ev) =&gt; this.creatorInput('field_type', ev)" t-att-disabled="c.source.startsWith('system:')">
+<option t-foreach="this.state.fieldTypes.filter(pair =&gt; pair[0] !== 'system')" t-as="kind" t-key="kind[0]" t-att-value="kind[0]" t-att-selected="c.field_type === kind[0]" t-out="kind[1]"/>
+</select>
+</t>
+<t t-else=""><label>المعتمد (مستخدم محدد)</label><select class="form-select form-select-sm mb-2" t-on-change="(ev) =&gt; this.creatorInput('approver_id', ev)"><option value="0">—</option><option t-foreach="this.state.approvers" t-as="user" t-key="user.id" t-att-value="user.id" t-att-selected="Number(c.approver_id) === user.id" t-out="user.name"/></select>
+<label>او اي عضو من مجموعة</label><select class="form-select form-select-sm mb-2" t-on-change="(ev) =&gt; this.creatorInput('group_id', ev)"><option value="0">—</option><option t-foreach="this.state.groups" t-as="grp" t-key="grp.id" t-att-value="grp.id" t-att-selected="Number(c.group_id) === grp.id" t-out="grp.name"/></select></t>
+<p class="small text-muted mt-2">المستطيل المرسوم يحدد الصفحة والموضع والحجم. تحفظ العناصر الجديدة عند حفظ التخطيط.</p>
+<div class="d-flex gap-2"><button class="btn btn-sm btn-primary" t-on-click="this.addCreator">اضافة للتخطيط</button><button class="btn btn-sm btn-secondary" t-on-click="this.cancelCreator">الغاء</button></div>
+</div>
+<div t-if="this.selectedItems.length &gt; 1 and !this.state.creator" class="mb-3">
+<div class="small mb-1">Ctrl/Shift + نقر لتحديد عدة صناديق. محاذاة المحدد:</div>
+<div class="btn-group"><button class="btn btn-sm btn-outline-secondary" t-on-click="() =&gt; this.alignSelected('left')" t-att-disabled="this.state.locked or this.state.saving">يسار</button><button class="btn btn-sm btn-outline-secondary" t-on-click="() =&gt; this.alignSelected('right')" t-att-disabled="this.state.locked or this.state.saving">يمين</button><button class="btn btn-sm btn-outline-secondary" t-on-click="() =&gt; this.alignSelected('top')" t-att-disabled="this.state.locked or this.state.saving">اعلى</button><button class="btn btn-sm btn-outline-secondary" t-on-click="() =&gt; this.alignSelected('bottom')" t-att-disabled="this.state.locked or this.state.saving">اسفل</button></div>
+</div>
+<t t-set="sel" t-value="this.selectedItem"/>
+        <t t-if="sel and !this.state.creator">
+          <h5 class="mb-1" t-out="sel.label"/>
+          <div class="text-muted small mb-2">الوحدات نقاط PDF (1 نقطة = 1/72 انش). حجم الصفحة: <t t-out="this.pageSize.width"/> × <t t-out="this.pageSize.height"/> pt</div>
+          <div t-if="this.issueFor(sel)" class="alert alert-danger py-1 small" t-out="this.issueFor(sel).message"/>
+          <div class="o_hr_pdf_grid">
+            <label>الصفحة</label><input type="number" min="1" class="form-control form-control-sm" t-att-value="sel.page" t-on-change="(ev) =&gt; this.geometryInput('page', ev)" t-att-disabled="this.state.locked"/>
+            <label>X</label><input type="number" step="0.5" class="form-control form-control-sm" t-att-value="sel.x" t-on-change="(ev) =&gt; this.geometryInput('x', ev)" t-att-disabled="this.state.locked"/>
+            <label>Y</label><input type="number" step="0.5" class="form-control form-control-sm" t-att-value="sel.y" t-on-change="(ev) =&gt; this.geometryInput('y', ev)" t-att-disabled="this.state.locked"/>
+            <label>العرض</label><input type="number" step="0.5" class="form-control form-control-sm" t-att-value="sel.width" t-on-change="(ev) =&gt; this.geometryInput('width', ev)" t-att-disabled="this.state.locked"/>
+            <label>الارتفاع</label><input type="number" step="0.5" class="form-control form-control-sm" t-att-value="sel.height" t-on-change="(ev) =&gt; this.geometryInput('height', ev)" t-att-disabled="this.state.locked"/>
+          </div>
+          <t t-if="sel.kind === 'field'">
+            <hr/>
+            <div class="o_hr_pdf_grid">
+              <label>حجم الخط</label><input type="number" min="4" max="72" class="form-control form-control-sm" t-att-value="sel.ref.font_size" t-on-change="(ev) =&gt; this.fieldInput('font_size', ev)" t-att-disabled="this.state.locked"/>
+              <label>اصغر خط</label><input type="number" min="4" max="72" class="form-control form-control-sm" t-att-value="sel.ref.min_font_size" t-on-change="(ev) =&gt; this.fieldInput('min_font_size', ev)" t-att-disabled="this.state.locked"/>
+              <label>محاذاة</label>
+              <select class="form-select form-select-sm" t-on-change="(ev) =&gt; this.fieldInput('text_align', ev)" t-att-disabled="this.state.locked">
+                <option value="right" t-att-selected="sel.ref.text_align === 'right'">يمين</option>
+                <option value="center" t-att-selected="sel.ref.text_align === 'center'">وسط</option>
+                <option value="left" t-att-selected="sel.ref.text_align === 'left'">يسار</option>
+              </select>
+              <label>الخط</label>
+              <select class="form-select form-select-sm" t-on-change="(ev) =&gt; this.fieldInput('font_family', ev)" t-att-disabled="this.state.locked">
+                <option value="dejavu" t-att-selected="sel.ref.font_family !== 'naskh'">DejaVu Sans (قابل للبحث)</option>
+                <option value="naskh" t-att-selected="sel.ref.font_family === 'naskh'">Naskh (غير قابل للبحث)</option>
+              </select>
+              <label>غامق</label><input type="checkbox" class="form-check-input" t-att-checked="sel.ref.bold" t-on-change="(ev) =&gt; this.fieldInput('bold', ev)" t-att-disabled="this.state.locked"/>
+              <label>عدة اسطر</label><input type="checkbox" class="form-check-input" t-att-checked="sel.ref.multiline" t-on-change="(ev) =&gt; this.fieldInput('multiline', ev)" t-att-disabled="this.state.locked"/>
+              <label>تجربة</label><input type="text" class="form-control form-control-sm" t-att-value="sel.ref.sample_value or ''" placeholder="مثلا اسم طويل" t-on-change="(ev) =&gt; this.fieldInput('sample_value', ev)" t-att-disabled="this.state.locked"/>
+            </div>
+            <div class="text-muted small mt-1">القيم الطويلة يصغر خطها حتى اصغر حجم. اذا لم تتسع لا يمكن ارسال الاستمارة للموافقة.</div>
+          </t>
+          <button t-if="sel.page === this.state.page and this.canSnap" class="btn btn-sm btn-outline-secondary mt-2 me-2" t-on-click="() =&gt; this.snapToFrame(sel)" t-att-disabled="this.state.locked" title="يلائم الصندوق مع المربع المرسوم في الاستمارة">الصق بمربع الاستمارة</button>
+          <button t-if="sel.page !== this.state.page" class="btn btn-sm btn-outline-primary mt-2" t-on-click="() =&gt; this.bringHere(sel)" t-att-disabled="this.state.locked">نقل لهذه الصفحة</button>
+          <hr/>
+        <div t-if="sel.kind === 'rule'" class="mt-2 mb-2"><label><input type="checkbox" class="form-check-input me-1" t-att-checked="sel.ref.print_signature" t-on-change="this.signatureInput" t-att-disabled="this.state.locked or this.state.saving"/> Print signature on future requests</label></div></t>
+        <div t-else="" class="text-muted small mb-3">اختر صندوقا.</div>
+
+        <t t-if="this.state.issues.length">
+          <h6 class="text-danger">تحذيرات التخطيط (<t t-out="this.state.issues.length"/>)</h6>
+          <ul class="list-unstyled small mb-3">
+            <t t-foreach="this.state.issues" t-as="issue" t-key="issue_index">
+              <li class="o_hr_pdf_issue" t-on-click="() =&gt; this.selectIssue(issue)"><b t-out="issue.label"/>: <t t-out="issue.message"/></li>
+            </t>
+          </ul>
+        </t>
+        <h6>الحقول والتواقيع</h6>
+        <ul class="list-group list-group-flush small">
+          <t t-foreach="this.items" t-as="item" t-key="item.kind + item.id">
+            <li class="list-group-item list-group-item-action d-flex justify-content-between px-1" t-att-class="{'active': this.isSelected(item)}" t-on-click="(ev) =&gt; this.select(item, ev)">
+              <span><t t-if="item.kind === 'rule'">✍ </t><t t-out="item.label"/></span>
+              <span>ص.<t t-out="item.page"/><t t-if="this.issueFor(item)"> ⚠</t></span>
+            </li>
+          </t>
+        </ul>
+      </div>
+    </div>
+  </div>
+</t>
+</templates>

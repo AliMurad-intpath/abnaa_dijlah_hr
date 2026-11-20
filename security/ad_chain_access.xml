@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- the approver of a form may open it, whatever the groups of the user -->
+    <record id="access_ad_appointment_order_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_appointment_order.approver</field>
+        <field name="model_id" ref="model_ad_appointment_order"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+    <record id="access_ad_onboarding_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_onboarding.approver</field>
+        <field name="model_id" ref="model_ad_onboarding"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+    <record id="access_ad_transfer_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_transfer.approver</field>
+        <field name="model_id" ref="model_ad_transfer"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+    <record id="access_ad_discipline_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_discipline.approver</field>
+        <field name="model_id" ref="model_ad_discipline"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+    <record id="access_ad_termination_order_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_termination_order.approver</field>
+        <field name="model_id" ref="model_ad_termination_order"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+    <record id="access_ad_clearance_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_clearance.approver</field>
+        <field name="model_id" ref="model_ad_clearance"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+    <record id="access_ad_interview_approver" model="ir.access">
+        <field name="name">abnaa_dijlah_hr.ad_interview.approver</field>
+        <field name="model_id" ref="model_ad_interview"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="operation">r</field>
+        <field name="domain">[('ad_approver_user_ids', 'in', [user.id])]</field>
+    </record>
+</odoo>

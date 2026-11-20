@@ -22,6 +22,7 @@ BLOCKS = [
     ('kpi_out', 'بطاقة: في اجازة اليوم'),
     ('kpi_leave_pending', 'بطاقة: طلبات اجازة بانتظار الموافقة'),
     ('kpi_slips', 'بطاقة: قسائم رواتب غير مؤكدة'),
+    ('kpi_approvals', 'بطاقة: موافقات بانتظاري'),
     ('panel_create', 'لوحة الانشاء السريع'),
     ('create_emp', 'انشاء: موظف جديد'),
     ('create_att', 'انشاء: تسجيل حضور'),
@@ -49,7 +50,7 @@ DEFAULT_SPAN = {'panel_create': 12, 'panel_alerts': 6, 'panel_recent': 6,
 
 # blocks that can be resized / moved on the dashboard, in their default order
 LAYOUT = ['kpi_emp', 'kpi_open', 'kpi_present', 'kpi_out', 'kpi_leave_pending', 'kpi_slips',
-          'panel_create', 'panel_alerts', 'panel_recent', 'chart_trend', 'chart_types', 'chart_sites']
+          'kpi_approvals', 'panel_create', 'panel_alerts', 'panel_recent', 'chart_trend', 'chart_types', 'chart_sites']
 
 
 class AdDashboardBlock(models.Model):

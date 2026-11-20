@@ -32,7 +32,7 @@
                     <button name="action_ops" type="object" string="موافقة العمليات" class="btn-primary" invisible="state != 'hr'"/>
                     <button name="action_approve" type="object" string="موافقة المدير المفوض" class="btn-primary" invisible="state != 'ops'"/>
                     <button name="action_acknowledge" type="object" string="اقرار الموظف بالاستلام" class="btn-primary" invisible="state != 'approved'"/>
-                    <button name="%(action_report_ad_discipline)d" type="action" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
+                    <button name="action_ad_print" type="object" string="طباعة الاستمارة" invisible="state == 'cancel'"/>
                     <button name="action_cancel" type="object" string="إلغاء" invisible="state in ('acknowledged', 'cancel')"/>
                     <button name="action_draft" type="object" string="اعادة الى مسودة" invisible="state != 'cancel'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,hr,ops,approved,acknowledged"/>

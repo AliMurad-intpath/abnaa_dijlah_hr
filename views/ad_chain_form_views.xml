@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_appointment_order_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.appointment.order.form.chain</field>
+        <field name="model">ad.appointment.order</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_appointment_order_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="ad_onboarding_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.onboarding.form.chain</field>
+        <field name="model">ad.onboarding</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_onboarding_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="ad_transfer_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.transfer.form.chain</field>
+        <field name="model">ad.transfer</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_transfer_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="ad_discipline_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.discipline.form.chain</field>
+        <field name="model">ad.discipline</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_discipline_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="ad_termination_order_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.termination.order.form.chain</field>
+        <field name="model">ad.termination.order</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_termination_order_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="ad_clearance_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.clearance.form.chain</field>
+        <field name="model">ad.clearance</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_clearance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'hr_cert' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="ad_interview_view_form_chain" model="ir.ui.view">
+        <field name="name">ad.interview.form.chain</field>
+        <field name="model">ad.interview</field>
+        <field name="inherit_id" ref="abnaa_dijlah_hr.ad_interview_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ad_submit" type="object" string="ارسال للموافقة" class="btn-primary"
+                        invisible="state != 'draft' or ad_state in ('pending', 'approved')"/>
+                <button name="action_ad_approve" type="object" string="موافقة" class="btn-success"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_reject" type="object" string="رفض" class="btn-danger"
+                        invisible="ad_state != 'pending' or not ad_can_approve"/>
+                <button name="action_ad_cancel_request" type="object" string="سحب طلب الموافقة"
+                        invisible="ad_state != 'pending'"/>
+                <field name="ad_can_approve" invisible="1"/>
+                <field name="ad_state" widget="badge" decoration-info="ad_state == 'pending'"
+                       decoration-success="ad_state == 'approved'" decoration-danger="ad_state == 'rejected'"
+                       invisible="ad_state == 'none'"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info mb-0" role="alert" invisible="ad_state != 'pending'">
+                    بانتظار موافقة: <strong><field name="ad_waiting_for" class="oe_inline"/></strong>
+                </div>
+                <div class="alert alert-danger mb-0" role="alert" invisible="ad_state != 'rejected'">
+                    رُفضت الاستمارة. السبب: <field name="ad_reject_note" class="oe_inline"/>
+                    — يمكنك تعديلها وارسالها للموافقة من جديد.
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="سلسلة الموافقات" name="ad_chain">
+                    <field name="ad_step_ids" readonly="1">
+                        <list decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"
+                              decoration-info="state == 'pending'" decoration-muted="state == 'waiting'">
+                            <field name="sequence" column_invisible="1"/>
+                            <field name="name"/>
+                            <field name="approver_label"/>
+                            <field name="state" widget="badge"/>
+                            <field name="action_date"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

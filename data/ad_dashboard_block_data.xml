@@ -200,4 +200,9 @@
         <field name="name">استمارة: تعهد خطي (عرض وقوائم وطباعة)</field>
         <field name="sequence">400</field>
     </record>
+    <record id="ad_dash_block_kpi_approvals" model="ad.dashboard.block">
+        <field name="key">kpi_approvals</field>
+        <field name="name">بطاقة: موافقات بانتظاري</field>
+        <field name="sequence">65</field>
+    </record>
 </odoo>

@@ -90,6 +90,12 @@ class AdDashboard(models.AbstractModel):
             kpis.append({'key': 'open', 'label': 'استمارات قيد الاجراء',
                          'value': sum(t['open'] for t in tiles), 'icon': 'file', 'kind': 'column'})
 
+        # approvals waiting for this user (the form approval chain)
+        if can('kpi_approvals') and self._ok('ad.form.step'):
+            domain = env['ad.form.step']._pending_domain()
+            kpis.append({'key': 'approvals', 'label': 'موافقات بانتظاري',
+                         'value': env['ad.form.step'].sudo().search_count(domain),
+                         'icon': 'check-user', 'kind': 'kpi', 'model': 'ad.form.step', 'domain': domain})
         # Attendance
         if self._ok('hr.attendance') and (can('kpi_present') or can('create_att')):
             n = env['hr.attendance'].search_count([('check_out', '=', False)])
