@@ -9,5 +9,6 @@
     <menuitem id="menu_ad_work_site" name="Work sites" parent="menu_ad_hr_config" sequence="10" action="ad_work_site_action"/>
     <menuitem id="menu_ad_form_template" name="Form templates" parent="menu_ad_hr_config" sequence="20" action="ad_form_template_action"/>
     <menuitem id="menu_ad_print_text" name="Print texts" parent="menu_ad_hr_config" sequence="25" action="ad_print_text_action"/>
-    <menuitem id="menu_ad_dashboard_block" name="Block and form permissions" parent="menu_ad_hr_config" sequence="30" action="ad_dashboard_block_action"/>
+    <menuitem id="menu_ad_dashboard_block" name="Dashboard element permissions" parent="menu_ad_hr_config" sequence="30" action="ad_dashboard_block_action"/>
+    <menuitem id="menu_ad_form_permission" name="Form permissions" parent="menu_ad_hr_config" sequence="31" action="ad_form_permission_action"/>
 </odoo>

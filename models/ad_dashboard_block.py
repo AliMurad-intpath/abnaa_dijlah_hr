@@ -76,7 +76,15 @@ class AdDashboardBlock(models.Model):
     group_ids = fields.Many2many('res.groups', 'ad_dashboard_block_group_rel', 'block_id', 'group_id',
                                  string='Allowed groups')
 
+    scope = fields.Selection([('element', 'Dashboard element'), ('form', 'Form')], string='Type',
+                             compute='_compute_scope', store=True, index=True)
+
     _key_uniq = models.Constraint('unique(key)', 'The key must be unique.')
+
+    @api.depends('key')
+    def _compute_scope(self):
+        for rec in self:
+            rec.scope = 'form' if (rec.key or '').startswith('form_') else 'element'
 
     @api.model
     def _all_keys(self):

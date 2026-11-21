@@ -19,9 +19,10 @@
             <form create="0" delete="0">
                 <sheet>
                     <h2><field name="name" readonly="1"/></h2>
-                    <p class="text-muted">Leave users and groups empty to show the block to everyone who opens the dashboard.</p>
+                    <p class="text-muted">Leave users and groups empty to allow everyone who has access to the form or the dashboard.</p>
                     <group>
-                        <field name="width"/>
+                        <field name="scope" invisible="1"/>
+                        <field name="width" invisible="scope == 'form'"/>
                         <field name="user_ids" widget="many2many_tags"/>
                         <field name="group_ids" widget="many2many_tags"/>
                     </group>
@@ -30,8 +31,15 @@
         </field>
     </record>
     <record id="ad_dashboard_block_action" model="ir.actions.act_window">
-        <field name="name">Dashboard permissions</field>
+        <field name="name">Dashboard element permissions</field>
         <field name="res_model">ad.dashboard.block</field>
         <field name="view_mode">list,form</field>
+        <field name="domain">[('scope', '=', 'element')]</field>
+    </record>
+    <record id="ad_form_permission_action" model="ir.actions.act_window">
+        <field name="name">Form permissions</field>
+        <field name="res_model">ad.dashboard.block</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('scope', '=', 'form')]</field>
     </record>
 </odoo>
