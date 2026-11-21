@@ -57,11 +57,12 @@
                                     <field name="sequence" widget="handle"/>
                                     <field name="name"/>
                                     <field name="key" optional="hide"/>
-                                    <field name="approver_id"/>
-                                    <field name="group_id"/>
-                                    <field name="print_signature"/>
+                                    <field name="approver_id" string="Approver (user)" placeholder="Any member of the group"/>
+                                    <field name="group_id" string="Or any member of the group" placeholder="Not needed when a user is set"/>
+                                    <field name="approver_label" string="Who approves"/>
+                                    <field name="print_signature" string="Print signature"/>
                                     <field name="signature_page" optional="hide"/>
-                                    <button name="action_place_on_pdf" type="object" string="Signature position" icon="fa-arrows"/>
+                                    <button name="action_place_on_pdf" type="object" string="Place on PDF" class="btn btn-link"/>
                                 </list>
                             </field>
                         </page>

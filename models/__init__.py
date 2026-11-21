@@ -32,3 +32,4 @@ from . import recruitment_hr_employee_ad_smart
 from . import ad_engine
 from . import ad_chain
 from . import ad_demo_loader
+from . import ad_request

@@ -31,6 +31,17 @@ PLAN = {
 }
 
 
+# model -> the form states that mean "finished and approved" (used for the single status shown on every form)
+FINAL_STATES = {
+    'ad.appointment.order': ('approved',), 'ad.onboarding': ('done',), 'ad.transfer': ('done',),
+    'ad.discipline': ('approved', 'acknowledged'), 'ad.termination.order': ('approved',),
+    'ad.clearance': ('done',), 'ad.interview': ('done',),
+    'ad.employee.guarantee': ('signed',), 'ad.employee.pledge': ('signed',),
+}
+AD_STATUS = [('draft', 'Draft'), ('pending', 'Pending approval'), ('approved', 'Approved'),
+             ('rejected', 'Rejected'), ('cancel', 'Cancelled')]
+
+
 class AdFormStep(models.Model):
     """One approval step of one form (a copy of the stage taken when the request was sent)."""
     _name = 'ad.form.step'
@@ -188,6 +199,74 @@ class AdApprovalMixin(models.AbstractModel):
                                             store=True, copy=False, compute_sudo=True)
     ad_can_approve = fields.Boolean(compute='_compute_ad_can_approve')
     ad_waiting_for = fields.Char('Pending', compute='_compute_ad_can_approve')
+    ad_status = fields.Selection(AD_STATUS, string='Status', compute='_compute_ad_status', store=True, index=True)
+    ad_chain_on = fields.Boolean(compute='_compute_ad_chain_on')
+    ad_can_submit = fields.Boolean(compute='_compute_ad_chain_on')
+
+    @api.depends('state', 'ad_state')
+    def _compute_ad_status(self):
+        """One status for every form: draft, pending approval, approved, rejected or cancelled."""
+        for rec in self:
+            state = rec.state
+            if state == 'cancel':
+                rec.ad_status = 'cancel'
+            elif rec.ad_state == 'rejected':
+                rec.ad_status = 'rejected'
+            elif state in FINAL_STATES.get(rec._name, ()):
+                rec.ad_status = 'approved'
+            elif rec.ad_state == 'pending' or state != 'draft':
+                rec.ad_status = 'pending'
+            else:
+                rec.ad_status = 'draft'
+
+    @api.depends('state', 'ad_state')
+    @api.depends_context('company')
+    def _compute_ad_chain_on(self):
+        for rec in self:
+            on = bool(rec.id and rec._ad_chain_active())
+            rec.ad_chain_on = on
+            plan = PLAN.get(rec._name) or {}
+            rec.ad_can_submit = bool(on and rec.ad_state in ('none', 'rejected') and rec.state in plan.get('states', ()))
+
+    @api.onchange('employee_id')
+    def _ad_onchange_employee_fill(self):
+        """Employee first: choose the employee and the rest of the form fills itself (name, job, number, site, supervisor)."""
+        for rec in self:
+            emp = rec.employee_id
+            if not emp or rec._name == 'ad.interview':
+                continue
+            job = emp.job_title or emp.job_id.name
+            site = emp.ad_work_site_id
+            values = {'job_title': job, 'capacity': job, 'employee_no': emp.ad_employee_no,
+                      'site_id': site, 'old_site_id': site}
+            for fname, value in values.items():
+                field = rec._fields.get(fname)
+                if value and field and not field.related and not field.readonly:
+                    rec[fname] = value
+            # the supervisor of the site the employee works at today
+            if 'old_site_id' in rec._fields:
+                site = rec.old_site_id or site
+            elif 'site_id' in rec._fields:
+                site = rec.site_id or site
+            supervisor = site.supervisor_id.name if site else False
+            mobile = site.supervisor_mobile if site else False
+            for fname, value in (('supervisor_name', supervisor), ('old_supervisor', supervisor),
+                                 ('supervisor_mobile', mobile), ('old_supervisor_mobile', mobile)):
+                field = rec._fields.get(fname)
+                if value and field and not field.related and not field.readonly:
+                    rec[fname] = value
+
+    def action_ad_cancel(self):
+        """The single Cancel button: withdraws a pending request, then cancels the form."""
+        self._ad_lock()
+        for rec in self:
+            if not (self.env.user == rec.create_uid or self.env.user.has_group('abnaa_dijlah_hr.group_ad_hr_manager')
+                    or self.env.is_superuser()):
+                raise AccessError(self.env._('Only the form creator or the HR manager can cancel the form.'))
+            if rec.ad_state == 'pending':
+                rec.action_ad_cancel_request()
+            rec.with_context(ad_skip_group_check=True).action_cancel()
+        return True
 
     @api.depends('ad_state', 'ad_step_ids.state', 'ad_step_ids.approver_id', 'ad_step_ids.group_id')
     @api.depends_context('uid')

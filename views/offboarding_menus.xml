@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem id="menu_ad_offboarding" name="Termination of services and clearance" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="60"/>
-    <menuitem id="menu_ad_termination_order" name="Termination orders (06-10)" parent="menu_ad_offboarding" sequence="10" action="ad_termination_order_action"/>
-    <menuitem id="menu_ad_clearance" name="Clearance (06-11)" parent="menu_ad_offboarding" sequence="20" action="ad_clearance_action"/>
-</odoo>

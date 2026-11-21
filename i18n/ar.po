@@ -264,6 +264,7 @@ msgstr "المدرب"
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_transfer__state
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
 msgid "Status"
 msgstr "الحالة"
 
@@ -287,6 +288,8 @@ msgstr "الحالة"
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__state__draft
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__draft
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_status__draft
 msgid "Draft"
 msgstr "مسودة"
 
@@ -350,6 +353,8 @@ msgstr "معتمد من المدير المفوض"
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_onboarding__state__cancel
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_termination_order__state__cancel
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_transfer__state__cancel
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_status__cancel
 msgid "Cancelled"
 msgstr "ملغاة"
 
@@ -498,6 +503,7 @@ msgstr "كفالة وتعهد خطي (ملحق)"
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_guarantee__employee_id
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_employee_pledge__employee_id
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_employee_pledge_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
 msgid "Employee"
 msgstr "الموظف"
 
@@ -625,6 +631,8 @@ msgstr "نهاية فترة التجربة"
 #: code:addons/abnaa_dijlah_hr/models/ad_termination_order.py:0
 #: model:ir.model,name:abnaa_dijlah_hr.model_ad_termination_order
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_clearance__termination_id
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_termination_order
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_termination_order
 msgid "Termination order"
 msgstr "أمر انهاء خدمات"
 
@@ -718,6 +726,8 @@ msgstr "تمت مراجعة الموارد البشرية"
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_clearance_count
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__clearance
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_offboarding
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_clearance
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_clearance
 msgid "Clearance"
 msgstr "براءة الذمة"
 
@@ -1244,6 +1254,8 @@ msgstr "العلاقة"
 #: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
 #: model:ir.model,name:abnaa_dijlah_hr.model_ad_appointment_order
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__appointment
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_appointment_order
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_appointment_order
 msgid "Appointment order"
 msgstr "أمر تعيين"
 
@@ -1853,11 +1865,19 @@ msgstr "المجموعات المسموح لها"
 
 #. module: abnaa_dijlah_hr
 #: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_employee_pledge
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_employee_pledge
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_employee_guarantee
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_employee_guarantee
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_discipline
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_discipline
 #: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
 #: code:addons/abnaa_dijlah_hr/models/onboarding_hr_employee_ad_smart.py:0
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__ad_onboarding_count
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__onboarding
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.hr_employee_view_form_ad_smart_ad_hr_onboarding
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_onboarding
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_onboarding
 msgid "Start of work"
 msgstr "مباشرة العمل"
 
@@ -1894,6 +1914,7 @@ msgstr "معرف السجل"
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_print_text__report_key
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_print_text_list
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_print_text_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
 msgid "Form"
 msgstr "الاستمارة"
 
@@ -1949,6 +1970,8 @@ msgstr "بانتظار الموافقة"
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_step__state__approved
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_search
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_status__approved
 msgid "Approved"
 msgstr "تمت الموافقة"
 
@@ -1957,6 +1980,8 @@ msgstr "تمت الموافقة"
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_state__rejected
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_form_step__state__rejected
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_step_search
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_status__rejected
 msgid "Rejected"
 msgstr "مرفوضة"
 
@@ -2159,6 +2184,13 @@ msgstr "الحقول المطبوعة"
 #: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_form_template__stage_ids
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
 msgid "Approval stages"
 msgstr "مراحل الموافقة"
 
@@ -2513,6 +2545,8 @@ msgstr "الكفالة والتعهد الخطي"
 #: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
 #: code:addons/abnaa_dijlah_hr/models/ad_print_text.py:0
 #: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_print_text__report_key__interview
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_interview
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_interview
 msgid "Interview rating"
 msgstr "تقييم المقابلة"
 
@@ -2574,6 +2608,8 @@ msgstr "معدل"
 #: code:addons/abnaa_dijlah_hr/models/ad_dashboard.py:0
 #: code:addons/abnaa_dijlah_hr/models/ad_transfer.py:0
 #: model:ir.model,name:abnaa_dijlah_hr.model_ad_transfer
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request__res_model__ad_transfer
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_request_new__form_type__ad_transfer
 msgid "Guard transfer"
 msgstr "تنقل حارس"
 
@@ -2842,6 +2878,7 @@ msgstr "طباعة الاستمارة"
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
 #: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_new_view_form
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -4828,3 +4865,184 @@ msgstr "الحقول والتواقيع"
 msgid "p."
 msgstr "ص."
 
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields.selection,name:abnaa_dijlah_hr.selection__ad_approval_mixin__ad_status__pending
+msgid "Pending approval"
+msgstr "بانتظار الموافقة"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_guarantee_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_pledge_view_form
+msgid "Preview PDF"
+msgstr "معاينة PDF"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_guarantee_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_pledge_view_form
+msgid "Print Signed PDF"
+msgstr "طباعة النسخة الموقعة"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form
+msgid "Submit"
+msgstr "إرسال"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_request.py:0
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_list
+msgid "New request"
+msgstr "طلب جديد"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.actions.act_window,name:abnaa_dijlah_hr.ad_request_action
+#: model:ir.ui.menu,name:abnaa_dijlah_hr.menu_ad_requests
+msgid "Requests"
+msgstr "الطلبات"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+msgid "Created by me"
+msgstr "أنشأتها أنا"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+msgid "In progress"
+msgstr "قيد الإجراء"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__name
+msgid "Number"
+msgstr "الرقم"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__employee_label
+msgid "Employee / candidate"
+msgstr "الموظف / المرشح"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__subject
+msgid "Candidate"
+msgstr "المرشح"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__pending_step
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_list
+msgid "Current stage"
+msgstr "المرحلة الحالية"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__created_on
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_view_search
+msgid "Created on"
+msgstr "تاريخ الإنشاء"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__creator_id
+msgid "Created by"
+msgstr "أنشأه"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_request__res_id
+msgid "Record"
+msgstr "السجل"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_request
+msgid "HR request"
+msgstr "طلب موارد بشرية"
+
+#. module: abnaa_dijlah_hr
+#: model:ir.model,name:abnaa_dijlah_hr.model_ad_request_new
+msgid "Choose the form of a new request"
+msgstr "اختيار نموذج الطلب الجديد"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_request_new_view_form
+msgid "Open the form"
+msgstr "فتح النموذج"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.actions.act_window,help:abnaa_dijlah_hr.ad_request_action
+msgid "No requests yet"
+msgstr "لا توجد طلبات بعد"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.actions.act_window,help:abnaa_dijlah_hr.ad_request_action
+msgid "Use \"New request\" to open any HR form: appointment, transfer, penalty, termination and more."
+msgstr "استخدم «طلب جديد» لفتح أي نموذج: تعيين، نقل، عقوبة، إنهاء خدمة وغيرها."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_request.py:0
+msgid "This form no longer exists."
+msgstr "هذا النموذج لم يعد موجودًا."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Only the form creator or the HR manager can cancel the form."
+msgstr "يمكن لمنشئ النموذج أو مدير الموارد البشرية فقط إلغاء النموذج."
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_appointment_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_onboarding_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_transfer_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_discipline_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_termination_order_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_clearance_view_form_chain
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_interview_view_form_chain
+msgid "Current approver:"
+msgstr "الموافق الحالي:"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Approver (user)"
+msgstr "الموافق (مستخدم)"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Or any member of the group"
+msgstr "أو أي عضو في المجموعة"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Who approves"
+msgstr "من يوافق"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Print signature"
+msgstr "طباعة التوقيع"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Place on PDF"
+msgstr "وضع على PDF"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Not needed when a user is set"
+msgstr "غير لازم عند تحديد مستخدم"
+
+#. module: abnaa_dijlah_hr
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.ad_form_template_view_form
+msgid "Any member of the group"
+msgstr "أي عضو في المجموعة"

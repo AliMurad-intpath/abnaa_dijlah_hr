@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem id="menu_ad_interview" name="Interview rating (06-01)" parent="abnaa_dijlah_hr.menu_ad_hiring" sequence="10" action="ad_interview_action"/>
-</odoo>

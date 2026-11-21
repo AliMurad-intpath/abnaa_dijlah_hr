@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ad_request_view_list" model="ir.ui.view">
+        <field name="name">ad.request.list</field>
+        <field name="model">ad.request</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0" action="action_open" type="object"
+                  decoration-muted="ad_status == 'cancel'" decoration-success="ad_status == 'approved'">
+                <header>
+                    <button name="action_new_request" type="object" string="New request" class="btn-primary" display="always"/>
+                </header>
+                <field name="name"/>
+                <field name="res_model"/>
+                <field name="employee_label"/>
+                <field name="ad_status" widget="badge" decoration-info="ad_status == 'pending'"
+                       decoration-success="ad_status == 'approved'" decoration-danger="ad_status == 'rejected'"
+                       decoration-muted="ad_status in ('draft', 'cancel')"/>
+                <field name="pending_step" string="Current stage"/>
+                <field name="created_on" widget="date"/>
+                <field name="creator_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_request_view_search" model="ir.ui.view">
+        <field name="name">ad.request.search</field>
+        <field name="model">ad.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="subject"/>
+                <field name="res_model"/>
+                <filter name="mine" string="Created by me" domain="[('creator_id', '=', uid)]"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('ad_status', '=', 'draft')]"/>
+                <filter name="pending" string="Pending approval" domain="[('ad_status', '=', 'pending')]"/>
+                <filter name="approved" string="Approved" domain="[('ad_status', '=', 'approved')]"/>
+                <filter name="rejected" string="Rejected" domain="[('ad_status', '=', 'rejected')]"/>
+                <filter name="cancel" string="Cancelled" domain="[('ad_status', '=', 'cancel')]"/>
+                <separator/>
+                <filter name="in_progress" string="In progress" domain="[('ad_status', 'in', ('draft', 'pending', 'rejected'))]"/>
+                <group>
+                    <filter name="by_form" string="Form" context="{'group_by': 'res_model'}"/>
+                    <filter name="by_status" string="Status" context="{'group_by': 'ad_status'}"/>
+                    <filter name="by_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                    <filter name="by_month" string="Created on" context="{'group_by': 'created_on:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="ad_request_action" model="ir.actions.act_window">
+        <field name="name">Requests</field>
+        <field name="res_model">ad.request</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="ad_request_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No requests yet</p>
+            <p>Use "New request" to open any HR form: appointment, transfer, penalty, termination and more.</p>
+        </field>
+    </record>
+    <record id="ad_request_new_view_form" model="ir.ui.view">
+        <field name="name">ad.request.new.form</field>
+        <field name="model">ad.request.new</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="form_type" widget="radio"/>
+                </group>
+                <footer>
+                    <button name="action_create" type="object" string="Open the form" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <menuitem id="menu_ad_requests" name="Requests" parent="menu_ad_hr_root" sequence="10" action="ad_request_action"/>
+</odoo>

@@ -8,7 +8,7 @@
                 <field name="employee_id"/>
                 <field name="guarantor_name"/>
                 <field name="date"/>
-                <field name="state"/>
+                <field name="ad_status" widget="badge" decoration-info="ad_status == 'pending'" decoration-success="ad_status == 'approved'" decoration-danger="ad_status == 'rejected'" decoration-muted="ad_status in ('draft', 'cancel')"/>
             </list>
         </field>
     </record>
@@ -19,9 +19,11 @@
             <form>
                 <header>
                     <button name="action_signed" type="object" string="Signed and stamped mark" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_ad_print" type="object" string="Preview PDF" invisible="ad_status == 'approved'"/>
+                    <button name="action_ad_print" type="object" string="Print Signed PDF" class="btn-primary" invisible="ad_status != 'approved'"/>
                     <button name="action_draft" type="object" string="Reset to draft" invisible="state == 'draft'"/>
-                    <button name="action_ad_print" type="object" string="Print form"/>
-                    <field name="state" widget="statusbar"/>
+                    <field name="state" invisible="1"/>
+                    <field name="ad_status" widget="statusbar" statusbar_visible="draft,approved"/>
                 </header>
                 <sheet>
                     <group>

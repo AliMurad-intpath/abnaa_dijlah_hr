@@ -10,6 +10,8 @@ class AdApprovalMixin(models.AbstractModel):
     _ad_form_xmlid = None
 
     name = fields.Char('No.', copy=False, readonly=True, default='/', index=True)
+    # every form defines its own list of states; this placeholder lets the shared status depend on it
+    state = fields.Char('Form state', copy=False)
     company_id = fields.Many2one('res.company', default=lambda self: self.env.company, required=True, string='Company')
     signature_ids = fields.One2many(
         'ad.signature', 'res_id', string='Approvals', copy=False,
@@ -18,8 +20,9 @@ class AdApprovalMixin(models.AbstractModel):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if self._ad_seq_code and vals.get('name', '/') in ('/', False, ''):
-                vals['name'] = self.env['ir.sequence'].next_by_code(self._ad_seq_code) or '/'
+            if vals.get('name', '/') in ('/', False, ''):
+                # one number per year for every form (AD/2026/00001); the form code stays in the printed header
+                vals['name'] = self.env['ir.sequence'].next_by_code('ad.request') or '/'
         return super().create(vals_list)
 
     def _ad_before_final(self):

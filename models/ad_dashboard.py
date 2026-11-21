@@ -94,7 +94,7 @@ class AdDashboard(models.AbstractModel):
             if not self._ok(model_name) or not can(fkey):
                 continue
             Model = env[model_name]
-            open_dom = [('state', 'not in', list(closed))] if 'state' in Model._fields else []
+            open_dom = [('ad_status', 'in', ['draft', 'pending', 'rejected'])] if 'ad_status' in Model._fields else []
             row = {'block': fkey, 'model': model_name, 'title': _tr(env, title), 'code': code, 'kind': kind, 'icon': icon,
                    'closed': list(closed), 'open': Model.search_count(open_dom),
                    'total': Model.search_count([]), 'created_6m': 0}

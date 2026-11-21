@@ -229,8 +229,16 @@ export class AdDashboard extends Component {
             views: [[false, "list"], [false, "form"]], domain: domain || [],
         });
     }
-    openTile(tile) { this.openList(tile.model, tile.open ? [["state", "not in", tile.closed]] : [], tile.title); }
-    openAll(tile) { this.openList(tile.model, [], tile.title); }
+    openRequests(model, title, inProgress) {
+        const domain = [["res_model", "=", model]];
+        if (inProgress) { domain.push(["ad_status", "in", ["draft", "pending", "rejected"]]); }
+        this.action.doAction({
+            type: "ir.actions.act_window", name: title || "", res_model: "ad.request",
+            views: [[false, "list"]], domain,
+        });
+    }
+    openTile(tile) { this.openRequests(tile.model, tile.title, true); }
+    openAll(tile) { this.openRequests(tile.model, tile.title, false); }
     openKpi(k) { if (k.model) { this.openList(k.model, k.domain, k.label); } }
     openAlert(a) { this.openList(a.model, a.domain, a.text); }
     openRecord(r) {

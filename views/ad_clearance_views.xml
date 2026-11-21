@@ -10,7 +10,7 @@
                 <field name="site_id"/>
                 <field name="stop_date"/>
                 <field name="amount_due"/>
-                <field name="state" widget="badge"/>
+                <field name="ad_status" widget="badge" decoration-info="ad_status == 'pending'" decoration-success="ad_status == 'approved'" decoration-danger="ad_status == 'rejected'" decoration-muted="ad_status in ('draft', 'cancel')"/>
             </list>
         </field>
     </record>
@@ -23,10 +23,15 @@
                     <button name="action_start" type="object" string="Start clearance" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_settle" type="object" string="Settle dues (finance)" class="btn-primary" invisible="state != 'clearing'"/>
                     <button name="action_hr_certify" type="object" string="HR approval" class="btn-primary" invisible="state != 'settled'"/>
-                    <button name="action_md_approve" type="object" string="Managing director approval" class="btn-primary" invisible="state != 'hr_cert'"/>
-                    <button name="action_ad_print" type="object" string="Print form" invisible="state == 'cancel'"/>
-                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done', 'cancel')"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,clearing,settled,hr_cert,done"/>
+                    <button name="action_md_approve" type="object" string="Managing director approval" class="btn-primary" invisible="ad_chain_on or state != 'hr_cert'"/>
+                    <button name="action_ad_print" type="object" string="Preview PDF" invisible="ad_status in ('approved', 'cancel')"/>
+                    <button name="action_ad_submit" type="object" string="Submit" class="btn-primary" invisible="not ad_can_submit"/>
+                    <button name="action_ad_approve" type="object" string="Approve" class="btn-success" invisible="ad_status != 'pending' or not ad_can_approve"/>
+                    <button name="action_ad_reject" type="object" string="Reject" class="btn-danger" invisible="ad_status != 'pending' or not ad_can_approve"/>
+                    <button name="action_ad_print" type="object" string="Print Signed PDF" class="btn-primary" invisible="ad_status != 'approved'"/>
+                    <button name="action_ad_cancel" type="object" string="Cancel" invisible="ad_status not in ('draft', 'pending', 'rejected')"/>
+                    <field name="state" invisible="1"/><field name="ad_can_approve" invisible="1"/><field name="ad_chain_on" invisible="1"/><field name="ad_can_submit" invisible="1"/>
+                    <field name="ad_status" widget="statusbar" statusbar_visible="draft,pending,approved"/>
                 </header>
                 <sheet>
                     <div class="oe_title"><label for="name"/><h1><field name="name"/></h1></div>

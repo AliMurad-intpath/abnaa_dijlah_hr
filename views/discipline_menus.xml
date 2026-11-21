@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_ad_discipline_root" name="Penalties" parent="abnaa_dijlah_hr.menu_ad_hr_root" sequence="50"/>
-    <menuitem id="menu_ad_discipline" name="Penalties forms (HR-FM-10)" parent="menu_ad_discipline_root" sequence="10" action="ad_discipline_action"/>
     <menuitem id="menu_ad_violation_type" name="Violation types" parent="abnaa_dijlah_hr.menu_ad_hr_config" sequence="40" action="ad_violation_type_action" groups="hr.group_hr_manager"/>
 </odoo>
