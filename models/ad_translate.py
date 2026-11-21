@@ -1,4 +1,9 @@
-"""Writes the Arabic terms of i18n/ar.po straight into the database.
+"""The ONE translation path: i18n/ar.po is the only dictionary, and apply_arabic() writes it into the database.
+
+It runs on every install and upgrade (data function ad.form.template._ad_apply_arabic), and the dashboard
+reads the same file at run time. Add a new Arabic term to i18n/ar.po and nowhere else.
+
+Writes the Arabic terms of i18n/ar.po straight into the database.
 
 The normal translation import did not pick up the terms added after the first install on some servers,
 so the upgrade (and, if needed, the Odoo shell) calls apply_arabic() to be sure every label is translated:

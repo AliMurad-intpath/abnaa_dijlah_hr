@@ -6,8 +6,7 @@ try:
 except ImportError:  # pragma: no cover
     from odoo.orm.domains import Domain
 
-from .ad_chain import AD_STATUS
-from .ad_dashboard import _arabic_terms
+from .ad_chain import AD_STATUS, BULK_LIMIT
 
 # model, label, the sequence used in the list
 REQUEST_FORMS = [
@@ -21,18 +20,6 @@ REQUEST_FORMS = [
     ('ad.employee.guarantee', 'Guarantee and pledge'),
     ('ad.employee.pledge', 'Written pledge'),
 ]
-
-
-def _arabic_fields_get(env, result):
-    """Labels and selection values in Arabic, read from i18n/ar.po like the dashboard does."""
-    if (env.lang or '').startswith('ar'):
-        terms = _arabic_terms()
-        for info in result.values():
-            if info.get('string') in terms:
-                info['string'] = terms[info['string']]
-            if info.get('selection'):
-                info['selection'] = [(key, terms.get(label, label)) for key, label in info['selection']]
-    return result
 
 
 class AdRequest(models.Model):
@@ -53,10 +40,22 @@ class AdRequest(models.Model):
     pending_step = fields.Char('Current stage', readonly=True)
     created_on = fields.Datetime('Created on', readonly=True)
     creator_id = fields.Many2one('res.users', string='Created by', readonly=True)
+    awaiting_me = fields.Boolean('Awaiting my approval', compute='_compute_awaiting_me', search='_search_awaiting_me')
+
+    def _compute_awaiting_me(self):
+        for rec in self:
+            rec.awaiting_me = False
 
     @api.model
-    def fields_get(self, allfields=None, attributes=None):
-        return _arabic_fields_get(self.env, super().fields_get(allfields, attributes))
+    def _search_awaiting_me(self, operator, value):
+        steps = self.env['ad.form.step'].sudo().search(self.env['ad.form.step']._pending_domain())
+        by_model = {}
+        for step in steps:
+            by_model.setdefault(step.res_model, set()).add(step.res_id)
+        clauses = [Domain('res_model', '=', model) & Domain('res_id', 'in', sorted(ids)) for model, ids in by_model.items()]
+        found = Domain.OR(clauses) if clauses else Domain.FALSE
+        positive = (operator == '=') == bool(value)
+        return found if positive else ~found
 
     @api.depends('employee_id', 'subject')
     def _compute_employee_label(self):
@@ -109,9 +108,8 @@ class AdRequest(models.Model):
                 blocks._check_form_access(model)
             except AccessError:
                 continue
-            ids = self.env[model].search([]).ids
-            if ids:
-                clauses.append(Domain('res_model', '=', model) & Domain('res_id', 'in', ids))
+            # a sub-query, not a list of ids: the database filters with the form's own access rules in one statement
+            clauses.append(Domain('res_model', '=', model) & Domain('res_id', 'in', self.env[model]._search([])))
         return Domain.OR(clauses) if clauses else Domain.FALSE
 
     @api.model
@@ -130,6 +128,53 @@ class AdRequest(models.Model):
         return {'type': 'ir.actions.act_window', 'res_model': self.res_model, 'res_id': self.res_id,
                 'views': [[False, 'form']], 'target': 'current'}
 
+    def _bulk_targets(self):
+        if len(self) > BULK_LIMIT:
+            raise UserError(self.env._('Select at most %s requests at a time.', BULK_LIMIT))
+        return [self.env[r.res_model].browse(r.res_id).exists() for r in self]
+
+    def _bulk_report(self, done, failed, title):
+        message = self.env._('%(done)s done, %(failed)s skipped.', done=done, failed=len(failed))
+        if failed:
+            message += '\n' + '\n'.join(failed[:10])
+        return {'type': 'ir.actions.client', 'tag': 'display_notification',
+                'params': {'title': title, 'message': message, 'type': 'warning' if failed else 'success',
+                           'sticky': bool(failed), 'next': {'type': 'ir.actions.client', 'tag': 'soft_reload'}}}
+
+    def action_bulk_approve(self):
+        """Approve the selected requests that are waiting for the current user (the others are skipped and listed)."""
+        done, failed = 0, []
+        for record in self._bulk_targets():
+            if not record:
+                continue
+            try:
+                with self.env.cr.savepoint():
+                    record.action_ad_approve()
+                done += 1
+            except (UserError, AccessError) as exc:
+                failed.append('%s: %s' % (record.display_name, exc.args[0] if exc.args else exc))
+        return self._bulk_report(done, failed, self.env._('Bulk approval'))
+
+    def action_bulk_submit(self):
+        """Send the selected draft requests for approval."""
+        done, failed = 0, []
+        for record in self._bulk_targets():
+            if not record:
+                continue
+            try:
+                with self.env.cr.savepoint():
+                    if not record.ad_can_submit:
+                        raise UserError(self.env._('The request cannot be sent in its current state.'))
+                    record.action_ad_submit()
+                done += 1
+            except Exception as exc:
+                failed.append('%s: %s' % (record.display_name, exc.args[0] if exc.args else exc))
+        return self._bulk_report(done, failed, self.env._('Bulk submission'))
+
+    def action_open_bulk_create(self):
+        return {'type': 'ir.actions.act_window', 'name': self.env._('Create for a whole site'), 'res_model': 'ad.bulk.create',
+                'views': [[False, 'form']], 'target': 'new'}
+
     def action_new_request(self):
         return {'type': 'ir.actions.act_window', 'name': self.env._('New request'), 'res_model': 'ad.request.new',
                 'views': [[False, 'form']], 'target': 'new'}
@@ -141,13 +186,78 @@ class AdRequestNew(models.TransientModel):
 
     form_type = fields.Selection(REQUEST_FORMS, string='Form', required=True, default='ad.appointment.order')
 
-    @api.model
-    def fields_get(self, allfields=None, attributes=None):
-        return _arabic_fields_get(self.env, super().fields_get(allfields, attributes))
-
     def action_create(self):
         self.ensure_one()
         model = self.form_type
         self.env['ad.dashboard.block']._check_form_access(model)
         self.env[model].check_access('create')
         return {'type': 'ir.actions.act_window', 'res_model': model, 'views': [[False, 'form']], 'target': 'current'}
+
+
+class AdBulkCreate(models.TransientModel):
+    """Create the same form for every guard of a site (transfers and penalties), as drafts ready to be sent."""
+    _name = 'ad.bulk.create'
+    _description = 'Create forms for a whole site'
+
+    form_type = fields.Selection([('ad.transfer', 'Guard transfer'), ('ad.discipline', 'Penalty')],
+                                 string='Form', required=True, default='ad.transfer')
+    site_id = fields.Many2one('ad.work.site', 'Site (the guards working there)', required=True)
+    exclude_employee_ids = fields.Many2many('hr.employee', 'ad_bulk_create_excl_rel', 'wizard_id', 'employee_id',
+                                            string='Except these guards', domain="[('ad_work_site_id', '=', site_id)]")
+    employee_count = fields.Integer('Guards', compute='_compute_employee_count')
+    new_site_id = fields.Many2one('ad.work.site', 'New work site')
+    start_date = fields.Date('Start date')
+    violation_ids = fields.Many2many('ad.violation.type', 'ad_bulk_create_violation_rel', 'wizard_id', 'violation_id',
+                                     string='Violations')
+    decision = fields.Selection([('suspension', 'Suspension from work'), ('deduction', 'Salary deduction penalty'),
+                                 ('termination', 'Termination penalty')], string='Decision')
+
+    def _employees(self):
+        self.ensure_one()
+        return self.env['hr.employee'].search([('ad_work_site_id', '=', self.site_id.id)]) - self.exclude_employee_ids
+
+    @api.depends('site_id', 'exclude_employee_ids')
+    def _compute_employee_count(self):
+        for rec in self:
+            rec.employee_count = len(rec._employees()) if rec.site_id else 0
+
+    def action_create(self):
+        self.ensure_one()
+        model = self.form_type
+        self.env['ad.dashboard.block']._check_form_access(model)
+        self.env[model].check_access('create')
+        if model == 'ad.transfer' and not self.new_site_id:
+            raise UserError(self.env._('Choose the new work site.'))
+        if model == 'ad.transfer' and self.new_site_id == self.site_id:
+            raise UserError(self.env._('The new site is the same as the current site.'))
+        employees = self._employees()
+        if not employees:
+            raise UserError(self.env._('There are no guards at this site.'))
+        Model = self.env[model].with_context(tracking_disable=True, mail_create_nolog=True)
+        skipped = []
+        if model == 'ad.transfer':
+            busy = self.env[model].sudo().search([('employee_id', 'in', employees.ids), ('ad_status', 'in', ('draft', 'pending'))])
+            skipped = busy.employee_id
+            employees -= skipped
+        vals_list = []
+        for emp in employees:
+            vals = Model._ad_employee_fill_values(emp)
+            vals['employee_id'] = emp.id
+            if model == 'ad.transfer':
+                vals.update(new_site_id=self.new_site_id.id, start_date=self.start_date,
+                            new_supervisor=self.new_site_id.supervisor_id.name or False)
+            else:
+                vals.update(violation_ids=[(6, 0, self.violation_ids.ids)], decision=self.decision or False)
+            vals_list.append(vals)
+        records = Model.create(vals_list)
+        index = [m for m, _l in REQUEST_FORMS].index(model)
+        listing = {'type': 'ir.actions.act_window', 'name': self.env._('Requests'), 'res_model': 'ad.request',
+                   'views': [[False, 'list']], 'target': 'current',
+                   'domain': [('id', 'in', [i * 10 + index for i in records.ids])]}
+        if skipped:
+            return {'type': 'ir.actions.client', 'tag': 'display_notification',
+                    'params': {'title': self.env._('Created: %s', len(records)), 'type': 'warning', 'sticky': True,
+                               'message': self.env._('Skipped (an open transfer already exists): %s',
+                                                     ', '.join(skipped.mapped('name')[:30])),
+                               'next': listing}}
+        return listing

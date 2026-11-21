@@ -82,9 +82,11 @@
                     <field name="note" placeholder="State the rejection reason so it reaches the form creator"/>
                     <field name="res_model" invisible="1"/>
                     <field name="res_id" invisible="1"/>
+                    <field name="mode" invisible="1"/>
                 </group>
                 <footer>
-                    <button name="action_confirm" type="object" string="Reject form" class="btn-danger"/>
+                    <button name="action_confirm" type="object" string="Reject form" class="btn-danger" invisible="mode != 'reject'"/>
+                    <button name="action_confirm" type="object" string="Send back to the previous stage" class="btn-primary" invisible="mode != 'back'"/>
                     <button string="Cancel" special="cancel"/>
                 </footer>
             </form>

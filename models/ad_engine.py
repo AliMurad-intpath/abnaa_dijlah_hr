@@ -396,6 +396,15 @@ class AdFormTemplate(models.Model):
 
     # ------------------------------------------------------------------ seeding
     @api.model
+    def _ad_apply_arabic(self):
+        """Single translation path: push i18n/ar.po into the database on every install and upgrade."""
+        try:
+            from .ad_translate import apply_arabic
+            apply_arabic(self.env)
+        except Exception:
+            _logger.exception('Could not write the Arabic terms of abnaa_dijlah_hr')
+
+    @api.model
     def _ad_seed_engine(self):
         """Load the blank PDFs, printed fields and approval stages shipped with the module.
         Runs on install / update and only touches templates that have no PDF yet."""
@@ -646,6 +655,7 @@ class AdFormStage(models.Model):
     signature_width = fields.Float(default=100, digits=(16, 2))
     signature_height = fields.Float(default=40, digits=(16, 2))
     print_signature = fields.Boolean('Print signature image', default=True)
+    deadline_hours = fields.Integer('Deadline (hours)', help='Hours the approver has before the step goes to the next person. 0 = no deadline.')
     approver_label = fields.Char('Approver', compute='_compute_approver_label')
 
     @api.depends('approver_id', 'group_id')

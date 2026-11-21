@@ -35,6 +35,9 @@
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </group>
+                    <group string="Form visibility">
+                        <field name="visibility_user_ids" widget="many2many_tags"/>
+                    </group>
                 </sheet>
                 <chatter/>
             </form>

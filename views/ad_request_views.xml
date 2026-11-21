@@ -8,6 +8,9 @@
                   decoration-muted="ad_status == 'cancel'" decoration-success="ad_status == 'approved'">
                 <header>
                     <button name="action_new_request" type="object" string="New request" class="btn-primary" display="always"/>
+                    <button name="action_open_bulk_create" type="object" string="Create for a whole site" display="always"/>
+                    <button name="action_bulk_approve" type="object" string="Approve selected"/>
+                    <button name="action_bulk_submit" type="object" string="Submit selected"/>
                 </header>
                 <field name="name"/>
                 <field name="res_model"/>
@@ -31,6 +34,7 @@
                 <field name="employee_id"/>
                 <field name="subject"/>
                 <field name="res_model"/>
+                <filter name="awaiting_me" string="Awaiting my approval" domain="[('awaiting_me', '=', True)]"/>
                 <filter name="mine" string="Created by me" domain="[('creator_id', '=', uid)]"/>
                 <separator/>
                 <filter name="draft" string="Draft" domain="[('ad_status', '=', 'draft')]"/>
@@ -75,4 +79,52 @@
         </field>
     </record>
     <menuitem id="menu_ad_requests" name="Requests" parent="menu_ad_hr_root" sequence="10" action="ad_request_action"/>
+    <record id="ad_bulk_create_view_form" model="ir.ui.view">
+        <field name="name">ad.bulk.create.form</field>
+        <field name="model">ad.bulk.create</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="form_type" widget="radio"/>
+                    <field name="site_id"/>
+                    <field name="employee_count"/>
+                    <field name="exclude_employee_ids" widget="many2many_tags"/>
+                </group>
+                <group invisible="form_type != 'ad.transfer'">
+                    <field name="new_site_id" required="form_type == 'ad.transfer'"/>
+                    <field name="start_date"/>
+                </group>
+                <group invisible="form_type != 'ad.discipline'">
+                    <field name="violation_ids" widget="many2many_tags"/>
+                    <field name="decision"/>
+                </group>
+                <footer>
+                    <button name="action_create" type="object" string="Create the forms" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="ad_approver_delegate_view_list" model="ir.ui.view">
+        <field name="name">ad.approver.delegate.list</field>
+        <field name="model">ad.approver.delegate</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" decoration-success="on_duty" decoration-muted="not active">
+                <field name="user_id"/>
+                <field name="substitute_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="reason"/>
+                <field name="on_duty"/>
+                <field name="active" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+    <record id="ad_approver_delegate_action" model="ir.actions.act_window">
+        <field name="name">Substitute approvers</field>
+        <field name="res_model">ad.approver.delegate</field>
+        <field name="view_mode">list</field>
+    </record>
+    <menuitem id="menu_ad_approver_delegate" name="Substitute approvers" parent="menu_ad_hr_root" sequence="20"
+              action="ad_approver_delegate_action"/>
 </odoo>

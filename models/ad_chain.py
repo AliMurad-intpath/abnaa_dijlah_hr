@@ -5,8 +5,13 @@ from datetime import timedelta
 from markupsafe import Markup, escape
 
 from odoo import api, fields, models
-from odoo.exceptions import AccessError, UserError
+from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools import BinaryBytes
+
+try:
+    from odoo.fields import Domain
+except ImportError:  # pragma: no cover
+    from odoo.orm.domains import Domain
 
 _logger = logging.getLogger(__name__)
 
@@ -38,6 +43,14 @@ FINAL_STATES = {
     'ad.clearance': ('done',), 'ad.interview': ('done',),
     'ad.employee.guarantee': ('signed',), 'ad.employee.pledge': ('signed',),
 }
+# forms that may not have a second open (draft or pending) request for the same employee
+DUPLICATE_GUARD = ('ad.appointment.order', 'ad.transfer', 'ad.termination.order')
+# the site fields of each form (site visibility); forms without them follow the employee's current site
+SITE_FIELDS = {
+    'ad.transfer': ('old_site_id', 'new_site_id'), 'ad.appointment.order': ('site_id',),
+    'ad.onboarding': ('site_id',), 'ad.termination.order': ('site_id',), 'ad.clearance': ('site_id',),
+}
+BULK_LIMIT = 100  # requests approved or submitted per click of a bulk button (each one renders PDFs)
 AD_STATUS = [('draft', 'Draft'), ('pending', 'Pending approval'), ('approved', 'Approved'),
              ('rejected', 'Rejected'), ('cancel', 'Cancelled')]
 
@@ -74,6 +87,11 @@ class AdFormStep(models.Model):
     pending_since = fields.Datetime('Waiting since', readonly=True)
     last_reminder = fields.Datetime('Last reminder', readonly=True)
     approver_label = fields.Char('Approver', compute='_compute_approver_label')
+    deadline_hours = fields.Integer('Deadline (hours)', help='Hours the approver has before the step is escalated. 0 = no deadline.')
+    escalated = fields.Boolean('Escalated', readonly=True, copy=False)
+    escalated_on = fields.Datetime(readonly=True, copy=False)
+    escalated_user_ids = fields.Many2many('res.users', 'ad_form_step_escalated_rel', 'step_id', 'user_id',
+                                          string='Escalated to', readonly=True, copy=False)
 
     @api.depends('approver_id', 'group_id', 'signed_by_name')
     def _compute_approver_label(self):
@@ -90,21 +108,31 @@ class AdFormStep(models.Model):
         return {'type': 'ir.actions.act_window', 'res_model': self.res_model, 'res_id': self.res_id,
                 'views': [[False, 'form']], 'target': 'current'}
 
-    def _eligible_users(self):
+    def _eligible_users(self, dated=False):
+        """Users who may decide the step, with their substitutes.
+        dated=False: every substitute on record (used for access); dated=True: only those on duty today (notifications)."""
         self.ensure_one()
+        users = self.env['res.users']
         if self.approver_id:
-            return self.approver_id
-        if self.group_id:
+            users = self.approver_id
+        elif self.group_id:
             group = self.group_id.sudo()
-            users = group.all_user_ids if 'all_user_ids' in group._fields else group.user_ids
-            return users.filtered(lambda u: u.active and not u.share)
-        return self.env['res.users']
+            users = (group.all_user_ids if 'all_user_ids' in group._fields else group.user_ids)
+            users = users.filtered(lambda u: u.active and not u.share)
+        if users:
+            users |= self.env['ad.approver.delegate']._substitutes_of(users, today_only=dated)
+        return users
 
     def _user_may_act(self, user):
         self.ensure_one()
+        acting = self.env['ad.approver.delegate']._acting_users(user)
         if self.approver_id:
-            return self.approver_id == user
-        return bool(self.group_id) and self.group_id in (user.all_group_ids if 'all_group_ids' in user._fields else user.group_ids)
+            allowed = self.approver_id in acting
+        else:
+            allowed = bool(self.group_id) and self.group_id.id in self.env['ad.approver.delegate']._group_ids(acting)
+        if not allowed and self.escalated:
+            allowed = user in self.sudo().escalated_user_ids
+        return allowed
 
     @api.model
     def _action_my_pending(self):
@@ -116,9 +144,12 @@ class AdFormStep(models.Model):
     @api.model
     def _pending_domain(self, user=None):
         user = user or self.env.user
-        groups = (user.all_group_ids if 'all_group_ids' in user._fields else user.group_ids).ids
-        return [('state', '=', 'pending'), '|', ('approver_id', '=', user.id),
-                '&', ('approver_id', '=', False), ('group_id', 'in', groups)]
+        Delegate = self.env['ad.approver.delegate']
+        acting = Delegate._acting_users(user)
+        groups = Delegate._group_ids(acting)
+        return [('state', '=', 'pending'), '|', '|', ('approver_id', 'in', acting.ids),
+                '&', ('approver_id', '=', False), ('group_id', 'in', groups),
+                ('escalated_user_ids', 'in', [user.id])]
 
     # -------------------------------------------------------------- reminders
     @api.model
@@ -126,6 +157,7 @@ class AdFormStep(models.Model):
         """First reminder after N days, then every M days until the step is answered (set on the company).
         One daily summary goes to the HR managers."""
         now = fields.Datetime.now()
+        self._ad_escalate_overdue(now)
         for step in self.sudo().search([('state', '=', 'pending')]):
             rec = self.env[step.res_model].sudo().browse(step.res_id).exists() if step.res_model in self.env else False
             if not rec or rec.ad_state != 'pending':
@@ -152,6 +184,42 @@ class AdFormStep(models.Model):
             except Exception:
                 _logger.exception('approval reminder failed for %s,%s', step.res_model, step.res_id)
         self._ad_send_daily_summary(now)
+
+    @api.model
+    def _ad_escalate_overdue(self, now):
+        """A step that waited longer than its deadline goes to the next person: the approvers of the next stage
+        (or the HR managers for the last stage) are told and may decide it too."""
+        steps = self.sudo().search([('state', '=', 'pending'), ('deadline_hours', '>', 0), ('escalated', '=', False)])
+        for step in steps:
+            rec = self.env[step.res_model].sudo().browse(step.res_id).exists() if step.res_model in self.env else False
+            if not rec or rec.ad_state != 'pending':
+                continue
+            base = step.pending_since or step.create_date or now
+            if now < base + timedelta(hours=step.deadline_hours):
+                continue
+            try:
+                following = rec.ad_step_ids.filtered(lambda s: s.state == 'waiting').sorted(lambda s: (s.sequence, s.id))[:1]
+                if following:
+                    users = following._eligible_users(dated=True)
+                else:
+                    managers = self.env.ref('hr.group_hr_manager').sudo()
+                    users = managers.all_user_ids if 'all_user_ids' in managers._fields else managers.user_ids
+                users = users.filtered(lambda u: u.active and not u.share) - step._eligible_users()
+                step.write({'escalated': True, 'escalated_on': now, 'escalated_user_ids': [(6, 0, users.ids)]})
+                body = Markup('%s <a href="#" data-oe-model="%s" data-oe-id="%s">%s</a> (%s)') % (
+                    self.env._('Escalated: the deadline passed without a decision.'), rec._name, rec.id,
+                    rec.display_name, step.name)
+                if users:
+                    rec.message_notify(partner_ids=users.partner_id.ids,
+                                       subject=self.env._('Escalated approval: %s', rec.display_name), body=body)
+                owners = step._eligible_users(dated=True)
+                if owners:
+                    rec.message_notify(partner_ids=owners.partner_id.ids,
+                                       subject=self.env._('Approval deadline passed: %s', rec.display_name), body=body)
+                rec._ad_post(self.env._('The stage "%s" passed its deadline (%s hours) and was escalated.',
+                                        step.name, step.deadline_hours))
+            except Exception:
+                _logger.exception('approval escalation failed for %s,%s', step.res_model, step.res_id)
 
     @api.model
     def _ad_send_daily_summary(self, now):
@@ -201,6 +269,8 @@ class AdApprovalMixin(models.AbstractModel):
     ad_waiting_for = fields.Char('Pending', compute='_compute_ad_can_approve')
     ad_status = fields.Selection(AD_STATUS, string='Status', compute='_compute_ad_status', store=True, index=True)
     ad_chain_on = fields.Boolean(compute='_compute_ad_chain_on')
+    ad_can_send_back = fields.Boolean(compute='_compute_ad_can_approve')
+    ad_frozen_attachment_id = fields.Many2one('ir.attachment', 'Signed PDF', copy=False, readonly=True, ondelete='set null')
     ad_can_submit = fields.Boolean(compute='_compute_ad_chain_on')
 
     @api.depends('state', 'ad_state')
@@ -228,33 +298,78 @@ class AdApprovalMixin(models.AbstractModel):
             plan = PLAN.get(rec._name) or {}
             rec.ad_can_submit = bool(on and rec.ad_state in ('none', 'rejected') and rec.state in plan.get('states', ()))
 
+    def _ad_employee_fill_values(self, emp):
+        """Values of the form taken from the employee: job, number, site and the supervisor of that site."""
+        values = {}
+        if not emp or self._name == 'ad.interview':
+            return values
+        job = emp.job_title or emp.job_id.name
+        site = emp.ad_work_site_id
+        wanted = {'job_title': job, 'capacity': job, 'employee_no': emp.ad_employee_no,
+                  'site_id': site.id, 'old_site_id': site.id}
+        for fname, value in wanted.items():
+            field = self._fields.get(fname)
+            if value and field and not field.related and not field.readonly:
+                values[fname] = value
+        supervisor = site.supervisor_id.name if site else False
+        mobile = site.supervisor_mobile if site else False
+        for fname, value in (('supervisor_name', supervisor), ('old_supervisor', supervisor),
+                             ('supervisor_mobile', mobile), ('old_supervisor_mobile', mobile)):
+            field = self._fields.get(fname)
+            if value and field and not field.related and not field.readonly:
+                values[fname] = value
+        return values
+
     @api.onchange('employee_id')
     def _ad_onchange_employee_fill(self):
         """Employee first: choose the employee and the rest of the form fills itself (name, job, number, site, supervisor)."""
         for rec in self:
-            emp = rec.employee_id
-            if not emp or rec._name == 'ad.interview':
+            for fname, value in rec._ad_employee_fill_values(rec.employee_id).items():
+                rec[fname] = value
+
+    @api.constrains('employee_id', 'ad_status')
+    def _ad_check_duplicate(self):
+        """One open request per employee for transfers, terminations and appointments."""
+        if self._name not in DUPLICATE_GUARD:
+            return
+        for rec in self:
+            if not rec.employee_id or rec.ad_status not in ('draft', 'pending'):
                 continue
-            job = emp.job_title or emp.job_id.name
-            site = emp.ad_work_site_id
-            values = {'job_title': job, 'capacity': job, 'employee_no': emp.ad_employee_no,
-                      'site_id': site, 'old_site_id': site}
-            for fname, value in values.items():
-                field = rec._fields.get(fname)
-                if value and field and not field.related and not field.readonly:
-                    rec[fname] = value
-            # the supervisor of the site the employee works at today
-            if 'old_site_id' in rec._fields:
-                site = rec.old_site_id or site
-            elif 'site_id' in rec._fields:
-                site = rec.site_id or site
-            supervisor = site.supervisor_id.name if site else False
-            mobile = site.supervisor_mobile if site else False
-            for fname, value in (('supervisor_name', supervisor), ('old_supervisor', supervisor),
-                                 ('supervisor_mobile', mobile), ('old_supervisor_mobile', mobile)):
-                field = rec._fields.get(fname)
-                if value and field and not field.related and not field.readonly:
-                    rec[fname] = value
+            other = self.sudo().search([('employee_id', '=', rec.employee_id.id), ('ad_status', 'in', ('draft', 'pending')),
+                                        ('id', '!=', rec.id), ('company_id', '=', rec.company_id.id)], limit=1)
+            if other:
+                raise ValidationError(self.env._(
+                    'There is already an open request for %(employee)s: %(number)s. Finish or cancel it before opening another one.',
+                    employee=rec.employee_id.display_name, number=other.name))
+
+    # ------------------------------------------------------------------ site visibility
+    def _ad_site_restriction(self):
+        """Site supervisors see the forms of their own sites only. No site set on the user = sees everything;
+        a form with no site is visible to all; creators and approvers always see their own forms."""
+        user = self.env.user
+        if self.env.su or user.has_group('hr.group_hr_manager') or user.has_group('abnaa_dijlah_hr.group_ad_hr_manager'):
+            return None
+        site_ids = user.sudo().ad_site_ids.ids
+        if not site_ids:
+            return None
+        clauses = [Domain('create_uid', '=', user.id), Domain('ad_approver_user_ids', 'in', [user.id])]
+        site_fields = SITE_FIELDS.get(self._name)
+        if site_fields:
+            clauses += [Domain(f, 'in', site_ids) for f in site_fields]
+            clauses.append(Domain.AND([Domain(f, '=', False) for f in site_fields]))
+        elif 'employee_id' in self._fields and self._name != 'ad.interview':
+            clauses += [Domain('employee_id.ad_work_site_id', 'in', site_ids), Domain('employee_id.ad_work_site_id', '=', False)]
+        else:
+            return None
+        return Domain.OR(clauses)
+
+    @api.model
+    def _search(self, domain, offset=0, limit=None, order=None, **kwargs):
+        if not kwargs.get('bypass_access') and not self.env.su and self._name in FINAL_STATES:
+            extra = self._ad_site_restriction()
+            if extra is not None:
+                domain = Domain(domain) & extra
+        return super()._search(domain, offset=offset, limit=limit, order=order, **kwargs)
 
     def action_ad_cancel(self):
         """The single Cancel button: withdraws a pending request, then cancels the form."""
@@ -268,13 +383,14 @@ class AdApprovalMixin(models.AbstractModel):
             rec.with_context(ad_skip_group_check=True).action_cancel()
         return True
 
-    @api.depends('ad_state', 'ad_step_ids.state', 'ad_step_ids.approver_id', 'ad_step_ids.group_id')
+    @api.depends('ad_state', 'ad_step_ids.state', 'ad_step_ids.approver_id', 'ad_step_ids.group_id', 'ad_step_ids.escalated')
     @api.depends_context('uid')
     def _compute_ad_can_approve(self):
         for rec in self:
             step = rec._ad_pending_step()
             rec.ad_can_approve = bool(step and rec.ad_state == 'pending' and step._user_may_act(self.env.user))
             rec.ad_waiting_for = (step.approver_label or step.name) if step and rec.ad_state == 'pending' else False
+            rec.ad_can_send_back = bool(rec.ad_can_approve and rec.sudo().ad_step_ids.filtered(lambda s: s.state == 'approved'))
 
     @api.depends('ad_step_ids.approver_id', 'ad_step_ids.group_id', 'ad_step_ids.state')
     def _compute_ad_approver_user_ids(self):
@@ -354,6 +470,38 @@ class AdApprovalMixin(models.AbstractModel):
         pdf, _issues = _engine().render(data, self._ad_pdf_items(), collect=True)
         return pdf
 
+    # ------------------------------------------------------------------ signed PDF (frozen at final approval)
+    def _ad_freeze_pdf(self, post=True):
+        """Keep the signed PDF exactly as it was approved: later template or data changes cannot alter it."""
+        self.ensure_one()
+        rec = self.sudo()
+        try:
+            with self.env.cr.savepoint():
+                pdf = rec._ad_render_pdf()
+                name = (rec.name if rec.name not in ('/', False) else rec._name.replace('.', '-')).replace('/', '-')
+                attachment = self.env['ir.attachment'].sudo().create({
+                    'name': '%s.pdf' % name, 'raw': pdf, 'res_model': rec._name, 'res_id': rec.id,
+                    'mimetype': 'application/pdf'})
+                rec.ad_frozen_attachment_id = attachment
+        except Exception:
+            _logger.exception('could not freeze the signed PDF of %s,%s', self._name, self.id)
+            return False
+        if post and hasattr(rec, 'message_post'):
+            rec.message_post(body=self.env._('The signed PDF was saved with the form.'), attachment_ids=[attachment.id])
+        return True
+
+    def _ad_pdf_for_print(self):
+        """The saved signed PDF when the form is approved (frozen on the first print for older forms), else a live preview."""
+        self.ensure_one()
+        if self.ad_state == 'approved':
+            if not self.sudo().ad_frozen_attachment_id:
+                self._ad_freeze_pdf(post=False)
+            data = self.sudo().ad_frozen_attachment_id.raw
+            if data:
+                self._ad_post(self.env._('The signed PDF was printed by %s.', self.env.user.name))
+                return data
+        return self._ad_render_pdf()
+
     def action_ad_print(self):
         self.env['ad.dashboard.block']._check_form_access(self._name)
         ids = ','.join(str(i) for i in self.ids)
@@ -365,7 +513,7 @@ class AdApprovalMixin(models.AbstractModel):
         self.ensure_one()
         rec = self.sudo()
         summary = self.env._('Approval: %s', step.name)
-        users = step._eligible_users()
+        users = step._eligible_users(dated=True)
         if not users:
             return
         if 'activity_schedule' in rec._fields or hasattr(rec, 'activity_schedule'):
@@ -435,7 +583,7 @@ class AdApprovalMixin(models.AbstractModel):
                     'group_id': stage.group_id.id, 'print_signature': stage.print_signature,
                     'signature_page': stage.signature_page, 'signature_x': stage.signature_x,
                     'signature_y': stage.signature_y, 'signature_width': stage.signature_width,
-                    'signature_height': stage.signature_height,
+                    'signature_height': stage.signature_height, 'deadline_hours': stage.deadline_hours,
                     'state': 'pending' if i == 0 else 'waiting', 'pending_since': now if i == 0 else False,
                 })
             rec.sudo().write({'ad_state': 'pending', 'ad_layout_snapshot': snapshot, 'ad_reject_note': False})
@@ -477,13 +625,15 @@ class AdApprovalMixin(models.AbstractModel):
             rec._ad_record_signature(step)
             following = rec.sudo().ad_step_ids.filtered(lambda s: s.state == 'waiting').sorted(lambda s: (s.sequence, s.id))[:1]
             if following:
-                following.sudo().write({'state': 'pending', 'pending_since': fields.Datetime.now(), 'last_reminder': False})
+                following.sudo().write({'state': 'pending', 'pending_since': fields.Datetime.now(), 'last_reminder': False,
+                                        'escalated': False, 'escalated_on': False, 'escalated_user_ids': [(5, 0, 0)]})
                 rec._ad_notify_step(following)
                 rec._ad_post(self.env._('%(user)s approved the stage "%(step)s". Now it is the turn of: %(next)s.',
                                         user=self.env.user.name, step=step.name, next=following.name))
             else:
                 rec._ad_apply_approved()
                 rec.sudo().write({'ad_state': 'approved'})
+                rec._ad_freeze_pdf()
                 rec._ad_post(self.env._('All approval stages were completed with the approval of %s.', self.env.user.name))
         return True
 
@@ -491,7 +641,38 @@ class AdApprovalMixin(models.AbstractModel):
         self.ensure_one()
         step = self._ad_current_step_for_user()
         return {'type': 'ir.actions.act_window', 'res_model': 'ad.form.reject.wizard', 'view_mode': 'form', 'target': 'new',
-                'context': {'default_res_model': self._name, 'default_res_id': self.id, 'default_step_name': step.name}}
+                'context': {'default_res_model': self._name, 'default_res_id': self.id, 'default_step_name': step.name,
+                            'default_mode': 'reject'}}
+
+    def action_ad_send_back(self):
+        """Return the form to the previous stage instead of rejecting the whole request."""
+        self.ensure_one()
+        step = self._ad_current_step_for_user()
+        return {'type': 'ir.actions.act_window', 'res_model': 'ad.form.reject.wizard', 'view_mode': 'form', 'target': 'new',
+                'context': {'default_res_model': self._name, 'default_res_id': self.id, 'default_step_name': step.name,
+                            'default_mode': 'back'}}
+
+    def _ad_do_send_back(self, note):
+        self._ad_lock()
+        for rec in self:
+            step = rec._ad_current_step_for_user()
+            approved = rec.sudo().ad_step_ids.filtered(lambda s: s.state == 'approved').sorted(lambda s: (s.sequence, s.id))
+            if not approved:
+                raise UserError(self.env._('This is the first stage, there is no previous stage. Use Reject instead.'))
+            previous = approved[-1]
+            rec._ad_close_activities(step)
+            reset = {'escalated': False, 'escalated_on': False, 'escalated_user_ids': [(5, 0, 0)], 'last_reminder': False}
+            step.sudo().write(dict(reset, state='waiting', pending_since=False))
+            previous.sudo().write(dict(reset, state='pending', pending_since=fields.Datetime.now(), action_date=False,
+                                       signed_by_id=False, signed_by_name=False, signature_snapshot=False, note=note))
+            if previous.key:
+                rec.sudo().signature_ids.filtered(lambda s: s.step == previous.key).unlink()
+            rec.invalidate_recordset(['ad_step_ids'])
+            rec._ad_notify_step(previous)
+            rec._ad_post(Markup('%s <b>%s</b> → <b>%s</b>: %s') % (
+                self.env._('%s sent the form back', self.env.user.name), escape(step.name), escape(previous.name),
+                escape(note or '')))
+        return True
 
     def _ad_do_reject(self, note):
         self._ad_lock()

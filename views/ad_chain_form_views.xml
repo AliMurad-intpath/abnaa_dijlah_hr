@@ -23,6 +23,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>
@@ -54,6 +55,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>
@@ -85,6 +87,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>
@@ -116,6 +119,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>
@@ -147,6 +151,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>
@@ -178,6 +183,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>
@@ -209,6 +215,7 @@
                             <field name="name"/>
                             <field name="approver_label"/>
                             <field name="state" widget="badge"/>
+                            <field name="escalated" optional="show"/>
                             <field name="action_date"/>
                             <field name="note"/>
                         </list>

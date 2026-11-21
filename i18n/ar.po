@@ -5139,3 +5139,214 @@ msgstr "اترك المستخدمين والمجموعات فارغين للسم
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_ad_dashboard_block__scope
 msgid "Type"
 msgstr "النوع"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "%s sent the form back"
+msgstr "%s أعاد الاستمارة إلى المرحلة السابقة"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Approval deadline passed: %s"
+msgstr "انتهت مهلة الموافقة: %s"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Escalated approval: %s"
+msgstr "موافقة مُصعَّدة: %s"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Escalated: the deadline passed without a decision."
+msgstr "تصعيد: انتهت المهلة دون اتخاذ قرار."
+
+#. module: abnaa_dijlah_hr
+msgid "Deadline (hours)"
+msgstr "المهلة (بالساعات)"
+
+#. module: abnaa_dijlah_hr
+msgid "Escalated"
+msgstr "مُصعَّدة"
+
+#. module: abnaa_dijlah_hr
+msgid "Escalated to"
+msgstr "صُعِّدت إلى"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The signed PDF was printed by %s."
+msgstr "تمت طباعة ملف PDF الموقّع بواسطة %s."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The signed PDF was saved with the form."
+msgstr "تم حفظ ملف PDF الموقّع مع الاستمارة."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The stage \"%s\" passed its deadline (%s hours) and was escalated."
+msgstr "تجاوزت المرحلة \"%s\" مهلتها (%s ساعة) وتم تصعيدها."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "There is already an open request for %(employee)s: %(number)s. Finish or cancel it before opening another one."
+msgstr "يوجد طلب مفتوح للموظف %(employee)s: %(number)s. أنجزه أو ألغه قبل فتح طلب آخر."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "This is the first stage, there is no previous stage. Use Reject instead."
+msgstr "هذه هي المرحلة الأولى ولا توجد مرحلة سابقة. استخدم الرفض بدلاً من ذلك."
+
+#. module: abnaa_dijlah_hr
+msgid "Active today"
+msgstr "ساري اليوم"
+
+#. module: abnaa_dijlah_hr
+msgid "From"
+msgstr "من"
+
+#. module: abnaa_dijlah_hr
+msgid "To"
+msgstr "إلى"
+
+#. module: abnaa_dijlah_hr
+msgid "Reason"
+msgstr "السبب"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The end date cannot be before the start date."
+msgstr "لا يمكن أن يكون تاريخ النهاية قبل تاريخ البداية."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The substitute must be another user."
+msgstr "يجب أن يكون البديل مستخدماً آخر."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "%(done)s done, %(failed)s skipped."
+msgstr "تم تنفيذ %(done)s وتخطي %(failed)s."
+
+#. module: abnaa_dijlah_hr
+msgid "Bulk approval"
+msgstr "الموافقة الجماعية"
+
+#. module: abnaa_dijlah_hr
+msgid "Bulk submission"
+msgstr "الإرسال الجماعي"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Choose the new work site."
+msgstr "اختر موقع العمل الجديد."
+
+#. module: abnaa_dijlah_hr
+msgid "Create for a whole site"
+msgstr "إنشاء لموقع كامل"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Created: %s"
+msgstr "تم الإنشاء: %s"
+
+#. module: abnaa_dijlah_hr
+msgid "Awaiting my approval"
+msgstr "بانتظار موافقتي"
+
+#. module: abnaa_dijlah_hr
+msgid "Except these guards"
+msgstr "باستثناء هؤلاء الحراس"
+
+#. module: abnaa_dijlah_hr
+msgid "Guards"
+msgstr "الحراس"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Select at most %s requests at a time."
+msgstr "اختر %s طلباً كحد أقصى في المرة الواحدة."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "Skipped (an open transfer already exists): %s"
+msgstr "تم التخطي (يوجد نقل مفتوح): %s"
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The new site is the same as the current site."
+msgstr "الموقع الجديد هو نفسه الموقع الحالي."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "The request cannot be sent in its current state."
+msgstr "لا يمكن إرسال الطلب في حالته الحالية."
+
+#. module: abnaa_dijlah_hr
+#: code:addons/abnaa_dijlah_hr/models/ad_chain.py:0
+msgid "There are no guards at this site."
+msgstr "لا يوجد حراس في هذا الموقع."
+
+#. module: abnaa_dijlah_hr
+msgid "Users limited to this site"
+msgstr "المستخدمون المقيّدون بهذا الموقع"
+
+#. module: abnaa_dijlah_hr
+msgid "Visible work sites"
+msgstr "مواقع العمل الظاهرة"
+
+#. module: abnaa_dijlah_hr
+msgid "Form state"
+msgstr "حالة الاستمارة"
+
+#. module: abnaa_dijlah_hr
+msgid "Approve selected"
+msgstr "اعتماد المحدد"
+
+#. module: abnaa_dijlah_hr
+msgid "Submit selected"
+msgstr "إرسال المحدد"
+
+#. module: abnaa_dijlah_hr
+msgid "Create the forms"
+msgstr "إنشاء الاستمارات"
+
+#. module: abnaa_dijlah_hr
+msgid "Form visibility"
+msgstr "ظهور الاستمارات"
+
+#. module: abnaa_dijlah_hr
+msgid "Send back to the previous stage"
+msgstr "إعادة إلى المرحلة السابقة"
+
+#. module: abnaa_dijlah_hr
+msgid "Send back"
+msgstr "إعادة للمرحلة السابقة"
+
+#. module: abnaa_dijlah_hr
+msgid "Substitute approvers"
+msgstr "المعتمدون البدلاء"
+
+#. module: abnaa_dijlah_hr
+msgid "Substitute approver"
+msgstr "معتمد بديل"
+
+#. module: abnaa_dijlah_hr
+msgid "Signed PDF"
+msgstr "ملف PDF الموقّع"
+
+#. module: abnaa_dijlah_hr
+msgid "Absent approver"
+msgstr "المعتمد الغائب"
+
+#. module: abnaa_dijlah_hr
+msgid "Substitute"
+msgstr "البديل"
+
+#. module: abnaa_dijlah_hr
+msgid "Site (the guards working there)"
+msgstr "الموقع (الحراس العاملون فيه)"
+
+#. module: abnaa_dijlah_hr
+msgid "Create forms for a whole site"
+msgstr "إنشاء استمارات لموقع كامل"

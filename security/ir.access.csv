@@ -68,3 +68,5 @@ access_ad_form_step_mgr,ad.form.step manager,ad.form.step,hr.group_hr_manager,cr
 access_ad_form_reject_wizard,ad.form.reject.wizard,ad.form.reject.wizard,base.group_user,crud,
 access_ad_request_user,ad.request user,ad.request,base.group_user,r,
 access_ad_request_new_user,ad.request.new user,ad.request.new,base.group_user,crud,
+access_ad_bulk_create_hr,ad.bulk.create hr,ad.bulk.create,hr.group_hr_user,crud,
+access_ad_approver_delegate_hr,ad.approver.delegate hr manager,ad.approver.delegate,hr.group_hr_manager,crud,

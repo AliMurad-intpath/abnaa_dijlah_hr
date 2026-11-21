@@ -46,7 +46,7 @@ class AdFormController(http.Controller):
             return request.not_found()
         env['ad.dashboard.block']._check_form_access(model)
         records.check_access('read')
-        pdfs = [rec._ad_render_pdf() for rec in records]
+        pdfs = [rec._ad_pdf_for_print() for rec in records]
         if len(pdfs) == 1:
             data = pdfs[0]
         else:
