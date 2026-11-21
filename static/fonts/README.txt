@@ -15,3 +15,6 @@ Real Times New Roman for printed forms (optional, needs your own licensed copy):
   copy the regular and bold files into this folder as
   TimesNewRoman.ttf + TimesNewRoman-Bold.ttf  (or times.ttf + timesbd.ttf)
   and restart Odoo. The PDF engine then uses them instead of Liberation Serif.
+
+FreeSerifArabic-*.ttf: Arabic + Latin subset of GNU FreeSerif (GPL with font exception).
+Used for Arabic text on the printed forms: a Naskh face that sits well with Times.

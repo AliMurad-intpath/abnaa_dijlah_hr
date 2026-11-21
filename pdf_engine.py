@@ -21,7 +21,9 @@ FONT_CSS = {
 @font-face {font-family: hrdoc; src: url(DejaVuSans-Bold.ttf); font-weight: bold;}
 @font-face {font-family: hrtimes; src: url(LiberationSerif-Regular.ttf);}
 @font-face {font-family: hrtimes; src: url(LiberationSerif-Bold.ttf); font-weight: bold;}
-* {font-family: hrtimes, hrdoc; margin: 0; padding: 0;}
+@font-face {font-family: hrar; src: url(FreeSerifArabic-Regular.ttf);}
+@font-face {font-family: hrar; src: url(FreeSerifArabic-Bold.ttf); font-weight: bold;}
+* {font-family: hrtimes, hrar, hrdoc; margin: 0; padding: 0;}
 """,
 }
 # A licensed copy of the real Times New Roman, if the company drops one in static/fonts, wins
@@ -60,7 +62,8 @@ def _locked(func):
 def _font_archive():
                                                                                      
     archive = pymupdf.Archive()
-    for name in ('DejaVuSans.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSerif-Regular.ttf', 'LiberationSerif-Bold.ttf'):
+    for name in ('DejaVuSans.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSerif-Regular.ttf', 'LiberationSerif-Bold.ttf',
+                 'FreeSerifArabic-Regular.ttf', 'FreeSerifArabic-Bold.ttf'):
         archive.add((FONT_DIR / name).read_bytes(), name)
     if _TIMES:
         for name in _TIMES.values():
@@ -104,9 +107,9 @@ ARABIC_RUN = re.compile('[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufdff\u
                         '[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufdff\ufe70-\ufeff\\s\u060c\u061b\u061f.,:()/\\d-]*')
 
 def _arabic_in_document_font(body):
-    """The fixed text of the forms is Times for Latin and DejaVu Sans for Arabic. Pin Arabic runs to
-    DejaVu so filled-in values look the same instead of falling back to a different Arabic face."""
-    return ARABIC_RUN.sub(lambda m: '<span style="font-family:hrdoc">%s</span>' % m.group(0), body)
+    """The fixed text of the forms is Times (Liberation Serif) for Latin and FreeSerif for Arabic. Pin Arabic runs
+    to FreeSerif so filled-in values look the same instead of falling back to a different Arabic face."""
+    return ARABIC_RUN.sub(lambda m: '<span style="font-family:hrar">%s</span>' % m.group(0), body)
 
 def _html(item):
     text = str(item.get('text') or '')
