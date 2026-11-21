@@ -62,7 +62,7 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     document_signature = fields.Binary('Approval signature', attachment=True,
-                                       help='PNG image with a transparent background, printed on forms when this employee approves.')
+                                       help='Deprecated: the signature is now kept on the user (Settings > Users). Used only until it is moved there.')
     document_signature_filename = fields.Char()
 
     @api.constrains('document_signature')

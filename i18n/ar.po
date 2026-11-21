@@ -2190,6 +2190,8 @@ msgstr "أوامر التعيين"
 #. module: abnaa_dijlah_hr
 #: code:addons/abnaa_dijlah_hr/models/ad_engine.py:0
 #: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_hr_employee__document_signature
+#: model:ir.model.fields,field_description:abnaa_dijlah_hr.field_res_users__ad_signature
+#: model_terms:ir.ui.view,arch_db:abnaa_dijlah_hr.res_users_view_form_ad_signature
 msgid "Approval signature"
 msgstr "توقيع الموافقة"
 

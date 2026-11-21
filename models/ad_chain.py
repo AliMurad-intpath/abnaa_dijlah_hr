@@ -615,7 +615,8 @@ class AdApprovalMixin(models.AbstractModel):
             step = rec._ad_current_step_for_user()
             employee = self.env['hr.employee'].sudo().search(
                 [('user_id', '=', self.env.uid), ('company_id', '=', rec.company_id.id)], limit=1)
-            signature = employee.document_signature if step.print_signature else False
+            # the signature lives on the user; the old employee field is only a fallback for signatures not yet moved
+            signature = (self.env.user.sudo().ad_signature or employee.document_signature) if step.print_signature else False
             step.sudo().write({
                 'state': 'approved', 'action_date': fields.Datetime.now(), 'signed_by_id': self.env.uid,
                 'signed_by_name': employee.name or self.env.user.name,
