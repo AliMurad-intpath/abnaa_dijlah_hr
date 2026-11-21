@@ -24,6 +24,27 @@ FONT_CSS = {
 * {font-family: hrtimes, hrdoc; margin: 0; padding: 0;}
 """,
 }
+# A licensed copy of the real Times New Roman, if the company drops one in static/fonts, wins
+# over the Liberation Serif look-alike (regular + bold, any of these file names).
+_REAL_TIMES = {'regular': ('TimesNewRoman.ttf', 'times.ttf', 'Times New Roman.ttf'),
+               'bold': ('TimesNewRoman-Bold.ttf', 'timesbd.ttf', 'Times New Roman Bold.ttf')}
+
+
+def _real_times():
+    found = {}
+    for style, names in _REAL_TIMES.items():
+        for name in names:
+            if (FONT_DIR / name).is_file():
+                found[style] = name
+                break
+    return found if len(found) == 2 else None
+
+
+_TIMES = _real_times()
+if _TIMES:
+    FONT_CSS['times'] = FONT_CSS['times'].replace('LiberationSerif-Regular.ttf', _TIMES['regular']).replace(
+        'LiberationSerif-Bold.ttf', _TIMES['bold'])
+
 ARABIC_SCRIPT = 6                                               
                                                                              
 _LOCK = threading.RLock()
@@ -41,6 +62,9 @@ def _font_archive():
     archive = pymupdf.Archive()
     for name in ('DejaVuSans.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSerif-Regular.ttf', 'LiberationSerif-Bold.ttf'):
         archive.add((FONT_DIR / name).read_bytes(), name)
+    if _TIMES:
+        for name in _TIMES.values():
+            archive.add((FONT_DIR / name).read_bytes(), name)
     return archive
 
 @_locked
@@ -76,6 +100,14 @@ def render_page_png(pdf_bytes, page_number, zoom=1.5, items=None):
             raise ValueError('page out of range')
         return doc[page_number - 1].get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), alpha=False).tobytes('png')
 
+ARABIC_RUN = re.compile('[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufdff\ufe70-\ufeff]'
+                        '[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufdff\ufe70-\ufeff\\s\u060c\u061b\u061f.,:()/\\d-]*')
+
+def _arabic_in_document_font(body):
+    """The fixed text of the forms is Times for Latin and DejaVu Sans for Arabic. Pin Arabic runs to
+    DejaVu so filled-in values look the same instead of falling back to a different Arabic face."""
+    return ARABIC_RUN.sub(lambda m: '<span style="font-family:hrdoc">%s</span>' % m.group(0), body)
+
 def _html(item):
     text = str(item.get('text') or '')
     multiline = item.get('multiline')
@@ -84,6 +116,8 @@ def _html(item):
     rtl = bool(RTL_CHARS.search(text))
     align = item.get('align') or ('right' if rtl else 'left')
     body = '<br/>'.join(html.escape(line) for line in text.splitlines()) if multiline else html.escape(text)
+    if item.get('font') != 'naskh':
+        body = _arabic_in_document_font(body)
     style = 'font-size:%.2fpt; line-height:%.2f; text-align:%s; font-weight:%s; white-space:%s;' % (
         float(item.get('font_size') or 11), LINE_HEIGHT, align,
         'bold' if item.get('bold') else 'normal', 'normal' if multiline else 'nowrap')
