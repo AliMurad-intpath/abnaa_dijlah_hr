@@ -377,6 +377,14 @@ class AdFormTemplate(models.Model):
                     with open(file_path('abnaa_dijlah_hr/' + spec['pdf']), 'rb') as fh:
                         data = fh.read()
                     tpl = tpl.sudo().with_context(ad_engine_seed=True)
+                    # signatures first: they must fit both the old and the new page count
+                    Stage = self.env['ad.form.stage'].sudo().with_context(ad_engine_seed=True)
+                    stage_by_key = {st.key: st for st in tpl.stage_ids}
+                    for st in spec['stages']:
+                        rec = stage_by_key.get(st['key'])
+                        if rec:
+                            rec.with_context(ad_engine_seed=True).write({k: st[k] for k in (
+                                'signature_page', 'signature_x', 'signature_y', 'signature_width', 'signature_height')})
                     by_key = {f.key: f for f in tpl.field_ids}
                     for new in spec['fields']:
                         rec = by_key.get(new['key'])
