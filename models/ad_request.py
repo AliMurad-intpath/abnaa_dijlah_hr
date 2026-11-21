@@ -7,6 +7,7 @@ except ImportError:  # pragma: no cover
     from odoo.orm.domains import Domain
 
 from .ad_chain import AD_STATUS
+from .ad_dashboard import _arabic_terms
 
 # model, label, the sequence used in the list
 REQUEST_FORMS = [
@@ -20,6 +21,18 @@ REQUEST_FORMS = [
     ('ad.employee.guarantee', 'Guarantee and pledge'),
     ('ad.employee.pledge', 'Written pledge'),
 ]
+
+
+def _arabic_fields_get(env, result):
+    """Labels and selection values in Arabic, read from i18n/ar.po like the dashboard does."""
+    if (env.lang or '').startswith('ar'):
+        terms = _arabic_terms()
+        for info in result.values():
+            if info.get('string') in terms:
+                info['string'] = terms[info['string']]
+            if info.get('selection'):
+                info['selection'] = [(key, terms.get(label, label)) for key, label in info['selection']]
+    return result
 
 
 class AdRequest(models.Model):
@@ -40,6 +53,10 @@ class AdRequest(models.Model):
     pending_step = fields.Char('Current stage', readonly=True)
     created_on = fields.Datetime('Created on', readonly=True)
     creator_id = fields.Many2one('res.users', string='Created by', readonly=True)
+
+    @api.model
+    def fields_get(self, allfields=None, attributes=None):
+        return _arabic_fields_get(self.env, super().fields_get(allfields, attributes))
 
     @api.depends('employee_id', 'subject')
     def _compute_employee_label(self):
@@ -123,6 +140,10 @@ class AdRequestNew(models.TransientModel):
     _description = 'Choose the form of a new request'
 
     form_type = fields.Selection(REQUEST_FORMS, string='Form', required=True, default='ad.appointment.order')
+
+    @api.model
+    def fields_get(self, allfields=None, attributes=None):
+        return _arabic_fields_get(self.env, super().fields_get(allfields, attributes))
 
     def action_create(self):
         self.ensure_one()
