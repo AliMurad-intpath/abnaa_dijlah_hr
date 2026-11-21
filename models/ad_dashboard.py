@@ -3,6 +3,43 @@ from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
+import ast
+import re
+from functools import lru_cache
+
+from odoo.tools import file_path
+
+PO_ITEM = re.compile(r'^msgid ((?:".*"\n?)+)msgstr ((?:".*"\n?)+)', re.M)
+
+
+@lru_cache(maxsize=1)
+def _arabic_terms():
+    """English -> Arabic pairs read straight from i18n/ar.po, so the dashboard can show
+    Arabic whatever the session language is."""
+    terms = {}
+    try:
+        with open(file_path('abnaa_dijlah_hr/i18n/ar.po'), encoding='utf-8') as fh:
+            text = fh.read()
+    except OSError:
+        return terms
+    for m in PO_ITEM.finditer(text):
+        try:
+            src = ''.join(ast.literal_eval(x) for x in m.group(1).split('\n') if x.strip())
+            dst = ''.join(ast.literal_eval(x) for x in m.group(2).split('\n') if x.strip())
+        except (ValueError, SyntaxError):
+            continue
+        if src and dst:
+            terms[src] = dst
+    return terms
+
+
+def _tr(env, text, *args):
+    """Translate a dashboard string into the language of the context."""
+    out = env._(text)
+    if out == text and (env.lang or '').startswith('ar'):
+        out = _arabic_terms().get(text, text)
+    return out % args if args else out
+
 
 # (model, short title, form code, closed states, kind colour, icon)
 FORMS = [
@@ -58,7 +95,7 @@ class AdDashboard(models.AbstractModel):
                 continue
             Model = env[model_name]
             open_dom = [('state', 'not in', list(closed))] if 'state' in Model._fields else []
-            row = {'block': fkey, 'model': model_name, 'title': env._(title), 'code': code, 'kind': kind, 'icon': icon,
+            row = {'block': fkey, 'model': model_name, 'title': _tr(env, title), 'code': code, 'kind': kind, 'icon': icon,
                    'closed': list(closed), 'open': Model.search_count(open_dom),
                    'total': Model.search_count([]), 'created_6m': 0}
             sel = dict(Model._fields['state']._description_selection(env)) if 'state' in Model._fields else {}
@@ -71,12 +108,12 @@ class AdDashboard(models.AbstractModel):
             tiles.append(row)
             for rec in Model.search([], order='create_date desc', limit=6):
                 recent.append({
-                    'model': model_name, 'id': rec.id, 'title': env._(title), 'name': rec.display_name,
+                    'model': model_name, 'id': rec.id, 'title': _tr(env, title), 'name': rec.display_name,
                     'state': sel.get(rec.state, '') if 'state' in rec._fields else '',
                     'when': rec.create_date, 'who': rec.create_uid.name,
                 })
             if can(ckey) and Model.has_access('create'):
-                create.append({'block': ckey, 'key': model_name, 'label': env._(title), 'model': model_name, 'icon': icon,
+                create.append({'block': ckey, 'key': model_name, 'label': _tr(env, title), 'model': model_name, 'icon': icon,
                                'group': 'forms', 'target': 'current'})
         if not can('chart_types'):
             for t in tiles:
@@ -89,26 +126,26 @@ class AdDashboard(models.AbstractModel):
         Employee = env['hr.employee']
         kpis, alerts, sites = [], [], []
         if can('kpi_emp') and self._ok('hr.employee'):
-            kpis.append({'key': 'emp', 'label': env._('Employees'), 'value': Employee.search_count([]),
+            kpis.append({'key': 'emp', 'label': _tr(env, 'Employees'), 'value': Employee.search_count([]),
                          'icon': 'users', 'kind': 'kpi', 'model': 'hr.employee', 'domain': []})
         if can('kpi_open'):
-            kpis.append({'key': 'open', 'label': env._('Forms in progress'),
+            kpis.append({'key': 'open', 'label': _tr(env, 'Forms in progress'),
                          'value': sum(t['open'] for t in tiles), 'icon': 'file', 'kind': 'column'})
 
         # approvals waiting for this user (the form approval chain)
         if can('kpi_approvals') and self._ok('ad.form.step'):
             domain = env['ad.form.step']._pending_domain()
-            kpis.append({'key': 'approvals', 'label': env._('My pending approvals'),
+            kpis.append({'key': 'approvals', 'label': _tr(env, 'My pending approvals'),
                          'value': env['ad.form.step'].sudo().search_count(domain),
                          'icon': 'check-user', 'kind': 'kpi', 'model': 'ad.form.step', 'domain': domain})
         # Attendance
         if self._ok('hr.attendance') and (can('kpi_present') or can('create_att')):
             n = env['hr.attendance'].search_count([('check_out', '=', False)])
             if can('kpi_present'):
-              kpis.append({'key': 'present', 'label': env._('Present now'), 'value': n, 'icon': 'check-user',
+              kpis.append({'key': 'present', 'label': _tr(env, 'Present now'), 'value': n, 'icon': 'check-user',
                          'kind': 'area', 'model': 'hr.attendance', 'domain': [('check_out', '=', False)]})
             if can('create_att') and env['hr.attendance'].has_access('create'):
-                create.append({'block': 'create_att', 'key': 'att', 'label': env._('Check-in'), 'model': 'hr.attendance',
+                create.append({'block': 'create_att', 'key': 'att', 'label': _tr(env, 'Check-in'), 'model': 'hr.attendance',
                                'icon': 'clock', 'group': 'hr', 'target': 'new'})
         # Time off
         if self._ok('hr.leave') and any(can(k) for k in ('kpi_out', 'kpi_leave_pending', 'alert_leave', 'create_leave')):
@@ -116,17 +153,17 @@ class AdDashboard(models.AbstractModel):
             out_dom = [('state', '=', 'validate'), ('date_from', '<=', now), ('date_to', '>=', now)]
             pend_dom = [('state', 'in', ['confirm', 'validate1'])]
             if can('kpi_out'):
-              kpis.append({'key': 'out', 'label': env._('On leave today'), 'value': Leave.search_count(out_dom),
+              kpis.append({'key': 'out', 'label': _tr(env, 'On leave today'), 'value': Leave.search_count(out_dom),
                          'icon': 'calendar', 'kind': 'doughnut', 'model': 'hr.leave', 'domain': out_dom})
             pend = Leave.search_count(pend_dom)
             if can('kpi_leave_pending'):
-              kpis.append({'key': 'leave_pending', 'label': env._('Leave requests awaiting approval'), 'value': pend,
+              kpis.append({'key': 'leave_pending', 'label': _tr(env, 'Leave requests awaiting approval'), 'value': pend,
                          'icon': 'calendar', 'kind': 'pie', 'model': 'hr.leave', 'domain': pend_dom})
             if pend and can('alert_leave'):
-                alerts.append({'block': 'alert_leave', 'text': env._('%s leave request(s) awaiting approval', pend), 'model': 'hr.leave',
+                alerts.append({'block': 'alert_leave', 'text': _tr(env, '%s leave request(s) awaiting approval', pend), 'model': 'hr.leave',
                                'domain': pend_dom, 'level': 'warn'})
             if can('create_leave') and Leave.has_access('create'):
-                create.append({'block': 'create_leave', 'key': 'leave', 'label': env._('Leave request'), 'model': 'hr.leave', 'icon': 'calendar',
+                create.append({'block': 'create_leave', 'key': 'leave', 'label': _tr(env, 'Leave request'), 'model': 'hr.leave', 'icon': 'calendar',
                                'group': 'hr', 'target': 'new',
                                'view_id': self._view_id('hr_holidays.hr_leave_view_form_dashboard')})
         # Payroll (Enterprise)
@@ -135,19 +172,19 @@ class AdDashboard(models.AbstractModel):
             draft_dom = [('state', 'in', ['draft', 'verify'])]
             n = Slip.search_count(draft_dom)
             if can('kpi_slips'):
-              kpis.append({'key': 'slips', 'label': env._('Unconfirmed payslips'), 'value': n, 'icon': 'wallet',
+              kpis.append({'key': 'slips', 'label': _tr(env, 'Unconfirmed payslips'), 'value': n, 'icon': 'wallet',
                          'kind': 'bar', 'model': 'hr.payslip', 'domain': draft_dom})
             if n and can('alert_slips'):
-                alerts.append({'block': 'alert_slips', 'text': env._('%s payslip(s) not yet confirmed', n), 'model': 'hr.payslip',
+                alerts.append({'block': 'alert_slips', 'text': _tr(env, '%s payslip(s) not yet confirmed', n), 'model': 'hr.payslip',
                                'domain': draft_dom, 'level': 'info'})
             if can('create_payslip') and Slip.has_access('create'):
-                create.append({'block': 'create_payslip', 'key': 'slip', 'label': env._('New payslip'), 'model': 'hr.payslip',
+                create.append({'block': 'create_payslip', 'key': 'slip', 'label': _tr(env, 'New payslip'), 'model': 'hr.payslip',
                                'icon': 'wallet', 'group': 'hr', 'target': 'current'})
             if can('create_payslip') and 'hr.payslip.run' in env and env['hr.payslip.run'].has_access('create'):
-                create.append({'block': 'create_payslip', 'key': 'batch', 'label': env._('Payslip batch'), 'model': 'hr.payslip.run',
+                create.append({'block': 'create_payslip', 'key': 'batch', 'label': _tr(env, 'Payslip batch'), 'model': 'hr.payslip.run',
                                'icon': 'wallet', 'group': 'hr', 'target': 'current'})
         if can('create_emp') and Employee.has_access('create'):
-            create.insert(0, {'block': 'create_emp', 'key': 'emp', 'label': env._('New employee'), 'model': 'hr.employee',
+            create.insert(0, {'block': 'create_emp', 'key': 'emp', 'label': _tr(env, 'New employee'), 'model': 'hr.employee',
                               'icon': 'user-plus', 'group': 'hr', 'target': 'current'})
 
         # Alerts from the AD forms
@@ -156,19 +193,19 @@ class AdDashboard(models.AbstractModel):
                    ('valid_until', '<=', today + timedelta(days=7))]
             n = env['ad.transfer'].search_count(dom)
             if n:
-                alerts.append({'block': 'alert_transfer', 'text': env._('%s transfer authorization(s) expiring within 7 days', n), 'model': 'ad.transfer',
+                alerts.append({'block': 'alert_transfer', 'text': _tr(env, '%s transfer authorization(s) expiring within 7 days', n), 'model': 'ad.transfer',
                                'domain': dom, 'level': 'warn'})
         if can('alert_probation') and 'ad_probation_end' in Employee._fields and self._ok('hr.employee'):
             dom = [('ad_probation_end', '>=', today), ('ad_probation_end', '<=', today + timedelta(days=30))]
             n = Employee.search_count(dom)
             if n:
-                alerts.append({'block': 'alert_probation', 'text': env._('%s employee(s) whose probation ends within 30 days', n), 'model': 'hr.employee',
+                alerts.append({'block': 'alert_probation', 'text': _tr(env, '%s employee(s) whose probation ends within 30 days', n), 'model': 'hr.employee',
                                'domain': dom, 'level': 'warn'})
         if can('alert_clearance') and 'ad.clearance' in env and self._ok('ad.clearance'):
             dom = [('state', 'in', ['draft', 'clearing'])]
             n = env['ad.clearance'].search_count(dom)
             if n:
-                alerts.append({'block': 'alert_clearance', 'text': env._('%s clearance(s) not completed', n), 'model': 'ad.clearance',
+                alerts.append({'block': 'alert_clearance', 'text': _tr(env, '%s clearance(s) not completed', n), 'model': 'ad.clearance',
                                'domain': dom, 'level': 'info'})
 
         if can('chart_sites') and 'ad_work_site_id' in Employee._fields and self._ok('hr.employee'):
