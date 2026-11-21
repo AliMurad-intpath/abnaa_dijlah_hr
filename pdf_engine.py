@@ -116,7 +116,7 @@ def _html(item):
     rtl = bool(RTL_CHARS.search(text))
     align = item.get('align') or ('right' if rtl else 'left')
     body = '<br/>'.join(html.escape(line) for line in text.splitlines()) if multiline else html.escape(text)
-    if item.get('font') != 'naskh':
+    if item.get('font') != 'naskh' and not _TIMES:
         body = _arabic_in_document_font(body)
     style = 'font-size:%.2fpt; line-height:%.2f; text-align:%s; font-weight:%s; white-space:%s;' % (
         float(item.get('font_size') or 11), LINE_HEIGHT, align,
