@@ -1,6 +1,6 @@
 {
  'name': 'Abnaa Dijlah HR & Approvals',
- 'version': '20.0.2.4.8',
+ 'version': '20.0.2.4.9',
  'category': 'Human Resources',
  'summary': 'Abnaa Dijlah Security Services - HR forms printed on the original PDFs, approval chain, dashboard',
  'author': "Abna'a Dijla Security Services Co. (AD)",
