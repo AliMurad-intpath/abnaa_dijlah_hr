@@ -102,6 +102,9 @@ class AdFormTemplate(models.Model):
             return b''
         if isinstance(payload, BinaryValue):
             payload = payload.content
+        elif not isinstance(payload, (bytes, bytearray, memoryview, str, dict)) and callable(getattr(payload, 'open', None)):
+            with payload.open() as fh:  # file wrapper (e.g. LocalBinaryFile)
+                payload = fh.read()
         if isinstance(payload, dict):
             if 'content' not in payload:
                 raise ValidationError(self.env._('Choose the PDF file again; the file content is missing.'))

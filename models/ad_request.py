@@ -54,7 +54,9 @@ class AdRequest(models.Model):
             by_model.setdefault(step.res_model, set()).add(step.res_id)
         clauses = [Domain('res_model', '=', model) & Domain('res_id', 'in', sorted(ids)) for model, ids in by_model.items()]
         found = Domain.OR(clauses) if clauses else Domain.FALSE
-        positive = (operator == '=') == bool(value)
+        values = value if isinstance(value, (list, tuple, set)) else [value]
+        wants_true = any(bool(v) for v in values)
+        positive = (operator in ('=', 'in')) == wants_true
         return found if positive else ~found
 
     @api.depends('employee_id', 'subject')

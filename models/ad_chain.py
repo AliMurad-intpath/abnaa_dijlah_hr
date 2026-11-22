@@ -358,7 +358,10 @@ class AdApprovalMixin(models.AbstractModel):
             clauses += [Domain(f, 'in', site_ids) for f in site_fields]
             clauses.append(Domain.AND([Domain(f, '=', False) for f in site_fields]))
         elif 'employee_id' in self._fields and self._name != 'ad.interview':
-            clauses += [Domain('employee_id.ad_work_site_id', 'in', site_ids), Domain('employee_id.ad_work_site_id', '=', False)]
+            # resolved with sudo: site supervisors have no read access on hr.employee
+            emp_ids = self.env['hr.employee'].sudo().with_context(active_test=False).search(
+                ['|', ('ad_work_site_id', 'in', site_ids), ('ad_work_site_id', '=', False)]).ids
+            clauses.append(Domain('employee_id', 'in', emp_ids))
         else:
             return None
         return Domain.OR(clauses)
@@ -490,6 +493,23 @@ class AdApprovalMixin(models.AbstractModel):
             rec.message_post(body=self.env._('The signed PDF was saved with the form.'), attachment_ids=[attachment.id])
         return True
 
+    @staticmethod
+    def _ad_to_bytes(data):
+        """Attachment raw may be bytes or a file wrapper (BinaryValue / LocalBinaryFile): always return bytes."""
+        if isinstance(data, (bytes, bytearray)):
+            return bytes(data)
+        for attr in ('content', 'read'):
+            val = getattr(data, attr, None)
+            if val is not None:
+                val = val() if callable(val) else val
+                if isinstance(val, (bytes, bytearray)):
+                    return bytes(val)
+        opener = getattr(data, 'open', None)
+        if callable(opener):
+            with opener() as fh:
+                return fh.read()
+        return bytes(data) if data else b''
+
     def _ad_pdf_for_print(self):
         """The saved signed PDF when the form is approved (frozen on the first print for older forms), else a live preview."""
         self.ensure_one()
@@ -497,6 +517,7 @@ class AdApprovalMixin(models.AbstractModel):
             if not self.sudo().ad_frozen_attachment_id:
                 self._ad_freeze_pdf(post=False)
             data = self.sudo().ad_frozen_attachment_id.raw
+            data = self._ad_to_bytes(data)
             if data:
                 self._ad_post(self.env._('The signed PDF was printed by %s.', self.env.user.name))
                 return data
