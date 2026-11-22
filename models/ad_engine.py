@@ -778,6 +778,7 @@ class AdFormStage(models.Model):
         return action
 
     def unlink(self):
-        if self.env['ad.form.field'].sudo().search_count([('stage_id', 'in', self.ids)], limit=1):
-            raise UserError(self.env._('This stage supplies a system field. Change the approver instead of deleting it.'))
+        # a removed stage takes the approval-date / approver-name boxes that depended on it with it;
+        # forms already submitted keep their own copy of the chain and of the layout
+        self.env['ad.form.field'].sudo().search([('stage_id', 'in', self.ids)]).unlink()
         return super().unlink()
