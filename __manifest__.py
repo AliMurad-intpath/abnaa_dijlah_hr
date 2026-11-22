@@ -1,6 +1,6 @@
 {
  'name': 'Abnaa Dijlah HR & Approvals',
- 'version': '20.0.2.4.1',
+ 'version': '20.0.2.4.2',
  'category': 'Human Resources',
  'summary': 'Abnaa Dijlah Security Services - HR forms printed on the original PDFs, approval chain, dashboard',
  'author': "Abna'a Dijla Security Services Co. (AD)",
@@ -64,5 +64,5 @@
  'installable': True,
  'application': True,
  'post_init_hook': 'post_init',
- 'external_dependencies': {'python': ['pymupdf', 'PIL']},
+ 'external_dependencies': {'python': ['pymupdf', 'Pillow']},
 }

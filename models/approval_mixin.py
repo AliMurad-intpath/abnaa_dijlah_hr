@@ -42,12 +42,13 @@ class AdApprovalMixin(models.AbstractModel):
     def ad_sign(self, step, note=False):
         today = fields.Date.context_today(self)
         for rec in self:
-            existing = rec.signature_ids.filtered(lambda s: s.step == step)
+            # approval stamps are written by the system only (users cannot create or edit them directly)
+            existing = rec.sudo().signature_ids.filtered(lambda s: s.step == step)
             vals = {'user_id': self.env.uid, 'date': today, 'note': note}
             if existing:
-                existing.write(vals)
+                existing.sudo().write(vals)
             else:
-                self.env['ad.signature'].create(dict(vals, res_model=rec._name, res_id=rec.id, step=step))
+                self.env['ad.signature'].sudo().create(dict(vals, res_model=rec._name, res_id=rec.id, step=step))
         return True
 
     def ad_sig(self, step):

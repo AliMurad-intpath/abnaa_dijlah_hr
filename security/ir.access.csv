@@ -4,7 +4,7 @@ access_ad_form_template_mgr,ad.form.template manager,ad.form.template,hr.group_h
 access_ad_work_site_user,ad.work.site user,ad.work.site,base.group_user,r,
 access_ad_work_site_hr,ad.work.site hr,ad.work.site,hr.group_hr_user,cru,
 access_ad_work_site_mgr,ad.work.site manager,ad.work.site,hr.group_hr_manager,crud,
-access_ad_signature_user,ad.signature user,ad.signature,base.group_user,cru,
+access_ad_signature_user,ad.signature user,ad.signature,base.group_user,r,
 access_ad_dashboard_block_user,ad.dashboard.block user,ad.dashboard.block,base.group_user,r,
 access_ad_dashboard_block_mgr,ad.dashboard.block manager,ad.dashboard.block,hr.group_hr_manager,crud,
 access_ad_guarantee_hr,ad.employee.guarantee hr,ad.employee.guarantee,hr.group_hr_user,cru,
