@@ -1,0 +1,381 @@
+{
+ "ad.onboarding": {
+  "stages": {
+   "hr": {
+    "page": 1,
+    "x": 446.3,
+    "y": 292.5,
+    "width": 76.6,
+    "height": 17.0
+   },
+   "logistics": {
+    "page": 1,
+    "x": 446.3,
+    "y": 392.3,
+    "width": 76.6,
+    "height": 17.0
+   },
+   "site": {
+    "page": 1,
+    "x": 446.3,
+    "y": 506.3,
+    "width": 76.6,
+    "height": 17.0
+   },
+   "ops": {
+    "page": 1,
+    "x": 446.3,
+    "y": 606.0,
+    "width": 76.6,
+    "height": 17.0
+   },
+   "md": {
+    "page": 1,
+    "x": 450.8,
+    "y": 673.5,
+    "width": 76.6,
+    "height": 17.0
+   }
+  },
+  "covers": [
+   {
+    "page": 1,
+    "x": 479.5,
+    "y": 311.8,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 479.5,
+    "y": 411.5,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 479.5,
+    "y": 525.5,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 479.5,
+    "y": 625.3,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 484.0,
+    "y": 692.8,
+    "width": 35.8,
+    "height": 10.5
+   }
+  ],
+  "dates": [
+   {
+    "key": "approval_date_hr",
+    "name": "تاريخ اعتماد الموارد البشرية",
+    "stage": "hr",
+    "page": 1,
+    "x": 475.4,
+    "y": 312.1,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "approval_date_logistics",
+    "name": "تاريخ اعتماد اللوجستيك",
+    "stage": "logistics",
+    "page": 1,
+    "x": 475.4,
+    "y": 411.8,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "approval_date_site",
+    "name": "تاريخ اعتماد مشرف الموقع",
+    "stage": "site",
+    "page": 1,
+    "x": 475.4,
+    "y": 525.8,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "approval_date_ops",
+    "name": "تاريخ اعتماد مدير العمليات",
+    "stage": "ops",
+    "page": 1,
+    "x": 475.4,
+    "y": 625.6,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "approval_date_md",
+    "name": "تاريخ اعتماد المدير المفوض",
+    "stage": "md",
+    "page": 1,
+    "x": 479.9,
+    "y": 693.1,
+    "width": 44.0,
+    "height": 10.0
+   }
+  ],
+  "centered": [
+   {
+    "key": "start_shift_am",
+    "x": 398.4,
+    "y": 171.8,
+    "width": 28.0,
+    "height": 12.0
+   },
+   {
+    "key": "start_shift_am_2",
+    "x": 358.3,
+    "y": 450.8,
+    "width": 28.0,
+    "height": 12.0
+   },
+   {
+    "key": "start_shift_am_3",
+    "x": 424.3,
+    "y": 565.5,
+    "width": 28.0,
+    "height": 12.0
+   }
+  ]
+ },
+ "ad.discipline": {
+  "stages": {
+   "hr": {
+    "page": 1,
+    "x": 418.0,
+    "y": 661.0,
+    "width": 62.0,
+    "height": 20.0
+   },
+   "ops": {
+    "page": 1,
+    "x": 418.0,
+    "y": 686.0,
+    "width": 62.0,
+    "height": 20.0
+   },
+   "md": {
+    "page": 1,
+    "x": 418.0,
+    "y": 711.0,
+    "width": 62.0,
+    "height": 20.0
+   }
+  },
+  "covers": [],
+  "dates": []
+ },
+ "ad.clearance": {
+  "stages": {
+   "md": {
+    "page": 2,
+    "x": 86.3,
+    "y": 417.7,
+    "width": 72.4,
+    "height": 32.0
+   }
+  },
+  "covers": [
+   {
+    "page": 2,
+    "x": 103.3,
+    "y": 402.2,
+    "width": 38.5,
+    "height": 10.0
+   }
+  ],
+  "dates": [
+   {
+    "key": "approval_date_md",
+    "name": "تاريخ مصادقة المدير المفوض",
+    "stage": "md",
+    "page": 2,
+    "x": 100.5,
+    "y": 402.5,
+    "width": 44.0,
+    "height": 10.0
+   }
+  ]
+ },
+ "ad.interview": {
+  "stages": {
+   "ops": {
+    "page": 3,
+    "x": 385.0,
+    "y": 737.0,
+    "width": 110.0,
+    "height": 24.0
+   }
+  },
+  "covers": [],
+  "dates": []
+ },
+ "ad.transfer": {
+  "stages": {
+   "ops": {
+    "page": 1,
+    "x": 252.0,
+    "y": 228.0,
+    "width": 60.0,
+    "height": 20.0
+   },
+   "ops_site": {
+    "page": 1,
+    "x": 237.0,
+    "y": 366.0,
+    "width": 56.0,
+    "height": 20.0
+   },
+   "md": {
+    "page": 1,
+    "x": 440.0,
+    "y": 560.0,
+    "width": 70.0,
+    "height": 28.0
+   }
+  },
+  "covers": [
+   {
+    "page": 1,
+    "x": 183.3,
+    "y": 233.8,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 166.7,
+    "y": 325.3,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 166.7,
+    "y": 370.3,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 157.4,
+    "y": 458.8,
+    "width": 35.8,
+    "height": 10.5
+   },
+   {
+    "page": 1,
+    "x": 478.8,
+    "y": 587.0,
+    "width": 35.8,
+    "height": 10.5
+   }
+  ],
+  "dates": [
+   {
+    "key": "ops_date_1",
+    "name": "تاريخ اعتماد مدير العمليات",
+    "stage": "ops",
+    "page": 1,
+    "x": 179.2,
+    "y": 234.1,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "ops_date_2",
+    "name": "تاريخ اعتماد مدير العمليات",
+    "stage": "ops",
+    "page": 1,
+    "x": 162.6,
+    "y": 325.6,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "site_date_1",
+    "name": "تاريخ اعتماد مشرف الموقع",
+    "stage": "ops_site",
+    "page": 1,
+    "x": 162.6,
+    "y": 370.6,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "site_date_2",
+    "name": "تاريخ اعتماد مشرف الموقع",
+    "stage": "ops_site",
+    "page": 1,
+    "x": 153.3,
+    "y": 459.1,
+    "width": 44.0,
+    "height": 10.0
+   },
+   {
+    "key": "md_date_1",
+    "name": "تاريخ اعتماد المدير المفوض",
+    "stage": "md",
+    "page": 1,
+    "x": 474.7,
+    "y": 587.3,
+    "width": 44.0,
+    "height": 10.0
+   }
+  ],
+  "extra_fields": [
+   {
+    "key": "old_supervisor_2",
+    "name": "اسم المشرف الحالي (2)",
+    "field_type": "text",
+    "source_path": "old_supervisor",
+    "page": 1,
+    "x": 374.5,
+    "y": 347.8,
+    "width": 97.5,
+    "height": 10.5,
+    "text_align": "right"
+   },
+   {
+    "key": "new_supervisor_2",
+    "name": "اسم المشرف المستلم",
+    "field_type": "text",
+    "source_path": "new_supervisor",
+    "page": 1,
+    "x": 371.5,
+    "y": 370.3,
+    "width": 97.5,
+    "height": 10.5,
+    "text_align": "right"
+   }
+  ],
+  "centered": [
+   {
+    "key": "start_shift_am",
+    "x": 385.0,
+    "y": 301.5,
+    "width": 30.0,
+    "height": 12.0
+   },
+   {
+    "key": "leave_shift_am",
+    "x": 249.9,
+    "y": 435.0,
+    "width": 30.0,
+    "height": 12.0
+   }
+  ]
+ }
+}

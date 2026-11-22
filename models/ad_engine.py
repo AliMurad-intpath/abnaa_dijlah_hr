@@ -22,6 +22,7 @@ FIELD_TYPES = [
     ('text', 'Text'), ('date', 'Date'), ('money', 'Amount'), ('mark', '✔ mark (option / box)'),
     ('mark_in', '✔ mark (specific violation)'), ('selection', 'Choice (prints the option name)'),
     ('month_year', 'Month and year'), ('months_ar', 'Period in months (text)'), ('system', 'System value'),
+    ('cover', 'White-out box (hides printed text)'),
 ]
 SYSTEM_SOURCES = [('request_name', 'Form number'), ('request_date', "Today's date"),
                   ('company_name', 'Company name'), ('approver_name', 'Approver name'),
@@ -408,6 +409,55 @@ class AdFormTemplate(models.Model):
             _logger.exception('Could not write the Arabic terms of abnaa_dijlah_hr')
 
     @api.model
+    def _ad_apply_signature_layouts(self, force=False):
+        """Place the approval signatures, the white-out boxes and the approval dates on the printed forms
+        (data/signature_layouts.json). Safe to repeat: signature boxes move only when they still sit at the
+        default bottom-of-page spot, missing fields are created, and existing fields keep their position
+        unless `force` (the one-time upgrade step) is set."""
+        path = file_path('abnaa_dijlah_hr/data/signature_layouts.json')
+        with open(path, encoding='utf-8') as fh:
+            layouts = json.load(fh)
+        geometry = ('page', 'x', 'y', 'width', 'height')
+        for model, spec in layouts.items():
+            tpl = self.sudo().search([('res_model', '=', model)], limit=1)
+            if not tpl or not tpl._get_pdf_bytes():
+                continue
+            try:
+                with self.env.cr.savepoint():
+                    tpl = tpl.with_context(ad_engine_seed=True)
+                    stages = {st.key: st for st in tpl.stage_ids}
+                    for key, geo in spec.get('stages', {}).items():
+                        stage = stages.get(key)
+                        if stage and abs(stage.signature_y - 771.89) < 0.6:
+                            stage.write({'signature_' + k: v for k, v in geo.items()})
+                    Field = self.env['ad.form.field'].sudo().with_context(ad_engine_seed=True)
+                    existing = {f.key: f for f in tpl.field_ids}
+                    for index, geo in enumerate(spec.get('covers', []), 1):
+                        key = 'cover_%d' % index
+                        if key not in existing:
+                            Field.create(dict(geo, template_id=tpl.id, key=key, name='White-out %d' % index,
+                                              field_type='cover', sequence=1000 + index))
+                    for item in spec.get('dates', []):
+                        vals = {k: item[k] for k in geometry}
+                        vals.update(font_size=8, min_font_size=6, text_align='center')
+                        if item['key'] in existing:
+                            if force:
+                                existing[item['key']].write(vals)
+                        elif item['stage'] in stages:
+                            Field.create(dict(vals, template_id=tpl.id, key=item['key'], name=item['name'],
+                                              field_type='system', system_source='approval_date',
+                                              stage_id=stages[item['stage']].id, sequence=1100))
+                    for item in spec.get('extra_fields', []):
+                        if item['key'] not in existing:
+                            Field.create(dict(item, template_id=tpl.id, font_size=10, sequence=1200))
+                    for item in spec.get('centered', []):
+                        rec = existing.get(item['key'])
+                        if rec and (force or rec.text_align == 'right'):
+                            rec.write({k: item[k] for k in ('x', 'y', 'width', 'height')} | {'text_align': 'center'})
+            except Exception:
+                _logger.exception('Could not place the signature layout of %s', model)
+
+    @api.model
     def _ad_seed_engine(self):
         """Load the blank PDFs, printed fields and approval stages shipped with the module.
         Runs on install / update and only touches templates that have no PDF yet."""
@@ -482,6 +532,8 @@ class AdFormField(models.Model):
     @api.constrains('field_type', 'system_source', 'stage_id', 'source_path')
     def _check_source(self):
         for rec in self:
+            if rec.field_type == 'cover':
+                continue
             if rec.field_type == 'system':
                 if not rec.system_source:
                     raise ValidationError(self.env._('Select the system value printed by "%s".', rec.name))
@@ -519,6 +571,9 @@ class AdFormField(models.Model):
     # -------------------------------------------------------------- printing
     def _pdf_item(self, text):
         self.ensure_one()
+        if self.field_type == 'cover':
+            return {'key': 'field-%s' % self.id, 'label': self.name, 'kind': 'cover', 'page': self.page,
+                    'x': self.x, 'y': self.y, 'width': self.width, 'height': self.height}
         return {
             'key': 'field-%s' % self.id, 'label': self.name, 'page': self.page,
             'x': self.x, 'y': self.y, 'width': self.width, 'height': self.height,
@@ -569,6 +624,8 @@ class AdFormField(models.Model):
     def _print_value(self, record):
         """The text this field prints for `record`."""
         self.ensure_one()
+        if self.field_type == 'cover':
+            return ''
         if self.field_type == 'system':
             return self._system_text(record)
         value, holder, fname = self._walk(record)

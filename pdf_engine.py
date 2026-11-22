@@ -156,7 +156,7 @@ def overlap_issues(pdf_bytes, items):
         words = {}
         for item in items:
             number = int(item.get('page') or 1)
-            if not 1 <= number <= len(doc):
+            if item.get('kind') == 'cover' or not 1 <= number <= len(doc):
                 continue
             if number not in words:
                 page = doc[number - 1]
@@ -187,7 +187,8 @@ def render(pdf_bytes, items, collect=False, output=True):
             page.set_cropbox(pymupdf.Rect(media.x0, 0, media.x1, media.height))
             adjustment = ~original_transform * page.transformation_matrix
             surfaces.append((area, inverse_rotation, adjustment, crop, rotation))
-        for item in items:
+        # white-out boxes first, so values printed on top of them stay visible
+        for item in sorted(items, key=lambda i: i.get('kind') != 'cover'):
             label = item.get('label') or item.get('key') or '?'
             number = int(item.get('page') or 1)
             if not 1 <= number <= len(doc):
@@ -205,6 +206,10 @@ def render(pdf_bytes, items, collect=False, output=True):
                 continue
                                                                                    
             target = (box * inverse_rotation * adjustment).normalize()
+            if item.get('kind') == 'cover':
+                if output:
+                    page.draw_rect(target, color=None, fill=(1, 1, 1), overlay=True)
+                continue
             if item.get('kind') == 'image':
                 if item.get('image'):
                     try:

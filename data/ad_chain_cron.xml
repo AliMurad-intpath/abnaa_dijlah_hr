@@ -10,6 +10,8 @@
     </record>
     <!-- load the blank PDFs, printed fields and approval stages (idempotent) -->
     <function model="ad.form.template" name="_ad_seed_engine"/>
+    <!-- signature boxes, white-outs and approval dates on the printed forms (idempotent) -->
+    <function model="ad.form.template" name="_ad_apply_signature_layouts"/>
     <!-- the one translation path: ar.po into the database (every install and upgrade) -->
     <function model="ad.form.template" name="_ad_apply_arabic"/>
 </odoo>

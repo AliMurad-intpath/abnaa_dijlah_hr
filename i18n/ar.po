@@ -5352,3 +5352,7 @@ msgstr "الموقع (الحراس العاملون فيه)"
 #. module: abnaa_dijlah_hr
 msgid "Create forms for a whole site"
 msgstr "إنشاء استمارات لموقع كامل"
+
+#. module: abnaa_dijlah_hr
+msgid "White-out box (hides printed text)"
+msgstr "مربع تغطية (يخفي النص المطبوع)"
